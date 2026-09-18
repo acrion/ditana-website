@@ -1,0 +1,20 @@
+---
+// Static KDL syntax-highlighted excerpt used in the landing page.
+// Lives in a .astro file rather than inline in MDX because the example
+// contains backticks and braces that confuse MDX's JS expression parser.
+//
+// Quoted from ditana-config/settings/dialogs/desktop-environment/xfce.kdl,
+// abridged only in the package list. Anything shown here has to be something a
+// visitor can find in that repository within one click, because the paragraph
+// beside it invites them to go and look.
+---
+<pre class="ditana-kdl"><code><span class="c">// XFCE fallback for Wayland-only primary terminals
+// (foot, cosmic-term). Fires when the user picks a
+// Wayland-native terminal AND also installs XFCE.</span>
+<span class="k">- name</span>=<span class="s">"fallback-kitty-for-xfce"</span> \
+  <span class="k">default-value</span>=<span class="s">"`(install-foot OR install-cosmic-term)
+                  AND install-xfce`"</span> &#123;
+    <span class="k">arch-packages</span> <span class="s">"kitty"</span> <span class="s">"imagemagick"</span> ...
+    <span class="k">chroot-script</span> <span class="s">"echo kitty.desktop
+                   &gt;/etc/xdg/xfce-xdg-terminals.list"</span>
+&#125;</code></pre>

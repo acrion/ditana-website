@@ -1,0 +1,694 @@
+---
+/**
+ * Public record of every Ditana package build.
+ *
+ * The data is produced by the package pipeline, which writes one JSON per run
+ * plus a rolling index to /build-history/. This site never generates those
+ * files -- it only reads them at runtime, so a build of the website is not
+ * needed to show yesterday's run, and the pipeline needs no Node toolchain.
+ *
+ * The claim the page has to make checkable is a single one: either all 56
+ * packages are mutually consistent and the repository ships, or nothing ships.
+ * A held-back run is therefore displayed exactly as prominently as a published
+ * one -- hiding it would turn the record into marketing.
+ */
+---
+
+<div class="bd" data-index="/build-history/index.json" data-runs="/build-history/">
+  <div class="bd-latest" hidden>
+    <div class="bd-verdict">
+      <span class="bd-dot"></span>
+      <div>
+        <p class="bd-verdict-line"></p>
+        <p class="bd-verdict-sub"></p>
+      </div>
+    </div>
+    <dl class="bd-stats"></dl>
+    <p class="bd-test"></p>
+    <p class="bd-message"></p>
+  </div>
+
+  <div class="bd-timeline-wrap" hidden>
+    <h3 class="bd-h">Recent runs</h3>
+    <p class="bd-hint">One square per run, newest on the right. Select one to see what happened to every package.</p>
+    <div class="bd-timeline" role="list"></div>
+    <div class="bd-legend">
+      <span><i class="bd-sw bd-released"></i>released — what users install</span>
+      <span><i class="bd-sw bd-testing"></i>in testing</span>
+      <span><i class="bd-sw bd-built"></i>built, not yet signed</span>
+      <span><i class="bd-sw bd-held"></i>held back — nothing shipped</span>
+      <span><i class="bd-sw bd-error-sw"></i>the installation test failed</span>
+    </div>
+  </div>
+
+  <div class="bd-detail" hidden></div>
+
+  <p class="bd-state">Loading the build record…</p>
+</div>
+
+{/*
+  is:global, deliberately: most of what is styled below is created by the
+  script at runtime, and Astro's scoping works by stamping an attribute onto
+  the elements present in this template. Runtime nodes never carry it, so a
+  scoped rule would silently miss every row, cell and statistic. Every selector
+  here is therefore prefixed with .bd, which is this component and nothing else.
+*/}
+<style is:global>
+  .bd {
+    /* The order is the journey: built, then testing, then out to users. */
+    --bd-released: #3fb950;
+    --bd-testing: #58a6ff;
+    --bd-built: #8b949e;
+    --bd-held: #ffbb00;
+    --bd-error: #f85149;
+    --bd-dim: var(--sl-color-gray-4);
+    margin-block: 1.5rem;
+  }
+
+  .bd-state {
+    color: var(--sl-color-gray-3);
+    font-style: italic;
+  }
+
+  /* --- latest run ------------------------------------------------------ */
+
+  .bd-latest {
+    border: 1px solid var(--sl-color-hairline);
+    border-left: 4px solid var(--bd-dim);
+    border-radius: 0.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--sl-color-bg-inline-code);
+  }
+  .bd-latest[data-outcome='released']   { border-left-color: var(--bd-released); }
+  .bd-latest[data-outcome='in-testing'] { border-left-color: var(--bd-testing); }
+  .bd-latest[data-outcome='built']      { border-left-color: var(--bd-built); }
+  .bd-latest[data-outcome='held-back']  { border-left-color: var(--bd-held); }
+
+  .bd-verdict {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+  }
+  .bd-dot {
+    flex: none;
+    width: 0.85rem;
+    height: 0.85rem;
+    margin-top: 0.45rem;
+    border-radius: 50%;
+    background: var(--bd-dim);
+  }
+  [data-outcome='released']   .bd-dot { background: var(--bd-released); }
+  [data-outcome='in-testing'] .bd-dot { background: var(--bd-testing); }
+  [data-outcome='built']      .bd-dot { background: var(--bd-built); }
+  [data-outcome='held-back']  .bd-dot { background: var(--bd-held); }
+
+  .bd-verdict-line {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--sl-color-white);
+  }
+  .bd-verdict-sub {
+    margin: 0.3rem 0 0;
+    color: var(--sl-color-gray-3);
+    font-size: 0.9rem;
+  }
+
+  .bd-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.75rem;
+    margin: 1.25rem 0 0;
+  }
+  .bd-stats div { margin: 0; text-align: left; }
+  .bd-stats dt {
+    margin: 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--sl-color-gray-3);
+  }
+  .bd-stats dd {
+    margin: 0.15rem 0 0;
+    margin-inline-start: 0;
+    font-size: 1.4rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--sl-color-white);
+  }
+  .bd-stats dd.is-zero { color: var(--sl-color-gray-4); }
+  .bd-stats dd.is-bad { color: var(--bd-error); }
+
+  .bd-message {
+    margin: 1rem 0 0;
+    padding: 0.7rem 0.9rem;
+    border-radius: 0.35rem;
+    background: var(--sl-color-bg);
+    border: 1px solid var(--sl-color-hairline);
+    font-family: var(--sl-font-mono, monospace);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    overflow-x: auto;
+    color: var(--sl-color-gray-2);
+  }
+  .bd-message[hidden] { display: none; }
+
+  /* The test installation: an unattended install of this very repository
+     into a virtual machine, which then had to boot and answer for itself.
+     It is the one line on this page that speaks about the packages working
+     rather than about them existing, so it is not hidden inside the run's
+     detail view. */
+  .bd-test {
+    margin: 0.9rem 0 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--sl-color-gray-2);
+  }
+  .bd-test[hidden] { display: none; }
+  .bd-test .bd-sw { margin-right: 0.45rem; }
+  .bd-test[data-result='failed'] { color: var(--bd-error); }
+  .bd-sw.bd-error-sw { background: var(--bd-error); }
+  .bd-test-detail {
+    font-family: var(--sl-font-mono, monospace);
+    font-size: 0.8rem;
+  }
+  .bd-test-shot { color: inherit; }
+
+  /* --- timeline -------------------------------------------------------- */
+
+  .bd-h { margin: 2.5rem 0 0.25rem; font-size: 1.1rem; }
+  .bd-hint { margin: 0 0 0.9rem; color: var(--sl-color-gray-3); font-size: 0.85rem; }
+
+  .bd-timeline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+  }
+  .bd-cell {
+    flex: none;
+    width: 1.35rem;
+    height: 1.35rem;
+    margin: 0;
+    border: 0;
+    border-radius: 3px;
+    padding: 0;
+    cursor: pointer;
+    background: var(--bd-dim);
+    outline-offset: 2px;
+  }
+  .bd-cell.bd-released { background: var(--bd-released); }
+  .bd-cell.bd-testing  { background: var(--bd-testing); }
+  .bd-cell.bd-test-failed { background: var(--bd-error); }
+  .bd-cell.bd-built    { background: var(--bd-built); }
+  .bd-cell.bd-held     { background: var(--bd-held); }
+  .bd-cell[aria-pressed='true'] {
+    box-shadow: 0 0 0 2px var(--sl-color-bg), 0 0 0 4px var(--sl-color-accent);
+  }
+
+  .bd-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 0.9rem;
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-3);
+  }
+  .bd-legend span { display: flex; align-items: center; gap: 0.4rem; }
+  .bd-sw { width: 0.75rem; height: 0.75rem; border-radius: 3px; display: inline-block; }
+  .bd-sw.bd-released { background: var(--bd-released); }
+  .bd-sw.bd-testing  { background: var(--bd-testing); }
+  .bd-sw.bd-built    { background: var(--bd-built); }
+  .bd-sw.bd-held     { background: var(--bd-held); }
+
+  /* --- per-run detail -------------------------------------------------- */
+
+  .bd-detail { margin-top: 2rem; }
+  .bd-detail h3 { margin: 0 0 0.2rem; font-size: 1.05rem; }
+  .bd-detail .bd-sub { margin: 0 0 1rem; color: var(--sl-color-gray-3); font-size: 0.85rem; }
+  /* The field value verbatim: every other line on the page speaks in prose,
+     and this is the one a reader compares against the JSON. */
+  .bd-outcome {
+    background: var(--sl-color-bg-inline-code);
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.25rem;
+    padding: 0.05rem 0.4rem;
+    color: var(--sl-color-white);
+  }
+
+  /* One column, deliberately. Two columns fit more on screen, but a package's
+     logs and its failure text have to span the full width, so in a grid they
+     break to the next row -- and then they sit under whichever package
+     happened to end up on the left of that row, which reads as belonging to
+     it. A list where each package is followed by its own attachments cannot
+     say the wrong thing. */
+  .bd-pkgs {
+    display: flex;
+    flex-direction: column;
+  }
+  .bd-pkg {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    padding: 0.15rem 0;
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+  }
+  .bd-pkg-mark {
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--bd-dim);
+  }
+  .bd-pkg.is-rebuilt .bd-pkg-mark { background: var(--sl-color-accent); }
+  .bd-pkg.is-review-stopped .bd-pkg-mark,
+  .bd-pkg.is-build-failed .bd-pkg-mark { background: var(--bd-error); }
+  .bd-pkg-name {
+    flex: 1;
+    font-family: var(--sl-font-mono, monospace);
+    color: var(--sl-color-gray-2);
+    overflow-wrap: anywhere;
+  }
+  .bd-pkg.is-rebuilt .bd-pkg-name { color: var(--sl-color-white); }
+  .bd-pkg-time {
+    flex: none;
+    font-variant-numeric: tabular-nums;
+    color: var(--sl-color-gray-4);
+    font-size: 0.78rem;
+  }
+  .bd-pkg-logs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: -0.1rem 0 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+  .bd-pkg-logs a {
+    color: var(--sl-color-gray-3);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--sl-color-gray-5);
+  }
+  .bd-pkg-logs a:hover { color: var(--sl-color-accent-high); }
+  .bd-pkg-logs a::before { content: '⌄ '; }
+
+  .bd-pkg-detail {
+    margin: 0.2rem 0 0.8rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 0.35rem;
+    background: var(--sl-color-bg-inline-code);
+    border-left: 3px solid var(--bd-error);
+    font-family: var(--sl-font-mono, monospace);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    color: var(--sl-color-gray-2);
+  }
+</style>
+
+<script>
+  interface RunSummary {
+    started: string;
+    finished: string;
+    seconds: number;
+    outcome: string;
+    promoted?: boolean;          // legacy records only, see normalise()
+    counts: Record<string, number>;
+    file: string;
+    message?: string;
+    packages?: PackageRecord[];
+    /* Written by the build host after it has installed this very repository
+       into a virtual machine. Optional: every run older than the test loop
+       has none, and so has any run the loop did not reach. */
+    'test-install'?: TestInstall;
+  }
+
+  interface TestInstall {
+    result: string;
+    finished: string;
+    iso?: string;
+    detail?: string;
+    /* How far the harness got: 'installing', 'installed', 'booted'. A failure
+       at 'installed' is a system that was written correctly and does not come
+       up, which is a different bug from one that never installed. Absent on
+       every verdict written before the harness recorded stages. */
+    stage?: string;
+    'install-seconds'?: number;
+    'boot-seconds'?: number;
+    /* The guest's screen at the moment the harness gave up, relative to the
+       run records. Only ever present on a failure. */
+    screenshot?: string;
+  }
+
+  interface PackageRecord {
+    name: string;
+    status: string;
+    detail: string;
+    seconds: number | null;
+    logs?: string[];
+  }
+
+  const OUTCOME_CLASS: Record<string, string> = {
+    released: 'bd-released',
+    'in-testing': 'bd-testing',
+    built: 'bd-built',
+    'held-back': 'bd-held',
+  };
+
+  /**
+   * Records written before the vocabulary was fixed carry an "outcome" of
+   * "published" -- which meant "reached testing" -- plus a separate "promoted"
+   * boolean that no part of this page ever showed. They stay on the server for
+   * as long as the rolling index keeps them, so they are translated on read
+   * rather than rewritten.
+   */
+  const LEGACY_STATUS: Record<string, string> = {
+    'gate-abort': 'review-stopped',
+    'build-error': 'build-failed',
+  };
+
+  function normalise(run: RunSummary): RunSummary {
+    if (run.outcome === 'published') {
+      run.outcome = run.promoted ? 'released' : 'in-testing';
+    }
+    for (const key of Object.keys(LEGACY_STATUS)) {
+      if (key in run.counts) {
+        run.counts[LEGACY_STATUS[key]] = run.counts[key];
+        delete run.counts[key];
+      }
+    }
+    for (const pkg of run.packages ?? []) {
+      pkg.status = LEGACY_STATUS[pkg.status] ?? pkg.status;
+    }
+    return run;
+  }
+
+  /** What the run means for someone who wants an update, in one sentence. */
+  function verdict(run: RunSummary): [string, string] {
+    switch (run.outcome) {
+      case 'released':
+        return [
+          'Released — this is what you install.',
+          'Every package built, every signature verified, and the whole set replaced the repository your system updates from.',
+        ];
+      case 'in-testing':
+        // Two very different situations wear the same outcome: a set that is
+        // waiting to be checked, and one that was checked and failed. The
+        // second is the more important thing this page can say.
+        if (run['test-install']?.result === 'failed') {
+          return [
+            'Held in testing — the installation test failed.',
+            'Every package built and was signed, but an unattended installation of the set did not succeed, so it was not released. Your system still installs the previous release.',
+          ];
+        }
+        return [
+          'In testing, not yet released.',
+          'Every package built and was signed, and the set is in the testing repository awaiting a check. Your system still installs the previous release.',
+        ];
+      case 'built':
+        return [
+          'Built, not yet signed.',
+          'The build host holds no signing key. Signing and publishing happen afterwards on a separate machine.',
+        ];
+      case 'held-back':
+        return [
+          'Held back — nothing shipped.',
+          'One package did not pass, so the whole set stayed where it was. A partial update is never shipped.',
+        ];
+      default:
+        return ['Run incomplete.', 'The record was written before the run reached a verdict.'];
+    }
+  }
+
+  function duration(seconds: number): string {
+    if (seconds < 90) return `${Math.round(seconds)} s`;
+    const m = Math.round(seconds / 60);
+    if (m < 90) return `${m} min`;
+    return `${(m / 60).toFixed(1)} h`;
+  }
+
+  function when(iso: string): string {
+    const d = new Date(iso);
+    return d.toLocaleString(undefined, {
+      year: 'numeric', month: 'short', day: 'numeric',
+      hour: '2-digit', minute: '2-digit',
+    });
+  }
+
+  /** "…-x86_64-build.log" -> "build". Falls back to the whole file name. */
+  function logStage(path: string): string {
+    return path.match(/-([a-z]+)\.log$/)?.[1] ?? path.split('/').pop() ?? path;
+  }
+
+  function statLabel(key: string): string {
+    return { rebuilt: 'rebuilt', current: 'current',
+             'review-stopped': 'review stopped', 'build-failed': 'build failed' }[key] ?? key;
+  }
+
+  function el<K extends keyof HTMLElementTagNameMap>(
+    tag: K, cls?: string, text?: string,
+  ): HTMLElementTagNameMap[K] {
+    const node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  async function init(root: HTMLElement) {
+    const state = root.querySelector<HTMLParagraphElement>('.bd-state')!;
+    const indexUrl = root.dataset.index!;
+    const runsBase = root.dataset.runs!;
+
+    let runs: RunSummary[];
+    try {
+      const response = await fetch(indexUrl, { cache: 'no-cache' });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      runs = ((await response.json()).runs ?? []).map(normalise);
+    } catch (error) {
+      state.textContent =
+        `The build record could not be loaded (${error instanceof Error ? error.message : error}). ` +
+        `It is served from ${indexUrl}.`;
+      return;
+    }
+    if (runs.length === 0) {
+      state.textContent = 'No runs have been recorded yet.';
+      return;
+    }
+    state.hidden = true;
+
+    renderLatest(root, runs[0], runsBase);
+    renderTimeline(root, runs, runsBase);
+  }
+
+  function renderLatest(root: HTMLElement, run: RunSummary, runsBase: string) {
+    const box = root.querySelector<HTMLElement>('.bd-latest')!;
+    box.dataset.outcome = run.outcome;
+    const [line, sub] = verdict(run);
+    box.querySelector('.bd-verdict-line')!.textContent = line;
+    box.querySelector('.bd-verdict-sub')!.textContent =
+      `${sub} — ${when(run.started)}, ${duration(run.seconds)}.`;
+
+    const stats = box.querySelector<HTMLElement>('.bd-stats')!;
+    stats.replaceChildren();
+    for (const key of ['rebuilt', 'current', 'review-stopped', 'build-failed'] as const) {
+      const value = run.counts[key] ?? 0;
+      const group = el('div');
+      group.append(el('dt', undefined, statLabel(key)));
+      const dd = el('dd', undefined, String(value));
+      if (value === 0) dd.classList.add('is-zero');
+      else if (key === 'review-stopped' || key === 'build-failed') dd.classList.add('is-bad');
+      group.append(dd);
+      stats.append(group);
+    }
+
+    // The markup carries this slot so that the line sits between the counts
+    // and the message. testInstallLine builds a free-standing paragraph for
+    // the detail panel, and its children move into the slot here.
+    const slot = box.querySelector<HTMLElement>('.bd-test')!;
+    const test = testInstallLine(run, runsBase);
+    slot.replaceChildren(...(test ? [...test.childNodes] : []));
+    slot.hidden = !test;
+    if (test) slot.dataset.result = test.dataset.result!;
+
+    const message = box.querySelector<HTMLElement>('.bd-message')!;
+    message.hidden = !run.message;
+    message.textContent = run.message ?? '';
+
+    box.hidden = false;
+  }
+
+  /**
+   * How far the unattended installation of this run got.
+   *
+   * The harness records the stage it reached rather than only whether it
+   * arrived, because the two failures are different bugs: a set that never
+   * installs, and one that installs perfectly and then does not come up.
+   * Verdicts written before the harness recorded stages carry none, and then
+   * the older, coarser sentence is all there is to say.
+   */
+  function stageSentence(test: TestInstall): string {
+    if (test.result === 'passed') {
+      return 'This repository was installed unattended into a virtual machine, '
+           + 'and the installed system booted and answered for itself.';
+    }
+    switch (test.stage) {
+      case 'installed':
+        return 'This repository installed, but the installed system never came '
+             + 'up, so it was not released.';
+      case 'installing':
+        return 'An unattended installation of this repository never finished, '
+             + 'so it was not released.';
+      default:
+        return 'An unattended installation of this repository did not succeed, '
+             + 'which is why it was not released.';
+    }
+  }
+
+  /** "31 min to install, 1 min to boot" -- only what the harness measured. */
+  function stageTiming(test: TestInstall): string {
+    const parts: string[] = [];
+    if (test['install-seconds']) parts.push(`${duration(test['install-seconds'])} to install`);
+    if (test['boot-seconds']) parts.push(`${duration(test['boot-seconds'])} to boot`);
+    return parts.length ? ` ${parts.join(', ')}.` : '';
+  }
+
+  /**
+   * What the test installation of this run found, as a line to place.
+   *
+   * Absent on every run older than the test loop, and on any run the loop did
+   * not reach, so nothing is returned then. Saying "not tested" would be worse
+   * than saying nothing: it reads as a property of the packages when it is a
+   * property of the machinery around them.
+   *
+   * It is built rather than filled in place because the same line belongs in
+   * two places -- beside the newest run, and inside the detail of any older
+   * one. It used to exist only in the first, so the history of the test loop
+   * was invisible the moment a run stopped being the newest.
+   */
+  function testInstallLine(run: RunSummary, runsBase: string): HTMLElement | null {
+    const test = run['test-install'];
+    if (!test) return null;
+
+    const line = el('p', 'bd-test');
+    line.dataset.result = test.result;
+    const passed = test.result === 'passed';
+    line.append(el('i', `bd-sw ${passed ? 'bd-released' : 'bd-error-sw'}`));
+    line.append(document.createTextNode(stageSentence(test) + stageTiming(test)));
+    if (test.screenshot) {
+      // The serial console falls silent once the medium's bootloader hands
+      // over, so everything the installer draws is on the screen and nowhere
+      // else. An installer waiting at a dialog is one glance here and no
+      // amount of reading anywhere else.
+      const shot = el('a', 'bd-test-shot', 'the screen at that moment');
+      shot.href = runsBase + test.screenshot;
+      shot.rel = 'nofollow';
+      line.append(document.createTextNode(' See '));
+      line.append(shot);
+      line.append(document.createTextNode('.'));
+    }
+    // Last, like the per-package detail below it: the prose is what a reader
+    // wants, and the harness's own words are what they turn to afterwards.
+    if (test.detail && !passed) {
+      line.append(el('span', 'bd-test-detail', ` ${test.detail}`));
+    }
+    return line;
+  }
+
+  function renderTimeline(root: HTMLElement, runs: RunSummary[], runsBase: string) {
+    const wrap = root.querySelector<HTMLElement>('.bd-timeline-wrap')!;
+    const strip = wrap.querySelector<HTMLElement>('.bd-timeline')!;
+    const detail = root.querySelector<HTMLElement>('.bd-detail')!;
+    strip.replaceChildren();
+
+    // Newest on the right reads as a calendar; the index arrives newest first.
+    for (const run of [...runs].reverse()) {
+      // A run whose installation test failed carries the same outcome as one
+      // that is simply waiting to be tested, and they are not the same news.
+      const failedTest = run['test-install']?.result === 'failed';
+      const cell = el('button',
+        `bd-cell ${failedTest ? 'bd-test-failed' : OUTCOME_CLASS[run.outcome] ?? ''}`);
+      cell.type = 'button';
+      cell.setAttribute('role', 'listitem');
+      cell.setAttribute('aria-pressed', 'false');
+      const counts = `${run.counts.rebuilt ?? 0} rebuilt, ${run.counts.current ?? 0} current`;
+      cell.title = `${when(run.started)} — ${run.outcome}`
+                 + `${failedTest ? ', installation test failed' : ''} (${counts})`;
+      cell.setAttribute('aria-label', cell.title);
+      cell.addEventListener('click', () => {
+        for (const other of strip.querySelectorAll('.bd-cell')) {
+          other.setAttribute('aria-pressed', String(other === cell));
+        }
+        void showRun(detail, run, runsBase);
+      });
+      strip.append(cell);
+    }
+    wrap.hidden = false;
+  }
+
+  async function showRun(detail: HTMLElement, summary: RunSummary, runsBase: string) {
+    detail.hidden = false;
+    detail.replaceChildren(el('p', 'bd-state', 'Loading…'));
+
+    let run: RunSummary;
+    try {
+      const response = await fetch(runsBase + summary.file, { cache: 'no-cache' });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      run = normalise(await response.json());
+    } catch (error) {
+      detail.replaceChildren(el('p', 'bd-state',
+        `This run's detail could not be loaded (${error instanceof Error ? error.message : error}).`));
+      return;
+    }
+
+    const [line] = verdict(run);
+    const head = el('h3', undefined, `${when(run.started)} — ${line}`);
+    // The raw field values, not a paraphrase: this is the line a reader
+    // compares against the JSON, and every other line on the page speaks in
+    // prose. Without it the page never names the vocabulary it is rendering.
+    const sub = el('p', 'bd-sub');
+    sub.append(el('code', 'bd-outcome', run.outcome));
+    sub.append(document.createTextNode(
+      ` · ${run.packages?.length ?? 0} package(s) reached · ${duration(run.seconds)}`));
+    detail.replaceChildren(head, sub);
+
+    const test = testInstallLine(run, runsBase);
+    if (test) detail.append(test);
+
+    if (run.message) {
+      const message = el('p', 'bd-message', run.message);
+      message.hidden = false;
+      detail.append(message);
+    }
+
+    const list = el('div', 'bd-pkgs');
+    for (const pkg of run.packages ?? []) {
+      const row = el('div', `bd-pkg is-${pkg.status}`);
+      row.append(el('span', 'bd-pkg-mark'));
+      row.append(el('span', 'bd-pkg-name', pkg.name));
+      // statLabel, not pkg.status: the raw values are the JSON's vocabulary,
+      // and showing them here left the page explaining "already current" and
+      // "build failed" beside rows that said "current" and "build-error".
+      row.append(el('span', 'bd-pkg-time',
+        pkg.seconds === null ? statLabel(pkg.status)
+                             : `${statLabel(pkg.status)} · ${duration(pkg.seconds)}`));
+      list.append(row);
+      if (pkg.logs?.length) {
+        // makepkg splits its log per stage; the stage is the only part of the
+        // file name a reader needs, the rest repeats the package and version.
+        const logs = el('div', 'bd-pkg-logs');
+        for (const path of pkg.logs) {
+          const link = el('a', undefined, logStage(path));
+          link.href = runsBase + path;
+          link.rel = 'nofollow';
+          logs.append(link);
+        }
+        list.append(logs);
+      }
+      if (pkg.detail) list.append(el('p', 'bd-pkg-detail', pkg.detail));
+    }
+    detail.append(list);
+  }
+
+  for (const root of document.querySelectorAll<HTMLElement>('.bd')) void init(root);
+</script>

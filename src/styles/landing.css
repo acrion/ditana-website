@@ -1,0 +1,296 @@
+/* ============================================================================
+ *  Ditana — landing page styles.
+ *
+ *  Scoped to .ditana-landing so we don't leak into Starlight's doc pages.
+ *  All measurements assume a max content width of 1100px; Starlight's splash
+ *  template removes its own content frame, so we control everything here.
+ * ========================================================================= */
+
+.ditana-landing {
+    color: var(--sl-color-white);
+    font-family: var(--sl-font-system);
+    line-height: 1.6;
+}
+
+.ditana-landing a { color: inherit; }
+
+/* ---- Hero ---- */
+
+.ditana-hero {
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.ditana-hero__eyebrow {
+    font-family: var(--sl-font-system-mono);
+    font-size: 0.75rem;
+    color: var(--sl-color-accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+}
+
+.ditana-hero__title {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 1rem;
+}
+
+.ditana-hero__title em {
+    color: var(--sl-color-accent);
+    font-style: normal;
+}
+
+.ditana-hero__lede {
+    font-size: 1.0625rem;
+    color: var(--sl-color-gray-3);
+    max-width: 36rem;
+    margin: 0 auto 2rem;
+}
+
+.ditana-hero__cta {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.ditana-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    transition: transform 0.1s ease;
+}
+.ditana-btn:hover { transform: translateY(-1px); }
+.ditana-btn--primary,
+.ditana-btn--primary:hover,
+.ditana-btn--primary:visited {
+    background: var(--sl-color-accent);
+    color: #1a1300;
+}
+.ditana-btn--secondary {
+    background: transparent;
+    color: var(--sl-color-white);
+    border: 1px solid var(--sl-color-hairline);
+}
+
+/* ---- Terminal panel ---- */
+
+.ditana-terminal {
+    background: #010409;
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: left;
+    font-family: var(--sl-font-system-mono);
+    font-size: 0.8125rem;
+    line-height: 1.75;
+    overflow-x: auto;
+}
+.ditana-terminal .c-cmt { color: var(--sl-color-gray-3); }
+.ditana-terminal .c-tag { color: #79c0ff; }
+.ditana-terminal .c-acc { color: var(--sl-color-accent); }
+.ditana-terminal .c-ok  { color: #3fb950; }
+
+/* ---- Section scaffolding ---- */
+
+.ditana-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.ditana-section__eyebrow {
+    font-family: var(--sl-font-system-mono);
+    font-size: 0.75rem;
+    color: var(--sl-color-accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.ditana-section__title {
+    font-size: 1.875rem;
+    font-weight: 500;
+    margin: 0 0 0.75rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.ditana-section__lede {
+    color: var(--sl-color-gray-3);
+    font-size: 1rem;
+    max-width: 42rem;
+    margin: 0 0 2rem;
+}
+
+/* ---- Pillar grid (3-up) ---- */
+
+.ditana-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--sl-color-hairline-light);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+@media (max-width: 640px) {
+    .ditana-pillars {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ditana-pillar {
+    background: var(--sl-color-bg);
+    padding: 1.5rem;
+}
+.ditana-pillar__num {
+    font-family: var(--sl-font-system-mono);
+    font-size: 0.75rem;
+    color: var(--sl-color-accent);
+    letter-spacing: 0.12em;
+    margin-bottom: 0.5rem;
+}
+.ditana-pillar__title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 0.375rem;
+}
+.ditana-pillar__body {
+    font-size: 0.9375rem;
+    color: var(--sl-color-gray-3);
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* ---- Desktop screenshot grid (2x2) ---- */
+
+.ditana-desktops {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+@media (max-width: 720px) {
+    .ditana-desktops { grid-template-columns: 1fr; }
+}
+.ditana-desktops figure {
+    margin: 0;
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--sl-color-bg-inline-code);
+}
+.ditana-desktops img { display: block; width: 100%; height: auto; }
+.ditana-desktops figcaption {
+    padding: 0.625rem 0.875rem;
+    font-family: var(--sl-font-system-mono);
+    font-size: 0.8125rem;
+    color: var(--sl-color-gray-3);
+    border-top: 1px solid var(--sl-color-hairline-light);
+}
+.ditana-desktops figcaption strong {
+    color: var(--sl-color-white);
+    font-weight: 500;
+}
+
+/* ---- Installer showcase: 2-column with screenshot + commentary ---- */
+
+.ditana-showcase {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: center;
+}
+@media (max-width: 640px) {
+    .ditana-showcase { grid-template-columns: 1fr; }
+}
+
+.ditana-showcase img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid var(--sl-color-hairline-light);
+}
+.ditana-showcase__body h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0 0 0.625rem;
+}
+.ditana-showcase__body p {
+    color: var(--sl-color-gray-3);
+    margin: 0 0 1rem;
+}
+
+/* ---- Code excerpt (KDL teaser) ---- */
+
+.ditana-kdl {
+    background: #010409;
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    font-family: var(--sl-font-system-mono);
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    overflow-x: auto;
+    color: var(--sl-color-white);
+}
+.ditana-kdl .k { color: var(--sl-color-accent); }
+.ditana-kdl .s { color: #a5d6ff; }
+.ditana-kdl .c { color: var(--sl-color-gray-3); font-style: italic; }
+.ditana-kdl .n { color: #d2a8ff; }
+
+/* ---- Final CTA ---- */
+
+.ditana-final {
+    text-align: center;
+    padding: 4rem 1.5rem;
+    border-top: 1px solid var(--sl-color-hairline-light);
+    margin-top: 2rem;
+}
+.ditana-final h2 {
+    font-size: 1.875rem;
+    font-weight: 500;
+    margin: 0 0 0.75rem;
+}
+.ditana-final p {
+    color: var(--sl-color-gray-3);
+    max-width: 36rem;
+    margin: 0 auto 1.75rem;
+}
+/* ---- Stacked content (image as opener, text below in full width) ---- */
+
+.ditana-stacked__title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0 0 1rem;
+}
+
+.ditana-stacked__image {
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid var(--sl-color-hairline-light);
+    margin: 0 auto 1.5rem;
+    display: block;
+}
+
+.ditana-stacked__body p {
+    color: var(--sl-color-gray-3);
+    margin: 0 0 1rem;
+    max-width: 64ch;
+}

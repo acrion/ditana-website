@@ -1,0 +1,59 @@
+/* ============================================================================
+ *  Ditana — global Starlight theme overrides.
+ *
+ *  Palette: security-coded dark base (GitHub Dark inspired) with Ditana's
+ *  signature amber (#ffbb00) as the accent. The amber is the same value the
+ *  installed system uses for the default GTK/Qt accent, which keeps the web
+ *  presence visually consistent with the product itself.
+ * ========================================================================= */
+
+:root {
+    /* Override Starlight's accent ramp with Ditana amber */
+    --sl-color-accent-low: #4a3500;
+    --sl-color-accent: #ffbb00;
+    --sl-color-accent-high: #ffd966;
+}
+
+/* Dark mode is the default for ditana.org */
+:root,
+:root[data-theme='dark'] {
+    --sl-color-accent-low: #4a3500;
+    --sl-color-accent: #ffbb00;
+    --sl-color-accent-high: #ffd966;
+
+    --sl-color-white: #e6edf3;
+    --sl-color-gray-1: #c9d1d9;
+    --sl-color-gray-2: #b1bac4;
+    --sl-color-gray-3: #8b949e;
+    --sl-color-gray-4: #6e7681;
+    --sl-color-gray-5: #484f58;
+    --sl-color-gray-6: #21262d;
+    --sl-color-black: #0d1117;
+
+    --sl-color-bg: #0d1117;
+    --sl-color-bg-nav: #0d1117;
+    --sl-color-bg-sidebar: #0d1117;
+    --sl-color-bg-inline-code: #161b22;
+    --sl-color-hairline-light: #21262d;
+    --sl-color-hairline: #30363d;
+    --sl-color-hairline-shade: #21262d;
+}
+
+:root[data-theme='light'] {
+    --sl-color-accent-low: #fff4d6;
+    --sl-color-accent: #b88800;
+    --sl-color-accent-high: #5c4400;
+}
+
+/* Code blocks: subtle amber left rule for anchoring */
+.expressive-code .frame.has-title .header {
+    border-bottom: 1px solid var(--sl-color-hairline);
+}
+
+/* Sidebar active item: amber underline rather than full background fill */
+[data-theme='dark'] .sidebar-content a[aria-current='page'] {
+    color: var(--sl-color-accent-high);
+    background-color: transparent;
+    border-left: 2px solid var(--sl-color-accent);
+    padding-left: calc(0.5rem - 2px);
+}

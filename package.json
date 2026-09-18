@@ -1,0 +1,24 @@
+{
+  "name": "ditana-website",
+  "private": true,
+  "license": "(AGPL-3.0-or-later AND CC-BY-SA-4.0)",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "node --test 'test/**/*.test.mjs'"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.42.0",
+    "astro": "^7.3.2",
+    "js-yaml": "^4.3.2",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "satteri": "^0.10.5"
+  }
+}

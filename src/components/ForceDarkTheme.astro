@@ -1,0 +1,8 @@
+---
+// Replaces Starlight's ThemeProvider. Forces dark mode permanently.
+// `is:inline` prevents Astro from bundling this script, which would make
+// it run too late and cause a flash of unstyled content.
+---
+<script is:inline>
+  document.documentElement.dataset.theme = 'dark';
+</script>
