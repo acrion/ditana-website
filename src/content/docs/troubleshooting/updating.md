@@ -53,7 +53,7 @@ including headless ones. Plain `pacman -Syu` also works, but it leaves AUR
 packages behind — and an AUR package left behind while its dependencies move on
 is exactly the ABI mismatch that produces "symbol lookup error" a week later.
 
-**Let it run to its end.** On a system using ZFS, every kernel update rebuilds the ZFS module. pacman then shows `Install DKMS modules` and a line beginning with `==> dkms install`, and afterwards nothing for several minutes. That is not a hang. Interrupting it leaves the new kernel missing its ZFS module, and the next boot ends in a kernel panic reading `Attempted to kill init!`. If this has occurred, revert to the snapshot created prior to the update, as [Automatic system snapshots](/best-practices/automatic-system-snapshots/) describes.
+**Let it run to its end.** On a system using ZFS, every kernel update triggers a rebuild of the ZFS module and the initramfs. pacman then shows `Install DKMS modules` and a line beginning with `==> dkms install`, followed by nothing for several minutes. That is not a hang. Halting it results in the new kernel lacking its ZFS module, or possessing an initramfs that omits it, causing the subsequent boot to conclude with a kernel panic reading `Attempted to kill init!`. Should this have happened, the [rescue system](/troubleshooting/rescue-system/) rectifies it. Rolling back to the snapshot created prior to the update, as [Automatic system snapshots](/best-practices/automatic-system-snapshots/) outlines, achieves the same result.
 
 ## After the update
 

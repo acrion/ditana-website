@@ -100,6 +100,7 @@ export default defineConfig({
                         { label: 'Updating', slug: 'troubleshooting/updating' },
                         { label: 'Signature errors', slug: 'troubleshooting/signature-errors' },
                         { label: 'An update broke something', slug: 'troubleshooting/an-update-broke-something' },
+                        { label: 'Rescue system', slug: 'troubleshooting/rescue-system' },
                         { label: 'Flatpak and Bubblejail', slug: 'troubleshooting/flatpak-and-bubblejail' },
                         { label: 'Chromium sandbox helper', slug: 'troubleshooting/chromium-sandbox-helper' },
                         { label: 'Reporting a bug', slug: 'troubleshooting/reporting-a-bug' },

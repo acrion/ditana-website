@@ -14,6 +14,7 @@ fastest place to ask.
 - [Updating is not optional](/troubleshooting/updating/) – Why a rolling release must be updated entirely, how to update Ditana on the desktop or in a terminal, and what actions to take afterwards.
 - ["invalid or corrupted package (PGP signature)"](/troubleshooting/signature-errors/) – What should be done when pacman refuses a package due to its inability to validate the signature, and how to manually verify Ditana's signing key yourself.
 - [An update broke something](/troubleshooting/an-update-broke-something/) – Four steps to discover what an update changed and to get a functioning system back.
+- [Ditana's rescue system](/troubleshooting/rescue-system/) – How the installation medium finds out why an installed Ditana no longer boots, repairs the most common cause, and opens a shell in the installed system.
 - [Flatpak or Bubblejail stopped working after an update](/troubleshooting/flatpak-and-bubblejail/) – How to restore Flatpak and Bubblejail on a machine installed from the 0.9.3 medium.
 - [A Chromium-based program aborts: "The SUID sandbox helper binary was found, but is not configured correctly"](/troubleshooting/chromium-sandbox-helper/) – Why Discord and other programs built on Chromium or Electron may abort at start under Ditana's hardening, and how to fix it.
 - [Reporting a bug](/troubleshooting/reporting-a-bug/) – Which of Ditana's repositories a problem belongs in, and what a useful report contains.
