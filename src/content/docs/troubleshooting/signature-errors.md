@@ -93,5 +93,5 @@ better than a black box.
   `sudo timedatectl set-ntp true`.
 - **A mirror served a truncated file.** The message mentions a checksum rather
   than a PGP signature in that case. `sudo pacman -Scc` clears the download
-  cache and retries.
+  cache, and the next update downloads the file once more.
 

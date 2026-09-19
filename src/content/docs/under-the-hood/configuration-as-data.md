@@ -98,6 +98,6 @@ The full check runs in seconds locally with `pre-commit run --all-files`, and ag
 ## Where to go next
 
 - Read [how settings depend on each other](/under-the-hood/settings-logic/) — `available` and `default-value` are where the logic of the knowledge base lives.
-- [Browse the `ditana-config` repository](https://github.com/acrion/ditana-config) to see how the rules are organised by dialog and topic.
+- [Browse the `ditana-config` repository](https://github.com/acrion/ditana-config) to see how the rules are organized by dialog and topic.
 - Read the [`ditana-config` README](https://github.com/acrion/ditana-config#readme) for the data model: how settings, scripts, dialogs and files relate.
 - Look at the [`ditana-installer` source](https://github.com/acrion/ditana-installer) if you want to see the engine that reads and acts on the configuration.

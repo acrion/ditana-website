@@ -8,11 +8,11 @@ release:
   isoSize: 2.6 GB
 ---
 
-This is the largest release in Ditana's history. Almost every subsystem has been touched, and the architecture has been fundamentally reorganised around the principle of **configuration as data**. This page covers the highlights; the full diff lives in the Git history of [ditana-installer](https://github.com/acrion/ditana-installer) and [ditana-config](https://github.com/acrion/ditana-config).
+This is the largest release in Ditana's history. Almost every subsystem has been touched, and the architecture has been fundamentally reorganized around the principle of **configuration as data**. This page covers the highlights; the full diff lives in the Git history of [ditana-installer](https://github.com/acrion/ditana-installer) and [ditana-config](https://github.com/acrion/ditana-config).
 
 ## The big change: configuration as data
 
-The biggest single shift since 0.9.0 is architectural. In 0.9.0, Ditana's customisations lived in monolithic Arch packages — anything the installer wanted to set up had to be baked into a `PKGBUILD`. That made desktop customisation, browser choice, terminal selection, and dozens of other touch points difficult to compose.
+The biggest single shift since 0.9.0 is architectural. In 0.9.0, Ditana's customizations lived in monolithic Arch packages — anything the installer wanted to set up had to be baked into a `PKGBUILD`. That made desktop customization, browser choice, terminal selection, and dozens of other touch points difficult to compose.
 
 In 0.9.3, all of this lives in a new, separately-versioned repository — [**ditana-config**](https://github.com/acrion/ditana-config) — as structured data in [KDL v2](https://kdl.dev). Every setting, every dependency, every lifecycle script is declarative. The installer code is small; the knowledge base is the brain.
 
@@ -95,7 +95,7 @@ Ten user-reported issues from 0.9.0 are implemented in 0.9.3 — bug fixes and f
 
 ## Behind the scenes
 
-- **Ansible → Sparrow6.** The configuration management logic that customises files like `mkinitcpio.conf` has migrated from Ansible to [Sparrow6](https://github.com/melezhik/Sparrow6), with substantial contributions from **Alexey Melezhik**. Sparrow6 is also used for testing the automated configurations themselves. The migration eliminates a Python runtime dependency and produces more readable test output.
+- **Ansible → Sparrow6.** The configuration management logic that customizes files like `mkinitcpio.conf` has migrated from Ansible to [Sparrow6](https://github.com/melezhik/Sparrow6), with substantial contributions from **Alexey Melezhik**. Sparrow6 is also used for testing the automated configurations themselves. The migration eliminates a Python runtime dependency and produces more readable test output.
 
 - **Acknowledgements.** Thanks to Alexey Melezhik for the Sparrow6 work and continued collaboration. Thanks to Thomas Zipproth for ongoing testing and feedback. Thanks to everyone who filed an issue on 0.9.0 — every one of them was reviewed, and most are now closed.
 

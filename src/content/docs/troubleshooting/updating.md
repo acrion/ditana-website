@@ -14,7 +14,7 @@ Two consequences are worth stating plainly:
 - **Security fixes only arrive if you update.** There is no separate backport
   channel. The fix for a vulnerability in a library reaches you as a new version
   of that library, and not otherwise.
-- **Never update a single package.** `pacman -Sy something` synchronises the
+- **Never update a single package.** `pacman -Sy something` synchronizes the
   package databases and then installs one package against libraries that may
   already have moved on. This is a *partial upgrade*, it is the single most
   common way to break an Arch system, and it is unsupported. Update everything

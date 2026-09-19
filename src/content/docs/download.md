@@ -76,7 +76,7 @@ Depending on what you select, the installer will download substantial amounts of
 
 4. **Boot from the USB stick.** Select "Ditana GNU/Linux install medium" and press `Enter`.
 
-5. **Troubleshooting (optional).** On some virtualisation platforms (e.g. Synology VMM), the boot can hang before the installer dialogs appear. This is a [known kernel mode-setting issue](https://wiki.archlinux.org/title/Kernel_mode_setting#Disabling_modesetting), unrelated to Ditana. Press `e` at the boot menu, add `nomodeset` at the start of the kernel line, then `Enter`.
+5. **Troubleshooting (optional).** On some virtualization platforms (e.g. Synology VMM), the boot can hang before the installer dialogs appear. This is a [known kernel mode-setting issue](https://wiki.archlinux.org/title/Kernel_mode_setting#Disabling_modesetting), unrelated to Ditana. Press `e` at the boot menu, add `nomodeset` at the start of the kernel line, then `Enter`.
 
 6. **Follow the installer.** The dialogs guide you through partitioning, bootloader setup, hardware configuration, and the four desktop environments. Every dialog has a `Help` button with detailed documentation.
 

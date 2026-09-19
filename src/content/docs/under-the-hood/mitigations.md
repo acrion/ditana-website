@@ -21,7 +21,7 @@ You can also verify with:
 lscpu
 ```
 
-To compare performance with and without a specific mitigation, edit the kernel command line for a single boot and remove the parameter associated with the mitigation you want to test. On a ZFS installation, which is what the Standard profile produces, that is accomplished via the ZFSBootMenu boot-environment editor; on a system that boots through GRUB, press `e` at the menu. The parameters are listed below under "Applied mitigation" for each entry. Reboot and run your real workload – synthetic benchmarks rarely capture real impact.
+To compare performance with and without a specific mitigation, edit the kernel command line for a single boot and remove the parameter associated with the mitigation you want to test. On a ZFS installation, which is what the Standard profile produces, that is accomplished via the ZFSBootMenu boot-environment editor; on a system that boots through GRUB, press `e` at the menu. The parameters are listed below under "Applied parameter" for each entry. Reboot and run your real workload – synthetic benchmarks rarely capture real impact.
 
 To make a change permanent on a ZFS installation, set the command line within the boot environment:
 
@@ -144,7 +144,7 @@ See also [kernel.org: Cross-Thread Return Address Predictions](https://www.kerne
 
 Speculative attacks via the return stack buffer. Combines IBPB barriers with strict spectre_v2-user mode.
 
-> ‘Mitigation: IBPB’: Similar protection as "safe RET" but employs an IBPB barrier on privilege domain crossings (User→Kernel, Guest→Host).
+> `Mitigation: IBPB`: Similar protection as "safe RET" but employs an IBPB barrier on privilege domain crossings (User→Kernel, Guest→Host).
 >
 > — [kernel.org: SRSO](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/srso.html)
 
