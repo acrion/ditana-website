@@ -1,0 +1,588 @@
+# Language fr-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "What's new since 0.9.0 — major refactoring, four parallel desktops, configuration as data, expanded hardening."
+msgstr "Nouveautés depuis la 0.9.0 – refonte majeure, quatre bureaux en parallèle, configuration sous forme de données, durcissement étendu."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "0.9.3 Beta release notes"
+msgstr "Notes de version 0.9.3 bêta"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"This is the largest release in Ditana's history. Almost every subsystem has "
+"been touched, and the architecture has been fundamentally reorganized around "
+"the principle of **configuration as data**. This page covers the highlights; "
+"the full diff lives in the Git history of [ditana-installer](https://"
+"github.com/acrion/ditana-installer) and [ditana-config](https://github.com/"
+"acrion/ditana-config)."
+msgstr ""
+"Il s’agit de la version la plus importante de l’histoire de Ditana. Presque "
+"tous les sous-systèmes ont été modifiés, et l’architecture a été "
+"fondamentalement réorganisée autour du principe de la **configuration sous "
+"forme de données**. Cette page présente les points forts ; la liste complète "
+"des modifications se trouve dans l’historique Git de [ditana-installer]"
+"(https://github.com/acrion/ditana-installer) et de [ditana-config](https://"
+"github.com/acrion/ditana-config)."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "The big change: configuration as data"
+msgstr "Le grand changement : la configuration sous forme de données"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"The biggest single shift since 0.9.0 is architectural. In 0.9.0, Ditana's "
+"customizations lived in monolithic Arch packages — anything the installer "
+"wanted to set up had to be baked into a `PKGBUILD`. That made desktop "
+"customization, browser choice, terminal selection, and dozens of other touch "
+"points difficult to compose."
+msgstr ""
+"Le plus grand changement depuis la 0.9.0 concerne l’architecture. Dans la "
+"0.9.0, les personnalisations de Ditana se trouvaient dans des paquets Arch "
+"monolithiques – tout ce que le programme d’installation voulait mettre en "
+"place devait être intégré en dur dans un `PKGBUILD`. Il était donc difficile "
+"de combiner la personnalisation du bureau, le choix du navigateur, la "
+"sélection du terminal et des dizaines d’autres points d’intervention."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"In 0.9.3, all of this lives in a new, separately-versioned repository — "
+"[**ditana-config**](https://github.com/acrion/ditana-config) — as structured "
+"data in [KDL v2](https://kdl.dev). Every setting, every dependency, every "
+"lifecycle script is declarative. The installer code is small; the knowledge "
+"base is the brain."
+msgstr ""
+"Dans la 0.9.3, tout cela se trouve dans un nouveau dépôt aux versions gérées "
+"séparément, [**ditana-config**](https://github.com/acrion/ditana-config), "
+"sous forme de données structurées en [KDL v2](https://kdl.dev). Chaque "
+"paramètre, chaque dépendance, chaque script de cycle de vie est déclaratif. "
+"Le code du programme d’installation est petit ; la base de connaissances en "
+"est le cerveau."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid "Two consequences worth noting:"
+msgstr "Deux conséquences méritent d’être relevées :"
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"**Improvements ship without re-spinning an ISO.** The installer downloads "
+"the latest configuration archive at runtime (with the ISO-bundled version as "
+"fallback). A bug fix merged into `ditana-config` on a Monday reaches new "
+"installs on Tuesday."
+msgstr ""
+"**Les améliorations sont publiées sans produire de nouvelle image ISO.** Le "
+"programme d’installation télécharge la dernière archive de configuration à "
+"l’exécution (avec, comme solution de repli, la version fournie avec l’image "
+"ISO). Une correction de bogue fusionnée dans `ditana-config` un lundi "
+"parvient aux nouvelles installations le mardi."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"**Contributing is dramatically easier.** Most contributions touch a single "
+"KDL file. The `README.md` of `ditana-config` walks through the data model in "
+"detail."
+msgstr ""
+"**Contribuer est considérablement plus facile.** La plupart des "
+"contributions ne touchent qu’un seul fichier KDL. Le `README.md` de `ditana-"
+"config` présente le modèle de données en détail."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Four desktops, equal billing"
+msgstr "Quatre bureaux, sur un pied d’égalité"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"0.9.0 shipped XFCE only. 0.9.3 ships **four desktop environments** — XFCE "
+"(X11), Wayfire, Niri, and COSMIC (all Wayland) — installable individually or "
+"**in parallel**. The greeter shows whichever ones you installed."
+msgstr ""
+"La version 0.9.0 ne fournissait que XFCE. La version 0.9.3 fournit **quatre "
+"environnements de bureau** – XFCE (X11), Wayfire, Niri et COSMIC (tous sous "
+"Wayland) – installables séparément ou **en parallèle**. L’écran de connexion "
+"affiche ceux que vous avez installés."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Wayfire and Niri are sometimes dismissed as incomplete environments. Ditana "
+"addresses the gap directly: a polished `waybar` configuration with theme-"
+"matched icons, `nwg-launcher` and `nwgbar` for app launching and power "
+"actions, sensible defaults across all four — so all four are first-class "
+"options, not technology demos."
+msgstr ""
+"Wayfire et Niri sont parfois écartés comme des environnements incomplets. "
+"Ditana s’attaque directement à cette lacune : une configuration soignée de "
+"`waybar` avec des icônes assorties au thème, `nwg-launcher` et `nwgbar` pour "
+"lancer les applications et gérer l’alimentation, des valeurs par défaut "
+"judicieuses pour les quatre – de sorte que les quatre sont des options à "
+"part entière, et non des démonstrations technologiques."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"`lightdm` has been replaced by [greetd](https://github.com/kennylevinsen/"
+"greetd) with [tuigreet](https://github.com/apognu/tuigreet), which "
+"integrates cleanly with [uwsm](https://github.com/Vladimir-csp/uwsm) for "
+"session lifecycle management on Wayland."
+msgstr ""
+"`lightdm` a été remplacé par [greetd](https://github.com/kennylevinsen/"
+"greetd) avec [tuigreet](https://github.com/apognu/tuigreet), qui s’intègre "
+"proprement à [uwsm](https://github.com/Vladimir-csp/uwsm) pour la gestion du "
+"cycle de vie des sessions sous Wayland."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Hardware-aware installation"
+msgstr "Installation adaptée au matériel"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid "Two detection passes are new or substantially extended:"
+msgstr "Deux étapes de détection sont nouvelles ou considérablement étendues :"
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"**NVIDIA detection** now cross-references both the [open-gpu-kernel-modules]"
+"(https://github.com/NVIDIA/open-gpu-kernel-modules) PCI ID list and the "
+"[NVIDIA legacy GPU page](https://www.nvidia.com/en-us/drivers/unix/legacy-"
+"gpu/) at install time, then recommends one of four options: `nvidia-open-"
+"dkms` (the new default for Turing+), `nvidia-580xx-dkms` (Maxwell/Pascal/"
+"Volta), `nvidia-470xx-dkms` (Kepler), or `nouveau`. DKMS-incompatible kernel "
+"choices are refused with an explanation."
+msgstr ""
+"**La détection NVIDIA** croise désormais, au moment de l’installation, la "
+"liste des identifiants PCI d’[open-gpu-kernel-modules](https://github.com/"
+"NVIDIA/open-gpu-kernel-modules) et la [page NVIDIA consacrée aux anciens GPU]"
+"(https://www.nvidia.com/en-us/drivers/unix/legacy-gpu/), puis recommande "
+"l’une de quatre options : `nvidia-open-dkms` (la nouvelle valeur par défaut "
+"pour Turing et les générations suivantes), `nvidia-580xx-dkms` (Maxwell/"
+"Pascal/Volta), `nvidia-470xx-dkms` (Kepler) ou `nouveau`. Les choix de noyau "
+"incompatibles avec DKMS sont refusés, avec une explication."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"**Virtual machine detection** drives a number of follow-up choices (software-"
+"rendering fallbacks, disabled `fstrim.timer`)."
+msgstr ""
+"**La détection des machines virtuelles** détermine un certain nombre de "
+"choix qui en découlent (replis sur le rendu logiciel, `fstrim.timer` "
+"désactivé)."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"CPU vulnerability detection and mitigation — already a Ditana hallmark in "
+"0.9.0 — remain unchanged. See the [CPU mitigations](/under-the-hood/"
+"mitigations/) page for the full per-vulnerability rationale."
+msgstr ""
+"La détection et l’atténuation des vulnérabilités du processeur – déjà une "
+"marque de fabrique de Ditana dans la 0.9.0 – restent inchangées. Consultez "
+"la page sur les [mesures d’atténuation du processeur](/under-the-hood/"
+"mitigations/) pour la justification complète, vulnérabilité par "
+"vulnérabilité."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Console keymap, generated precisely"
+msgstr "Disposition du clavier de la console, générée avec précision"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"A small but visible improvement: `vconsole.conf` is now generated by "
+"`ckbcomp` from the user's selected X11 keymap. The previous approach "
+"approximated; this one is exact, which matters during installation "
+"(passwords are typed into the Linux VT) and for VT use post-install. This "
+"resolves a complaint from a 0.9.0 DistroWatch comment."
+msgstr ""
+"Une amélioration modeste mais visible : `vconsole.conf` est désormais généré "
+"par `ckbcomp` à partir de la disposition de clavier X11 choisie par "
+"l’utilisateur. L’approche précédente procédait par approximation ; celle-ci "
+"est exacte, ce qui compte pendant l’installation (les mots de passe sont "
+"saisis dans la console virtuelle Linux) et pour l’utilisation de la console "
+"virtuelle après l’installation. Cela répond à une critique formulée dans un "
+"commentaire sur la 0.9.0 publié sur DistroWatch."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "System hardening — a new dialog"
+msgstr "Durcissement du système – une nouvelle boîte de dialogue"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"This is genuinely new in 0.9.3. The 0.9.0 installer covered CPU "
+"vulnerability mitigations but had no general-purpose hardening dialog. 0.9.3 "
+"adds a full **System Hardening** section under Expert Settings with "
+"documented sysctl-based options:"
+msgstr ""
+"C’est une véritable nouveauté de la 0.9.3. Le programme d’installation de la "
+"0.9.0 couvrait les mesures d’atténuation des vulnérabilités du processeur, "
+"mais n’avait pas de boîte de dialogue de durcissement à usage général. La "
+"version 0.9.3 ajoute une section **System Hardening** complète sous Expert "
+"Settings, avec des options documentées basées sur sysctl :"
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Disabled unprivileged user namespaces (`unprivileged_userns_clone=0`) by "
+"default, with the browser/Flatpak trade-off spelled out."
+msgstr ""
+"Espaces de noms utilisateur non privilégiés désactivés "
+"(`unprivileged_userns_clone=0`) par défaut, avec une explication détaillée "
+"du compromis concernant les navigateurs et Flatpak."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Restricted ptrace (`yama.ptrace_scope=2` by default, `=0` for the developer "
+"profile)."
+msgstr ""
+"ptrace restreint (`yama.ptrace_scope=2` par défaut, `=0` pour le profil "
+"développeur)."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid "Hidden kernel pointers, restricted dmesg, disabled kexec."
+msgstr "Pointeurs du noyau masqués, dmesg restreint, kexec désactivé."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Protected FIFOs and regular files in sticky directories (beyond Linux's "
+"default hardlink/symlink protection)."
+msgstr ""
+"FIFO et fichiers ordinaires protégés dans les répertoires dotés du sticky "
+"bit (au-delà de la protection par défaut de Linux pour les liens physiques "
+"et symboliques)."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Hardened network stack (SYN cookies, no ICMP redirects, no source routing, "
+"reverse-path filtering)."
+msgstr ""
+"Pile réseau durcie (SYN cookies, pas de redirections ICMP, pas de routage "
+"par la source, filtrage par chemin inverse)."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Restricted BPF JIT, optional `perf_event_paranoid` relaxation for developers."
+msgstr ""
+"JIT BPF restreint, assouplissement facultatif de `perf_event_paranoid` pour "
+"les développeurs."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Optional [hardened_malloc](https://github.com/GrapheneOS/hardened_malloc) in "
+"full or light variants, plus optional [mimalloc](https://github.com/"
+"microsoft/mimalloc) for performance-oriented setups."
+msgstr ""
+"[hardened_malloc](https://github.com/GrapheneOS/hardened_malloc) en option, "
+"en variante complète ou allégée, ainsi que [mimalloc](https://github.com/"
+"microsoft/mimalloc) en option pour les configurations axées sur les "
+"performances."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Each option is presented as a checklist with full documentation — including "
+"which trade-offs you're accepting when you check or uncheck it."
+msgstr ""
+"Chaque option est présentée sous forme de liste à cocher avec une "
+"documentation complète – y compris les compromis que vous acceptez lorsque "
+"vous la cochez ou la décochez."
+
+#. type: Fenced div block (note)
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "This is how 0.9.3 was delivered. Arch removed the setuid variant of bubblewrap in September 2026, which took the fallback outlined here with it, and 0.9.4 replaced the whole arrangement with a per-executable permission. See the [0.9.4 release notes](/release-notes/0-9-4-beta/).\n"
+msgstr "C’est ainsi que la 0.9.3 a été livrée. Arch a retiré la variante setuid de bubblewrap en septembre 2026, ce qui a fait disparaître avec elle la solution de repli décrite ici, et la 0.9.4 a remplacé l’ensemble du dispositif par une autorisation par exécutable. Consultez les [notes de version 0.9.4](/release-notes/0-9-4-beta/).\n"
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Flatpak support, integrated end-to-end"
+msgstr "Prise en charge de Flatpak, intégrée de bout en bout"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Flatpaks can now be declared alongside `arch-packages` and `aur-packages` in "
+"the configuration. Installation happens at first boot via a dedicated "
+"`ditana-flatpak-finalize.service` (blocking the greeter until completion, so "
+"the user isn't surprised by mid-session installs)."
+msgstr ""
+"Les Flatpak peuvent désormais être déclarés dans la configuration aux côtés "
+"de `arch-packages` et `aur-packages`. L’installation a lieu au premier "
+"démarrage via un service dédié, `ditana-flatpak-finalize.service` (qui "
+"bloque l’écran de connexion jusqu’à la fin, pour que l’utilisateur ne soit "
+"pas surpris par des installations en cours de session)."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Flatpaks are preferred over AUR-only equivalents where they exist — except "
+"where a Flatpak's sandbox cannot work with Ditana's default hardening. Brave "
+"Browser is the documented example: its Flatpak requires "
+"`unprivileged_userns_clone=1`, so Ditana ships `brave-bin` from AUR instead. "
+"The trade-offs are spelled out in the [AUR vs Flatpak](/best-practices/aur-"
+"vs-flatpak/) best-practice page."
+msgstr ""
+"Les Flatpak sont préférés aux équivalents disponibles uniquement dans l’AUR "
+"lorsqu’ils existent – sauf lorsque le bac à sable d’un Flatpak ne peut pas "
+"fonctionner avec le durcissement par défaut de Ditana. Brave Browser en est "
+"l’exemple documenté : son Flatpak nécessite `unprivileged_userns_clone=1`, "
+"c’est pourquoi Ditana fournit plutôt `brave-bin` depuis l’AUR. Les compromis "
+"sont détaillés dans la page de bonnes pratiques [AUR ou Flatpak](/best-"
+"practices/aur-vs-flatpak/)."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Dynamic MIME defaults"
+msgstr "Associations MIME par défaut dynamiques"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Default applications for MIME types are now computed from the installed "
+"components rather than hardcoded. Install LibreOffice → LibreOffice handles "
+"`.docx`. Install ONLYOFFICE instead → ONLYOFFICE handles it. Install Thunar "
+"→ Thunar opens directories. Install COSMIC Files → COSMIC Files opens them. "
+"All composed from the KDL declarations."
+msgstr ""
+"Les applications par défaut des types MIME sont désormais calculées à partir "
+"des composants installés au lieu d’être codées en dur. Installez LibreOffice "
+"→ LibreOffice gère `.docx`. Installez plutôt ONLYOFFICE → ONLYOFFICE s’en "
+"charge. Installez Thunar → Thunar ouvre les répertoires. Installez COSMIC "
+"Files → COSMIC Files les ouvre. Le tout est composé à partir des "
+"déclarations KDL."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Terminal emulator, made first-class"
+msgstr "Émulateur de terminal, un choix à part entière"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"The installer now offers six terminal emulators with a curated decision "
+"matrix: kitty (default, X11+Wayland), foot (Wayland-only, lightweight), "
+"Alacritty (GPU, minimalist), WezTerm (full-featured, multiplexer), Ghostty "
+"(modern, needs OpenGL 4.3+), and COSMIC Terminal. The [xdg-terminal-exec]"
+"(https://github.com/Vladimir-csp/xdg-terminal-exec) standard is used "
+"consistently. Wayland-only terminals automatically get kitty installed as "
+"the X11 fallback if XFCE is also selected — no manual juggling."
+msgstr ""
+"Le programme d’installation propose désormais six émulateurs de terminal, "
+"avec une matrice de décision établie avec soin : kitty (par défaut, "
+"X11+Wayland), foot (Wayland uniquement, léger), Alacritty (GPU, "
+"minimaliste), WezTerm (complet, multiplexeur), Ghostty (moderne, nécessite "
+"OpenGL 4.3+) et COSMIC Terminal. La norme [xdg-terminal-exec](https://"
+"github.com/Vladimir-csp/xdg-terminal-exec) est utilisée de manière "
+"cohérente. Pour les terminaux Wayland uniquement, kitty est automatiquement "
+"installé comme solution de repli pour X11 si XFCE est également sélectionné "
+"– sans jonglage manuel."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "AUR helper: pikaur → paru"
+msgstr "Assistant AUR : pikaur → paru"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"`pikaur` has been replaced by `paru`. The trigger was `pachub` (the GUI Arch "
+"package browser, pinned in every desktop panel alongside `bazaar` for "
+"Flatpak) which only supports `yay` or `paru`. Going with `paru` was the "
+"better fit for Ditana's other needs as well."
+msgstr ""
+"`pikaur` a été remplacé par `paru`. L’élément déclencheur a été `pachub` (le "
+"navigateur graphique de paquets Arch, épinglé dans le panneau de chaque "
+"bureau aux côtés de `bazaar` pour Flatpak), qui ne prend en charge que `yay` "
+"ou `paru`. Le choix de `paru` convenait également mieux aux autres besoins "
+"de Ditana."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Password handling"
+msgstr "Gestion des mots de passe"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"You can now override the strict `pwscore` password check for the user "
+"account if you have a good reason to. The check stays mandatory when full-"
+"disk encryption is enabled — there, a weak password actively reduces "
+"security."
+msgstr ""
+"Vous pouvez désormais passer outre la vérification stricte du mot de passe "
+"par `pwscore` pour le compte utilisateur si vous avez une bonne raison de le "
+"faire. La vérification reste obligatoire lorsque le chiffrement intégral du "
+"disque est activé – dans ce cas, un mot de passe faible réduit activement la "
+"sécurité."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"This addresses several 0.9.0 user reports of installations being aborted "
+"because users couldn't pass the default `pwscore` minimum."
+msgstr ""
+"Cela répond à plusieurs signalements d’utilisateurs de la 0.9.0 concernant "
+"des installations interrompues parce que les utilisateurs ne parvenaient pas "
+"à atteindre le minimum `pwscore` par défaut."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "GitHub issues closed"
+msgstr "Tickets GitHub fermés"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Ten user-reported issues from 0.9.0 are implemented in 0.9.3 — bug fixes and "
+"feature requests. The list is available on the [installer issue tracker]"
+"(https://github.com/acrion/ditana-installer/issues?q=is%3Aissue+is%3Aclosed)."
+msgstr ""
+"Dix tickets signalés par des utilisateurs de la 0.9.0 sont traités dans la "
+"0.9.3 – corrections de bogues et demandes de fonctionnalités. La liste est "
+"disponible dans le [gestionnaire de tickets du programme d’installation]"
+"(https://github.com/acrion/ditana-installer/issues?q=is%3Aissue+is%3Aclosed)."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Behind the scenes"
+msgstr "En coulisses"
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"**Ansible → Sparrow6.** The configuration management logic that customizes "
+"files like `mkinitcpio.conf` has migrated from Ansible to [Sparrow6](https://"
+"github.com/melezhik/Sparrow6), with substantial contributions from **Alexey "
+"Melezhik**. Sparrow6 is also used for testing the automated configurations "
+"themselves. The migration eliminates a Python runtime dependency and "
+"produces more readable test output."
+msgstr ""
+"**Ansible → Sparrow6.** La logique de gestion de configuration qui "
+"personnalise des fichiers comme `mkinitcpio.conf` est passée d’Ansible à "
+"[Sparrow6](https://github.com/melezhik/Sparrow6), avec des contributions "
+"importantes d’**Alexey Melezhik**. Sparrow6 sert également à tester les "
+"configurations automatisées elles-mêmes. La migration supprime une "
+"dépendance d’exécution à Python et produit des résultats de test plus "
+"lisibles."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"**Acknowledgements.** Thanks to Alexey Melezhik for the Sparrow6 work and "
+"continued collaboration. Thanks to Thomas Zipproth for ongoing testing and "
+"feedback. Thanks to everyone who filed an issue on 0.9.0 — every one of them "
+"was reviewed, and most are now closed."
+msgstr ""
+"**Remerciements.** Merci à Alexey Melezhik pour le travail sur Sparrow6 et "
+"sa collaboration continue. Merci à Thomas Zipproth pour ses tests et ses "
+"retours réguliers. Merci à toutes les personnes qui ont ouvert un ticket sur "
+"la 0.9.0 – chacun d’eux a été examiné, et la plupart sont désormais fermés."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "A small piece of history"
+msgstr "Un peu d’histoire"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"When [Ralf Hersel interviewed me](https://gnulinux.ch/ciw119-podcast) for "
+"gnulinux.ch in early 2025 about Ditana 0.9.0, his opening note was that he'd "
+"won a bet — he'd predicted a Linux distribution with built-in AI would ship "
+"before the end of 2024, and 0.9.0 (31 December 2024) made it on the deadline."
+msgstr ""
+"Lorsque [Ralf Hersel m’a interviewé](https://gnulinux.ch/ciw119-podcast) "
+"pour gnulinux.ch début 2025 au sujet de Ditana 0.9.0, il a commencé par dire "
+"qu’il avait gagné un pari : il avait prédit qu’une distribution Linux avec "
+"IA intégrée sortirait avant la fin de 2024, et la 0.9.0 (31 décembre 2024) "
+"est arrivée juste à temps."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Ditana does ship the optional [Ditana Assistant](https://github.com/acrion/"
+"ditana-assistant), which uses a local Ollama model (or any OpenAI-compatible "
+"endpoint) to generate shell commands. It's useful, but I'd be the first to "
+"say \"AI distribution\" is overselling it — the assistant has limited system "
+"context, and a genuinely AI-integrated distro is a separate project I might "
+"explore later (automated log analysis being the most realistic direction). "
+"For now: it's a handy tool, pinned in the panel if you enable it."
+msgstr ""
+"Ditana fournit bel et bien le [Ditana Assistant](https://github.com/acrion/"
+"ditana-assistant), facultatif, qui utilise un modèle Ollama local (ou tout "
+"point de terminaison compatible avec OpenAI) pour générer des commandes "
+"shell. Il est utile, mais je serais le premier à dire que parler de "
+"« distribution IA » est exagéré – l’assistant dispose d’un contexte système "
+"limité, et une distribution qui intègre véritablement l’IA est un projet "
+"distinct que j’explorerai peut-être plus tard (l’analyse automatisée des "
+"journaux étant la piste la plus réaliste). Pour l’instant : c’est un outil "
+"pratique, épinglé dans le panneau si vous l’activez."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Upgrading from 0.9.0"
+msgstr "Mise à niveau depuis la 0.9.0"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"There is no in-place upgrade. The architecture has changed too much. A fresh "
+"install on top of a Timeshift / ZFS snapshot of your `/home` (or whatever "
+"your data partition is) is the supported path."
+msgstr ""
+"Il n’y a pas de mise à niveau sur place. L’architecture a trop changé. Une "
+"nouvelle installation, en s’appuyant sur un instantané Timeshift / ZFS de "
+"votre `/home` (ou de votre partition de données, quelle qu’elle soit), est "
+"la voie prise en charge."

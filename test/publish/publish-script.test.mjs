@@ -35,10 +35,13 @@ describe('publishing', () => {
         stub('ssh', `const args = process.argv.slice(2); ${record}
             const command = args[1].replaceAll('/var/www/ditana.org/downloads', process.env.FAKE_DOWNLOADS);
             process.exit(require('node:child_process').spawnSync('sh', ['-c', command], { stdio: 'inherit' }).status);`);
-        stub('npm', `const args = process.argv.slice(2); ${record}`);
+        // npm run i18n:check fails when FAIL_I18N is set, as it does while a
+        // translation is not ready.
+        stub('npm', `const args = process.argv.slice(2); ${record}
+            if (args.join(' ') === 'run i18n:check' && process.env.FAIL_I18N) process.exit(1);`);
         stub('rsync', `const args = process.argv.slice(2).slice(-2); ${record}`);
 
-        run = (files) => {
+        run = (files, env = {}) => {
             const downloads = fs.mkdtempSync(path.join(root, 'downloads-'));
             for (const [file, size] of files) {
                 fs.writeFileSync(path.join(downloads, file), '');
@@ -48,7 +51,7 @@ describe('publishing', () => {
             fs.writeFileSync(log, '');
             const result = spawnSync(path.join(bin, 'bash'), [script], {
                 encoding: 'utf8',
-                env: { PATH: bin, STUB_LOG: log, FAKE_DOWNLOADS: downloads },
+                env: { PATH: bin, STUB_LOG: log, FAKE_DOWNLOADS: downloads, ...env },
             });
             return { ...result, calls: fs.readFileSync(log, 'utf8').trim().split('\n') };
         };
@@ -59,10 +62,18 @@ describe('publishing', () => {
         const [iso, sha256, sig] = releaseDownloads(release);
         const result = run([[iso, sizeInBytes], [sha256, 97], [sig, 566]]);
         assert.equal(result.status, 0, result.stderr);
-        assert.equal(result.calls.length, 3);
+        assert.equal(result.calls.length, 4);
         assert.match(result.calls[0], /^ssh ditana-origin cd '\/var\/www\/ditana\.org\/downloads' && /);
-        assert.equal(result.calls[1], 'npm run build');
-        assert.equal(result.calls[2], 'rsync ./dist/ ditana-origin:/var/www/ditana.org/');
+        assert.equal(result.calls[1], 'npm run i18n:check');
+        assert.equal(result.calls[2], 'npm run build');
+        assert.equal(result.calls[3], 'rsync ./dist/ ditana-origin:/var/www/ditana.org/');
+    });
+
+    test('stops before building while a translation is not ready', () => {
+        const [iso, sha256, sig] = releaseDownloads(release);
+        const result = run([[iso, sizeInBytes], [sha256, 97], [sig, 566]], { FAIL_I18N: '1' });
+        assert.notEqual(result.status, 0);
+        assert.deepEqual(result.calls.map((call) => call.split(' ').slice(0, 3).join(' ')), ['ssh ditana-origin cd', 'npm run i18n:check']);
     });
 
     // The repository is public, and Cloudflare exists to hide this address.

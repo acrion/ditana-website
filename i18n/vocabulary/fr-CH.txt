@@ -1,0 +1,21 @@
+# Words the fr-CH spelling check accepts beyond hunspell fr_CH: names of places
+# and of the recipe format, established technical terms, and the elided forms
+# of names from common.txt, which hunspell does not derive from a word it only
+# knows from the vocabulary (d’Arch, l’AUR).
+d’Arch
+qu’Arch
+l’AUR
+L’AUR
+l’initramfs
+d’Ansible
+l’UEFI
+d’ABI
+l’ABI
+d’OpenZFS
+PKGBUILD
+interprocessus
+rétroportés
+
+# Names of places
+Ursen
+Mindelheim

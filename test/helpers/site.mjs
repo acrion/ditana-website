@@ -15,7 +15,7 @@ const repo = fileURLToPath(new URL('../../', import.meta.url));
  */
 export function copySite() {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ditana-site-'));
-    for (const entry of ['src', 'public', 'astro.config.mjs', 'package.json', 'tsconfig.json']) {
+    for (const entry of ['src', 'po', 'public', 'astro.config.mjs', 'package.json', 'tsconfig.json']) {
         fs.cpSync(path.join(repo, entry), path.join(dir, entry), { recursive: true });
     }
     fs.symlinkSync(path.join(repo, 'node_modules'), path.join(dir, 'node_modules'));

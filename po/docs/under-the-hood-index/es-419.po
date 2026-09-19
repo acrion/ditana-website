@@ -1,0 +1,104 @@
+# Language es-419 translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es-419\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: src/content/docs/best-practices/index.md
+#: src/content/docs/under-the-hood/index.md
+#, no-wrap
+msgid "Available pages"
+msgstr "Páginas disponibles"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/under-the-hood/index.md
+#, no-wrap
+msgid "Architecture, security concepts, and the inner workings of the Ditana installer."
+msgstr "Arquitectura, conceptos de seguridad y funcionamiento interno del instalador de Ditana."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/under-the-hood/index.md
+#, no-wrap
+msgid "Under the hood"
+msgstr "Funcionamiento interno"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/index.md
+msgid ""
+"Ditana makes a lot of decisions automatically during installation — from "
+"resolving package conflicts to applying CPU-specific mitigations."
+msgstr ""
+"Ditana toma muchas decisiones automáticamente durante la instalación: desde "
+"resolver conflictos entre paquetes hasta aplicar mitigaciones específicas de "
+"la CPU."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/index.md
+msgid ""
+"This section explains the architecture behind those decisions. You do not "
+"need to read this to use Ditana daily. However, if you want to understand "
+"our \"Configuration as data\" philosophy, learn how the system probes "
+"hardware, or intend to contribute to the installer, this is the place to "
+"start."
+msgstr ""
+"Esta sección explica la arquitectura que hay detrás de esas decisiones. No "
+"necesita leerla para usar Ditana a diario. Sin embargo, si quiere entender "
+"nuestra filosofía de «Configuración como datos», saber cómo examina el "
+"sistema el hardware o tiene intención de contribuir al instalador, este es "
+"el punto de partida."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/index.md
+msgid ""
+"[**Configuration as data**](/under-the-hood/configuration-as-data/) — why "
+"Ditana separates the installer engine from its knowledge base, and how "
+"updates ship without re-spinning an ISO."
+msgstr ""
+"[**Configuración como datos**](/under-the-hood/configuration-as-data/): por "
+"qué Ditana separa el motor del instalador de su base de conocimiento y cómo "
+"se distribuyen las actualizaciones sin generar una ISO nueva."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/index.md
+msgid ""
+"[**Hardware detection**](/under-the-hood/hardware-detection/) — how the "
+"installer dynamically probes your hardware at boot time using KDL rules."
+msgstr ""
+"[**Detección de hardware**](/under-the-hood/hardware-detection/): cómo el "
+"instalador examina dinámicamente el hardware durante el arranque mediante "
+"reglas KDL."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/index.md
+msgid ""
+"[**How settings depend on each other**](/under-the-hood/settings-logic/) – "
+"the two expression fields in the knowledge base: one keeps an option out of "
+"reach, the other moves its value, and most relationships need both."
+msgstr ""
+"[**Cómo dependen las opciones unas de otras**](/under-the-hood/settings-"
+"logic/): los dos campos de expresión de la base de conocimiento; uno "
+"mantiene una opción fuera de alcance y el otro modifica su valor, y la "
+"mayoría de las relaciones necesitan ambos."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/index.md
+msgid ""
+"[**CPU mitigations**](/under-the-hood/mitigations/) — detailed documentation "
+"on per-CPU vulnerability detection, default kernel parameters, and how to "
+"override them."
+msgstr ""
+"[**Mitigaciones de CPU**](/under-the-hood/mitigations/): documentación "
+"detallada sobre la detección de vulnerabilidades para cada CPU, los "
+"parámetros del kernel predeterminados y cómo anularlos."

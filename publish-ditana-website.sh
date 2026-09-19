@@ -10,7 +10,8 @@
 # Publishes nothing while the image of the current release, its .sha256 or its
 # .sig is missing from the server's downloads directory, or while the image's
 # size differs from the one its release notes state: the site would offer a
-# release that cannot be downloaded.
+# release that cannot be downloaded. Nor while a translation is incomplete,
+# outdated, or breaks a rule of its language: npm run i18n:check says which.
 #
 # The server is named by the ssh alias ditana-origin, which ~/.ssh/config maps
 # to the origin's address and to the user that logs in. Cloudflare hides that
@@ -27,6 +28,9 @@ webroot=/var/www/ditana.org
 
 echo "→ Checking that the current release can be downloaded..."
 node scripts/check-release-published.mjs "$server" "$webroot/downloads"
+
+echo "→ Checking the translations..."
+npm run i18n:check
 
 echo "→ Building site..."
 npm run build

@@ -1,0 +1,125 @@
+# Language it-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/donate.md
+#, no-wrap
+msgid "Support Ditana development through Liberapay, Buy Me a Coffee, GitHub Sponsors, or Patreon."
+msgstr "Sostenete lo sviluppo di Ditana tramite Liberapay, Buy Me a Coffee, GitHub Sponsors o Patreon."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/donate.md
+#, no-wrap
+msgid "Donate"
+msgstr "Fare una donazione"
+
+#. type: Plain text
+#: src/content/docs/donate.md
+msgid ""
+"Ditana is the result of years of work, built on the conviction that a Linux "
+"distribution should explain its choices rather than hide them. It is "
+"completely free and open source, and its continued development relies on "
+"community support."
+msgstr ""
+"Ditana è il risultato di anni di lavoro, fondato sulla convinzione che una "
+"distribuzione Linux debba spiegare le proprie scelte anziché nasconderle. È "
+"completamente libera e open source, e il suo sviluppo continuo dipende dal "
+"sostegno della comunità."
+
+#. type: Plain text
+#: src/content/docs/donate.md
+msgid ""
+"By donating, you enable me to keep enhancing Ditana — exploring new "
+"features, responding to user feedback, and maintaining the level of detail "
+"this project aims for. Every contribution makes a difference."
+msgstr ""
+"Con una donazione mi permettete di continuare a migliorare Ditana – "
+"esplorando nuove funzionalità, rispondendo ai riscontri degli utenti e "
+"mantenendo il livello di dettaglio a cui questo progetto aspira. Ogni "
+"contributo fa la differenza."
+
+#. type: Title ##
+#: src/content/docs/donate.md
+#, no-wrap
+msgid "Where donations go"
+msgstr "Dove vanno le donazioni"
+
+#. type: Plain text
+#: src/content/docs/donate.md
+msgid ""
+"Donations are processed through **acrion innovations GmbH**, a Swiss company "
+"I founded to manage the financial side of my projects. While the company "
+"provides the legal and financial framework, **acrion** represents my work as "
+"a solo developer. Your support directly funds Ditana's ongoing development, "
+"server infrastructure, and the time required to keep up with Arch's rolling "
+"release."
+msgstr ""
+"Le donazioni vengono gestite tramite **acrion innovations GmbH**, un’azienda "
+"svizzera che ho fondato per amministrare l’aspetto finanziario dei miei "
+"progetti. Mentre l’azienda fornisce il quadro giuridico e finanziario, "
+"**acrion** rappresenta il mio lavoro di sviluppatore indipendente. Il vostro "
+"sostegno finanzia direttamente lo sviluppo continuo di Ditana, "
+"l’infrastruttura dei server e il tempo necessario per stare al passo con la "
+"rolling release di Arch."
+
+#. type: Title ##
+#: src/content/docs/donate.md
+#, no-wrap
+msgid "How to support Ditana"
+msgstr "Come sostenere Ditana"
+
+#. type: Bullet: '- '
+#: src/content/docs/donate.md
+msgid ""
+"[**Liberapay**](https://liberapay.com/acrion/donate) — recurring donations, "
+"no platform fee."
+msgstr ""
+"[**Liberapay**](https://liberapay.com/acrion/donate) – donazioni ricorrenti, "
+"senza commissioni della piattaforma."
+
+#. type: Bullet: '- '
+#: src/content/docs/donate.md
+msgid ""
+"[**Buy Me a Coffee**](https://buymeacoffee.com/acrion) — one-off support."
+msgstr ""
+"[**Buy Me a Coffee**](https://buymeacoffee.com/acrion) – sostegno una tantum."
+
+#. type: Bullet: '- '
+#: src/content/docs/donate.md
+msgid ""
+"[**GitHub Sponsors**](https://github.com/sponsors/acrion) — if you already "
+"donate to other open-source work via GitHub."
+msgstr ""
+"[**GitHub Sponsors**](https://github.com/sponsors/acrion) – se già fate "
+"donazioni ad altri progetti open source tramite GitHub."
+
+#. type: Bullet: '- '
+#: src/content/docs/donate.md
+msgid "[**Patreon**](https://patreon.com/acriondev) — tiered support."
+msgstr "[**Patreon**](https://patreon.com/acriondev) – sostegno a livelli."
+
+#. type: Plain text
+#: src/content/docs/donate.md
+msgid "Thank you for helping keep Ditana alive, growing, and uncompromising."
+msgstr ""
+"Grazie di aiutare Ditana a restare viva, a crescere e a non scendere a "
+"compromessi."
+
+#. type: Plain text
+#: src/content/docs/donate.md
+msgid "— Stefan"
+msgstr "– Stefan"

@@ -1,0 +1,35 @@
+# Words the Rumantsch Grischun spelling check accepts beyond the rm-rumgr
+# dictionary. One word per line, each scrutinized before it was added.
+
+# Elided forms: hunspell splits at the apostrophe and does not know the
+# first half of ch’el, n’è, sch’i.
+ch
+n
+sch
+
+# Technical terms kept in English (rules, section 3 and R20)
+build
+builds
+sandbox
+snapshot
+snapshots
+backports
+hardlinks
+symlinks
+
+# Correct Rumantsch Grischun forms missing from rm-rumgr: feminine and
+# plural forms Pledari Grond gives in parentheses (sviluppader
+# (sviluppadra), negligibel (negligibla)), and a numeral formed by the
+# grammar's rule quaranta + consonant (S6 §243, as trentatschintg).
+negligibla
+quarantatschintg
+sviluppadras
+sviluppaders
+
+# Names and abbreviations
+Chromium
+CPU
+Discord
+Mindelheim
+Starlight
+Ursen

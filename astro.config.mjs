@@ -2,9 +2,16 @@
 import fs from 'node:fs';
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import sitemap from '@astrojs/sitemap';
 import { releaseIntegration } from './src/release/integration.mjs';
 import { readReleaseNotes } from './src/release/read-release-notes.mjs';
-import { currentReleaseView, releaseNotesSidebar } from './src/release/releases.mjs';
+import { currentRelease, currentReleaseView, placeholderValues, releaseNotesSidebar } from './src/release/releases.mjs';
+import { fillKnownPlaceholders } from './src/release/markdown.mjs';
+import { generateTranslations } from './src/i18n/generate.mjs';
+import { sitemapI18n, starlightLocales } from './src/i18n/locales.mjs';
+import { i18nIntegration } from './src/i18n/integration.mjs';
+import { languageChoiceScript } from './src/i18n/choose-language.mjs';
+import { labelled, readUiStrings } from './src/i18n/ui.mjs';
 import { OG_IMAGE_HEIGHT, OG_IMAGE_WIDTH, ogImageSvg, ogImageUrl } from './src/og-image/render.mjs';
 
 const site = 'https://ditana.org';
@@ -14,6 +21,17 @@ const site = 'https://ditana.org';
 // page, the download page and the preview image all follow from there.
 const docsDir = new URL('./src/content/docs/', import.meta.url);
 const releases = readReleaseNotes(docsDir);
+
+// The translations are written from po/ prior to anything reads them. A
+// translated heading gets the id of the English one, which Astro takes from
+// the heading as the page shows it, with the release populated.
+const values = placeholderValues(currentRelease(releases));
+generateTranslations(new URL('./', import.meta.url), { substitute: (text) => fillKnownPlaceholders(text, values) });
+
+// The interface strings of every language, for the labels of the sidebar and
+// the lines at the top of the release notes.
+const ui = readUiStrings(new URL('./src/', import.meta.url));
+const label = (key, values) => labelled(ui, key, values);
 
 const ogImage = ogImageUrl(site, ogImageSvg(
     fs.readFileSync(new URL('./src/og-image/template.svg', import.meta.url), 'utf8'),
@@ -58,9 +76,19 @@ export default defineConfig({
     },
 
     integrations: [
-        releaseIntegration({ docsDir, releases }),
+        // Starlight adds a sitemap by default if none exists. Its own
+        // carries each language's `lang`, and the sitemap's schema refuses
+        // "es-419" (letters and hyphens only) and then writes no sitemap at
+        // all, with a warning.
+        sitemap({ i18n: sitemapI18n() }),
+        releaseIntegration({ docsDir, releases, strings: ui }),
+        i18nIntegration({ docsDir }),
         starlight({
             title: 'Ditana',
+
+            defaultLocale: 'root',
+            locales: starlightLocales(),
+            routeMiddleware: './src/i18n/route-data.mjs',
 
             logo: {
                 src: './src/assets/logo.svg',
@@ -91,43 +119,46 @@ export default defineConfig({
             // landing page included: that page uses the default template
             // rather than Starlight's splash one.
             sidebar: [
-                { label: 'Download', slug: 'download' },
-                { label: 'Build status', slug: 'builds' },
+                { ...label('sidebar.download'), slug: 'download' },
+                { ...label('sidebar.builds'), slug: 'builds' },
                 {
-                    label: 'Troubleshooting',
+                    ...label('sidebar.troubleshooting'),
                     items: [
-                        { label: 'Overview', slug: 'troubleshooting' },
-                        { label: 'Updating', slug: 'troubleshooting/updating' },
-                        { label: 'Signature errors', slug: 'troubleshooting/signature-errors' },
-                        { label: 'An update broke something', slug: 'troubleshooting/an-update-broke-something' },
-                        { label: 'Flatpak and Bubblejail', slug: 'troubleshooting/flatpak-and-bubblejail' },
-                        { label: 'Chromium sandbox helper', slug: 'troubleshooting/chromium-sandbox-helper' },
-                        { label: 'Reporting a bug', slug: 'troubleshooting/reporting-a-bug' },
-                    ],
-                },
-                { label: 'Release notes', items: releaseNotesSidebar(releases) },
-                {
-                    label: 'Best practices',
-                    items: [
-                        { label: 'Overview', slug: 'best-practices' },
-                        { label: 'Automatic system snapshots', slug: 'best-practices/automatic-system-snapshots' },
-                        { label: 'AUR vs Flatpak', slug: 'best-practices/aur-vs-flatpak' },
-                        { label: 'Virtual machines', slug: 'best-practices/virtual-machines' },
+                        { ...label('sidebar.troubleshooting.overview'), slug: 'troubleshooting' },
+                        { ...label('sidebar.troubleshooting.updating'), slug: 'troubleshooting/updating' },
+                        { ...label('sidebar.troubleshooting.signature-errors'), slug: 'troubleshooting/signature-errors' },
+                        { ...label('sidebar.troubleshooting.an-update-broke-something'), slug: 'troubleshooting/an-update-broke-something' },
+                        { ...label('sidebar.troubleshooting.flatpak-and-bubblejail'), slug: 'troubleshooting/flatpak-and-bubblejail' },
+                        { ...label('sidebar.troubleshooting.chromium-sandbox-helper'), slug: 'troubleshooting/chromium-sandbox-helper' },
+                        { ...label('sidebar.troubleshooting.reporting-a-bug'), slug: 'troubleshooting/reporting-a-bug' },
                     ],
                 },
                 {
-                    label: 'Under the hood',
+                    ...label('sidebar.release-notes'),
+                    items: releaseNotesSidebar(releases, (release) => label('sidebar.release-notes.current', { release })),
+                },
+                {
+                    ...label('sidebar.best-practices'),
                     items: [
-                        { label: 'Overview', slug: 'under-the-hood' },
-                        { label: 'Configuration as data', slug: 'under-the-hood/configuration-as-data' },
-                        { label: 'Hardware detection', slug: 'under-the-hood/hardware-detection' },
-                        { label: 'Settings logic', slug: 'under-the-hood/settings-logic' },
-                        { label: 'CPU mitigations', slug: 'under-the-hood/mitigations' },
+                        { ...label('sidebar.best-practices.overview'), slug: 'best-practices' },
+                        { ...label('sidebar.best-practices.automatic-system-snapshots'), slug: 'best-practices/automatic-system-snapshots' },
+                        { ...label('sidebar.best-practices.aur-vs-flatpak'), slug: 'best-practices/aur-vs-flatpak' },
+                        { ...label('sidebar.best-practices.virtual-machines'), slug: 'best-practices/virtual-machines' },
                     ],
                 },
-                { label: 'Donate', slug: 'donate' },
-                { label: 'Who we are', slug: 'who-we-are' },
-                { label: 'Licensing', slug: 'licensing' },
+                {
+                    ...label('sidebar.under-the-hood'),
+                    items: [
+                        { ...label('sidebar.under-the-hood.overview'), slug: 'under-the-hood' },
+                        { ...label('sidebar.under-the-hood.configuration-as-data'), slug: 'under-the-hood/configuration-as-data' },
+                        { ...label('sidebar.under-the-hood.hardware-detection'), slug: 'under-the-hood/hardware-detection' },
+                        { ...label('sidebar.under-the-hood.settings-logic'), slug: 'under-the-hood/settings-logic' },
+                        { ...label('sidebar.under-the-hood.mitigations'), slug: 'under-the-hood/mitigations' },
+                    ],
+                },
+                { ...label('sidebar.donate'), slug: 'donate' },
+                { ...label('sidebar.who-we-are'), slug: 'who-we-are' },
+                { ...label('sidebar.licensing'), slug: 'licensing' },
             ],
 
             // Dark throughout, and not as a default: ThemeSelect is replaced
@@ -137,9 +168,12 @@ export default defineConfig({
             components: {
                 ThemeProvider: './src/components/ForceDarkTheme.astro',
                 ThemeSelect: './src/components/EmptyComponent.astro',
+                Footer: './src/components/Footer.astro',
+                SocialIcons: './src/components/SocialIcons.astro',
             },
 
             head: [
+                { tag: 'script', content: languageChoiceScript() },
                 {
                     tag: 'meta',
                     attrs: { property: 'og:image', content: ogImage },

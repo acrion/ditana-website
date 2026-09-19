@@ -1,0 +1,217 @@
+# Romansh translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: rm\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "Why a rolling release must be updated entirely, how to update Ditana on the desktop or in a terminal, and what actions to take afterwards."
+msgstr "Pertge ch’in rolling release sto vegnir actualisà cumplettamain, co actualisar Ditana sin il desktop u en in terminal, e tge ch’igl è da far suenter."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "Updating is not optional"
+msgstr "L’actualisaziun n’è betg facultativa"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"Ditana is Arch Linux underneath, and Arch is a rolling release. There is no "
+"\"version\" to stay on: there is one moving target, and every package in the "
+"repositories is built against the libraries that are current *today*. A "
+"system that has not been updated for a few months is not a stable older "
+"system — it is a system whose next update is a large, untested jump."
+msgstr ""
+"Ditana è Arch Linux sut la surfatscha, ed Arch è in rolling release. I na "
+"dat nagina «versiun» sin la quala Vus pudessas restar: i dat ina suletta "
+"finamira en moviment, e mintga pachet en ils repositoris vegn construì cun "
+"las bibliotecas ch’èn actualas *oz*. In sistem che n’è betg vegnì actualisà "
+"durant in pèr mais n’è betg in sistem stabel pli vegl – el è in sistem, per "
+"il qual la proxima actualisaziun è in grond sigl betg testà."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid "Two consequences are worth stating plainly:"
+msgstr "Duas consequenzas meritan da vegnir ditgas cleramain:"
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Security fixes only arrive if you update.** There is no separate backport "
+"channel. The fix for a vulnerability in a library reaches you as a new "
+"version of that library, and not otherwise."
+msgstr ""
+"**Correcturas da segirezza arrivan mo, sche Vus actualisais.** I na dat "
+"nagin chanal separà per backports. La correctura d’ina mancanza da segirezza "
+"en ina biblioteca As cuntanscha sco nova versiun da quella biblioteca, e "
+"betg autramain."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Never update a single package.** `pacman -Sy something` synchronizes the "
+"package databases and then installs one package against libraries that may "
+"already have moved on. This is a *partial upgrade*, it is the single most "
+"common way to break an Arch system, and it is unsupported. Update everything "
+"or nothing: `-Syu`, never `-Sy` followed by an install."
+msgstr ""
+"**N’actualisai mai in singul pachet.** `pacman -Sy something` sincronisescha "
+"las bancas da datas dals pachets ed installescha lura in pachet cun "
+"bibliotecas che pon esser gia idas vinavant. Quai è in’*actualisaziun "
+"parziala*, quai è insumma la via la pli frequenta da donnegiar in sistem "
+"Arch, e quai na vegn betg sustegnì. Actualisai tut u nagut: `-Syu`, mai `-"
+"Sy` suandà d’in’installaziun."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "  (The one deliberate exception is the [keyring repair](/troubleshooting/signature-errors/#the-repair), and it is safe for a specific reason that is explained there.)\n"
+msgstr "  (L’unica excepziun intenziunada è la [reparaziun dal portaclavs](/troubleshooting/signature-errors/#the-repair), ed ella è segira per in motiv precis ch’è explitgà là.)\n"
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "The graphical way"
+msgstr "La via grafica"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid "Ditana installs a software centre on every desktop:"
+msgstr "Ditana installescha in center da software sin mintga desktop:"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid ""
+"| Tool | Installed with | Covers |\n"
+"| --- | --- | --- |\n"
+"| **Pachub** | XFCE, Niri, Wayfire, COSMIC | Packages from the Arch and Ditana repositories |\n"
+"| **Bazaar** | Niri, Wayfire | Flatpak applications from Flathub |\n"
+"| **COSMIC Store** | COSMIC | Flatpak applications from Flathub |\n"
+"| **Kalu** | XFCE | Notifies you when updates are waiting |\n"
+"| **arch-audit-gtk** | all desktops | Tray indicator that turns red when an installed package has a known vulnerability |\n"
+msgstr ""
+"| Utensil | Installà cun | Cuvra |\n"
+"| --- | --- | --- |\n"
+"| **Pachub** | XFCE, Niri, Wayfire, COSMIC | Pachets dals repositoris dad Arch e da Ditana |\n"
+"| **Bazaar** | Niri, Wayfire | Applicaziuns Flatpak da Flathub |\n"
+"| **COSMIC Store** | COSMIC | Applicaziuns Flatpak da Flathub |\n"
+"| **Kalu** | XFCE | As avisescha, cura ch’i dat actualisaziuns che spetgan |\n"
+"| **arch-audit-gtk** | tut ils desktops | Indicatur en la trav dal sistem che daventa cotschen, cura ch’in pachet installà ha ina mancanza da segirezza enconuschenta |\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"Pachub and the Flatpak stores cover different halves of the system, so "
+"running one is not the same as running both. If your desktop has no Flatpak "
+"store, the terminal command below covers it."
+msgstr ""
+"Pachub e las butias da Flatpak cuvran differentas mesadads dal sistem, "
+"uschia ch’i n’è betg il medem d’exequir mo in dad els u omadus. Sche Voss "
+"desktop n’ha nagina butia da Flatpak, cuvra il cumond da terminal sutvart "
+"quella mesadad."
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "The terminal way"
+msgstr "La via dal terminal"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"This is the recommended route, because one command covers the repositories "
+"*and* the AUR packages you have installed:"
+msgstr ""
+"Quai è la via recumandada, perquai ch’in sulet cumond cuvra ils repositoris "
+"*e* ils pachets AUR che Vus avais installà:"
+
+#. type: Fenced code block (sh)
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid ""
+"paru -Syu          # Arch repos + Ditana repo + your AUR packages\n"
+"flatpak update     # sandboxed applications from Flathub\n"
+msgstr ""
+"paru -Syu          # Arch repos + Ditana repo + your AUR packages\n"
+"flatpak update     # sandboxed applications from Flathub\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"`paru` is Ditana's chosen AUR helper and is installed on every system, "
+"including headless ones. Plain `pacman -Syu` also works, but it leaves AUR "
+"packages behind — and an AUR package left behind while its dependencies move "
+"on is exactly the ABI mismatch that produces \"symbol lookup error\" a week "
+"later."
+msgstr ""
+"`paru` è il program d’agid per l’AUR tschernì da Ditana ed è installà sin "
+"mintga sistem, er sin quels senza interfatscha grafica. Er in simpel `pacman "
+"-Syu` funcziuna, ma el lascha enavos ils pachets AUR – ed in pachet AUR ch’è "
+"restà enavos, entant che sias dependenzas van vinavant, è exactamain "
+"l’incumpatibilitad da l’ABI che producescha in’emna pli tard «symbol lookup "
+"error»."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "**Let it run to its end.** On a system using ZFS, every kernel update rebuilds the ZFS module. pacman then shows `Install DKMS modules` and a line beginning with `==> dkms install`, and afterwards nothing for several minutes. That is not a hang. Interrupting it leaves the new kernel missing its ZFS module, and the next boot ends in a kernel panic reading `Attempted to kill init!`. If this has occurred, revert to the snapshot created prior to the update, as [Automatic system snapshots](/best-practices/automatic-system-snapshots/) describes.\n"
+msgstr "**Laschai terminar il process.** Sin in sistem cun ZFS reconstruescha mintga actualisaziun dal kernel il modul ZFS. pacman mussa lura `Install DKMS modules` ed ina lingia che cumenza cun `==> dkms install`, e suenter durant pliras minutas nagut. Il sistem n’è betg bloccà. Sch’il process vegn interrut, manca al nov kernel ses modul ZFS, ed il proxim aviar finescha cun in kernel panic cun il messadi `Attempted to kill init!`. Sche quai è capità, restaurai il snapshot ch’è vegnì fatg avant l’actualisaziun, sco quai che [Snapshots automatics dal sistem](/best-practices/automatic-system-snapshots/) descriva.\n"
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "After the update"
+msgstr "Suenter l’actualisaziun"
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Configuration files.** When a package ships a new default for a file you "
+"have edited, pacman writes it beside yours as `*.pacnew` and says so. Merge "
+"them with `sudo pacdiff` (from `pacman-contrib`, installed by default).  "
+"Ignoring `.pacnew` files for a year is a slow way to accumulate breakage."
+msgstr ""
+"**Datotecas da configuraziun.** Cura ch’in pachet furnescha ina nova versiun "
+"da standard d’ina datoteca che Vus avais modifitgà, scriva pacman quella sco "
+"`*.pacnew` sper Vossa datoteca e As infurmescha. Fusiunai las datotecas cun "
+"`sudo pacdiff` (da `pacman-contrib`, installà sco standard). Ignorar las "
+"datotecas `.pacnew` durant in onn è ina via plauna per accumular donns."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Reboot after a kernel update.** Until you do, the running kernel no longer "
+"matches the modules on disk, and loading a module that was not already in "
+"memory will fail."
+msgstr ""
+"**Reaviai suenter in’actualisaziun dal kernel.** Uschè ditg che Vus na "
+"faschais betg quai, na correspunda il kernel en funcziun betg pli als moduls "
+"sin il disc, e l’emprova da chargiar in modul che n’era betg gia en la "
+"memoria na reussescha betg."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Snapshots.** If you enabled automatic snapshots during installation, the "
+"state before the update is still on disk and you can boot into it. See "
+"[Automatic system snapshots](/best-practices/automatic-system-snapshots/)."
+msgstr ""
+"**Snapshots.** Sche Vus avais activà ils snapshots automatics durant "
+"l’installaziun, è il stadi avant l’actualisaziun anc sin il disc e Vus "
+"pudais aviar quel. Guardai [Snapshots automatics dal sistem](/best-practices/"
+"automatic-system-snapshots/)."

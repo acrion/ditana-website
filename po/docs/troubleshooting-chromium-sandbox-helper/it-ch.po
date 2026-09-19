@@ -1,0 +1,278 @@
+# Language it-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+#, no-wrap
+msgid "Why Discord and other programs built on Chromium or Electron may abort at start under Ditana's hardening, and how to fix it."
+msgstr "Perché Discord e altri programmi basati su Chromium o Electron possono interrompersi all’avvio con l’hardening di Ditana, e come risolvere il problema."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+#, no-wrap
+msgid "A Chromium-based program aborts: \"The SUID sandbox helper binary was found, but is not configured correctly\""
+msgstr "Un programma basato su Chromium si interrompe: «The SUID sandbox helper binary was found, but is not configured correctly»"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+msgid ""
+"Discord and other programs built on Electron or Chromium can stop right at "
+"startup with this message:"
+msgstr ""
+"Discord e altri programmi basati su Electron o Chromium possono fermarsi "
+"subito all’avvio con questo messaggio:"
+
+#. type: Fenced code block
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+#, no-wrap
+msgid "FATAL:sandbox/linux/suid/client/setuid_sandbox_host.cc:166] The SUID sandbox helper binary was found, but is not configured correctly. Rather than run without sandboxing I'm aborting now. You need to make sure that /home/user/.config/discord/app-1.0.157/chrome-sandbox is owned by root and has mode 4755.\n"
+msgstr "FATAL:sandbox/linux/suid/client/setuid_sandbox_host.cc:166] The SUID sandbox helper binary was found, but is not configured correctly. Rather than run without sandboxing I'm aborting now. You need to make sure that /home/user/.config/discord/app-1.0.157/chrome-sandbox is owned by root and has mode 4755.\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+msgid ""
+"Chromium puts the pages it renders inside a sandbox, and it supports two "
+"ways to build one: a user namespace, or, if a user namespace is denied, the "
+"setuid helper `chrome-sandbox` that is included with the program. When the "
+"[guard](/best-practices/aur-vs-flatpak/#chromium-based-browsers-under-"
+"ditanas-default-hardening) is active, any program not on its list is refused "
+"the namespace, and Chromium switches to the helper. If the helper was "
+"installed without the setuid bit, Chromium terminates instead of proceeding "
+"without a sandbox."
+msgstr ""
+"Chromium colloca le pagine di cui esegue il rendering all’interno di una "
+"sandbox e supporta due modi per crearne una: uno user namespace (spazio dei "
+"nomi utente) oppure, se uno user namespace viene negato, il programma "
+"ausiliario setuid `chrome-sandbox` incluso nel programma. Quando il "
+"[meccanismo di protezione](/best-practices/aur-vs-flatpak/#chromium-based-"
+"browsers-under-ditanas-default-hardening) è attivo, a ogni programma che non "
+"figura nel suo elenco viene rifiutato il namespace, e Chromium passa al "
+"programma ausiliario. Se il programma ausiliario è stato installato senza il "
+"bit setuid, Chromium termina anziché proseguire senza sandbox."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+msgid ""
+"Whether a program is affected therefore depends on its helper. Arch installs "
+"the helper setuid for `chromium`, for every `electron` package and for "
+"`signal-desktop`, and the AUR's `brave-bin` does the same, so these start as "
+"before. Affected are programs that bring a Chromium of their own with an "
+"ordinary helper, which is common among the AUR's `-bin` packages, and every "
+"program that runs from your home directory. Discord is one of those: the "
+"`discord` package from the Arch repository installs only a launcher, which "
+"downloads Discord into `~/.config/discord` and starts it from there."
+msgstr ""
+"Se un programma sia interessato o meno dipende quindi dal suo programma "
+"ausiliario. Arch installa il programma ausiliario con setuid per `chromium`, "
+"per ogni pacchetto `electron` e per `signal-desktop`, e `brave-bin` dell’AUR "
+"fa lo stesso, per cui questi programmi si avviano come prima. Sono "
+"interessati i programmi che portano con sé un proprio Chromium con un "
+"programma ausiliario normale, cosa frequente tra i pacchetti `-bin` "
+"dell’AUR, e ogni programma che viene eseguito dalla vostra directory home. "
+"Discord è uno di questi: il pacchetto `discord` del repository di Arch "
+"installa solo un programma di avvio, che scarica Discord in `~/.config/"
+"discord` e lo avvia da lì."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+msgid ""
+"To confirm that the guard is the one that refused it, ask the guard. `sudo "
+"ditana-userns-guard --status` lists the programs it has refused, the most "
+"recent first, each with the user who ran it and the frequency; a line such "
+"as `refused 3x uid 1000 Discord, 12 s ago` names the culprit. Version 1.00 "
+"of the guard only counts: there, run it before and after starting the "
+"program, and if `denied` increased, it was the guard."
+msgstr ""
+"Per verificare che a rifiutarlo sia stato proprio il meccanismo di "
+"protezione, interrogatelo. `sudo ditana-userns-guard --status` elenca i "
+"programmi che ha rifiutato, a partire dal più recente, ciascuno con l’utente "
+"che lo ha eseguito e la frequenza; una riga come `refused 3x uid 1000 "
+"Discord, 12 s ago` indica il colpevole. La versione 1.00 del meccanismo di "
+"protezione si limita a contare: con questa versione eseguitelo prima e dopo "
+"aver avviato il programma, e se `denied` è aumentato, è stato il meccanismo "
+"di protezione."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+msgid "For a program in your home directory, use its Flatpak instead:"
+msgstr ""
+"Per un programma nella vostra directory home, usate invece il suo Flatpak:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+#, no-wrap
+msgid ""
+"sudo flatpak install flathub com.discordapp.Discord\n"
+"sudo pacman -Rns discord\n"
+msgstr ""
+"sudo flatpak install flathub com.discordapp.Discord\n"
+"sudo pacman -Rns discord\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+msgid ""
+"Flatpak builds its sandbox using bubblewrap, which is on the list, and "
+"Discord's own sandbox then executes within it. Do not do what the message "
+"asks for in this case. A setuid root file in your home directory gives root "
+"privileges to a binary that the program's own updater downloaded and nobody "
+"verified, and the next update puts a new one next to it."
+msgstr ""
+"Flatpak crea la propria sandbox con bubblewrap, che figura nell’elenco, e la "
+"sandbox di Discord viene poi eseguita al suo interno. In questo caso non "
+"fate ciò che chiede il messaggio. Un file setuid root nella vostra directory "
+"home conferisce i privilegi di root a un binario scaricato dal meccanismo di "
+"aggiornamento del programma stesso e non verificato da nessuno, e "
+"l’aggiornamento successivo ne mette uno nuovo accanto."
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+#, no-wrap
+msgid "A Chromium-based program from a package"
+msgstr "Un programma basato su Chromium installato da un pacchetto"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+msgid ""
+"Most programs built on Chromium or Electron that come from a package begin "
+"normally, since their package installs the sandbox helper setuid root, as "
+"Arch’s chromium and electron packages do. The message shows up only in cases "
+"where a package installs the helper without that bit, which is rare and "
+"mostly concerns AUR `-bin` packages that bring an Electron of their own. "
+"Every other package is unaffected: it does not have such a helper. The "
+"remedy is to give the helper the bit. Chromium then needs no user namespace "
+"at all, which is why this is better than placing the program on the guard’s "
+"list. This lists every helper on the system that lacks it:"
+msgstr ""
+"La maggior parte dei programmi basati su Chromium o Electron che provengono "
+"da un pacchetto si avviano normalmente, poiché il loro pacchetto installa il "
+"programma ausiliario della sandbox con setuid root, come fanno i pacchetti "
+"chromium ed electron di Arch. Il messaggio compare solo nei casi in cui un "
+"pacchetto installa il programma ausiliario senza quel bit, cosa rara che "
+"riguarda soprattutto i pacchetti AUR `-bin` che portano con sé un proprio "
+"Electron. Tutti gli altri pacchetti non sono interessati: non hanno un "
+"programma ausiliario di questo tipo. Il rimedio consiste nel dare il bit al "
+"programma ausiliario. In tal caso Chromium non ha bisogno di alcuno user "
+"namespace, motivo per cui questa soluzione è migliore dell’inserimento del "
+"programma nell’elenco del meccanismo di protezione. Il comando seguente "
+"elenca tutti i programmi ausiliari del sistema privi del bit:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+#, no-wrap
+msgid "find /usr /opt -type f \\( -name chrome-sandbox -o -name chrome_sandbox \\) \\( ! -user root -o ! -perm -4001 \\)\n"
+msgstr "find /usr /opt -type f \\( -name chrome-sandbox -o -name chrome_sandbox \\) \\( ! -user root -o ! -perm -4001 \\)\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+msgid ""
+"Setting the bit once is not enough, because the next update of the package "
+"writes the file back as it was. A pacman hook sets it again after every "
+"update. For each path the command printed, set `helper` to it and run:"
+msgstr ""
+"Impostare il bit una sola volta non basta, perché l’aggiornamento successivo "
+"del pacchetto riscrive il file com’era. Un hook di pacman lo reimposta dopo "
+"ogni aggiornamento. Per ogni percorso stampato dal comando, impostate "
+"`helper` su quel percorso ed eseguite:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+#, no-wrap
+msgid ""
+"helper=/opt/example/chrome-sandbox\n"
+"sudo mkdir -p /etc/pacman.d/hooks\n"
+"sudo tee \"/etc/pacman.d/hooks/$(pacman -Qqo \"$helper\")-chrome-sandbox.hook\" > /dev/null <<HOOK\n"
+"[Trigger]\n"
+"Type = Path\n"
+"Operation = Install\n"
+"Operation = Upgrade\n"
+"Target = ${helper#/}\n"
+"\n"
+"[Action]\n"
+"Description = Making the Chromium sandbox helper in ${helper%/*} setuid root...\n"
+"When = PostTransaction\n"
+"Exec = /usr/bin/chmod 4755 $helper\n"
+"HOOK\n"
+"sudo chmod 4755 \"$helper\"\n"
+msgstr ""
+"helper=/opt/example/chrome-sandbox\n"
+"sudo mkdir -p /etc/pacman.d/hooks\n"
+"sudo tee \"/etc/pacman.d/hooks/$(pacman -Qqo \"$helper\")-chrome-sandbox.hook\" > /dev/null <<HOOK\n"
+"[Trigger]\n"
+"Type = Path\n"
+"Operation = Install\n"
+"Operation = Upgrade\n"
+"Target = ${helper#/}\n"
+"\n"
+"[Action]\n"
+"Description = Making the Chromium sandbox helper in ${helper%/*} setuid root...\n"
+"When = PostTransaction\n"
+"Exec = /usr/bin/chmod 4755 $helper\n"
+"HOOK\n"
+"sudo chmod 4755 \"$helper\"\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+msgid ""
+"Unlike a helper in your home directory, this one is part of a package that "
+"pacman installed and verified, and a setuid helper is exactly how Arch ships "
+"Chromium itself."
+msgstr ""
+"A differenza di un programma ausiliario nella vostra directory home, questo "
+"fa parte di un pacchetto che pacman ha installato e verificato, e un "
+"programma ausiliario setuid è esattamente il modo in cui Arch distribuisce "
+"Chromium stesso."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+#, no-wrap
+msgid "A helper lacking the bit is a packaging defect. The file exists solely to be setuid root and can do nothing without it, and the package’s own program confirms this in the message above. Nor is this peculiar to Ditana: Arch’s own linux-hardened kernel switches unprivileged user namespaces off by default, and [the Arch Wiki](https://wiki.archlinux.org/title/Security#Disable_unprivileged_user_namespaces) states that Chromium-based applications then need the setuid bit on chrome-sandbox. Report it, so that the next update fixes it for everybody and the hook is no longer needed. `pacman -Si <package>` shows the repository it came from; a package that `pacman -Qm` lists came from the AUR instead:\n"
+msgstr "Un programma ausiliario privo del bit è un difetto di pacchettizzazione. Il file esiste unicamente per essere setuid root e senza di esso non può fare nulla, e il programma del pacchetto stesso lo conferma nel messaggio riportato sopra. Né si tratta di una particolarità di Ditana: lo stesso kernel linux-hardened di Arch disattiva per impostazione predefinita gli user namespace non privilegiati, e [l’Arch Wiki](https://wiki.archlinux.org/title/Security#Disable_unprivileged_user_namespaces) afferma che le applicazioni basate su Chromium hanno allora bisogno del bit setuid su chrome-sandbox. Segnalate il difetto, in modo che il prossimo aggiornamento lo corregga per tutti e l’hook non sia più necessario. `pacman -Si <package>` mostra il repository di provenienza; un pacchetto elencato da `pacman -Qm` proviene invece dall’AUR:\n"
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+msgid ""
+"**Arch repository:** an issue at `https://gitlab.archlinux.org/archlinux/"
+"packaging/packages/<package>/-/issues`."
+msgstr ""
+"**Repository di Arch:** una segnalazione su `https://gitlab.archlinux.org/"
+"archlinux/packaging/packages/<package>/-/issues`."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+msgid "**AUR:** a comment at `https://aur.archlinux.org/packages/<package>`."
+msgstr ""
+"**AUR:** un commento su `https://aur.archlinux.org/packages/<package>`."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+msgid ""
+"**Ditana repository:** an issue at [ditana-build](https://github.com/acrion/"
+"ditana-build/issues). Ditana builds these packages from AUR recipes and "
+"takes the report there."
+msgstr ""
+"**Repository di Ditana:** una segnalazione su [ditana-build](https://"
+"github.com/acrion/ditana-build/issues). Ditana compila questi pacchetti a "
+"partire da ricette AUR e provvede a inoltrare la segnalazione lì."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/chromium-sandbox-helper.md
+msgid ""
+"It helps to mention the fix: installing the helper with mode 4755, as Arch’s "
+"chromium and electron packages do."
+msgstr ""
+"È utile indicare la soluzione: installare il programma ausiliario con i "
+"permessi 4755, come fanno i pacchetti chromium ed electron di Arch."

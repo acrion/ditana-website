@@ -1,0 +1,599 @@
+# Language de-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: de-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/under-the-hood/configuration-as-data.md
+#, no-wrap
+msgid "How Ditana separates its installer engine from its configuration knowledge base to ship improvements instantly, audit decisions transparently, and accept contributions without touching code."
+msgstr "Wie Ditana die Engine des Installationsprogramms von der Wissensbasis der Konfiguration trennt, um Verbesserungen sofort auszuliefern, Entscheidungen transparent überprüfbar zu machen und Beiträge ohne Änderungen am Code anzunehmen."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/under-the-hood/configuration-as-data.md
+#, no-wrap
+msgid "Configuration as data"
+msgstr "Konfiguration als Daten"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"When an Arch update on a Tuesday morning requires a new workaround for a "
+"specific Intel iGPU — what does a traditional installer do? Nothing, until "
+"somebody patches the bash script that drives it, releases a new ISO (1–3 "
+"GB), and waits for users to download it. Days at best, weeks more commonly."
+msgstr ""
+"Wenn eine Arch-Aktualisierung an einem Dienstagmorgen einen neuen Workaround "
+"für eine bestimmte Intel-iGPU erfordert – was tut ein herkömmliches "
+"Installationsprogramm? Nichts, bis jemand das Bash-Skript korrigiert, das es "
+"steuert, ein neues ISO (1–3 GB) veröffentlicht und darauf wartet, dass die "
+"Benutzerinnen und Benutzer es herunterladen. Im besten Fall Tage, meist eher "
+"Wochen."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"Ditana takes a fundamentally different approach: **configuration as data.**"
+msgstr ""
+"Ditana verfolgt einen grundlegend anderen Ansatz: **Konfiguration als "
+"Daten.**"
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/configuration-as-data.md
+#, no-wrap
+msgid "Three separate pieces"
+msgstr "Drei getrennte Teile"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid "Ditana's architecture is split into three repositories:"
+msgstr "Die Architektur von Ditana ist auf drei Repositorys aufgeteilt:"
+
+#. type: Bullet: '1. '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**The Engine** ([`ditana-installer`](https://github.com/acrion/ditana-"
+"installer)) — a small, generic program that knows *how* to draw dialogs, "
+"partition disks, detect hardware, and run `pacstrap`."
+msgstr ""
+"**Die Engine** ([`ditana-installer`](https://github.com/acrion/ditana-"
+"installer)) – ein kleines, generisches Programm, das weiss, *wie* man "
+"Dialoge zeichnet, Datenträger partitioniert, Hardware erkennt und `pacstrap` "
+"ausführt."
+
+#. type: Bullet: '2. '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**The Knowledge Base** ([`ditana-config`](https://github.com/acrion/ditana-"
+"config)) — a structured database written in [KDL v2](https://kdl.dev). It "
+"declares every setting, every hardware quirk, every package dependency, "
+"every lifecycle script, and the logical relationships between them."
+msgstr ""
+"**Die Wissensbasis** ([`ditana-config`](https://github.com/acrion/ditana-"
+"config)) – eine strukturierte Datenbank in [KDL v2](https://kdl.dev). Sie "
+"deklariert jede Einstellung, jede Hardware-Eigenheit, jede "
+"Paketabhängigkeit, jedes Lebenszyklus-Skript und die logischen Beziehungen "
+"zwischen ihnen."
+
+#. type: Bullet: '3. '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**The Package Pipeline** ([`ditana-build`](https://github.com/acrion/ditana-"
+"build)) – what builds the packages the knowledge base names. Ditana's "
+"repository stands upon Arch's, and the recipes in it are rebuilt from "
+"source, reviewed and signed by that pipeline rather than taken as they come."
+msgstr ""
+"**Die Paket-Pipeline** ([`ditana-build`](https://github.com/acrion/ditana-"
+"build)) – das, was die Pakete baut, die die Wissensbasis nennt. Die Ditana-"
+"Paketquelle setzt auf der von Arch auf, und die Rezepte darin werden von "
+"dieser Pipeline aus dem Quellcode neu gebaut, geprüft und signiert, statt so "
+"übernommen zu werden, wie sie kommen."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"When you boot the Ditana ISO, the engine connects to GitHub and downloads "
+"the latest release of the knowledge base (falling back to an offline "
+"snapshot bundled with the ISO if you have no internet connection)."
+msgstr ""
+"Wenn Sie das Ditana-ISO starten, verbindet sich die Engine mit GitHub und "
+"lädt die neueste Version der Wissensbasis herunter (ohne Internetverbindung "
+"greift sie auf einen Offline-Schnappschuss zurück, der im ISO enthalten ist)."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"What the runtime fetch does not cover is worth knowing too. The engine "
+"itself and the converter it reads KDL with are on the medium and change only "
+"with a new one. And the channel carries a mistake as readily as a fix: a "
+"configuration that names a package the repository of an older medium cannot "
+"serve makes that medium unable to install, which is exactly what happened "
+"when Arch withdrew `bubblewrap-suid` in September 2026."
+msgstr ""
+"Wissenswert ist auch, was das Laden zur Laufzeit nicht abdeckt. Die Engine "
+"selbst und der Konverter, mit dem sie KDL liest, befinden sich auf dem "
+"Medium und ändern sich nur mit einem neuen Medium. Und der Kanal "
+"transportiert einen Fehler ebenso bereitwillig wie eine Korrektur: Nennt "
+"eine Konfiguration ein Paket, das die Paketquelle eines älteren Mediums "
+"nicht liefern kann, ist mit diesem Medium keine Installation mehr möglich – "
+"genau das ist geschehen, als Arch im September 2026 `bubblewrap-suid` "
+"zurückgezogen hat."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/configuration-as-data.md
+#, no-wrap
+msgid "Why this matters"
+msgstr "Warum das wichtig ist"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid "Three benefits, in order of immediate impact:"
+msgstr "Drei Vorteile, geordnet nach ihrer unmittelbaren Wirkung:"
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**Zero-respin updates.** If a user reports that a recent Arch update "
+"requires a new workaround, the fix lands in `ditana-config` as a small KDL "
+"edit. The very next person who boots a Ditana ISO downloads the updated "
+"logic automatically. The fix reaches users immediately, without anyone "
+"needing to download a new ISO."
+msgstr ""
+"**Aktualisierungen ohne neues ISO.** Meldet jemand, dass eine kürzlich "
+"erschienene Arch-Aktualisierung einen neuen Workaround erfordert, landet die "
+"Korrektur als kleine KDL-Änderung in `ditana-config`. Schon die nächste "
+"Person, die ein Ditana-ISO startet, lädt die aktualisierte Logik automatisch "
+"herunter. Die Korrektur erreicht die Benutzerinnen und Benutzer sofort, ohne "
+"dass jemand ein neues ISO herunterladen muss."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**Transparent reasoning.** Because settings are declared as structured data "
+"with explicit conditions, the rules are auditable end-to-end. Anyone can "
+"read the KDL files and see exactly *why* a package is installed, *what* "
+"combination of settings triggers a configuration file to be deployed, or "
+"*which* hardware property gates an option. No bash detective work."
+msgstr ""
+"**Nachvollziehbare Begründungen.** Da Einstellungen als strukturierte Daten "
+"mit ausdrücklichen Bedingungen deklariert sind, lassen sich die Regeln "
+"durchgängig überprüfen. Alle können die KDL-Dateien lesen und genau sehen, "
+"*warum* ein Paket installiert wird, *welche* Kombination von Einstellungen "
+"dazu führt, dass eine Konfigurationsdatei eingerichtet wird, oder von "
+"*welcher* Hardware-Eigenschaft eine Option abhängt. Keine Detektivarbeit in "
+"Bash."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**Forkable contributions.** Adding a hardware workaround, a new desktop "
+"tweak, or a new packaging choice typically involves modifying a single KDL "
+"file. No installer engine modifications – and outside hardware detectors, "
+"which are one-line Raku expressions, no Raku at all. The `ditana-config` "
+"README walks contributors through the schema; most pull requests touch one "
+"file."
+msgstr ""
+"**Beiträge über Forks.** Einen Hardware-Workaround, eine neue Desktop-"
+"Anpassung oder eine neue Entscheidung zur Paketierung hinzuzufügen, bedeutet "
+"in der Regel, eine einzige KDL-Datei zu ändern. Keine Änderungen an der "
+"Engine des Installationsprogramms – und ausserhalb der Hardware-Detektoren, "
+"die einzeilige Raku-Ausdrücke sind, überhaupt kein Raku. Die README-Datei "
+"von `ditana-config` führt Mitwirkende durch das Schema; die meisten Pull-"
+"Requests betreffen eine einzige Datei."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/configuration-as-data.md
+#, no-wrap
+msgid "Why KDL, not JSON or YAML"
+msgstr "Warum KDL und nicht JSON oder YAML"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"The knowledge base could have been any structured format. KDL was chosen "
+"because it has the properties Ditana's configuration actually needs:"
+msgstr ""
+"Die Wissensbasis hätte in jedem beliebigen strukturierten Format vorliegen "
+"können. KDL wurde gewählt, weil es die Eigenschaften hat, die Ditanas "
+"Konfiguration tatsächlich braucht:"
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**Native comments.** YAML and JSON both struggle here — YAML has comments "
+"but tooling support is uneven; JSON has none at all. Ditana's settings "
+"include extensive rationale comments explaining *why* a default is what it "
+"is. Those comments are the point."
+msgstr ""
+"**Native Kommentare.** YAML und JSON tun sich hier beide schwer – YAML hat "
+"Kommentare, aber die Unterstützung durch Werkzeuge ist uneinheitlich; JSON "
+"hat überhaupt keine. Ditanas Einstellungen enthalten ausführliche Kommentare "
+"mit Begründungen, die erklären, *warum* ein Standardwert so ist, wie er ist. "
+"Genau um diese Kommentare geht es."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**Raw strings.** Embedded shell snippets, sed expressions, and regex "
+"patterns are first-class. No double-escaping `\"` and `\\` to satisfy the "
+"parser."
+msgstr ""
+"**Rohe Zeichenketten.** Eingebettete Shell-Schnipsel, sed-Ausdrücke und "
+"Regex-Muster sind vollwertig. Kein doppeltes Maskieren von `\"` und `\\`, "
+"nur um den Parser zufriedenzustellen."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**Hierarchical without ceremony.** Children, properties, and arguments "
+"coexist cleanly. The same node can describe a setting *and* contain sub-"
+"nodes for its packages, scripts, and files."
+msgstr ""
+"**Hierarchisch ohne Umstände.** Kindknoten, Eigenschaften und Argumente "
+"bestehen sauber nebeneinander. Derselbe Knoten kann eine Einstellung "
+"beschreiben *und* Unterknoten für ihre Pakete, Skripte und Dateien enthalten."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**Diff-friendly.** Insertion order is preserved. A code review of a one-line "
+"addition shows a one-line diff, not a reordered structure."
+msgstr ""
+"**Diff-freundlich.** Die Einfügereihenfolge bleibt erhalten. Ein Code-Review "
+"einer einzeiligen Ergänzung zeigt einen einzeiligen Diff, keine umsortierte "
+"Struktur."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"The format is parsed by a small Rust converter (`json-kdl-converter`, also "
+"versioned alongside the schema) before the Raku installer consumes it as "
+"JSON. The next section explains how the data is validated end-to-end before "
+"any of that."
+msgstr ""
+"Das Format wird von einem kleinen Konverter in Rust (`json-kdl-converter`, "
+"ebenfalls zusammen mit dem Schema versioniert) eingelesen, bevor das "
+"Installationsprogramm in Raku es als JSON verarbeitet. Der nächste Abschnitt "
+"erklärt, wie die Daten vor alldem durchgängig validiert werden."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/configuration-as-data.md
+#, no-wrap
+msgid "What this looks like in practice"
+msgstr "Wie das in der Praxis aussieht"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid "A complete, working setting in `ditana-config` looks like this:"
+msgstr ""
+"Eine vollständige, funktionierende Einstellung in `ditana-config` sieht so "
+"aus:"
+
+#. type: Fenced code block (kdl)
+#: src/content/docs/under-the-hood/configuration-as-data.md
+#, no-wrap
+msgid ""
+"// XFCE fallback for Wayland-only primary terminals (foot, cosmic-term).\n"
+"// Fires when the user picks a Wayland-native terminal AND also installs\n"
+"// XFCE. Writes to xfce-xdg-terminals.list only; xdg-terminals.list still\n"
+"// points at the primary terminal for Wayland sessions.\n"
+"- name=\"fallback-kitty-for-xfce\" \\\n"
+"  default-value=\"`(install-foot OR install-cosmic-term) AND install-xfce`\" {\n"
+"    arch-packages \"kitty\" \\\n"
+"                  \"imagemagick\" \\\n"
+"                  \"python-pygments\" \\\n"
+"                  \"libcanberra\" \\\n"
+"                  \"xdg-terminal-exec-git\"\n"
+"    files \"/etc/xdg/kitty/kitty.conf\" \\\n"
+"          \"/usr/share/pixmaps/ditana-logo-tiny.png\"\n"
+"    chroot-script \"mkdir -p /etc/xdg\" \\\n"
+"                  \"echo kitty.desktop >/etc/xdg/xfce-xdg-terminals.list\"\n"
+"}\n"
+msgstr ""
+"// XFCE fallback for Wayland-only primary terminals (foot, cosmic-term).\n"
+"// Fires when the user picks a Wayland-native terminal AND also installs\n"
+"// XFCE. Writes to xfce-xdg-terminals.list only; xdg-terminals.list still\n"
+"// points at the primary terminal for Wayland sessions.\n"
+"- name=\"fallback-kitty-for-xfce\" \\\n"
+"  default-value=\"`(install-foot OR install-cosmic-term) AND install-xfce`\" {\n"
+"    arch-packages \"kitty\" \\\n"
+"                  \"imagemagick\" \\\n"
+"                  \"python-pygments\" \\\n"
+"                  \"libcanberra\" \\\n"
+"                  \"xdg-terminal-exec-git\"\n"
+"    files \"/etc/xdg/kitty/kitty.conf\" \\\n"
+"          \"/usr/share/pixmaps/ditana-logo-tiny.png\"\n"
+"    chroot-script \"mkdir -p /etc/xdg\" \\\n"
+"                  \"echo kitty.desktop >/etc/xdg/xfce-xdg-terminals.list\"\n"
+"}\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"That node declares a derived setting with no dialog of its own, a logical "
+"expression over three other settings, the packages to install when it holds, "
+"and the file that makes XFCE use them. The reasoning stands next to the "
+"rule, where someone reviewing it can see why. The full schema documentation "
+"is in the [`ditana-config` README](https://github.com/acrion/ditana-"
+"config#readme)."
+msgstr ""
+"Dieser Knoten deklariert eine abgeleitete Einstellung ohne eigenen Dialog, "
+"einen logischen Ausdruck über drei andere Einstellungen, die Pakete, die "
+"installiert werden, wenn er zutrifft, und die Datei, die XFCE dazu bringt, "
+"sie zu verwenden. Die Begründung steht neben der Regel; wer diese prüft, "
+"sieht dort, warum. Die vollständige Dokumentation des Schemas steht in der "
+"[README-Datei von `ditana-config`](https://github.com/acrion/ditana-"
+"config#readme)."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"The same shape carries things that are not packages at all. A program that "
+"needs an unprivileged user namespace for its sandbox says so beside itself:"
+msgstr ""
+"Dieselbe Form trägt auch Dinge, die gar keine Pakete sind. Ein Programm, das "
+"für seine Sandbox einen unprivilegierten Benutzer-Namensraum (*user "
+"namespace*) braucht, gibt das direkt bei sich selbst an:"
+
+#. type: Fenced code block (kdl)
+#: src/content/docs/under-the-hood/configuration-as-data.md
+#, no-wrap
+msgid ""
+"- name=\"flatpak\" default-value=#true {\n"
+"    arch-packages \"flatpak\"\n"
+"    // Every Flatpak, not only the browsers, runs bwrap to build its outer\n"
+"    // sandbox, and bwrap needs a user namespace. This is the declaration\n"
+"    // that buys it one.\n"
+"    userns-allow \"/usr/bin/bwrap\"\n"
+"  }\n"
+msgstr ""
+"- name=\"flatpak\" default-value=#true {\n"
+"    arch-packages \"flatpak\"\n"
+"    // Every Flatpak, not only the browsers, runs bwrap to build its outer\n"
+"    // sandbox, and bwrap needs a user namespace. This is the declaration\n"
+"    // that buys it one.\n"
+"    userns-allow \"/usr/bin/bwrap\"\n"
+"  }\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"Ditana does not hand unprivileged user namespaces to each program. A minimal "
+"BPF program, [`ditana-userns-guard`](https://github.com/acrion/ditana-userns-"
+"guard), is attached to the kernel's own `userns_create` hook and refuses a "
+"namespace to any executable that a setting has not requested. A hook of that "
+"kind can only refuse and never grant, which is why the sysctl that switches "
+"namespaces off is raised only once the program is loaded – a machine that "
+"cannot load it keeps them off entirely. This is the default state of a "
+"System Hardening option; switch it off and namespaces are open to "
+"everything, as they are on most distributions."
+msgstr ""
+"Ditana gibt unprivilegierte Benutzer-Namensräume nicht jedem Programm frei. "
+"Ein minimales BPF-Programm, [`ditana-userns-guard`](https://github.com/"
+"acrion/ditana-userns-guard), ist an den Hook `userns_create` des Kernels "
+"selbst angehängt und verweigert jeder ausführbaren Datei einen Namensraum, "
+"sofern keine Einstellung ihn für sie angefordert hat. Ein solcher Hook kann "
+"nur verweigern und nie gewähren; deshalb wird die sysctl-Einstellung, die "
+"Namensräume abschaltet, erst angehoben, wenn das Programm geladen ist – ein "
+"Rechner, der es nicht laden kann, lässt sie vollständig abgeschaltet. Das "
+"ist die Voreinstellung einer Option im Abschnitt System Hardening; schalten "
+"Sie sie aus, stehen Namensräume allem offen, wie auf den meisten "
+"Distributionen."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"Ditana refuses user namespaces to everything that has not asked. What makes "
+"that workable is that the request is local: it is written where the package "
+"is chosen, so nothing needs to keep a synchronized central list, and "
+"switching the setting off takes the permission with it. The installer "
+"collects the declarations of the settings that ultimately remain enabled and "
+"generates the allowlist from those."
+msgstr ""
+"Ditana verweigert Benutzer-Namensräume allem, was nicht danach gefragt hat. "
+"Praktikabel wird das dadurch, dass die Anforderung lokal ist: Sie steht "
+"dort, wo das Paket ausgewählt wird, sodass keine synchronisierte zentrale "
+"Liste gepflegt werden muss, und wenn die Einstellung ausgeschaltet wird, "
+"fällt die Berechtigung mit ihr weg. Das Installationsprogramm sammelt die "
+"Deklarationen der Einstellungen, die am Ende aktiviert bleiben, und erzeugt "
+"daraus die Positivliste."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/configuration-as-data.md
+#, no-wrap
+msgid "Validation: catching mistakes before they ship"
+msgstr "Validierung: Fehler abfangen, bevor sie ausgeliefert werden"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"A knowledge base this large needs guardrails. Every commit — both locally "
+"via [pre-commit hooks](https://pre-commit.com) and remotely on GitHub "
+"Actions — runs a layered validation pipeline that catches the mistakes a "
+"human reviewer might miss:"
+msgstr ""
+"Eine so grosse Wissensbasis braucht Leitplanken. Bei jedem Commit läuft – "
+"sowohl lokal über [Pre-Commit-Hooks](https://pre-commit.com) als auch "
+"entfernt auf GitHub Actions – eine mehrstufige Validierungs-Pipeline, die "
+"die Fehler abfängt, die bei einer Prüfung durch einen Menschen übersehen "
+"werden könnten:"
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid "**KDL syntax** (`kdlfmt`) — the file parses at all."
+msgstr "**KDL-Syntax** (`kdlfmt`) – die Datei lässt sich überhaupt parsen."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**Schema validation** ([`ditana-schema.json`](https://github.com/acrion/"
+"ditana-config/blob/main/ditana-schema.json)) — every field has the right "
+"type, no unknown properties, no missing required fields. Catches typos in "
+"field names like `arc-packages` instead of `arch-packages`."
+msgstr ""
+"**Schema-Validierung** ([`ditana-schema.json`](https://github.com/acrion/"
+"ditana-config/blob/main/ditana-schema.json)) – jedes Feld hat den richtigen "
+"Typ, keine unbekannten Eigenschaften, keine fehlenden Pflichtfelder. Fängt "
+"Tippfehler in Feldnamen ab, etwa `arc-packages` statt `arch-packages`."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**File reference integrity** — every file referenced from a setting actually "
+"exists in `folders/`; conversely, every file in `folders/` is referenced by "
+"at least one setting. Orphans get flagged. Directory references (which would "
+"silently do nothing because the installer uses `cp` without `-R`) are "
+"rejected."
+msgstr ""
+"**Integrität der Dateiverweise** – jede Datei, auf die eine Einstellung "
+"verweist, existiert tatsächlich in `folders/`; umgekehrt wird auf jede Datei "
+"in `folders/` von mindestens einer Einstellung verwiesen. Verwaiste Dateien "
+"werden markiert. Verweise auf Verzeichnisse (die stillschweigend nichts "
+"bewirken würden, weil das Installationsprogramm `cp` ohne `-R` verwendet) "
+"werden abgelehnt."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**Lifecycle correctness** — `chroot-script` lines that touch `/etc/skel/` "
+"are rejected, because the user is created *after* `chroot-script` runs — the "
+"correct field is `early-chroot-script`. A subtle bug that would otherwise "
+"produce a system where the new user's home doesn't have the expected files."
+msgstr ""
+"**Korrektheit des Lebenszyklus** – Zeilen in `chroot-script`, die `/etc/skel/"
+"` betreffen, werden abgelehnt, weil das Benutzerkonto erst *nach* der "
+"Ausführung von `chroot-script` angelegt wird – das richtige Feld ist `early-"
+"chroot-script`. Ein subtiler Fehler, der sonst ein System ergäbe, in dem das "
+"Benutzerverzeichnis des neuen Kontos nicht die erwarteten Dateien enthält."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**Shell script validity** – every shell snippet in any of the script-list "
+"fields gets `bash -n` for syntax and [`shellcheck`](https://"
+"www.shellcheck.net) for quality. A missing quote or a `[ \"$x\" = $y ]` "
+"style bug is detected at commit time, not at first install."
+msgstr ""
+"**Gültigkeit der Shell-Skripte** – jeder Shell-Schnipsel in einem der Felder "
+"mit Skriptlisten wird mit `bash -n` auf Syntax und mit [`shellcheck`]"
+"(https://www.shellcheck.net) auf Qualität geprüft. Ein fehlendes "
+"Anführungszeichen oder ein Fehler nach dem Muster `[ \"$x\" = $y ]` wird "
+"beim Commit erkannt, nicht erst bei der ersten Installation."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**Declared permissions and kernel settings** – a `userns-allow` entry must "
+"be an absolute path, and a `sysctl` entry must name something that is a "
+"sysctl key and give it a value the kernel will take. Both fields were added "
+"in 0.9.4 and are declared in [`ditana-schema.json`](https://github.com/"
+"acrion/ditana-config/blob/main/ditana-schema.json)."
+msgstr ""
+"**Deklarierte Berechtigungen und Kernel-Einstellungen** – ein Eintrag "
+"`userns-allow` muss ein absoluter Pfad sein, und ein Eintrag `sysctl` muss "
+"etwas nennen, das ein sysctl-Schlüssel ist, und ihm einen Wert geben, den "
+"der Kernel annimmt. Beide Felder kamen mit 0.9.4 hinzu und sind in [`ditana-"
+"schema.json`](https://github.com/acrion/ditana-config/blob/main/ditana-"
+"schema.json) deklariert."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**Contradicting kernel settings** – two settings that write the same sysctl "
+"key with different values stop the installation, and the message names both "
+"of them. Assembled as shell text, as it was before 0.9.4, the last line "
+"written simply won and nobody was told."
+msgstr ""
+"**Widersprüchliche Kernel-Einstellungen** – zwei Einstellungen, die "
+"denselben sysctl-Schlüssel mit unterschiedlichen Werten schreiben, halten "
+"die Installation an, und die Meldung nennt beide. Als das noch als Shell-"
+"Text zusammengesetzt wurde, wie vor 0.9.4, gewann einfach die zuletzt "
+"geschriebene Zeile, und niemand erfuhr davon."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"**Logical expression integrity** — backticks must balance; every setting "
+"name referenced in a `default-value` or `available` expression must actually "
+"exist somewhere in the knowledge base. A typo like `install-cosmik` instead "
+"of `install-cosmic` gets caught at commit time instead of producing a silent "
+"runtime crash."
+msgstr ""
+"**Integrität der logischen Ausdrücke** – Backticks müssen paarweise stehen; "
+"jeder Name einer Einstellung, auf den in einem Ausdruck in `default-value` "
+"oder `available` verwiesen wird, muss irgendwo in der Wissensbasis "
+"tatsächlich existieren. Ein Tippfehler wie `install-cosmik` statt `install-"
+"cosmic` wird beim Commit abgefangen, statt zur Laufzeit einen stillen "
+"Absturz zu verursachen."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"The full check runs in seconds locally with `pre-commit run --all-files`, "
+"and again on every push to GitHub. Local green means CI green; broken "
+"commits never make it to a release."
+msgstr ""
+"Die vollständige Prüfung läuft lokal mit `pre-commit run --all-files` in "
+"Sekunden und bei jedem Push zu GitHub erneut. Lokal grün heisst CI grün; "
+"fehlerhafte Commits gelangen nie in eine veröffentlichte Version."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/configuration-as-data.md
+#, no-wrap
+msgid "Where to go next"
+msgstr "Wie es weitergeht"
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"Read [how settings depend on each other](/under-the-hood/settings-logic/) — "
+"`available` and `default-value` are where the logic of the knowledge base "
+"lives."
+msgstr ""
+"Lesen Sie, [wie Einstellungen voneinander abhängen](/under-the-hood/settings-"
+"logic/) – in `available` und `default-value` steckt die Logik der "
+"Wissensbasis."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"[Browse the `ditana-config` repository](https://github.com/acrion/ditana-"
+"config) to see how the rules are organized by dialog and topic."
+msgstr ""
+"[Sehen Sie sich das Repository `ditana-config` an](https://github.com/acrion/"
+"ditana-config), um zu erfahren, wie die Regeln nach Dialog und Thema "
+"geordnet sind."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"Read the [`ditana-config` README](https://github.com/acrion/ditana-"
+"config#readme) for the data model: how settings, scripts, dialogs and files "
+"relate."
+msgstr ""
+"Lesen Sie die [README-Datei von `ditana-config`](https://github.com/acrion/"
+"ditana-config#readme) zum Datenmodell: wie Einstellungen, Skripte, Dialoge "
+"und Dateien zusammenhängen."
+
+#. type: Bullet: '- '
+#: src/content/docs/under-the-hood/configuration-as-data.md
+msgid ""
+"Look at the [`ditana-installer` source](https://github.com/acrion/ditana-"
+"installer) if you want to see the engine that reads and acts on the "
+"configuration."
+msgstr ""
+"Sehen Sie sich den [Quellcode von `ditana-installer`](https://github.com/"
+"acrion/ditana-installer) an, wenn Sie die Engine sehen möchten, die die "
+"Konfiguration liest und umsetzt."

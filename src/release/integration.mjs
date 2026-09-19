@@ -12,7 +12,7 @@ const RESOLVED_ID = `\0${VIRTUAL_ID}`;
  * the site that cannot import the config: Markdown pages via the Satteri
  * plugin, MDX pages and endpoints through `virtual:ditana/release`.
  */
-export function releaseIntegration({ docsDir, releases }) {
+export function releaseIntegration({ docsDir, releases, strings }) {
     const current = currentReleaseView(releases);
     const docsPath = docsDir instanceof URL ? fileURLToPath(docsDir) : docsDir;
     return {
@@ -25,7 +25,7 @@ export function releaseIntegration({ docsDir, releases }) {
                 if (processor?.name !== 'satteri') {
                     throw new Error(`ditana-release expects the Satteri Markdown processor, found ${processor?.name}`);
                 }
-                processor.options.mdastPlugins.push(releaseMarkdownPlugin(releases));
+                processor.options.mdastPlugins.push(releaseMarkdownPlugin(releases, { docsDir, strings }));
 
                 updateConfig({
                     vite: {

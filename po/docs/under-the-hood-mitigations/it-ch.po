@@ -1,0 +1,661 @@
+# Language it-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 07:06+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Per-CPU detection of speculative execution vulnerabilities, kernel parameters Ditana applies by default, and how to verify or override them after installation."
+msgstr "Rilevamento, CPU per CPU, delle vulnerabilità legate all’esecuzione speculativa, parametri del kernel che Ditana applica per impostazione predefinita e come verificarli o modificarli dopo l’installazione."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "CPU vulnerability mitigations"
+msgstr "Mitigazioni delle vulnerabilità della CPU"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Ditana enables CPU vulnerability mitigations in **High Security mode** by default. The installer detects which mitigations your specific CPU needs by reading `/sys/devices/system/cpu/vulnerabilities/`, then offers each as an individually-toggleable checkbox in the **Expert Settings → CPU Vulnerability Mitigation Options** dialog. This page documents every option in detail."
+msgstr "Per impostazione predefinita Ditana attiva le mitigazioni delle vulnerabilità della CPU in **modalità ad alta sicurezza**. Il programma di installazione rileva di quali mitigazioni ha bisogno la vostra specifica CPU leggendo `/sys/devices/system/cpu/vulnerabilities/`, quindi le propone ciascuna come casella di controllo attivabile singolarmente nella finestra di dialogo **Expert Settings → CPU Vulnerability Mitigation Options**. Questa pagina descrive in dettaglio ogni opzione."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Default kernel settings vs Ditana's mitigations"
+msgstr "Impostazioni predefinite del kernel e mitigazioni di Ditana a confronto"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "The upstream Linux defaults balance security against performance and leave certain vulnerabilities unmitigated unless explicitly opted in. Ditana opts in by default — for most workloads the cost is negligible, while the security benefit is substantial. You can revert any individual mitigation in the installer if you have a workload that demonstrably benefits."
+msgstr "Le impostazioni predefinite upstream di Linux bilanciano sicurezza e prestazioni e lasciano alcune vulnerabilità senza mitigazione, a meno che le relative mitigazioni non vengano attivate esplicitamente. Ditana le attiva per impostazione predefinita – per la maggior parte dei carichi di lavoro il costo è trascurabile, mentre il beneficio per la sicurezza è notevole. Se avete un carico di lavoro che ne trae un vantaggio dimostrabile, potete annullare singolarmente qualsiasi mitigazione nel programma di installazione."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "The mitigation logic is hardware-specific. Only the vulnerabilities your CPU actually exhibits are configured; everything else is left at the kernel default."
+msgstr "La logica delle mitigazioni è specifica per l’hardware. Vengono configurate solo le vulnerabilità che la vostra CPU presenta effettivamente; tutto il resto resta al valore predefinito del kernel."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "After installation"
+msgstr "Dopo l’installazione"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Several mitigations involve disabling Simultaneous Multi-Threading (SMT, also known as Hyper-Threading) as a fallback. Ditana's [custom terminal header](https://github.com/acrion/ditana-print-system-infos) shows which mitigations are active and whether SMT is on or off."
+msgstr "Diverse mitigazioni prevedono, come ripiego, la disattivazione del Simultaneous Multi-Threading (SMT, noto anche come Hyper-Threading). L’[intestazione personalizzata del terminale](https://github.com/acrion/ditana-print-system-infos) di Ditana mostra quali mitigazioni sono attive e se SMT è attivato o disattivato."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "You can also verify with:"
+msgstr "Potete verificarlo anche con:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "lscpu\n"
+msgstr "lscpu\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "To compare performance with and without a specific mitigation, edit the kernel command line for a single boot and remove the parameter associated with the mitigation you want to test. On a ZFS installation, which is what the Standard profile produces, that is accomplished via the ZFSBootMenu boot-environment editor; on a system that boots through GRUB, press `e` at the menu. The parameters are listed below under \"Applied parameter\" for each entry. Reboot and run your real workload – synthetic benchmarks rarely capture real impact."
+msgstr "Per confrontare le prestazioni con e senza una determinata mitigazione, modificate la riga di comando del kernel per un solo avvio e rimuovete il parametro associato alla mitigazione che volete testare. Su un’installazione ZFS, che è ciò che produce il profilo Standard, lo si fa con l’editor degli ambienti di avvio di ZFSBootMenu; su un sistema che si avvia tramite GRUB, premete `e` nel menu. Qui sotto, per ogni voce, i parametri sono elencati alla riga «Parametro applicato». Riavviate ed eseguite il vostro carico di lavoro reale – i benchmark sintetici colgono raramente l’impatto reale."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "To make a change permanent on a ZFS installation, set the command line within the boot environment:"
+msgstr "Per rendere permanente una modifica su un’installazione ZFS, impostate la riga di comando nell’ambiente di avvio:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"sudo zfs set org.zfsbootmenu:commandline=\"rw <options>\" ditana-root/ROOT\n"
+"zfs get org.zfsbootmenu:commandline ditana-root/ROOT\n"
+msgstr ""
+"sudo zfs set org.zfsbootmenu:commandline=\"rw <options>\" ditana-root/ROOT\n"
+"zfs get org.zfsbootmenu:commandline ditana-root/ROOT\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "To make it permanent on a system that launches via GRUB, edit `/etc/default/grub`, find the `GRUB_CMDLINE_LINUX_DEFAULT` line (first save a backup), remove the parameter, then run:"
+msgstr "Per renderla permanente su un sistema che si avvia tramite GRUB, modificate `/etc/default/grub`, individuate la riga `GRUB_CMDLINE_LINUX_DEFAULT` (prima salvate una copia di backup), rimuovete il parametro, quindi eseguite:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "sudo grub-mkconfig -o /boot/grub/grub.cfg\n"
+msgstr "sudo grub-mkconfig -o /boot/grub/grub.cfg\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "If a change prevents booting, edit the kernel command line in the GRUB menu to recover, then repeat the edit and `grub-mkconfig`."
+msgstr "Se una modifica impedisce l’avvio, modificate la riga di comando del kernel nel menu di GRUB per ripristinare il sistema, quindi ripetete la modifica ed eseguite di nuovo `grub-mkconfig`."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Mitigations Ditana enables by default"
+msgstr "Mitigazioni che Ditana attiva per impostazione predefinita"
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Spectre variant 2 — Branch Target Injection"
+msgstr "Spectre variante 2 – Branch Target Injection"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Speculative execution exploit allowing attackers to read sensitive data via mistrained indirect branch predictors. Ditana applies the full mitigation (Indirect Branch Prediction Barrier always-on rather than conditional)."
+msgstr "Exploit basato sull’esecuzione speculativa che consente agli aggressori di leggere dati sensibili tramite predittori delle diramazioni indirette addestrati in modo errato. Ditana applica la mitigazione completa (Indirect Branch Prediction Barrier sempre attiva anziché condizionale)."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"> All Spectre variant 2 mitigations can be forced on at boot time for all programs. This will add overhead as indirect branch speculations for all programs will be restricted.\n"
+">\n"
+"> — [kernel.org: Spectre](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/spectre.html)\n"
+msgstr ""
+"> Tutte le mitigazioni di Spectre variante 2 possono essere attivate forzatamente all’avvio per tutti i programmi. Ciò comporterà un sovraccarico, poiché le speculazioni sulle diramazioni indirette di tutti i programmi saranno limitate.\n"
+">\n"
+"> – [kernel.org: Spectre](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/spectre.html)\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"| | |\n"
+"|---|---|\n"
+"| `lscpu` identifier | `Spectre v2` |\n"
+"| Setting name | *Enforce Spectre Variant 2 Mitigation* |\n"
+"| Applied parameter | `spectre_v2=on` |\n"
+msgstr ""
+"| | |\n"
+"|---|---|\n"
+"| Identificatore `lscpu` | `Spectre v2` |\n"
+"| Nome dell’impostazione | *Enforce Spectre Variant 2 Mitigation* |\n"
+"| Parametro applicato | `spectre_v2=on` |\n"
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "L1 Terminal Fault (L1TF)"
+msgstr "L1 Terminal Fault (L1TF)"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Affects Intel CPUs, allowing unauthorized access to data in the L1 cache. Ditana enforces full mitigation with aggressive cache flushing."
+msgstr "Interessa le CPU Intel e consente l’accesso non autorizzato ai dati nella cache L1. Ditana impone la mitigazione completa con uno svuotamento aggressivo della cache."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"> The kernel does not by default enforce the disabling of SMT, which leaves SMT systems vulnerable when running untrusted guests with EPT enabled.\n"
+">\n"
+"> — [kernel.org: L1TF](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/l1tf.html)\n"
+msgstr ""
+"> Per impostazione predefinita il kernel non impone la disattivazione di SMT, il che lascia vulnerabili i sistemi SMT quando eseguono sistemi guest non fidati con EPT attivato.\n"
+">\n"
+"> – [kernel.org: L1TF](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/l1tf.html)\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"| | |\n"
+"|---|---|\n"
+"| `lscpu` identifier | `L1tf` |\n"
+"| Setting name | *Enforce L1 Terminal Fault Mitigation* |\n"
+"| Applied parameter | `l1tf=full,force` |\n"
+msgstr ""
+"| | |\n"
+"|---|---|\n"
+"| Identificatore `lscpu` | `L1tf` |\n"
+"| Nome dell’impostazione | *Enforce L1 Terminal Fault Mitigation* |\n"
+"| Parametro applicato | `l1tf=full,force` |\n"
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Microarchitectural Data Sampling (MDS)"
+msgstr "Microarchitectural Data Sampling (MDS)"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Allows attackers to sample data from CPU buffers. Full mitigation may disable SMT if necessary."
+msgstr "Consente agli aggressori di campionare dati dai buffer della CPU. Se necessario, la mitigazione completa può disattivare SMT."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"> The kernel does not by default enforce the disabling of SMT, which leaves SMT systems vulnerable when running untrusted code.\n"
+">\n"
+"> — [kernel.org: MDS](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/mds.html)\n"
+msgstr ""
+"> Per impostazione predefinita il kernel non impone la disattivazione di SMT, il che lascia vulnerabili i sistemi SMT quando eseguono codice non fidato.\n"
+">\n"
+"> – [kernel.org: MDS](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/mds.html)\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"| | |\n"
+"|---|---|\n"
+"| `lscpu` identifier | `Mds` |\n"
+"| Setting name | *Enforce MDS Mitigation* |\n"
+"| Applied parameter | `mds=full,nosmt` |\n"
+msgstr ""
+"| | |\n"
+"|---|---|\n"
+"| Identificatore `lscpu` | `Mds` |\n"
+"| Nome dell’impostazione | *Enforce MDS Mitigation* |\n"
+"| Parametro applicato | `mds=full,nosmt` |\n"
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "TSX Asynchronous Abort (TAA)"
+msgstr "TSX Asynchronous Abort (TAA)"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Affects CPUs with Transactional Synchronization Extensions. Full mitigation may disable SMT if required."
+msgstr "Interessa le CPU con Transactional Synchronization Extensions. Se necessario, la mitigazione completa può disattivare SMT."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"> TSX might be disabled if microcode provides a TSX control MSR. If so, system is not vulnerable.\n"
+">\n"
+"> — [kernel.org: TAA](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/tsx_async_abort.html)\n"
+msgstr ""
+"> TSX potrebbe essere disattivato se il microcodice fornisce un MSR di controllo di TSX. In tal caso il sistema non è vulnerabile.\n"
+">\n"
+"> – [kernel.org: TAA](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/tsx_async_abort.html)\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"| | |\n"
+"|---|---|\n"
+"| `lscpu` identifier | `Tsx async abort` |\n"
+"| Setting name | *Enforce TSX Async Abort Mitigation* |\n"
+"| Applied parameter | `tsx_async_abort=full,nosmt` |\n"
+msgstr ""
+"| | |\n"
+"|---|---|\n"
+"| Identificatore `lscpu` | `Tsx async abort` |\n"
+"| Nome dell’impostazione | *Enforce TSX Async Abort Mitigation* |\n"
+"| Parametro applicato | `tsx_async_abort=full,nosmt` |\n"
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Meltdown (L1D flushing)"
+msgstr "Meltdown (svuotamento della cache L1D)"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Speculative execution exploit allowing kernel memory reads from userspace. Ditana forces L1 data cache flushing."
+msgstr "Exploit basato sull’esecuzione speculativa che consente di leggere la memoria del kernel dallo spazio utente. Ditana forza lo svuotamento della cache dati L1."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"> The kernel command line allows to control the L1D flush mitigations at boot time with the option `l1d_flush=`. By default the mechanism is disabled.\n"
+">\n"
+"> — [kernel.org: L1D flush](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/l1d_flush.html)\n"
+msgstr ""
+"> La riga di comando del kernel consente di controllare all’avvio le mitigazioni basate sullo svuotamento della L1D con l’opzione `l1d_flush=`. Per impostazione predefinita il meccanismo è disattivato.\n"
+">\n"
+"> – [kernel.org: L1D flush](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/l1d_flush.html)\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"| | |\n"
+"|---|---|\n"
+"| `lscpu` identifier | `Meltdown` |\n"
+"| Setting name | *Enforce Meltdown Mitigation* |\n"
+"| Applied parameter | `l1d_flush=on` |\n"
+msgstr ""
+"| | |\n"
+"|---|---|\n"
+"| Identificatore `lscpu` | `Meltdown` |\n"
+"| Nome dell’impostazione | *Enforce Meltdown Mitigation* |\n"
+"| Parametro applicato | `l1d_flush=on` |\n"
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "MMIO Stale Data"
+msgstr "MMIO Stale Data"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Data leakage from memory-mapped I/O. Full mitigation may disable SMT."
+msgstr "Fuga di dati dall’I/O mappato in memoria. La mitigazione completa può disattivare SMT."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"> `full,nosmt` — Same as `full`, with SMT disabled on vulnerable CPUs. This is the complete mitigation.\n"
+">\n"
+"> — [kernel.org: MMIO stale data](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/processor_mmio_stale_data.html)\n"
+msgstr ""
+"> `full,nosmt` – Come `full`, con SMT disattivato sulle CPU vulnerabili. È la mitigazione completa.\n"
+">\n"
+"> – [kernel.org: MMIO stale data](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/processor_mmio_stale_data.html)\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"| | |\n"
+"|---|---|\n"
+"| `lscpu` identifier | `Mmio stale data` |\n"
+"| Setting name | *Enforce MMIO Stale Data Mitigation* |\n"
+"| Applied parameter | `mmio_stale_data=full,nosmt` |\n"
+msgstr ""
+"| | |\n"
+"|---|---|\n"
+"| Identificatore `lscpu` | `Mmio stale data` |\n"
+"| Nome dell’impostazione | *Enforce MMIO Stale Data Mitigation* |\n"
+"| Parametro applicato | `mmio_stale_data=full,nosmt` |\n"
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Retbleed — Cross-Thread Return Address Predictions"
+msgstr "Retbleed – Cross-Thread Return Address Predictions"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Speculative execution attack leaking return addresses. Auto-selected mitigation may disable SMT."
+msgstr "Attacco basato sull’esecuzione speculativa che lascia trapelare gli indirizzi di ritorno. La mitigazione selezionata automaticamente può disattivare SMT."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"> `auto,nosmt` — automatically select a mitigation, disabling SMT if necessary for the full mitigation.\n"
+">\n"
+"> — [kernel.org: kernel parameters](https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html)\n"
+msgstr ""
+"> `auto,nosmt` – seleziona automaticamente una mitigazione, disattivando SMT se necessario per la mitigazione completa.\n"
+">\n"
+"> – [kernel.org: kernel parameters](https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html)\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"| | |\n"
+"|---|---|\n"
+"| `lscpu` identifier | `Retbleed` |\n"
+"| Setting name | *Enforce Retbleed Mitigation* |\n"
+"| Applied parameter | `retbleed=auto,nosmt` |\n"
+msgstr ""
+"| | |\n"
+"|---|---|\n"
+"| Identificatore `lscpu` | `Retbleed` |\n"
+"| Nome dell’impostazione | *Enforce Retbleed Mitigation* |\n"
+"| Parametro applicato | `retbleed=auto,nosmt` |\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "See also [kernel.org: Cross-Thread Return Address Predictions](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/cross-thread-rsb.html)."
+msgstr "Consultate anche [kernel.org: Cross-Thread Return Address Predictions](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/cross-thread-rsb.html)."
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Speculative Return Stack Overflow (SRSO)"
+msgstr "Speculative Return Stack Overflow (SRSO)"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Speculative attacks via the return stack buffer. Combines IBPB barriers with strict spectre_v2-user mode."
+msgstr "Attacchi speculativi tramite il return stack buffer. Combina le barriere IBPB con la modalità rigorosa di spectre_v2-user."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"> `Mitigation: IBPB`: Similar protection as \"safe RET\" but employs an IBPB barrier on privilege domain crossings (User→Kernel, Guest→Host).\n"
+">\n"
+"> — [kernel.org: SRSO](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/srso.html)\n"
+msgstr ""
+"> `Mitigation: IBPB`: protezione simile a «safe RET», ma impiega una barriera IBPB nei passaggi tra domini di privilegio (utente→kernel, guest→host).\n"
+">\n"
+"> – [kernel.org: SRSO](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/srso.html)\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"| | |\n"
+"|---|---|\n"
+"| `lscpu` identifier | `Spec rstack overflow` |\n"
+"| Setting name | *Enforce SRSO Mitigation* |\n"
+"| Applied parameter | `spec_rstack_overflow=ibpb spectre_v2_user=on` |\n"
+msgstr ""
+"| | |\n"
+"|---|---|\n"
+"| Identificatore `lscpu` | `Spec rstack overflow` |\n"
+"| Nome dell’impostazione | *Enforce SRSO Mitigation* |\n"
+"| Parametro applicato | `spec_rstack_overflow=ibpb spectre_v2_user=on` |\n"
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Gather Data Sampling (GDS)"
+msgstr "Gather Data Sampling (GDS)"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Affects AVX instructions. Forces microcode mitigation, or disables AVX where microcode is unavailable."
+msgstr "Riguarda le istruzioni AVX. Forza la mitigazione tramite microcodice oppure disattiva AVX dove il microcodice non è disponibile."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"> Specifying `gather_data_sampling=force` will use the microcode mitigation when available or disable AVX on affected systems where the microcode hasn't been updated to include the mitigation.\n"
+">\n"
+"> — [kernel.org: Gather Data Sampling](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/gather_data_sampling.html)\n"
+msgstr ""
+"> Specificando `gather_data_sampling=force` si userà la mitigazione tramite microcodice, se disponibile, oppure si disattiverà AVX sui sistemi interessati il cui microcodice non è stato aggiornato per includere la mitigazione.\n"
+">\n"
+"> – [kernel.org: Gather Data Sampling](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/gather_data_sampling.html)\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"| | |\n"
+"|---|---|\n"
+"| `lscpu` identifier | `Gather data sampling` |\n"
+"| Setting name | *Enforce Gather Data Sampling Mitigation* |\n"
+"| Applied parameter | `gather_data_sampling=force` |\n"
+msgstr ""
+"| | |\n"
+"|---|---|\n"
+"| Identificatore `lscpu` | `Gather data sampling` |\n"
+"| Nome dell’impostazione | *Enforce Gather Data Sampling Mitigation* |\n"
+"| Parametro applicato | `gather_data_sampling=force` |\n"
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Register File Data Sampling (RFDS)"
+msgstr "Register File Data Sampling (RFDS)"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Allows sampling of data from CPU registers."
+msgstr "Consente di campionare dati dai registri della CPU."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"> This parameter overrides the compile time default set by `CONFIG_MITIGATION_RFDS`.\n"
+">\n"
+"> — [kernel.org: kernel parameters](https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html)\n"
+msgstr ""
+"> Questo parametro sostituisce il valore predefinito impostato in fase di compilazione da `CONFIG_MITIGATION_RFDS`.\n"
+">\n"
+"> – [kernel.org: kernel parameters](https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html)\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"| | |\n"
+"|---|---|\n"
+"| `lscpu` identifier | `Reg file data sampling` |\n"
+"| Setting name | *Enforce RFDS Mitigation* |\n"
+"| Applied parameter | `reg_file_data_sampling=on` |\n"
+msgstr ""
+"| | |\n"
+"|---|---|\n"
+"| Identificatore `lscpu` | `Reg file data sampling` |\n"
+"| Nome dell’impostazione | *Enforce RFDS Mitigation* |\n"
+"| Parametro applicato | `reg_file_data_sampling=on` |\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "See also [kernel.org: RFDS](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/reg-file-data-sampling.html)."
+msgstr "Consultate anche [kernel.org: RFDS](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/reg-file-data-sampling.html)."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Vulnerabilities not exposed in the installer"
+msgstr "Vulnerabilità non proposte nel programma di installazione"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "The kernel performs maximum mitigation by default for these — there is nothing for Ditana to add."
+msgstr "Per queste vulnerabilità il kernel applica per impostazione predefinita la mitigazione massima – Ditana non ha nulla da aggiungere."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Five more are reported by the kernel and named nowhere above, because Ditana adds nothing to them either: Ghostwrite, Indirect Target Selection, old microcode, TSA and VMSCAPE. The kernel decides what each of them needs from the processor it finds and leaves the result where `lscpu` and `/sys/devices/system/cpu/vulnerabilities/` show it."
+msgstr "Il kernel ne segnala altre cinque, che non sono nominate da nessuna parte qui sopra perché anche a queste Ditana non aggiunge nulla: Ghostwrite, Indirect Target Selection, old microcode, TSA e VMSCAPE. Il kernel decide, in base al processore che trova, di che cosa ha bisogno ciascuna di esse e lascia il risultato dove lo mostrano `lscpu` e `/sys/devices/system/cpu/vulnerabilities/`."
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Spectre variant 1 — Bounds Check Bypass"
+msgstr "Spectre variante 1 – Bounds Check Bypass"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"> There is no guarantee that all possible attack vectors for Spectre variant 1 are covered.\n"
+">\n"
+"> — [kernel.org: Spectre](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/spectre.html)\n"
+msgstr ""
+"> Non esiste alcuna garanzia che tutti i possibili vettori di attacco di Spectre variante 1 siano coperti.\n"
+">\n"
+"> – [kernel.org: Spectre](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/spectre.html)\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "`lscpu` identifier: `Spectre v1`"
+msgstr "Identificatore `lscpu`: `Spectre v1`"
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "iTLB multihit"
+msgstr "iTLB multihit"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "`lscpu` identifier: `Itlb multihit`. See [kernel.org: iTLB multihit](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/multihit.html)."
+msgstr "Identificatore `lscpu`: `Itlb multihit`. Consultate [kernel.org: iTLB multihit](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/multihit.html)."
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "SRBDS — Special Register Buffer Data Sampling"
+msgstr "SRBDS – Special Register Buffer Data Sampling"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "`lscpu` identifier: `Srbds`. See [kernel.org: SRBDS](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/special-register-buffer-data-sampling.html)."
+msgstr "Identificatore `lscpu`: `Srbds`. Consultate [kernel.org: SRBDS](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/special-register-buffer-data-sampling.html)."
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Speculative Store Bypass (SSB)"
+msgstr "Speculative Store Bypass (SSB)"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid ""
+"> The kernel provides mitigation for such vulnerabilities in various forms.\n"
+">\n"
+"> — [kernel.org: spec_ctrl](https://www.kernel.org/doc/html/latest/userspace-api/spec_ctrl.html)\n"
+msgstr ""
+"> Il kernel fornisce mitigazioni per tali vulnerabilità in varie forme.\n"
+">\n"
+"> – [kernel.org: spec_ctrl](https://www.kernel.org/doc/html/latest/userspace-api/spec_ctrl.html)\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "`lscpu` identifier: `Spec store bypass`."
+msgstr "Identificatore `lscpu`: `Spec store bypass`."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Mitigation reduction — at your own risk"
+msgstr "Riduzione delle mitigazioni – a proprio rischio"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "The installer also exposes two options that *reduce* mitigations. These significantly increase your exposure to known CPU vulnerabilities. Use only with a clear, justified reason."
+msgstr "Il programma di installazione propone anche due opzioni che *riducono* le mitigazioni. Aumentano notevolmente la vostra esposizione alle vulnerabilità note della CPU. Usatele solo per un motivo chiaro e giustificato."
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Disable Intel Indirect Branch Tracking — `ibt=off`"
+msgstr "Disattivare l’Indirect Branch Tracking di Intel – `ibt=off`"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Turns off the kernel's Indirect Branch Tracking. IBT is the forward-edge half of Control-flow Enforcement Technology – the hardware checks that every indirect jump or call lands on an `endbr` instruction, which is what makes jump-oriented and call-oriented programming hard. It is control-flow integrity, not a speculative-execution mitigation: Branch Target Injection is Spectre v2, elaborated upon earlier under `spectre_v2=on`. This kernel parameter is **undocumented** in the official kernel parameters reference, even though it is commonly enabled by default on certain distributions without any explicit communication."
+msgstr "Disattiva l’Indirect Branch Tracking del kernel. IBT è la metà «forward-edge» della Control-flow Enforcement Technology – l’hardware verifica che ogni salto indiretto o chiamata indiretta arrivi su un’istruzione `endbr`, ed è questo che rende difficile la programmazione orientata ai salti e alle chiamate. Si tratta di integrità del flusso di controllo, non di una mitigazione dell’esecuzione speculativa: la Branch Target Injection è Spectre v2, trattata più sopra alla voce `spectre_v2=on`. Questo parametro del kernel **non è documentato** nel riferimento ufficiale dei parametri del kernel, anche se su alcune distribuzioni viene comunemente attivato per impostazione predefinita senza alcuna comunicazione esplicita."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "The kernel documents the other half of CET, the user-space shadow stack, at [shstk](https://docs.kernel.org/next/x86/shstk.html); IBT itself has no page of its own there."
+msgstr "Il kernel documenta l’altra metà di CET, lo shadow stack in spazio utente, alla pagina [shstk](https://docs.kernel.org/next/x86/shstk.html); IBT stesso, invece, non ha una pagina propria in quella documentazione."
+
+#. type: Title ###
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Disable all mitigations — `mitigations=off`"
+msgstr "Disattivare tutte le mitigazioni – `mitigations=off`"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "This is **stronger than unchecking every individual mitigation** in the dialog. With `mitigations=off`, the kernel skips *every* mitigation it knows about — including the ones Ditana doesn't expose because they're on by default. The performance ceiling rises; the security floor drops, hard."
+msgstr "Questa opzione è **più drastica che deselezionare ogni singola mitigazione** nella finestra di dialogo. Con `mitigations=off` il kernel salta *tutte* le mitigazioni che conosce – comprese quelle che Ditana non propone perché sono attive per impostazione predefinita. Il tetto delle prestazioni si alza; la soglia minima di sicurezza si abbassa, e di molto."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "Only useful for benchmarks, air-gapped systems with full physical control, or environments where you have categorically other defences."
+msgstr "Utile solo per benchmark, sistemi isolati dalla rete con pieno controllo fisico o ambienti in cui disponete di difese di tutt’altro genere."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "See [kernel.org: kernel parameters](https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html)."
+msgstr "Consultate [kernel.org: kernel parameters](https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html)."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/mitigations.md
+#, no-wrap
+msgid "Disclaimer"
+msgstr "Avvertenza"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "The guidance here is based on the [official CPU vulnerability documentation](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/index.html) and the [kernel command-line parameter reference](https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html). Different kernel branches occasionally diverge from these defaults in subtle ways; our testing covers the Ditana-supported kernels, but unusual hardware combinations can produce edge cases."
+msgstr "Le indicazioni di questa pagina si basano sulla [documentazione ufficiale sulle vulnerabilità della CPU](https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/index.html) e sul [riferimento dei parametri della riga di comando del kernel](https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html). Rami diversi del kernel si discostano talvolta da questi valori predefiniti in modo sottile; i nostri test coprono i kernel supportati da Ditana, ma combinazioni hardware insolite possono dar luogo a casi particolari."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/mitigations.md
+msgid "If you have a workload that benefits from a different default, or if you find a CPU model where Ditana's detection is incomplete or incorrect: please [open a GitHub issue](https://github.com/acrion/ditana-config/issues) or email support@ditana.org. The detection logic is data, not code — so improvements are usually a few KDL lines."
+msgstr "Se avete un carico di lavoro che trae vantaggio da un valore predefinito diverso, o se trovate un modello di CPU per il quale il rilevamento di Ditana è incompleto o errato: [aprite una segnalazione su GitHub](https://github.com/acrion/ditana-config/issues) oppure scrivete a support@ditana.org. La logica di rilevamento è fatta di dati, non di codice – per cui i miglioramenti consistono di solito in poche righe KDL."

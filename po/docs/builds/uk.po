@@ -1,0 +1,512 @@
+# Ukrainian translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "The public record of every Ditana package build — either every package is mutually consistent and the repository ships, or nothing ships."
+msgstr "Публічні записи про всі збирання пакунків Ditana — або всі пакунки узгоджені між собою і сховище публікується, або не публікується нічого."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Build status"
+msgstr "Стан збирання"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "import BuildDashboard from '~/components/BuildDashboard.astro';"
+msgstr "import BuildDashboard from '~/components/BuildDashboard.astro';"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Ditana maintains its own pacman repository on top of Arch – 59 packages, "
+"listed in full in every run that finished. A run that stopped lists what it "
+"had reached. Every night a build host pulls each package's recipe, decides "
+"what needs rebuilding, and builds it in a clean container. The rule that "
+"governs what happens next is the only one that matters here:"
+msgstr ""
+"Ditana підтримує власне сховище pacman поверх Arch — 59 пакунків, повний "
+"перелік яких є в кожному завершеному прогоні. Прогін, що зупинився, показує "
+"те, до чого встиг дійти. Щоночі сервер збирання отримує рецепт кожного "
+"пакунка, вирішує, що потрібно перезібрати, і збирає це в чистому контейнері. "
+"Правило, яке визначає, що відбувається далі, — єдине, що тут має значення:"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "**If a single package cannot be built, or its sources cannot be verified, nothing is published.**\n"
+msgstr "**Якщо хоча б один пакунок не вдається зібрати або його джерела не вдається перевірити, не публікується нічого.**\n"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Not \"the rest ships and that one is retried tomorrow\". Nothing. The "
+"repository you install from is either the complete, mutually consistent set "
+"that came out of one run, or it is yesterday's complete, mutually consistent "
+"set. A smaller repository can promise that; a large one, updating package by "
+"package, cannot — which is why Ditana keeps its own small enough to vouch "
+"for as one set."
+msgstr ""
+"Не «решта публікується, а цей пакунок спробують зібрати завтра». Нічого. "
+"Сховище, з якого ви встановлюєте, — це або повний, узгоджений між собою "
+"набір, отриманий з одного прогону, або вчорашній повний, узгоджений між "
+"собою набір. Невелике сховище може це гарантувати; велике, що оновлюється "
+"пакунок за пакунком, — ні, і саме тому Ditana тримає своє сховище достатньо "
+"малим, щоб ручатися за нього як за єдиний набір."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"A claim like that is worth exactly as much as its evidence, so the record "
+"below is written by the pipeline itself, including the runs where nothing "
+"shipped. That pipeline is [`ditana-build`](https://github.com/acrion/ditana-"
+"build), and it is public: the review gate is [`bin/pkgbuild-review-gate`]"
+"(https://github.com/acrion/ditana-build/blob/main/bin/pkgbuild-review-gate), "
+"and the installation test is [`bin/test-install-in-qemu`](https://github.com/"
+"acrion/ditana-build/blob/main/bin/test-install-in-qemu)."
+msgstr ""
+"Таке твердження варте рівно стільки, скільки докази на його користь, тому "
+"наведені нижче записи створює сам конвеєр, зокрема й про прогони, у яких "
+"нічого не опубліковано. Цей конвеєр — [`ditana-build`](https://github.com/"
+"acrion/ditana-build), і він публічний: шлюз перевірки — це [`bin/pkgbuild-"
+"review-gate`](https://github.com/acrion/ditana-build/blob/main/bin/pkgbuild-"
+"review-gate), а тест встановлення — [`bin/test-install-in-qemu`](https://"
+"github.com/acrion/ditana-build/blob/main/bin/test-install-in-qemu)."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "<BuildDashboard />\n"
+msgstr "<BuildDashboard />\n"
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "How far a run got"
+msgstr "Як далеко дійшов прогін"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Every run passes through the same stages, and its `outcome` says which one "
+"it reached. These are the four states, and the colours above:"
+msgstr ""
+"Кожен прогін проходить ті самі етапи, і його `outcome` показує, до якого з "
+"них він дійшов. Ось чотири стани, яким відповідають кольори вище:"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid ""
+"| `outcome` | What it means for you |\n"
+"| --- | --- |\n"
+"| `released` | **This is what you install.** Every package built, every signature verified, and the whole set replaced the repository your system updates from. |\n"
+"| `in-testing` | Built and signed, sitting in a separate testing repository while it is checked. Your system still installs the previous release. |\n"
+"| `built` | The build host finished, but it holds no signing key — signing happens afterwards on another machine. Nothing has moved yet. |\n"
+"| `held-back` | Something did not pass, so nothing shipped at all. The repository you install from is untouched and still consistent. |\n"
+msgstr ""
+"| `outcome` | Що це означає для вас |\n"
+"| --- | --- |\n"
+"| `released` | **Саме це ви встановлюєте.** Усі пакунки зібрано, усі підписи перевірено, і весь набір замінив сховище, з якого оновлюється ваша система. |\n"
+"| `in-testing` | Зібрано й підписано; набір перебуває в окремому тестовому сховищі, поки його перевіряють. Ваша система й далі встановлює попередній випуск. |\n"
+"| `built` | Сервер збирання завершив роботу, але він не має ключа підпису — підписування відбувається згодом на іншій машині. Поки що нічого не переміщено. |\n"
+"| `held-back` | Щось не пройшло перевірку, тож не опубліковано взагалі нічого. Сховище, з якого ви встановлюєте, не змінено, і воно й далі узгоджене. |\n"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Only `released` means the packages reached you. The other three are stages "
+"on the way there, or a stop."
+msgstr ""
+"Лише `released` означає, що пакунки дійшли до вас. Інші три — це етапи на "
+"шляху до цього або зупинка."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "What happened to each package"
+msgstr "Що сталося з кожним пакунком"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "Within a run, every package gets one `status`:"
+msgstr "У межах прогону кожен пакунок отримує один `status`:"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid ""
+"| `status` | Meaning |\n"
+"| --- | --- |\n"
+"| `current` | The recipe has not changed since the existing package was built, and for a `-git` package the upstream commit has not moved either. Nothing to do. |\n"
+"| `rebuilt` | Sources were fetched and verified on the host, then the package was built in a fresh container. |\n"
+"| `review-stopped` | The recipe changed in a way a human has to look at. The run ends here. |\n"
+"| `build-failed` | The package did not compile, or produced no artefact. The run ends here. |\n"
+msgstr ""
+"| `status` | Значення |\n"
+"| --- | --- |\n"
+"| `current` | Рецепт не змінювався відтоді, як було зібрано наявний пакунок, а для пакунка `-git` не змінився й коміт в оригінальному проєкті. Нічого робити не потрібно. |\n"
+"| `rebuilt` | Джерела було отримано й перевірено на сервері, після чого пакунок зібрано в новому контейнері. |\n"
+"| `review-stopped` | Рецепт змінився так, що на нього має подивитися людина. Прогін тут завершується. |\n"
+"| `build-failed` | Пакунок не скомпілювався або не дав жодного артефакту. Прогін тут завершується. |\n"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "The last two are why a run ends as `held-back`: one package is enough."
+msgstr ""
+"Два останні статуси — причина, з якої прогін завершується як `held-back`: "
+"досить одного пакунка."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Why a run stops"
+msgstr "Чому прогін зупиняється"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Most of what Ditana rebuilds are third-party AUR recipes, packaged into a "
+"repository its users trust through pacman's signature configuration. The AUR "
+"is a supply chain, and it has been attacked as one: orphaned packages have "
+"been adopted and given malicious commits, which is why the AUR disabled "
+"adoption and pushes in August 2026."
+msgstr ""
+"Більшість того, що перезбирає Ditana, — це сторонні рецепти з AUR, "
+"запаковані у сховище, якому користувачі довіряють через конфігурацію "
+"підписів pacman. AUR — це ланцюг постачання, і його вже атакували саме як "
+"ланцюг постачання: покинуті пакунки переймали й додавали до них шкідливі "
+"коміти, через що в серпні 2026 року AUR вимкнув перейняття пакунків і "
+"надсилання змін."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"So every `git pull` in the pipeline is classified before anything is built.  "
+"Version bumps, comments, whitespace and checksums that accompany a version "
+"change are waved through. A change to `source=`, to a `url=`, to a VCS "
+"revision, to anything inside a function, to `install=`, to `provides=`, "
+"`conflicts=`, `replaces=` or `validpgpkeys=`, a checksum that changes "
+"without a version changing, a new dependency pacman does not know, a changed "
+"or emptied `# Maintainer:` line — each of those stops the run. The recipe is "
+"never sourced to do this: executing the file under suspicion is precisely "
+"what has to be avoided, so the analysis is static, and it fails closed when "
+"it is unsure."
+msgstr ""
+"Тому кожен `git pull` у конвеєрі класифікується до того, як щось буде "
+"зібрано. Підвищення версії, коментарі, пробіли та контрольні суми, що "
+"супроводжують зміну версії, пропускаються. Зміна `source=`, `url=`, ревізії "
+"VCS, будь-чого всередині функції, `install=`, `provides=`, `conflicts=`, "
+"`replaces=` або `validpgpkeys=`, контрольна сума, що змінюється без зміни "
+"версії, нова залежність, якої pacman не знає, змінений або спорожнений рядок "
+"`# Maintainer:` — кожне з цього зупиняє прогін. Рецепт при цьому ніколи не "
+"виконується в оболонці (source): виконувати підозрілий файл — саме те, чого "
+"треба уникнути, тому аналіз статичний, а якщо він не впевнений, то блокує "
+"прогін."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Measured against the last twelve months of real package history, this stops "
+"a run roughly **once every three and a half days**. That is not a defect to "
+"be tuned away; it is the price of the all-or-nothing rule, paid in advance."
+msgstr ""
+"Якщо зіставити з реальною історією пакунків за останні дванадцять місяців, "
+"це зупиняє прогін приблизно **раз на три з половиною дні**. Це не дефект, "
+"який треба прибрати налаштуванням; це ціна правила «все або нічого», "
+"сплачена наперед."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Some of the recipes Ditana rebuilds have no upstream maintainer at all – "
+"their `# Maintainer:` line is empty. That is why an emptied maintainer line "
+"stops a run instead of being waved through: an orphaned recipe is the one "
+"somebody can adopt."
+msgstr ""
+"Деякі з рецептів, які перезбирає Ditana, узагалі не мають супровідника в AUR "
+"— їхній рядок `# Maintainer:` порожній. Саме тому спорожнений рядок "
+"супровідника зупиняє прогін, а не пропускається: покинутий рецепт — це саме "
+"той, який хтось може перейняти."
+
+#. type: Title ###
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "What this does not check"
+msgstr "Чого це не перевіряє"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"The review covers packaging metadata, not upstream source code. When a "
+"recipe builds from a git revision, that revision's contents are not reviewed "
+"by anything in this pipeline. Ditana's advantage over an unreviewed rebuild "
+"service is real but bounded, and stating the bound is part of the claim."
+msgstr ""
+"Перевірка охоплює метадані пакування, а не вихідний код самих проєктів. Коли "
+"рецепт збирає з ревізії git, вміст цієї ревізії ніщо в цьому конвеєрі не "
+"перевіряє. Перевага Ditana над службою повторного збирання без перевірки "
+"реальна, але обмежена, і чітке визначення цієї межі — частина самого "
+"твердження."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "The installation test"
+msgstr "Тест встановлення"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Building and signing a repository is not the same as being able to install "
+"from it. Between the testing repository and the release there is one more "
+"step: the build host installs that very repository into a virtual machine of "
+"its own, unattended, driven by an answer file on a small config drive – the "
+"same mechanism a hosting provider would use over PXE, which is why no "
+"keystrokes are simulated."
+msgstr ""
+"Зібрати й підписати сховище — не те саме, що мати змогу встановити з нього "
+"систему. Між тестовим сховищем і випуском є ще один крок: сервер збирання "
+"встановлює саме це сховище у власну віртуальну машину, без участі людини, "
+"керуючись файлом відповідей на невеликому конфігураційному диску, — тим "
+"самим механізмом, який хостинг-провайдер використав би через PXE, тому жодні "
+"натискання клавіш не імітуються."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Two things have to be true, and the record says which of them was reached."
+msgstr "Мають виконатися дві умови, і записи показують, до якої з них дійшло."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid ""
+"| stage | What had happened |\n"
+"| --- | --- |\n"
+"| `installing` | The medium is running. Nothing has been installed yet. |\n"
+"| `installed` | The installer reached its final reboot. |\n"
+"| `booted` | The installed system came up on its own and answered on port 22. This is a pass. |\n"
+msgstr ""
+"| етап | Що сталося |\n"
+"| --- | --- |\n"
+"| `installing` | Носій працює. Ще нічого не встановлено. |\n"
+"| `installed` | Інсталятор дійшов до останнього перезавантаження. |\n"
+"| `booted` | Встановлена система самостійно запустилася й відповіла на порту 22. Це успіх. |\n"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"The distinction matters, because the two failures are different bugs. A run "
+"that stops at `installing` produced a repository nobody can install from. "
+"One that stops at `installed` produced a system that was written correctly "
+"and does not come up, and that is the kind of defect no amount of building "
+"catches."
+msgstr ""
+"Ця різниця важлива, бо ці дві невдачі — різні помилки. Прогін, що зупинився "
+"на `installing`, створив сховище, з якого ніхто не може встановити систему. "
+"Прогін, що зупинився на `installed`, створив систему, яку записано "
+"правильно, але яка не запускається, — а це такий дефект, який не виявить "
+"жодне збирання."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Arriving at `booted` signifies far more than the phrase implies. The "
+"bootloader ran, the initramfs found and imported the ZFS pool, systemd got "
+"to multi-user mode, the network became active, and a service started. "
+"Nothing is injected into the guest to arrange any of these actions: `install-"
+"openssh` is enabled by default, so a banner on port 22 is the installed "
+"system’s own doing."
+msgstr ""
+"Досягнення `booted` означає значно більше, ніж здається з назви. "
+"Завантажувач спрацював, initramfs знайшов та імпортував пул ZFS, systemd "
+"дійшов до багатокористувацького режиму, мережа стала активною, і запустилася "
+"служба. Щоб усе це влаштувати, у гостьову систему нічого не впроваджується: "
+"`install-openssh` типово ввімкнено, тож банер на порту 22 — справа рук самої "
+"встановленої системи."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"When the test fails, the record carries a picture of the guest’s screen at "
+"the moment the harness gave up. The installation medium writes nothing to a "
+"serial console once its bootloader has handed over, so everything the "
+"installer draws is on that screen and nowhere else – an installer waiting at "
+"a question is visible there and in no log at all."
+msgstr ""
+"Коли тест не вдається, записи містять знімок екрана гостьової системи в "
+"момент, коли тестове середовище припинило спроби. Інсталяційний носій нічого "
+"не пише в послідовну консоль після того, як його завантажувач передав "
+"керування, тож усе, що малює інсталятор, є лише на цьому екрані — "
+"інсталятор, що чекає на відповідь на запитання, видно там і не видно в "
+"жодному журналі."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"A failed test releases nothing. The packages stay in the testing repository, "
+"and the repository you install from is untouched."
+msgstr ""
+"Невдалий тест нічого не випускає. Пакунки залишаються в тестовому сховищі, а "
+"сховище, з якого ви встановлюєте, не змінюється."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Where the signing key is"
+msgstr "Де зберігається ключ підпису"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "The machine that builds holds a signing subkey, not the primary key."
+msgstr "Машина, яка збирає, має підключ підпису, а не основний ключ."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"It builds, signs with that subkey, uploads to the testing repository, "
+"installs that repository into a virtual machine, and releases to production "
+"only if the installation worked. Keeping the key off the build host is "
+"something the pipeline still supports, and it was how Ditana worked until "
+"August 2026; it was given up because a release gated on a test installation "
+"has to happen on the machine that has just built, and the split put a second "
+"machine and a manual step in between. What the subkey buys instead: it can "
+"be revoked and replaced on its own, it cannot certify further keys, and the "
+"fingerprint users verify against never changes."
+msgstr ""
+"Вона збирає, підписує цим підключем, вивантажує в тестове сховище, "
+"встановлює це сховище у віртуальну машину і публікує в робоче сховище, лише "
+"якщо встановлення вдалося. Тримати ключ поза сервером збирання конвеєр досі "
+"вміє, і саме так Ditana працювала до серпня 2026 року; від цього "
+"відмовилися, бо випуск, що залежить від тестового встановлення, має "
+"відбуватися на машині, яка щойно все зібрала, а розділення ставило між ними "
+"другу машину й ручний крок. Натомість підключ дає ось що: його можна "
+"відкликати й замінити окремо, він не може сертифікувати інші ключі, а "
+"відбиток, за яким перевіряють користувачі, ніколи не змінюється."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"What this protects is the key, not the packages: the signing machine signs "
+"what the build host produced, without reviewing it. What it prevents is the "
+"machine that runs foreign build scripts being able to have arbitrary data "
+"signed at any time."
+msgstr ""
+"Це захищає ключ, а не пакунки: машина, що підписує, підписує те, що створив "
+"сервер збирання, не перевіряючи цього. Це запобігає тому, щоб машина, яка "
+"виконує чужі сценарії збирання, могла будь-коли дати підписати довільні дані."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Verifying this yourself"
+msgstr "Самостійна перевірка"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "The record is plain JSON and is not generated by this website:"
+msgstr "Записи — це звичайний JSON, і генерує їх не цей вебсайт:"
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"[`/build-history/index.json`](/build-history/index.json) — the rolling index "
+"of the most recent runs."
+msgstr ""
+"[`/build-history/index.json`](/build-history/index.json) — ковзний індекс "
+"найновіших прогонів."
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"`/build-history/<timestamp>.json` – one file per run: `outcome`, `message`, "
+"`counts`, a `test-install` object where a run was tested, and a `packages` "
+"array whose entries carry `name`, `status`, `seconds`, any `detail`, and the "
+"paths of that package's logs."
+msgstr ""
+"`/build-history/<timestamp>.json` — один файл на прогін: `outcome`, "
+"`message`, `counts`, об’єкт `test-install`, якщо прогін тестувався, і масив "
+"`packages`, елементи якого містять `name`, `status`, `seconds`, можливий "
+"`detail` і шляхи до журналів цього пакунка."
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"The `test-install` object carries `result`, the `stage` the guest reached, "
+"the `iso` and `answer-file` it was driven with, and, where the installation "
+"failed, a `screenshot` path under `/build-history/logs/<timestamp>/test-"
+"install/` holding the guest's screen at the moment the harness gave up."
+msgstr ""
+"Об’єкт `test-install` містить `result`, `stage`, до якого дійшла гостьова "
+"система, `iso` та `answer-file`, з якими її запускали, а якщо встановлення "
+"не вдалося, — шлях `screenshot` у `/build-history/logs/<timestamp>/test-"
+"install/` зі знімком екрана гостьової системи в момент, коли тестове "
+"середовище припинило спроби."
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"`/build-history/logs/<timestamp>/<package>/` — what `makepkg` logged while "
+"building that package, split by stage (`prepare`, `build`, `check`, "
+"`package`). Every rebuilt package in a run is linked from its row above, and "
+"a package whose build failed is logged too — that is the one worth reading."
+msgstr ""
+"`/build-history/logs/<timestamp>/<package>/` — те, що `makepkg` записав до "
+"журналу під час збирання цього пакунка, розбите за етапами (`prepare`, "
+"`build`, `check`, `package`). На кожен перезібраний пакунок у прогоні веде "
+"посилання з його рядка вище, і для пакунка, збирання якого не вдалося, "
+"журнал теж є — саме його й варто читати."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Server names, addresses, paths and the build account's login name are "
+"removed from the records and from the logs before they are written. Nothing "
+"else is filtered; the failure text you see is the failure text the pipeline "
+"saw."
+msgstr ""
+"Імена серверів, адреси, шляхи та ім’я облікового запису збирання вилучаються "
+"із записів і журналів до того, як їх буде записано. Більше нічого не "
+"фільтрується; текст помилки, який ви бачите, — це той самий текст, який "
+"бачив конвеєр."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Under which licences"
+msgstr "За якими ліцензіями"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Every package here is built from a publicly available recipe that names its "
+"upstream source. [Licensing](/licensing/) says where to find both, and "
+"covers the one case where the licence itself is contested: the ZFS packages, "
+"of which Ditana distributes the sources and the userspace tools but never a "
+"compiled kernel module."
+msgstr ""
+"Кожен пакунок тут зібрано із загальнодоступного рецепта, у якому вказано "
+"його оригінальне джерело. На сторінці [Ліцензування](/licensing/) сказано, "
+"де знайти й те, й інше, і розглянуто єдиний випадок, коли сама ліцензія є "
+"предметом суперечки: пакунки ZFS, для яких Ditana розповсюджує вихідний код "
+"та інструменти простору користувача, але ніколи не скомпільований модуль "
+"ядра."

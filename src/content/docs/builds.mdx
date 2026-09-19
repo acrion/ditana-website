@@ -3,7 +3,7 @@ title: Build status
 description: The public record of every Ditana package build — either every package is mutually consistent and the repository ships, or nothing ships.
 ---
 
-import BuildDashboard from '../../components/BuildDashboard.astro';
+import BuildDashboard from '~/components/BuildDashboard.astro';
 
 Ditana maintains its own pacman repository on top of Arch – 59 packages, listed in full in every run that finished. A run that stopped lists what it had reached. Every night a build host pulls
 each package's recipe, decides what needs rebuilding, and builds it in a clean

@@ -1,0 +1,187 @@
+# Language fr-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "First public release of Ditana GNU/Linux — the foundational beta from December 2024."
+msgstr "Première version publique de Ditana GNU/Linux – la bêta fondatrice de décembre 2024."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "0.9 Beta release notes"
+msgstr "Notes de version 0.9 bêta"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"The first public beta of Ditana GNU/Linux. This release established the "
+"foundation: an Arch-based system targeting educated enthusiasts who want "
+"both transparency and convenience, with security as a first-class concern "
+"rather than an afterthought."
+msgstr ""
+"La première bêta publique de Ditana GNU/Linux. Cette version a posé les "
+"fondations : un système basé sur Arch, destiné à des passionnés avertis qui "
+"veulent à la fois la transparence et le confort, avec la sécurité comme "
+"préoccupation à part entière et non comme une réflexion après coup."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "Highlights"
+msgstr "Points forts"
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Hardware-aware installer.** Dialog-driven installation that considered "
+"hardware specifics and inter-package dependencies — particularly NVIDIA "
+"detection across legacy and modern GPUs."
+msgstr ""
+"**Programme d’installation tenant compte du matériel.** Installation guidée "
+"par des boîtes de dialogue qui prenait en compte les particularités du "
+"matériel et les dépendances entre paquets – en particulier la détection "
+"NVIDIA, pour les GPU anciens comme modernes."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**XFCE desktop environment** as the single shipped option, with pre-"
+"installed enhancements including the Docklike Taskbar."
+msgstr ""
+"**Environnement de bureau XFCE** comme unique option fournie, avec des "
+"améliorations préinstallées, dont Docklike Taskbar."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Modular package structure.** Distribution-specific behaviour split into "
+"individual Arch packages, laying the groundwork for the later configuration-"
+"as-data refactor."
+msgstr ""
+"**Structure modulaire des paquets.** Le comportement propre à la "
+"distribution est réparti dans des paquets Arch individuels, ce qui a préparé "
+"le terrain pour la refonte ultérieure selon le principe de configuration "
+"sous forme de données."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**CPU vulnerability detection and mitigation.** Per-CPU detection of "
+"speculative execution vulnerabilities (Spectre v2, Meltdown, MDS, TAA, MMIO "
+"Stale Data, RETBleed, SRSO, GDS, RFDS) with documented per-mitigation trade-"
+"offs in the installer dialog — already a Ditana hallmark in this first "
+"release."
+msgstr ""
+"**Détection et atténuation des vulnérabilités du processeur.** Détection, "
+"propre à chaque processeur, des vulnérabilités liées à l’exécution "
+"spéculative (Spectre v2, Meltdown, MDS, TAA, MMIO Stale Data, RETBleed, "
+"SRSO, GDS, RFDS), avec les compromis de chaque mesure d’atténuation "
+"documentés dans la boîte de dialogue du programme d’installation – déjà une "
+"marque de fabrique de Ditana dans cette première version."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Security defaults out of the box.** Firewall pre-configured, optional "
+"system partition encryption, restrictive sysctl baseline."
+msgstr ""
+"**Paramètres de sécurité par défaut dès l’installation.** Pare-feu "
+"préconfiguré, chiffrement facultatif de la partition système, base sysctl "
+"restrictive."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Performance defaults.** Weekly TRIM scheduling on supported SSDs, ZRAM, "
+"rate-mirrors for fastest mirror selection."
+msgstr ""
+"**Paramètres de performance par défaut.** Planification hebdomadaire de TRIM "
+"sur les SSD pris en charge, ZRAM, rate-mirrors pour la sélection du miroir "
+"le plus rapide."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Headless support.** A single ISO that could deploy either a desktop system "
+"or a headless one, decided in the installer."
+msgstr ""
+"**Prise en charge des systèmes sans interface graphique.** Une seule image "
+"ISO qui pouvait déployer soit un système avec bureau, soit un système sans "
+"interface graphique, le choix se faisant dans le programme d’installation."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "Coverage"
+msgstr "Couverture médiatique"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"Released on 31 December 2024 and covered shortly after on [gnulinux.ch]"
+"(https://gnulinux.ch/ciw119-podcast) in an hour-long interview with Ralf "
+"Hersel. A DistroWatch banner ran from 12 January to 3 February 2025, drawing "
+"approximately 120,000 impressions."
+msgstr ""
+"Publiée le 31 décembre 2024 et présentée peu après sur [gnulinux.ch](https://"
+"gnulinux.ch/ciw119-podcast) dans un entretien d’une heure avec Ralf Hersel. "
+"Une bannière sur DistroWatch a été affichée du 12 janvier au 3 février 2025 "
+"et a généré environ 120 000 impressions."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "What changed since"
+msgstr "Ce qui a changé depuis"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"The 0.9.3 release rebuilt almost everything around the principle of "
+"[configuration as data](/under-the-hood/configuration-as-data/), expanded "
+"the desktop environment selection from one to four (XFCE, Wayfire, Niri, "
+"COSMIC), added a dedicated [system hardening dialog](/under-the-hood/"
+"mitigations/), introduced [Flatpak integration](/best-practices/aur-vs-"
+"flatpak/), and migrated the configuration management layer from Ansible to "
+"Sparrow6. See the [0.9.3 release notes](/release-notes/0-9-3-beta/) for the "
+"full list."
+msgstr ""
+"La version 0.9.3 a reconstruit presque tout autour du principe de "
+"[configuration sous forme de données](/under-the-hood/configuration-as-"
+"data/), a fait passer le choix d’environnements de bureau d’un à quatre "
+"(XFCE, Wayfire, Niri, COSMIC), a ajouté une [boîte de dialogue de "
+"durcissement du système](/under-the-hood/mitigations/) dédiée, a introduit "
+"l’[intégration de Flatpak](/best-practices/aur-vs-flatpak/) et a migré la "
+"couche de gestion de configuration d’Ansible vers Sparrow6. Consultez les "
+"[notes de version 0.9.3](/release-notes/0-9-3-beta/) pour la liste complète."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"Since then, 0.9.4 has restricted unprivileged user namespaces to the "
+"executables that require them rather than disabling them entirely, "
+"introduced unattended installation via an answer file, and made every "
+"package build public. See the [0.9.4 release notes](/release-notes/0-9-4-"
+"beta/) for the current release."
+msgstr ""
+"Depuis, la 0.9.4 a limité les espaces de noms utilisateur non privilégiés "
+"aux exécutables qui en ont besoin au lieu de les désactiver entièrement, a "
+"introduit l’installation sans surveillance au moyen d’un fichier de réponses "
+"et a rendu publique chaque compilation de paquet. Consultez les [notes de "
+"version 0.9.4](/release-notes/0-9-4-beta/) pour la version actuelle."

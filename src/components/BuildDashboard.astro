@@ -12,9 +12,19 @@
  * A held-back run is therefore displayed exactly as prominently as a published
  * one -- hiding it would turn the record into marketing.
  */
+import en from '../content/i18n/en-GB.json';
+
+// The script builds most of the text at runtime, so it receives the
+// dashboard's strings of the page's language, unfilled, and the language for
+// dates and numbers.
+const strings = Object.fromEntries(Object.keys(en)
+    .filter((key) => key.startsWith('dashboard.'))
+    .map((key) => [key, Astro.locals.t(key, { skipInterpolation: true })]));
+const { lang } = Astro.locals.starlightRoute;
+const t = Astro.locals.t;
 ---
 
-<div class="bd" data-index="/build-history/index.json" data-runs="/build-history/">
+<div class="bd" data-index="/build-history/index.json" data-runs="/build-history/" data-lang={lang} data-strings={JSON.stringify(strings)}>
   <div class="bd-latest" hidden>
     <div class="bd-verdict">
       <span class="bd-dot"></span>
@@ -29,21 +39,21 @@
   </div>
 
   <div class="bd-timeline-wrap" hidden>
-    <h3 class="bd-h">Recent runs</h3>
-    <p class="bd-hint">One square per run, newest on the right. Select one to see what happened to every package.</p>
+    <h3 class="bd-h">{t('dashboard.recentRuns')}</h3>
+    <p class="bd-hint">{t('dashboard.hint')}</p>
     <div class="bd-timeline" role="list"></div>
     <div class="bd-legend">
-      <span><i class="bd-sw bd-released"></i>released — what users install</span>
-      <span><i class="bd-sw bd-testing"></i>in testing</span>
-      <span><i class="bd-sw bd-built"></i>built, not yet signed</span>
-      <span><i class="bd-sw bd-held"></i>held back — nothing shipped</span>
-      <span><i class="bd-sw bd-error-sw"></i>the installation test failed</span>
+      <span><i class="bd-sw bd-released"></i>{t('dashboard.legend.released')}</span>
+      <span><i class="bd-sw bd-testing"></i>{t('dashboard.legend.testing')}</span>
+      <span><i class="bd-sw bd-built"></i>{t('dashboard.legend.built')}</span>
+      <span><i class="bd-sw bd-held"></i>{t('dashboard.legend.heldBack')}</span>
+      <span><i class="bd-sw bd-error-sw"></i>{t('dashboard.legend.testFailed')}</span>
     </div>
   </div>
 
   <div class="bd-detail" hidden></div>
 
-  <p class="bd-state">Loading the build record…</p>
+  <p class="bd-state">{t('dashboard.loading')}</p>
 </div>
 
 {/*
@@ -308,6 +318,8 @@
 </style>
 
 <script>
+  import { formatDay, formatNumber } from '../i18n/format.mjs';
+
   interface RunSummary {
     started: string;
     finished: string;
@@ -349,6 +361,15 @@
     logs?: string[];
   }
 
+  // The strings of the page's language, filled in here: {{name}} stands for
+  // a value.
+  let STRINGS: Record<string, string> = {};
+  let LANG = 'en-GB';
+  function t(key: string, values: Record<string, string | number> = {}): string {
+    return (STRINGS[key] ?? key).replace(/\{\{\s*(\w+)\s*\}\}/g,
+      (whole, name: string) => (name in values ? String(values[name]) : whole));
+  }
+
   const OUTCOME_CLASS: Record<string, string> = {
     released: 'bd-released',
     'in-testing': 'bd-testing',
@@ -388,52 +409,39 @@
   function verdict(run: RunSummary): [string, string] {
     switch (run.outcome) {
       case 'released':
-        return [
-          'Released — this is what you install.',
-          'Every package built, every signature verified, and the whole set replaced the repository your system updates from.',
-        ];
+        return [t('dashboard.verdict.released'), t('dashboard.verdict.released.detail')];
       case 'in-testing':
         // Two very different situations wear the same outcome: a set that is
         // waiting to be checked, and one that was checked and failed. The
         // second is the more important thing this page can say.
         if (run['test-install']?.result === 'failed') {
-          return [
-            'Held in testing — the installation test failed.',
-            'Every package built and was signed, but an unattended installation of the set did not succeed, so it was not released. Your system still installs the previous release.',
-          ];
+          return [t('dashboard.verdict.testFailed'), t('dashboard.verdict.testFailed.detail')];
         }
-        return [
-          'In testing, not yet released.',
-          'Every package built and was signed, and the set is in the testing repository awaiting a check. Your system still installs the previous release.',
-        ];
+        return [t('dashboard.verdict.inTesting'), t('dashboard.verdict.inTesting.detail')];
       case 'built':
-        return [
-          'Built, not yet signed.',
-          'The build host holds no signing key. Signing and publishing happen afterwards on a separate machine.',
-        ];
+        return [t('dashboard.verdict.built'), t('dashboard.verdict.built.detail')];
       case 'held-back':
-        return [
-          'Held back — nothing shipped.',
-          'One package did not pass, so the whole set stayed where it was. A partial update is never shipped.',
-        ];
+        return [t('dashboard.verdict.heldBack'), t('dashboard.verdict.heldBack.detail')];
       default:
-        return ['Run incomplete.', 'The record was written before the run reached a verdict.'];
+        return [t('dashboard.verdict.incomplete'), t('dashboard.verdict.incomplete.detail')];
     }
   }
 
   function duration(seconds: number): string {
-    if (seconds < 90) return `${Math.round(seconds)} s`;
+    const number = (n: number) => formatNumber(n, LANG);
+    if (seconds < 90) return t('dashboard.unit.seconds', { n: number(Math.round(seconds)) });
     const m = Math.round(seconds / 60);
-    if (m < 90) return `${m} min`;
-    return `${(m / 60).toFixed(1)} h`;
+    if (m < 90) return t('dashboard.unit.minutes', { n: number(m) });
+    return t('dashboard.unit.hours', { n: number(Math.round(m / 6) / 10) });
   }
 
+  // The date as the language writes it, the time as its own string says:
+  // Intl writes 14:30 everywhere, where Swiss German writes 14.30 Uhr.
   function when(iso: string): string {
     const d = new Date(iso);
-    return d.toLocaleString(undefined, {
-      year: 'numeric', month: 'short', day: 'numeric',
-      hour: '2-digit', minute: '2-digit',
-    });
+    const date = formatDay(d, LANG);
+    // The hour without a leading zero, as the Swiss languages write it: 3.23 Uhr, 3 h 23.
+    return t('dashboard.when', { date, hour: String(d.getHours()), minute: String(d.getMinutes()).padStart(2, '0') });
   }
 
   /** "…-x86_64-build.log" -> "build". Falls back to the whole file name. */
@@ -442,8 +450,7 @@
   }
 
   function statLabel(key: string): string {
-    return { rebuilt: 'rebuilt', current: 'current',
-             'review-stopped': 'review stopped', 'build-failed': 'build failed' }[key] ?? key;
+    return STRINGS[`dashboard.stat.${key}`] ?? key;
   }
 
   function el<K extends keyof HTMLElementTagNameMap>(
@@ -456,6 +463,8 @@
   }
 
   async function init(root: HTMLElement) {
+    STRINGS = JSON.parse(root.dataset.strings ?? '{}');
+    LANG = root.dataset.lang ?? LANG;
     const state = root.querySelector<HTMLParagraphElement>('.bd-state')!;
     const indexUrl = root.dataset.index!;
     const runsBase = root.dataset.runs!;
@@ -466,13 +475,12 @@
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       runs = ((await response.json()).runs ?? []).map(normalise);
     } catch (error) {
-      state.textContent =
-        `The build record could not be loaded (${error instanceof Error ? error.message : error}). ` +
-        `It is served from ${indexUrl}.`;
+      state.textContent = t('dashboard.loadError',
+        { error: error instanceof Error ? error.message : String(error), url: indexUrl });
       return;
     }
     if (runs.length === 0) {
-      state.textContent = 'No runs have been recorded yet.';
+      state.textContent = t('dashboard.noRuns');
       return;
     }
     state.hidden = true;
@@ -528,28 +536,22 @@
    * the older, coarser sentence is all there is to say.
    */
   function stageSentence(test: TestInstall): string {
-    if (test.result === 'passed') {
-      return 'This repository was installed unattended into a virtual machine, '
-           + 'and the installed system booted and answered for itself.';
-    }
+    if (test.result === 'passed') return t('dashboard.test.passed');
     switch (test.stage) {
       case 'installed':
-        return 'This repository installed, but the installed system never came '
-             + 'up, so it was not released.';
+        return t('dashboard.test.installed');
       case 'installing':
-        return 'An unattended installation of this repository never finished, '
-             + 'so it was not released.';
+        return t('dashboard.test.installing');
       default:
-        return 'An unattended installation of this repository did not succeed, '
-             + 'which is why it was not released.';
+        return t('dashboard.test.failed');
     }
   }
 
   /** "31 min to install, 1 min to boot" -- only what the harness measured. */
   function stageTiming(test: TestInstall): string {
     const parts: string[] = [];
-    if (test['install-seconds']) parts.push(`${duration(test['install-seconds'])} to install`);
-    if (test['boot-seconds']) parts.push(`${duration(test['boot-seconds'])} to boot`);
+    if (test['install-seconds']) parts.push(t('dashboard.test.toInstall', { duration: duration(test['install-seconds']) }));
+    if (test['boot-seconds']) parts.push(t('dashboard.test.toBoot', { duration: duration(test['boot-seconds']) }));
     return parts.length ? ` ${parts.join(', ')}.` : '';
   }
 
@@ -580,12 +582,14 @@
       // over, so everything the installer draws is on the screen and nowhere
       // else. An installer waiting at a dialog is one glance here and no
       // amount of reading anywhere else.
-      const shot = el('a', 'bd-test-shot', 'the screen at that moment');
+      const shot = el('a', 'bd-test-shot', t('dashboard.test.screen'));
       shot.href = runsBase + test.screenshot;
       shot.rel = 'nofollow';
-      line.append(document.createTextNode(' See '));
+      // The link sits inside the sentence, wherever the language puts it.
+      const [before, after] = t('dashboard.test.see', { screen: '\u0000' }).split('\u0000');
+      line.append(document.createTextNode(` ${before}`));
       line.append(shot);
-      line.append(document.createTextNode('.'));
+      line.append(document.createTextNode(after ?? ''));
     }
     // Last, like the per-package detail below it: the prose is what a reader
     // wants, and the harness's own words are what they turn to afterwards.
@@ -611,9 +615,10 @@
       cell.type = 'button';
       cell.setAttribute('role', 'listitem');
       cell.setAttribute('aria-pressed', 'false');
-      const counts = `${run.counts.rebuilt ?? 0} rebuilt, ${run.counts.current ?? 0} current`;
-      cell.title = `${when(run.started)} — ${run.outcome}`
-                 + `${failedTest ? ', installation test failed' : ''} (${counts})`;
+      const counts = t('dashboard.cell.counts', { rebuilt: run.counts.rebuilt ?? 0, current: run.counts.current ?? 0 });
+      const outcome = STRINGS[`dashboard.outcome.${run.outcome}`] ?? run.outcome;
+      cell.title = `${when(run.started)} — ${outcome}`
+                 + `${failedTest ? t('dashboard.cell.testFailed') : ''} (${counts})`;
       cell.setAttribute('aria-label', cell.title);
       cell.addEventListener('click', () => {
         for (const other of strip.querySelectorAll('.bd-cell')) {
@@ -628,7 +633,7 @@
 
   async function showRun(detail: HTMLElement, summary: RunSummary, runsBase: string) {
     detail.hidden = false;
-    detail.replaceChildren(el('p', 'bd-state', 'Loading…'));
+    detail.replaceChildren(el('p', 'bd-state', t('dashboard.loadingRun')));
 
     let run: RunSummary;
     try {
@@ -637,7 +642,7 @@
       run = normalise(await response.json());
     } catch (error) {
       detail.replaceChildren(el('p', 'bd-state',
-        `This run's detail could not be loaded (${error instanceof Error ? error.message : error}).`));
+        t('dashboard.runLoadError', { error: error instanceof Error ? error.message : String(error) })));
       return;
     }
 
@@ -649,7 +654,7 @@
     const sub = el('p', 'bd-sub');
     sub.append(el('code', 'bd-outcome', run.outcome));
     sub.append(document.createTextNode(
-      ` · ${run.packages?.length ?? 0} package(s) reached · ${duration(run.seconds)}`));
+      ` · ${t('dashboard.packagesReached', { count: run.packages?.length ?? 0 })} · ${duration(run.seconds)}`));
     detail.replaceChildren(head, sub);
 
     const test = testInstallLine(run, runsBase);

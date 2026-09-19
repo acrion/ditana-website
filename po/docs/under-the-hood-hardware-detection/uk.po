@@ -1,0 +1,275 @@
+# Ukrainian translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/under-the-hood/hardware-detection.md
+#, no-wrap
+msgid "How Ditana probes your system at install time and adapts configurations transparently, with all detection logic centralized in one auditable file."
+msgstr "Як Ditana перевіряє вашу систему під час встановлення й прозоро адаптує конфігурації, а вся логіка виявлення зосереджена в одному файлі, який можна перевірити."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/under-the-hood/hardware-detection.md
+#, no-wrap
+msgid "Hardware detection"
+msgstr "Виявлення обладнання"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/hardware-detection.md
+msgid ""
+"A traditional installer offers you the same dialogs regardless of whether "
+"your laptop has an Intel iGPU or an NVIDIA card; whether you're on bare "
+"metal or in a VM; whether your CPU is affected by RETBleed or not. You're "
+"expected to know."
+msgstr ""
+"Традиційний інсталятор пропонує вам ті самі діалогові вікна незалежно від "
+"того, чи має ваш ноутбук iGPU від Intel або відеокарту NVIDIA; чи працюєте "
+"ви на фізичному обладнанні або у віртуальній машині; чи зачіпає ваш процесор "
+"вразливість RETBleed, чи ні. Від вас очікують, що ви це знаєте."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/hardware-detection.md
+msgid ""
+"Ditana adapts the dialogs to your hardware. Choices you don't need are "
+"hidden or pre-filled with safe defaults; choices you do need surface with "
+"sensible recommendations."
+msgstr ""
+"Ditana адаптує діалогові вікна до вашого обладнання. Варіанти вибору, які "
+"вам не потрібні, приховано або заздалегідь заповнено безпечними типовими "
+"значеннями; ті, що справді потрібні, з’являються з розумними рекомендаціями."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/hardware-detection.md
+#, no-wrap
+msgid "The detection principle"
+msgstr "Принцип виявлення"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/hardware-detection.md
+msgid ""
+"All probing that feeds the knowledge base lives in a single file: [`hardware-"
+"detection.kdl`](https://github.com/acrion/ditana-config/blob/main/settings/"
+"hardware-detection.kdl). Each detector is one line of Raku that runs once at "
+"installer startup and exposes a value – usually a boolean – to the rest of "
+"the knowledge base. Probing that needs more than a line lives in the "
+"installer engine: the graphics card is matched against the lists NVIDIA "
+"publishes, and the NVMe block format, rotational media and the EFI partition "
+"are found there too."
+msgstr ""
+"Усі перевірки, що постачають дані базі знань, містяться в одному файлі: "
+"[`hardware-detection.kdl`](https://github.com/acrion/ditana-config/blob/main/"
+"settings/hardware-detection.kdl). Кожен детектор — це один рядок Raku, який "
+"виконується один раз під час запуску інсталятора й надає значення — зазвичай "
+"логічне — решті бази знань. Перевірки, яким не досить одного рядка, "
+"містяться в рушії інсталятора: там відеокарту звіряють зі списками, які "
+"публікує NVIDIA, і там же визначають формат блоків NVMe, обертові носії та "
+"розділ EFI."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/hardware-detection.md
+msgid "A few representative examples from the live file:"
+msgstr "Кілька показових прикладів з актуального файлу:"
+
+#. type: Fenced code block
+#: src/content/docs/under-the-hood/hardware-detection.md
+#, no-wrap
+msgid ""
+"- name=\"uefi\" \\\n"
+"  detect=\"'/sys/firmware/efi'.IO.e\"\n"
+"\n"
+"- name=\"intel-cpu\" \\\n"
+"  detect=\"'/proc/cpuinfo'.IO.lines.first(* ~~ /vendor_id/).contains('GenuineIntel')\"\n"
+"\n"
+"- name=\"virtual-environment\" \\\n"
+"  detect=\"run('systemd-detect-virt', '-q').exitcode eq 0\"\n"
+"\n"
+"- name=\"is-retbleed-vulnerable\" \\\n"
+"  detect=\"given '/sys/devices/system/cpu/vulnerabilities/retbleed'.IO\n"
+"            { .e && .slurp.chomp ne 'Not affected' }\"\n"
+msgstr ""
+"- name=\"uefi\" \\\n"
+"  detect=\"'/sys/firmware/efi'.IO.e\"\n"
+"\n"
+"- name=\"intel-cpu\" \\\n"
+"  detect=\"'/proc/cpuinfo'.IO.lines.first(* ~~ /vendor_id/).contains('GenuineIntel')\"\n"
+"\n"
+"- name=\"virtual-environment\" \\\n"
+"  detect=\"run('systemd-detect-virt', '-q').exitcode eq 0\"\n"
+"\n"
+"- name=\"is-retbleed-vulnerable\" \\\n"
+"  detect=\"given '/sys/devices/system/cpu/vulnerabilities/retbleed'.IO\n"
+"            { .e && .slurp.chomp ne 'Not affected' }\"\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/hardware-detection.md
+msgid ""
+"Each one reads from `/sys/`, `/proc/`, or shells out to a standard tool — no "
+"proprietary hardware abstraction layer, no opaque database. If you want to "
+"know *what* Ditana detects and *how*, the answer fits on one screen and you "
+"don't need to leave the file."
+msgstr ""
+"Кожен із них читає з `/sys/`, `/proc/` або викликає через оболонку "
+"стандартний інструмент — жодного власницького шару абстракції обладнання, "
+"жодної непрозорої бази даних. Якщо ви хочете знати, *що* виявляє Ditana і "
+"*як*, відповідь уміщується на одному екрані, і вам не потрібно виходити за "
+"межі файлу."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/hardware-detection.md
+#, no-wrap
+msgid "From detection to decision"
+msgstr "Від виявлення до рішення"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/hardware-detection.md
+msgid ""
+"Detectors don't act on their own. They expose values that other settings "
+"reference in their `default-value` or `available` expressions. The chain is "
+"always: **detect → decide → install**."
+msgstr ""
+"Детектори самі нічого не роблять. Вони надають значення, на які інші "
+"налаштування посилаються у своїх виразах `default-value` або `available`. "
+"Ланцюжок завжди такий: **виявити → вирішити → встановити**."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/hardware-detection.md
+msgid ""
+"A clean example is CPU vulnerability mitigation. Each kernel-reported "
+"vulnerability (Spectre v2, Meltdown, MDS, TAA, MMIO Stale Data, L1TF, "
+"RETBleed, SRSO, GDS, RFDS) has its own detector. The corresponding "
+"mitigation setting then references that detector as its default:"
+msgstr ""
+"Наочний приклад — захист від вразливостей процесора. Кожна вразливість, про "
+"яку повідомляє ядро (Spectre v2, Meltdown, MDS, TAA, MMIO Stale Data, L1TF, "
+"RETBleed, SRSO, GDS, RFDS), має власний детектор. Відповідне налаштування "
+"засобу захисту (mitigation) потім використовує цей детектор як своє типове "
+"значення:"
+
+#. type: Fenced code block
+#: src/content/docs/under-the-hood/hardware-detection.md
+#, no-wrap
+msgid ""
+"- name=\"kernel-option-retbl\" \\\n"
+"  dialog-name=\"CPU Vulnerability Mitigation Options\" \\\n"
+"  short-description=\"Enforce Retbleed Mitigation (retbleed=auto,nosmt)\" \\\n"
+"  default-value=\"`is-retbleed-vulnerable`\"\n"
+msgstr ""
+"- name=\"kernel-option-retbl\" \\\n"
+"  dialog-name=\"CPU Vulnerability Mitigation Options\" \\\n"
+"  short-description=\"Enforce Retbleed Mitigation (retbleed=auto,nosmt)\" \\\n"
+"  default-value=\"`is-retbleed-vulnerable`\"\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/hardware-detection.md
+msgid ""
+"If your CPU isn't affected, the checkbox starts unchecked. If it is, it "
+"starts checked. Nothing is filtered by CPU: every mitigation is listed "
+"either way, so you can also see what your CPU was found not to need. The one "
+"thing that does remove them from the dialog is choosing `mitigations=off`, "
+"which makes each of them pointless — see [how settings depend on each other]"
+"(/under-the-hood/settings-logic/). See the [CPU mitigations page](/under-the-"
+"hood/mitigations/) for the full per-vulnerability rationale."
+msgstr ""
+"Якщо ваш процесор не вразливий, прапорець спочатку не позначений. Якщо "
+"вразливий — спочатку позначений. За процесором нічого не відфільтровується: "
+"кожен засіб захисту показано в будь-якому разі, тож ви бачите й те, що "
+"вашому процесору, як виявилося, не потрібно. Єдине, що справді прибирає їх "
+"із діалогового вікна, — вибір `mitigations=off`, який робить кожен із них "
+"безглуздим, — див. [як налаштування залежать одне від одного](/under-the-"
+"hood/settings-logic/). Повне обґрунтування для кожної вразливості див. на "
+"сторінці [Захист від вразливостей процесора](/under-the-hood/mitigations/)."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/hardware-detection.md
+#, no-wrap
+msgid "Case study: Wayland compatibility"
+msgstr "Практичний приклад: сумісність із Wayland"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/hardware-detection.md
+msgid ""
+"Some detection requires less obvious sources. Modern Wayland compositors "
+"like Niri strictly need 3D hardware acceleration — software rendering "
+"(llvmpipe, softpipe) is not enough; the compositor will crash or refuse to "
+"start."
+msgstr ""
+"Для деяких перевірок потрібні менш очевидні джерела. Сучасні композитори "
+"Wayland, як-от Niri, обов’язково потребують апаратного 3D-прискорення — "
+"програмного рендерингу (llvmpipe, softpipe) недостатньо: композитор аварійно "
+"завершить роботу або відмовиться запускатися."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/hardware-detection.md
+msgid ""
+"Rather than guess from the GPU vendor, Ditana asks the kernel which DRM "
+"driver is actually active for the rendering device:"
+msgstr ""
+"Замість того щоб здогадуватися за виробником GPU, Ditana запитує в ядра, "
+"який драйвер DRM справді активний для пристрою рендерингу:"
+
+#. type: Fenced code block
+#: src/content/docs/under-the-hood/hardware-detection.md
+#, no-wrap
+msgid ""
+"- name=\"has-wayland-compatible-gpu\" \\\n"
+"  detect=\"given dir('/sys/class/drm').grep(*.basename.starts-with('renderD')).first\n"
+"            { $_ ?? ($_ ~ '/device/driver').IO.resolve.basename\n"
+"                    ~~ any(<amdgpu radeon i915 xe nvidia nouveau virtio-pci virtio_gpu>)\n"
+"                  !! False }\"\n"
+msgstr ""
+"- name=\"has-wayland-compatible-gpu\" \\\n"
+"  detect=\"given dir('/sys/class/drm').grep(*.basename.starts-with('renderD')).first\n"
+"            { $_ ?? ($_ ~ '/device/driver').IO.resolve.basename\n"
+"                    ~~ any(<amdgpu radeon i915 xe nvidia nouveau virtio-pci virtio_gpu>)\n"
+"                  !! False }\"\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/hardware-detection.md
+msgid ""
+"If your system's driver isn't on this list — `vmwgfx` in VMware, `hyperv_fb` "
+"in Hyper-V, `bochs-drm` in some QEMU setups — `has-wayland-compatible-gpu` "
+"evaluates to `False`. The Niri option disappears from the desktop-"
+"environment selection, and Ghostty (which needs OpenGL 4.3+, unavailable to "
+"software rasterizers) becomes unavailable:"
+msgstr ""
+"Якщо драйвера вашої системи немає в цьому списку — `vmwgfx` у VMware, "
+"`hyperv_fb` у Hyper-V, `bochs-drm` у деяких конфігураціях QEMU, — `has-"
+"wayland-compatible-gpu` набуває значення `False`. Варіант Niri зникає з "
+"вибору стільничного середовища, а Ghostty (якому потрібен OpenGL 4.3+, "
+"недоступний для програмних засобів растеризації) стає недоступним:"
+
+#. type: Fenced code block
+#: src/content/docs/under-the-hood/hardware-detection.md
+#, no-wrap
+msgid ""
+"- name=\"install-ghostty\" \\\n"
+"  available=\"`install-desktop-environment AND has-wayland-compatible-gpu`\"\n"
+msgstr ""
+"- name=\"install-ghostty\" \\\n"
+"  available=\"`install-desktop-environment AND has-wayland-compatible-gpu`\"\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/hardware-detection.md
+msgid ""
+"One detector, multiple consumers. Adding a hardware-gated option later is "
+"usually a single change in the consumer's `available` field — no detection "
+"logic needs to be touched."
+msgstr ""
+"Один детектор — багато споживачів. Щоб пізніше додати параметр, доступність "
+"якого залежить від обладнання, зазвичай досить однієї зміни в полі "
+"`available` споживача — логіку виявлення змінювати не потрібно."

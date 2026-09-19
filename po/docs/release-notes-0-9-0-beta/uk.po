@@ -1,0 +1,185 @@
+# Ukrainian translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "First public release of Ditana GNU/Linux — the foundational beta from December 2024."
+msgstr "Перший публічний випуск Ditana GNU/Linux — базова бета-версія з грудня 2024 року."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "0.9 Beta release notes"
+msgstr "Нотатки щодо випуску 0.9 Beta"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"The first public beta of Ditana GNU/Linux. This release established the "
+"foundation: an Arch-based system targeting educated enthusiasts who want "
+"both transparency and convenience, with security as a first-class concern "
+"rather than an afterthought."
+msgstr ""
+"Перша публічна бета-версія Ditana GNU/Linux. Цей випуск заклав основу: "
+"система на базі Arch, орієнтована на обізнаних ентузіастів, які хочуть і "
+"прозорості, і зручності, і в якій безпека — першочергове питання, а не те, "
+"про що згадують в останню чергу."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "Highlights"
+msgstr "Основне"
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Hardware-aware installer.** Dialog-driven installation that considered "
+"hardware specifics and inter-package dependencies — particularly NVIDIA "
+"detection across legacy and modern GPUs."
+msgstr ""
+"**Інсталятор, що враховує обладнання.** Встановлення за допомогою діалогових "
+"вікон, яке враховувало особливості обладнання та залежності між пакунками — "
+"зокрема виявлення NVIDIA як для застарілих, так і для сучасних GPU."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**XFCE desktop environment** as the single shipped option, with pre-"
+"installed enhancements including the Docklike Taskbar."
+msgstr ""
+"**Стільничне середовище XFCE** як єдиний доступний варіант, з попередньо "
+"встановленими поліпшеннями, зокрема Docklike Taskbar."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Modular package structure.** Distribution-specific behaviour split into "
+"individual Arch packages, laying the groundwork for the later configuration-"
+"as-data refactor."
+msgstr ""
+"**Модульна структура пакунків.** Поведінку, специфічну для дистрибутиву, "
+"розділено на окремі пакунки Arch, що заклало підґрунтя для пізнішого "
+"перероблення за принципом «конфігурація як дані»."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**CPU vulnerability detection and mitigation.** Per-CPU detection of "
+"speculative execution vulnerabilities (Spectre v2, Meltdown, MDS, TAA, MMIO "
+"Stale Data, RETBleed, SRSO, GDS, RFDS) with documented per-mitigation trade-"
+"offs in the installer dialog — already a Ditana hallmark in this first "
+"release."
+msgstr ""
+"**Виявлення вразливостей процесора та захист від них.** Виявлення "
+"вразливостей спекулятивного виконання для кожного процесора (Spectre v2, "
+"Meltdown, MDS, TAA, MMIO Stale Data, RETBleed, SRSO, GDS, RFDS) із "
+"задокументованими компромісами кожного засобу захисту (mitigation) у "
+"діалоговому вікні інсталятора — вже в цьому першому випуску це стало "
+"візитівкою Ditana."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Security defaults out of the box.** Firewall pre-configured, optional "
+"system partition encryption, restrictive sysctl baseline."
+msgstr ""
+"**Безпечні типові налаштування одразу після встановлення.** Попередньо "
+"налаштований брандмауер, необов’язкове шифрування системного розділу, "
+"обмежувальна базова конфігурація sysctl."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Performance defaults.** Weekly TRIM scheduling on supported SSDs, ZRAM, "
+"rate-mirrors for fastest mirror selection."
+msgstr ""
+"**Типові налаштування для продуктивності.** Щотижневий запуск TRIM на SSD, "
+"які це підтримують, ZRAM, rate-mirrors для вибору найшвидших дзеркал."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Headless support.** A single ISO that could deploy either a desktop system "
+"or a headless one, decided in the installer."
+msgstr ""
+"**Підтримка систем без графічного інтерфейсу (headless).** Єдиний ISO-образ, "
+"з якого можна було розгорнути як систему зі стільничним середовищем, так і "
+"систему без графічного інтерфейсу, — це вирішувалося в інсталяторі."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "Coverage"
+msgstr "Висвітлення в медіа"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"Released on 31 December 2024 and covered shortly after on [gnulinux.ch]"
+"(https://gnulinux.ch/ciw119-podcast) in an hour-long interview with Ralf "
+"Hersel. A DistroWatch banner ran from 12 January to 3 February 2025, drawing "
+"approximately 120,000 impressions."
+msgstr ""
+"Випущено 31 грудня 2024 року; невдовзі після цього про випуск розповіли на "
+"[gnulinux.ch](https://gnulinux.ch/ciw119-podcast) у годинному інтерв’ю з "
+"Ralf Hersel. Банер на DistroWatch показувався з 12 січня до 3 лютого 2025 "
+"року й зібрав приблизно 120 000 показів."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "What changed since"
+msgstr "Що змінилося відтоді"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"The 0.9.3 release rebuilt almost everything around the principle of "
+"[configuration as data](/under-the-hood/configuration-as-data/), expanded "
+"the desktop environment selection from one to four (XFCE, Wayfire, Niri, "
+"COSMIC), added a dedicated [system hardening dialog](/under-the-hood/"
+"mitigations/), introduced [Flatpak integration](/best-practices/aur-vs-"
+"flatpak/), and migrated the configuration management layer from Ansible to "
+"Sparrow6. See the [0.9.3 release notes](/release-notes/0-9-3-beta/) for the "
+"full list."
+msgstr ""
+"Випуск 0.9.3 перебудував майже все довкола принципу [«конфігурація як дані»]"
+"(/under-the-hood/configuration-as-data/), розширив вибір стільничних "
+"середовищ з одного до чотирьох (XFCE, Wayfire, Niri, COSMIC), додав окреме "
+"[діалогове вікно посилення захисту системи](/under-the-hood/mitigations/), "
+"запровадив [інтеграцію з Flatpak](/best-practices/aur-vs-flatpak/) і переніс "
+"рівень керування конфігурацією з Ansible на Sparrow6. Повний перелік див. у "
+"[нотатках щодо випуску 0.9.3](/release-notes/0-9-3-beta/)."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"Since then, 0.9.4 has restricted unprivileged user namespaces to the "
+"executables that require them rather than disabling them entirely, "
+"introduced unattended installation via an answer file, and made every "
+"package build public. See the [0.9.4 release notes](/release-notes/0-9-4-"
+"beta/) for the current release."
+msgstr ""
+"Відтоді 0.9.4 обмежив непривілейовані простори назв користувача (user "
+"namespaces) тими виконуваними файлами, яким вони потрібні, замість того щоб "
+"повністю їх вимикати, запровадив автоматичне встановлення за допомогою файлу "
+"відповідей і зробив публічним збирання кожного пакунка. Поточний випуск "
+"описано в [нотатках щодо випуску 0.9.4](/release-notes/0-9-4-beta/)."

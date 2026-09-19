@@ -1,0 +1,75 @@
+# Ukrainian translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+#, no-wrap
+msgid "Four steps to discover what an update changed and to get a functioning system back."
+msgstr "Чотири кроки, щоб з’ясувати, що змінило оновлення, і повернути працездатну систему."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+#, no-wrap
+msgid "An update broke something"
+msgstr "Оновлення щось зламало"
+
+#. type: Bullet: '1. '
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+msgid ""
+"**Check whether it is us.** The [build status page](/builds/) shows every "
+"package build, including the ones that were held back. If the last run was "
+"held back, the repository has not changed since the one before it, and the "
+"cause is elsewhere."
+msgstr ""
+"**Перевірте, чи причина в нас.** Сторінка [Стан збирання](/builds/) показує "
+"кожне збирання пакунка, зокрема ті, що були затримані. Якщо останній прогін "
+"було затримано, сховище не змінилося з часу попереднього прогону, і причина "
+"в іншому."
+
+#. type: Bullet: '2. '
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+msgid ""
+"**Boot the snapshot.** With automatic snapshots enabled, the pre-update "
+"state is a boot menu entry away. This is the fastest way to get a working "
+"system back, and it costs nothing to try."
+msgstr ""
+"**Завантажтеся зі знімка.** Якщо автоматичні знімки ввімкнено, стан перед "
+"оновленням — це лише один пункт у меню завантаження. Це найшвидший спосіб "
+"повернути робочу систему, і спроба нічого не коштує."
+
+#. type: Bullet: '3. '
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+msgid ""
+"**Check what actually changed.** `/var/log/pacman.log` lists every upgraded "
+"package with a timestamp, so you can narrow the search to what moved."
+msgstr ""
+"**Перевірте, що насправді змінилося.** `/var/log/pacman.log` перелічує кожен "
+"оновлений пакунок із позначкою часу, тож ви можете звузити пошук до того, що "
+"оновилося."
+
+#. type: Bullet: '4. '
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+msgid ""
+"**Read the news.** Arch announces every change that needs manual "
+"intervention at [archlinux.org/news](https://archlinux.org/news/). If an "
+"update needed a step you did not take, it is usually there."
+msgstr ""
+"**Прочитайте новини.** Arch оголошує про кожну зміну, яка потребує ручного "
+"втручання, на [archlinux.org/news](https://archlinux.org/news/). Якщо "
+"оновлення потребувало кроку, якого ви не виконали, він зазвичай описаний там."

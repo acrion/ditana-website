@@ -1,0 +1,579 @@
+# Romansh translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: rm\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "What's new since 0.9.0 — major refactoring, four parallel desktops, configuration as data, expanded hardening."
+msgstr "Novitads dapi la versiun 0.9.0 – gronda reorganisaziun dal code, quatter desktops parallels, configuraziun sco datas, rinforzament extendì."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "0.9.3 Beta release notes"
+msgstr "Remartgas davart la versiun 0.9.3 Beta"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"This is the largest release in Ditana's history. Almost every subsystem has "
+"been touched, and the architecture has been fundamentally reorganized around "
+"the principle of **configuration as data**. This page covers the highlights; "
+"the full diff lives in the Git history of [ditana-installer](https://"
+"github.com/acrion/ditana-installer) and [ditana-config](https://github.com/"
+"acrion/ditana-config)."
+msgstr ""
+"Quai è la pli gronda versiun en l’istorgia da Ditana. Bunamain mintga part "
+"dal sistem è vegnida modifitgada, e l’architectura è vegnida reorganisada "
+"fundamentalmain enturn il princip da la **configuraziun sco datas**. Questa "
+"pagina preschenta ils puncts culminants; il diff cumplet sa chatta en "
+"l’istorgia Git da [ditana-installer](https://github.com/acrion/ditana-"
+"installer) e [ditana-config](https://github.com/acrion/ditana-config)."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "The big change: configuration as data"
+msgstr "La gronda midada: configuraziun sco datas"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"The biggest single shift since 0.9.0 is architectural. In 0.9.0, Ditana's "
+"customizations lived in monolithic Arch packages — anything the installer "
+"wanted to set up had to be baked into a `PKGBUILD`. That made desktop "
+"customization, browser choice, terminal selection, and dozens of other touch "
+"points difficult to compose."
+msgstr ""
+"La pli gronda midada singula dapi la versiun 0.9.0 concerna l’architectura. "
+"En la versiun 0.9.0 sa chattavan las adattaziuns da Ditana en pachets dad "
+"Arch gronds ed indivisibels – tut quai che l’installatur vuleva configurar "
+"stueva vegnir integrà fix en in `PKGBUILD`. Quai rendeva difficil da "
+"cumbinar l’adattaziun dal desktop, la tscherna dal navigatur, la tscherna "
+"dal terminal e dunsainas d’auters puncts da contact."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"In 0.9.3, all of this lives in a new, separately-versioned repository — "
+"[**ditana-config**](https://github.com/acrion/ditana-config) — as structured "
+"data in [KDL v2](https://kdl.dev). Every setting, every dependency, every "
+"lifecycle script is declarative. The installer code is small; the knowledge "
+"base is the brain."
+msgstr ""
+"En la versiun 0.9.3 sa chatta tut quai en in nov repositori cun atgnas "
+"versiuns – [**ditana-config**](https://github.com/acrion/ditana-config) – "
+"sco datas structuradas en [KDL v2](https://kdl.dev). Mintga parameter, "
+"mintga dependenza, mintga script dal ciclus da vita è declerativ. Il code da "
+"l’installatur è pitschen; la basa da savida è il tscharvè."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid "Two consequences worth noting:"
+msgstr "Duas consequenzas che meritan attenziun:"
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"**Improvements ship without re-spinning an ISO.** The installer downloads "
+"the latest configuration archive at runtime (with the ISO-bundled version as "
+"fallback). A bug fix merged into `ditana-config` on a Monday reaches new "
+"installs on Tuesday."
+msgstr ""
+"**Meglieraziuns vegnan furnidas senza crear in nov ISO.** L’installatur "
+"telechargia durant l’execuziun l’ultim archiv da configuraziun (cun la "
+"versiun furnida cun l’ISO sco soluziun da reserva). Ina correctura d’errurs "
+"che vegn fusiunada en `ditana-config` in glindesdi cuntanscha il mardi "
+"suandant las novas installaziuns."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"**Contributing is dramatically easier.** Most contributions touch a single "
+"KDL file. The `README.md` of `ditana-config` walks through the data model in "
+"detail."
+msgstr ""
+"**Contribuir è daventà bler pli simpel.** La gronda part da las "
+"contribuziuns tutga ina suletta datoteca KDL. Il `README.md` da `ditana-"
+"config` explitgescha detagliadamain il model da datas."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Four desktops, equal billing"
+msgstr "Quatter desktops, tuts cun la medema impurtanza"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"0.9.0 shipped XFCE only. 0.9.3 ships **four desktop environments** — XFCE "
+"(X11), Wayfire, Niri, and COSMIC (all Wayland) — installable individually or "
+"**in parallel**. The greeter shows whichever ones you installed."
+msgstr ""
+"La versiun 0.9.0 furniva mo XFCE. La versiun 0.9.3 furnescha **quatter "
+"sistems da desktop** – XFCE (X11), Wayfire, Niri e COSMIC (tuts Wayland) – "
+"che pon vegnir installads individualmain u **parallelamain**. Il greeter "
+"mussa quels che Vus avais installà."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Wayfire and Niri are sometimes dismissed as incomplete environments. Ditana "
+"addresses the gap directly: a polished `waybar` configuration with theme-"
+"matched icons, `nwg-launcher` and `nwgbar` for app launching and power "
+"actions, sensible defaults across all four — so all four are first-class "
+"options, not technology demos."
+msgstr ""
+"Wayfire e Niri vegnan mintgatant renviads sco ambients incumplets. Ditana "
+"serra directamain questa largia: ina configuraziun `waybar` bain elavurada "
+"cun iconas adattadas al tema, `nwg-launcher` e `nwgbar` per aviar "
+"applicaziuns e per las acziuns d’energia, valurs da standard raschunaivlas "
+"en tuts quatter – uschia èn tuts quatter opziuns da plaina valur, betg "
+"demonstraziuns tecnologicas."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"`lightdm` has been replaced by [greetd](https://github.com/kennylevinsen/"
+"greetd) with [tuigreet](https://github.com/apognu/tuigreet), which "
+"integrates cleanly with [uwsm](https://github.com/Vladimir-csp/uwsm) for "
+"session lifecycle management on Wayland."
+msgstr ""
+"`lightdm` è vegnì remplazzà da [greetd](https://github.com/kennylevinsen/"
+"greetd) cun [tuigreet](https://github.com/apognu/tuigreet), che "
+"s’integrescha senza problems cun [uwsm](https://github.com/Vladimir-csp/"
+"uwsm) per la gestiun dal ciclus da vita da las sessiuns sin Wayland."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Hardware-aware installation"
+msgstr "Installaziun che resguarda la hardware"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid "Two detection passes are new or substantially extended:"
+msgstr "Dus pass d’identificaziun èn novs u considerablamain extendids:"
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"**NVIDIA detection** now cross-references both the [open-gpu-kernel-modules]"
+"(https://github.com/NVIDIA/open-gpu-kernel-modules) PCI ID list and the "
+"[NVIDIA legacy GPU page](https://www.nvidia.com/en-us/drivers/unix/legacy-"
+"gpu/) at install time, then recommends one of four options: `nvidia-open-"
+"dkms` (the new default for Turing+), `nvidia-580xx-dkms` (Maxwell/Pascal/"
+"Volta), `nvidia-470xx-dkms` (Kepler), or `nouveau`. DKMS-incompatible kernel "
+"choices are refused with an explanation."
+msgstr ""
+"**L’identificaziun da NVIDIA** cumpareglia uss durant l’installaziun tant la "
+"glista d’identificaturs PCI da [open-gpu-kernel-modules](https://github.com/"
+"NVIDIA/open-gpu-kernel-modules) sco er la [pagina da NVIDIA davart las GPUs "
+"pli veglias](https://www.nvidia.com/en-us/drivers/unix/legacy-gpu/) e "
+"recumonda lura ina da quatter opziuns: `nvidia-open-dkms` (la nova valur da "
+"standard per Turing+), `nvidia-580xx-dkms` (Maxwell/Pascal/Volta), "
+"`nvidia-470xx-dkms` (Kepler) u `nouveau`. Tschernas da kernel che n’èn betg "
+"cumpatiblas cun DKMS vegnan refusadas cun ina explicaziun."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"**Virtual machine detection** drives a number of follow-up choices (software-"
+"rendering fallbacks, disabled `fstrim.timer`)."
+msgstr ""
+"**L’identificaziun da maschinas virtualas** determinescha ina retscha da "
+"tschernas consecutivas (soluziuns da reserva cun rendering da software, "
+"`fstrim.timer` deactivà)."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"CPU vulnerability detection and mitigation — already a Ditana hallmark in "
+"0.9.0 — remain unchanged. See the [CPU mitigations](/under-the-hood/"
+"mitigations/) page for the full per-vulnerability rationale."
+msgstr ""
+"L’identificaziun e la mitigiaziun da mancanzas da segirezza da la CPU – gia "
+"en la versiun 0.9.0 ina caracteristica da Ditana – restan nunmidadas. "
+"Guardai la [pagina davart las mitigiaziuns da la CPU](/under-the-hood/"
+"mitigations/) per la motivaziun cumpletta per mintga mancanza da segirezza."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Console keymap, generated precisely"
+msgstr "Layout da la tastatura per la consola, generà cun precisiun"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"A small but visible improvement: `vconsole.conf` is now generated by "
+"`ckbcomp` from the user's selected X11 keymap. The previous approach "
+"approximated; this one is exact, which matters during installation "
+"(passwords are typed into the Linux VT) and for VT use post-install. This "
+"resolves a complaint from a 0.9.0 DistroWatch comment."
+msgstr ""
+"Ina meglieraziun pitschna, ma visibla: `vconsole.conf` vegn uss generà cun "
+"`ckbcomp` a basa dal layout da la tastatura X11 tschernì. La metoda "
+"precedenta era mo approximativa; questa è exacta, quai ch’è impurtant durant "
+"l’installaziun (ils pleds-clav vegnan tippads en il VT da Linux) e per "
+"l’utilisaziun dal VT suenter l’installaziun. Quai schlia ina reclamaziun "
+"d’in commentari sin DistroWatch davart la versiun 0.9.0."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "System hardening — a new dialog"
+msgstr "Rinforzament dal sistem – in nov dialog"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"This is genuinely new in 0.9.3. The 0.9.0 installer covered CPU "
+"vulnerability mitigations but had no general-purpose hardening dialog. 0.9.3 "
+"adds a full **System Hardening** section under Expert Settings with "
+"documented sysctl-based options:"
+msgstr ""
+"Quai è propi nov en la versiun 0.9.3. L’installatur da la versiun 0.9.0 "
+"cuvriva las mitigiaziuns da mancanzas da segirezza da la CPU, ma n’aveva "
+"nagin dialog general per il rinforzament. La versiun 0.9.3 agiunta ina "
+"secziun cumpletta **System Hardening** sut Expert Settings cun opziuns "
+"documentadas a basa da sysctl:"
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Disabled unprivileged user namespaces (`unprivileged_userns_clone=0`) by "
+"default, with the browser/Flatpak trade-off spelled out."
+msgstr ""
+"Spazis da num da l’utilisader senza privilegis deactivads "
+"(`unprivileged_userns_clone=0`) sco standard, cun ina explicaziun detagliada "
+"dal cumpromiss per navigaturs e Flatpak."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Restricted ptrace (`yama.ptrace_scope=2` by default, `=0` for the developer "
+"profile)."
+msgstr ""
+"ptrace restrenschì (`yama.ptrace_scope=2` sco standard, `=0` per il profil "
+"da sviluppader)."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid "Hidden kernel pointers, restricted dmesg, disabled kexec."
+msgstr "Punctaders dal kernel zuppads, dmesg restrenschì, kexec deactivà."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Protected FIFOs and regular files in sticky directories (beyond Linux's "
+"default hardlink/symlink protection)."
+msgstr ""
+"Protecziun da FIFOs e da datotecas regularas en ordinaturs sticky (ultra la "
+"protecziun da standard da Linux per hardlinks/symlinks)."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Hardened network stack (SYN cookies, no ICMP redirects, no source routing, "
+"reverse-path filtering)."
+msgstr ""
+"Stack da rait rinforzà (SYN cookies, nagins ICMP redirects, nagin source "
+"routing, reverse-path filtering)."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Restricted BPF JIT, optional `perf_event_paranoid` relaxation for developers."
+msgstr ""
+"JIT da BPF restrenschì, relaxaziun opziunala da `perf_event_paranoid` per "
+"sviluppadras e sviluppaders."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Optional [hardened_malloc](https://github.com/GrapheneOS/hardened_malloc) in "
+"full or light variants, plus optional [mimalloc](https://github.com/"
+"microsoft/mimalloc) for performance-oriented setups."
+msgstr ""
+"[hardened_malloc](https://github.com/GrapheneOS/hardened_malloc) opziunal en "
+"la varianta cumpletta u leva, ultra da quai [mimalloc](https://github.com/"
+"microsoft/mimalloc) opziunal per configuraziuns orientadas a la prestaziun."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Each option is presented as a checklist with full documentation — including "
+"which trade-offs you're accepting when you check or uncheck it."
+msgstr ""
+"Mintga opziun vegn preschentada sco glista da controlla cun documentaziun "
+"cumpletta – inclusiv ils cumpromiss che Vus acceptais, cura che Vus activais "
+"u deactivais l’opziun."
+
+#. type: Fenced div block (note)
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "This is how 0.9.3 was delivered. Arch removed the setuid variant of bubblewrap in September 2026, which took the fallback outlined here with it, and 0.9.4 replaced the whole arrangement with a per-executable permission. See the [0.9.4 release notes](/release-notes/0-9-4-beta/).\n"
+msgstr "Uschia è la versiun 0.9.3 vegnida furnida. Arch ha allontanà il settember 2026 la varianta setuid da bubblewrap, e cun quai è er svanida la soluziun da reserva descritta qua; la versiun 0.9.4 ha remplazzà l’entir sistem cun ina permissiun per program exequibel. Guardai las [remartgas davart la versiun 0.9.4](/release-notes/0-9-4-beta/).\n"
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Flatpak support, integrated end-to-end"
+msgstr "Sustegn da Flatpak, integrà dal cumenzament fin a la fin"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Flatpaks can now be declared alongside `arch-packages` and `aur-packages` in "
+"the configuration. Installation happens at first boot via a dedicated "
+"`ditana-flatpak-finalize.service` (blocking the greeter until completion, so "
+"the user isn't surprised by mid-session installs)."
+msgstr ""
+"Flatpaks pon uss vegnir declerads en la configuraziun ensemen cun `arch-"
+"packages` ed `aur-packages`. L’installaziun ha lieu a l’emprim aviar tras in "
+"agen `ditana-flatpak-finalize.service` (che blochescha il greeter fin "
+"ch’ella è terminada, uschia ch’i na dat naginas installaziuns surprendentas "
+"durant la sessiun)."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Flatpaks are preferred over AUR-only equivalents where they exist — except "
+"where a Flatpak's sandbox cannot work with Ditana's default hardening. Brave "
+"Browser is the documented example: its Flatpak requires "
+"`unprivileged_userns_clone=1`, so Ditana ships `brave-bin` from AUR instead. "
+"The trade-offs are spelled out in the [AUR vs Flatpak](/best-practices/aur-"
+"vs-flatpak/) best-practice page."
+msgstr ""
+"Nua ch’i dat Flatpaks, vegnan quels preferids ad equivalents che existan mo "
+"en l’AUR – cun excepziun dals cas, nua ch’il sandbox d’in Flatpak na po betg "
+"funcziunar cun il rinforzament da standard da Ditana. Brave Browser è "
+"l’exempel documentà: ses Flatpak dovra `unprivileged_userns_clone=1`, "
+"perquai furnescha Ditana empè `brave-bin` da l’AUR. Ils cumpromiss èn "
+"explitgads sin la pagina da bunas praticas [AUR u Flatpak](/best-practices/"
+"aur-vs-flatpak/)."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Dynamic MIME defaults"
+msgstr "Applicaziuns da standard dinamicas per tips MIME"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Default applications for MIME types are now computed from the installed "
+"components rather than hardcoded. Install LibreOffice → LibreOffice handles "
+"`.docx`. Install ONLYOFFICE instead → ONLYOFFICE handles it. Install Thunar "
+"→ Thunar opens directories. Install COSMIC Files → COSMIC Files opens them. "
+"All composed from the KDL declarations."
+msgstr ""
+"Las applicaziuns da standard per tips MIME vegnan uss calculadas a basa da "
+"las cumponentas installadas, empè d’esser fixadas en il code. Installai "
+"LibreOffice → LibreOffice avra `.docx`. Installai empè ONLYOFFICE → "
+"ONLYOFFICE avra quellas datotecas. Installai Thunar → Thunar avra "
+"ordinaturs. Installai COSMIC Files → COSMIC Files avra ils ordinaturs. Tut "
+"cumponì a basa da las decleraziuns KDL."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Terminal emulator, made first-class"
+msgstr "Emulatur da terminal, uss da plaina valur"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"The installer now offers six terminal emulators with a curated decision "
+"matrix: kitty (default, X11+Wayland), foot (Wayland-only, lightweight), "
+"Alacritty (GPU, minimalist), WezTerm (full-featured, multiplexer), Ghostty "
+"(modern, needs OpenGL 4.3+), and COSMIC Terminal. The [xdg-terminal-exec]"
+"(https://github.com/Vladimir-csp/xdg-terminal-exec) standard is used "
+"consistently. Wayland-only terminals automatically get kitty installed as "
+"the X11 fallback if XFCE is also selected — no manual juggling."
+msgstr ""
+"L’installatur porscha uss sis emulaturs da terminal cun ina matrix da "
+"decisiun elavurada cun quità: kitty (standard, X11+Wayland), foot (mo "
+"Wayland, lev), Alacritty (GPU, minimalistic), WezTerm (cun bleras funcziuns, "
+"multiplexer), Ghostty (modern, dovra OpenGL 4.3+) e COSMIC Terminal. Il "
+"standard [xdg-terminal-exec](https://github.com/Vladimir-csp/xdg-terminal-"
+"exec) vegn utilisà consequentamain. Sch’XFCE è er tschernì, vegn kitty "
+"installà automaticamain sco soluziun da reserva per X11 tar terminals mo per "
+"Wayland – senza intervenziuns manualas."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "AUR helper: pikaur → paru"
+msgstr "Program d’agid per l’AUR: pikaur → paru"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"`pikaur` has been replaced by `paru`. The trigger was `pachub` (the GUI Arch "
+"package browser, pinned in every desktop panel alongside `bazaar` for "
+"Flatpak) which only supports `yay` or `paru`. Going with `paru` was the "
+"better fit for Ditana's other needs as well."
+msgstr ""
+"`pikaur` è vegnì remplazzà da `paru`. Il motiv era `pachub` (il program "
+"grafic per percurrer ils pachets dad Arch, fixà en mintga panel dal desktop "
+"ensemen cun `bazaar` per Flatpak), che sustegna mo `yay` u `paru`. `paru` "
+"era er la meglra soluziun per ils auters basegns da Ditana."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Password handling"
+msgstr "Gestiun dals pleds-clav"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"You can now override the strict `pwscore` password check for the user "
+"account if you have a good reason to. The check stays mandatory when full-"
+"disk encryption is enabled — there, a weak password actively reduces "
+"security."
+msgstr ""
+"Vus pudais uss ignorar la controlla stricta `pwscore` dal pled-clav per "
+"l’account d’utilisader, sche Vus avais ina buna raschun per quai. La "
+"controlla resta obligatorica, sch’il criptadi dal disc entir è activà – là "
+"reducescha in pled-clav flaivel activamain la segirezza."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"This addresses several 0.9.0 user reports of installations being aborted "
+"because users couldn't pass the default `pwscore` minimum."
+msgstr ""
+"Uschia vegnan resguardads plirs rapports davart la versiun 0.9.0, tenor ils "
+"quals installaziuns èn vegnidas interruttas, perquai ch’i n’era betg "
+"pussaivel da cuntanscher il minimum da standard da `pwscore`."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "GitHub issues closed"
+msgstr "Issues da GitHub serrads"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Ten user-reported issues from 0.9.0 are implemented in 0.9.3 — bug fixes and "
+"feature requests. The list is available on the [installer issue tracker]"
+"(https://github.com/acrion/ditana-installer/issues?q=is%3Aissue+is%3Aclosed)."
+msgstr ""
+"Diesch issues da la versiun 0.9.0, annunziads da persunas che utiliseschan "
+"Ditana, èn realisads en la versiun 0.9.3 – correcturas d’errurs e giavischs "
+"da funcziuns. La glista è disponibla en la [glista dals issues da "
+"l’installatur](https://github.com/acrion/ditana-installer/issues?"
+"q=is%3Aissue+is%3Aclosed)."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Behind the scenes"
+msgstr "Davos las culissas"
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"**Ansible → Sparrow6.** The configuration management logic that customizes "
+"files like `mkinitcpio.conf` has migrated from Ansible to [Sparrow6](https://"
+"github.com/melezhik/Sparrow6), with substantial contributions from **Alexey "
+"Melezhik**. Sparrow6 is also used for testing the automated configurations "
+"themselves. The migration eliminates a Python runtime dependency and "
+"produces more readable test output."
+msgstr ""
+"**Ansible → Sparrow6.** La logica da la gestiun da configuraziun che adatta "
+"datotecas sco `mkinitcpio.conf` è vegnida migrada dad Ansible a [Sparrow6]"
+"(https://github.com/melezhik/Sparrow6), cun contribuziuns substanzialas dad "
+"**Alexey Melezhik**. Sparrow6 vegn er utilisà per testar las configuraziuns "
+"automatisadas sezzas. La migraziun eliminescha ina dependenza dal runtime da "
+"Python e producescha resultats da test pli legibels."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"**Acknowledgements.** Thanks to Alexey Melezhik for the Sparrow6 work and "
+"continued collaboration. Thanks to Thomas Zipproth for ongoing testing and "
+"feedback. Thanks to everyone who filed an issue on 0.9.0 — every one of them "
+"was reviewed, and most are now closed."
+msgstr ""
+"**Engraziaments.** Grazia fitg ad Alexey Melezhik per la lavur vi da "
+"Sparrow6 e per la collavuraziun cuntinuanta. Grazia fitg a Thomas Zipproth "
+"per ils tests e resuns cuntinuants. Grazia fitg a tut las persunas che han "
+"avert in issue davart la versiun 0.9.0 – mintga issue è vegnì examinà, e la "
+"gronda part èn uss serrads."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "A small piece of history"
+msgstr "In pitschen toc d’istorgia"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"When [Ralf Hersel interviewed me](https://gnulinux.ch/ciw119-podcast) for "
+"gnulinux.ch in early 2025 about Ditana 0.9.0, his opening note was that he'd "
+"won a bet — he'd predicted a Linux distribution with built-in AI would ship "
+"before the end of 2024, and 0.9.0 (31 December 2024) made it on the deadline."
+msgstr ""
+"Cura che [Ralf Hersel m’ha fatg in’intervista](https://gnulinux.ch/ciw119-"
+"podcast) per gnulinux.ch al cumenzament dal 2025 davart Ditana 0.9.0, ha el "
+"ditg per cumenzar ch’el haja gudagnà ina scumessa – el aveva preditg ch’ina "
+"distribuziun Linux cun IA integrada vegnia publitgada avant la fin dal 2024, "
+"e la versiun 0.9.0 (ils 31 da december 2024) è arrivada gist a temp."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"Ditana does ship the optional [Ditana Assistant](https://github.com/acrion/"
+"ditana-assistant), which uses a local Ollama model (or any OpenAI-compatible "
+"endpoint) to generate shell commands. It's useful, but I'd be the first to "
+"say \"AI distribution\" is overselling it — the assistant has limited system "
+"context, and a genuinely AI-integrated distro is a separate project I might "
+"explore later (automated log analysis being the most realistic direction). "
+"For now: it's a handy tool, pinned in the panel if you enable it."
+msgstr ""
+"Ditana furnescha effectivamain il [Ditana Assistant](https://github.com/"
+"acrion/ditana-assistant) opziunal, che utilisescha in model local dad Ollama "
+"(u mintga interfatscha cumpatibla cun OpenAI) per generar cumonds da shell. "
+"El è nizzaivel, ma jau fiss l’emprim a dir che «distribuziun IA» saja "
+"exagerà – l’assistent ha in context limità dal sistem, ed ina distribuziun "
+"propi integrada cun IA è in project separà che jau vegn forsa ad explorar "
+"pli tard (l’analisa automatisada da protocols fiss la direcziun la pli "
+"realistica). Per il mument: el è in utensil pratic, fixà en il panel, sche "
+"Vus l’activais."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-3-beta.md
+#, no-wrap
+msgid "Upgrading from 0.9.0"
+msgstr "Actualisar a partir da la versiun 0.9.0"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-3-beta.md
+msgid ""
+"There is no in-place upgrade. The architecture has changed too much. A fresh "
+"install on top of a Timeshift / ZFS snapshot of your `/home` (or whatever "
+"your data partition is) is the supported path."
+msgstr ""
+"I na dat nagina actualisaziun directa. L’architectura ha sa midà memia fitg. "
+"La via sustegnida è ina nova installaziun cun in snapshot da Timeshift / ZFS "
+"da Voss `/home` (u da tge partiziun da datas che Vus avais) sco basa."

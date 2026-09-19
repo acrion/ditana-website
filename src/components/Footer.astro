@@ -1,0 +1,23 @@
+---
+// Starlight's footer, and on a translated page one line saying that the
+// translation was made by machine and where readers improve it. It is the
+// only place the site says so: one string per language, nothing per page.
+import Default from '@astrojs/starlight/components/Footer.astro';
+import { SOURCE, WEBLATE_PROJECT } from '../i18n/locales.mjs';
+
+const translated = Astro.locals.starlightRoute.lang !== SOURCE.lang;
+// The link sits inside the sentence, wherever the language puts it.
+const MARK = '@@weblate@@';
+const [before, after] = Astro.locals.t('footer.machineTranslation', { weblate: MARK }).split(MARK);
+---
+
+<Default><slot /></Default>
+{translated && <p class="ditana-machine-translation">{before}<a href={WEBLATE_PROJECT}>Weblate</a>{after}</p>}
+
+<style>
+	.ditana-machine-translation {
+		margin-top: 1.5rem;
+		font-size: var(--sl-text-xs);
+		color: var(--sl-color-gray-3);
+	}
+</style>

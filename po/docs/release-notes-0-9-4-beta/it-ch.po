@@ -1,0 +1,554 @@
+# Language it-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: src/content/docs/download.md src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid "Unattended installation"
+msgstr "Installazione non presidiata"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid "Unprivileged user namespaces are restricted per executable rather than being disabled, installation can run unattended from an answer file, and every package build is published for anyone to check."
+msgstr "Gli user namespace (spazi dei nomi utente) non privilegiati vengono limitati per singolo eseguibile anziché disattivati, l’installazione può svolgersi senza presidio a partire da un file di risposte e ogni build dei pacchetti viene pubblicata affinché chiunque possa verificarla."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid "0.9.4 Beta release notes"
+msgstr "Note di rilascio della versione 0.9.4 Beta"
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid "Unprivileged user namespaces: restricted, not switched off"
+msgstr "User namespace non privilegiati: limitati, non disattivati"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"Arch removed `bubblewrap-suid` in September 2026. Ditana had relied on it to "
+"keep sandboxes working while unprivileged user namespaces stayed switched "
+"off, so its removal broke both halves of that setup simultaneously – and "
+"since the installer fetches its configuration at runtime, it broke "
+"installations from the already released 0.9.3 medium as well, not just those "
+"newly created."
+msgstr ""
+"A settembre 2026 Arch ha rimosso `bubblewrap-suid`. Ditana vi faceva "
+"affidamento per mantenere funzionanti le sandbox mentre gli user namespace "
+"(spazi dei nomi utente) non privilegiati restavano disattivati, per cui la "
+"sua rimozione ha compromesso contemporaneamente entrambe le metà di questa "
+"configurazione – e poiché il programma di installazione scarica la propria "
+"configurazione al momento dell’esecuzione, ha compromesso anche le "
+"installazioni dal supporto della versione 0.9.3, già rilasciato, e non solo "
+"quelle appena create."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"There was no replacement to move to. Upstream removed setuid support in "
+"bubblewrap 0.12.0, one day after 0.11.2 fixed CVE-2026-41163, a privilege "
+"escalation that existed solely in that mode, and the 0.11.x branch that was "
+"made available to whoever still needed it was never adopted by anyone."
+msgstr ""
+"Non esisteva un sostituto verso cui migrare. Il progetto upstream ha rimosso "
+"il supporto setuid in bubblewrap 0.12.0, un giorno dopo che la 0.11.2 aveva "
+"corretto CVE-2026-41163, un’escalation dei privilegi che esisteva unicamente "
+"in quella modalità, e il ramo 0.11.x, messo a disposizione di chi ne avesse "
+"ancora bisogno, non è mai stato adottato da nessuno."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"So the arrangement is now reversed. Rather than disabling user namespaces "
+"for all and making one binary exempt, Ditana allows them on a per-executable "
+"basis. A BPF program attached to the kernel's `userns_create` hook refuses a "
+"namespace to anything that has not been declared, and the declaration sits "
+"in the configuration next to the package that needs it:"
+msgstr ""
+"Per questo ora l’approccio è capovolto. Anziché disattivare gli user "
+"namespace per tutti ed esentarne un singolo binario, Ditana li consente "
+"eseguibile per eseguibile. Un programma BPF agganciato all’hook "
+"`userns_create` del kernel nega un namespace a tutto ciò che non è stato "
+"dichiarato, e la dichiarazione si trova nella configurazione accanto al "
+"pacchetto che ne ha bisogno:"
+
+#. type: Fenced code block (kdl)
+#: src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid ""
+"- name=\"flatpak\" default-value=#true {\n"
+"    arch-packages \"flatpak\"\n"
+"    userns-allow \"/usr/bin/bwrap\"\n"
+"  }\n"
+msgstr ""
+"- name=\"flatpak\" default-value=#true {\n"
+"    arch-packages \"flatpak\"\n"
+"    userns-allow \"/usr/bin/bwrap\"\n"
+"  }\n"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"An essential point, since it determines the outcome in case of errors: a "
+"hook of this kind can only ever refuse, never grant. The sysctl that "
+"previously disabled user namespaces must be raised for the guard to have "
+"anything to act upon, and it is raised only by the service that has already "
+"loaded and attached the program. A machine that cannot load it keeps user "
+"namespaces entirely switched off. The failure forfeits your sandboxes but "
+"never your protection."
+msgstr ""
+"Un punto essenziale, perché determina l’esito in caso di errore: un hook di "
+"questo tipo può soltanto negare, mai concedere. Il sysctl che in precedenza "
+"disattivava gli user namespace deve essere innalzato perché il meccanismo di "
+"protezione abbia qualcosa su cui agire, e viene innalzato soltanto dal "
+"servizio che ha già caricato e agganciato il programma. Una macchina che non "
+"riesce a caricarlo mantiene gli user namespace completamente disattivati. In "
+"caso di errore perdete le sandbox, ma mai la protezione."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"The guard is a separate package, [ditana-userns-guard](https://github.com/"
+"acrion/ditana-userns-guard), installed together with the **System "
+"Hardening** option that used to be called \"Disable unprivileged user "
+"namespaces\"."
+msgstr ""
+"Il meccanismo di protezione è un pacchetto separato, [ditana-userns-guard]"
+"(https://github.com/acrion/ditana-userns-guard), installato insieme "
+"all’opzione **System Hardening**, che in precedenza si chiamava «Disable "
+"unprivileged user namespaces»."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid "LibreWolf now comes from Arch"
+msgstr "LibreWolf ora proviene da Arch"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"LibreWolf now comes from the Arch repositories rather than from Flathub, "
+"adhering to the preference hierarchy that puts a native package first. Brave "
+"continues to be available via the AUR; the rationale is detailed on the [AUR "
+"vs Flatpak](/best-practices/aur-vs-flatpak/) page."
+msgstr ""
+"LibreWolf proviene ora dai repository di Arch anziché da Flathub, "
+"conformemente all’ordine di preferenza che mette al primo posto un pacchetto "
+"nativo. Brave continua a essere disponibile tramite l’AUR; le motivazioni "
+"sono illustrate nella pagina [AUR o Flatpak](/best-practices/aur-vs-"
+"flatpak/)."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid "Every sysctl value is declared as data"
+msgstr "Ogni valore sysctl è dichiarato come dati"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"Every sysctl value the installer writes is now declared as data rather than "
+"assembled as shell text. Two settings that write the same key with different "
+"values stop the installation and are both named. Previously, both lines were "
+"written and the last one silently won."
+msgstr ""
+"Ogni valore sysctl scritto dal programma di installazione è ora dichiarato "
+"come dati anziché composto come testo di shell. Due impostazioni che "
+"scrivono la stessa chiave con valori diversi interrompono l’installazione e "
+"vengono indicate entrambe per nome. In precedenza venivano scritte entrambe "
+"le righe e l’ultima prevaleva senza alcun avviso."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"An installation can now run with nobody present at the keyboard. An answer "
+"file pre-supplies what the installer would normally request, and it appears "
+"on a small config drive that the installer discovers independently – the "
+"identical setup a hosting provider would use to set Ditana up over PXE. No "
+"keystrokes are simulated anywhere: the mechanism is the installer reading "
+"its answers rather than soliciting them, which is why it works for a "
+"provider and not just for a test."
+msgstr ""
+"Un’installazione può ora svolgersi senza che nessuno sia presente alla "
+"tastiera. Un file di risposte fornisce in anticipo ciò che il programma di "
+"installazione chiederebbe normalmente, e si trova su una piccola unità di "
+"configurazione che il programma di installazione individua autonomamente – "
+"esattamente la stessa soluzione che un fornitore di hosting userebbe per "
+"installare Ditana tramite PXE. Non viene simulata alcuna pressione di tasti: "
+"il meccanismo consiste nel fatto che il programma di installazione legge le "
+"proprie risposte anziché richiederle, ed è per questo che funziona per un "
+"fornitore e non solo per un test."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"The account password is taken from the answer file as a hash, never in the "
+"clear. An example file is available in the installer repository, and the "
+"mechanism is documented there in full."
+msgstr ""
+"La password dell’account viene letta dal file di risposte sotto forma di "
+"hash, mai in chiaro. Un file di esempio è disponibile nel repository del "
+"programma di installazione, dove il meccanismo è documentato in modo "
+"completo."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"An answer that cannot take effect stops the installation instead of being "
+"dropped in silence: a setting this machine does not offer, and one that a "
+"default expression would overwrite again, are both refused by name, together "
+"with the condition that makes them impossible. And because nobody is "
+"watching the screen, a run that stops writes its cause to the first serial "
+"port, every line carrying the marker `DITANA-AUTOINSTALL-ABORT:`, so that a "
+"provisioning system reading the console learns the reason while the machine "
+"is still up rather than waiting out a silence. Where the console is "
+"elsewhere, the kernel command line names it."
+msgstr ""
+"Una risposta che non può avere effetto interrompe l’installazione anziché "
+"essere scartata in silenzio: un’impostazione che questa macchina non offre e "
+"una che un’espressione del valore predefinito sovrascriverebbe di nuovo "
+"vengono entrambe rifiutate indicandole per nome, insieme alla condizione che "
+"le rende impossibili. E poiché nessuno guarda lo schermo, un’esecuzione che "
+"si interrompe scrive la propria causa sulla prima porta seriale, con il "
+"marcatore `DITANA-AUTOINSTALL-ABORT:` su ogni riga, in modo che un sistema "
+"di provisioning che legge la console ne conosca il motivo mentre la macchina "
+"è ancora in funzione, anziché restare in attesa nel silenzio. Se la console "
+"si trova altrove, la indica la riga di comando del kernel."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"This is also what Ditana uses on itself. Every night the build host installs "
+"the repository it has just built into a virtual machine, unattended, and the "
+"packages are released only if the installed system boots and answers for "
+"itself."
+msgstr ""
+"È anche ciò che Ditana usa su sé stessa. Ogni notte l’host di build installa "
+"in una macchina virtuale, senza presidio, il repository che ha appena "
+"compilato, e i pacchetti vengono rilasciati solo se il sistema installato si "
+"avvia e risponde autonomamente."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"See [`docs/unattended-installation.md`](https://github.com/acrion/ditana-"
+"installer/blob/main/docs/unattended-installation.md)."
+msgstr ""
+"Consultate [`docs/unattended-installation.md`](https://github.com/acrion/"
+"ditana-installer/blob/main/docs/unattended-installation.md)."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid "ZFS on the installation medium"
+msgstr "ZFS sul supporto di installazione"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"The live medium booted a kernel lacking the ZFS module, causing a ZFS "
+"installation to fail on hardware where it had previously succeeded. The ZFS "
+"packages are now delivered via pacstrap and the initramfs is rebuilt "
+"afterwards, and `zfsbootmenu` is added by the hook responsible for it rather "
+"than through a second path that might conflict with it. The UEFI fallback "
+"boot path was wrong and has been corrected."
+msgstr ""
+"Il supporto live avviava un kernel privo del modulo ZFS, per cui "
+"un’installazione ZFS non riusciva su hardware su cui in precedenza era "
+"riuscita. I pacchetti ZFS vengono ora forniti tramite pacstrap e l’immagine "
+"initramfs viene poi rigenerata, e `zfsbootmenu` viene aggiunto dall’hook "
+"responsabile anziché tramite un secondo percorso che potrebbe entrare in "
+"conflitto con esso. Il percorso di avvio di ripiego UEFI era errato ed è "
+"stato corretto."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid "Printing"
+msgstr "Stampa"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"Printer support is complete. mDNS is opened in firewalld and `avahi-daemon` "
+"is enabled, so a network printer is discovered rather than typed in."
+msgstr ""
+"Il supporto per le stampanti è completo. mDNS è aperto in firewalld e `avahi-"
+"daemon` è abilitato, per cui una stampante di rete viene rilevata anziché "
+"digitata a mano."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid "Hardware"
+msgstr "Hardware"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"Firmware on some machines leaves the processor to remain in its shallowest "
+"idle state after a suspend, which costs power for as long as the machine "
+"stays up. Ditana now detects that and works around it."
+msgstr ""
+"Su alcune macchine il firmware lascia il processore nel suo stato di "
+"inattività meno profondo dopo una sospensione, il che consuma energia per "
+"tutto il tempo in cui la macchina resta accesa. Ditana ora lo rileva e lo "
+"aggira."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"A new option binds ARP replies to the interface that received the request. "
+"On a machine with more than one interface in the same subnet, the kernel "
+"otherwise answers from whichever one it likes, which confuses switches and "
+"some load-balancing setups."
+msgstr ""
+"Una nuova opzione vincola le risposte ARP all’interfaccia che ha ricevuto la "
+"richiesta. Su una macchina con più di un’interfaccia nella stessa sottorete, "
+"altrimenti il kernel risponde da quella che preferisce, il che confonde gli "
+"switch e alcune configurazioni di bilanciamento del carico."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"Graphics detection now inquires if the GPU is functional under Wayland "
+"rather than whether it accelerates anything, which is the question the "
+"desktop choices actually depend on."
+msgstr ""
+"Il rilevamento della grafica ora verifica se la GPU funziona con Wayland "
+"anziché se accelera qualcosa, ed è questa la domanda da cui dipendono "
+"effettivamente le scelte relative al desktop."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid "Memory"
+msgstr "Memoria"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"Extended ZRAM Overcommit raises the virtual size of the compressed in-RAM "
+"swap from 100% to 175% of physical RAM and the zstd effort from level 3 to "
+"level 6, so a machine holds roughly 1.75 times its RAM in compressed form "
+"before it touches the disk swap partition. Page-in latency remains the same, "
+"because zstd decompresses at the same speed whatever the level cost. The "
+"default stays unchanged."
+msgstr ""
+"Extended ZRAM Overcommit aumenta la dimensione virtuale dello swap compresso "
+"in RAM dal 100 % al 175 % della RAM fisica e lo sforzo di compressione di "
+"zstd dal livello 3 al livello 6, per cui una macchina contiene circa 1,75 "
+"volte la propria RAM in forma compressa prima di ricorrere alla partizione "
+"di swap su disco. La latenza di caricamento delle pagine resta la stessa, "
+"perché zstd decomprime alla stessa velocità qualunque sia il costo del "
+"livello. L’impostazione predefinita resta invariata."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid "The installation medium itself"
+msgstr "Il supporto di installazione in sé"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"The ISO is constructed using archiso 90. `b43-firmware` has been removed "
+"from it: the package pulled the mainline kernel into the medium beside the "
+"one Ditana boots. The build process has been made stricter – nothing copied "
+"into the medium can now follow a symlink back into the live system, the "
+"permissions of what is placed inside are declared rather than inherited, and "
+"several gigabytes of intermediate files are stored on a disk instead of a "
+"tmpfs."
+msgstr ""
+"L’ISO viene creata con archiso 90. `b43-firmware` ne è stato rimosso: il "
+"pacchetto portava nel supporto il kernel mainline accanto a quello che "
+"Ditana avvia. Il processo di creazione è stato reso più rigoroso – nulla di "
+"ciò che viene copiato nel supporto può ora seguire un collegamento simbolico "
+"che riporti nel sistema live, i permessi di ciò che vi viene inserito sono "
+"dichiarati anziché ereditati, e diversi gigabyte di file intermedi vengono "
+"salvati su un disco anziché in un tmpfs."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"What the medium carries is the versioned state and nothing more: a file that "
+"lies in the working tree and that no rule of the repository declares stops a "
+"signed build, since everything beneath the profile’s airootfs enters the "
+"image. The installed system then records its origin, as `BUILD_ID` and "
+"`VERSION_CODENAME` in `/usr/lib/os-release`: which medium built it, and "
+"which configuration state that medium carried."
+msgstr ""
+"Il supporto contiene lo stato sottoposto a controllo di versione e "
+"nient’altro: un file che si trova nell’albero di lavoro e che nessuna regola "
+"del repository dichiara interrompe una build firmata, poiché tutto ciò che "
+"si trova sotto la directory airootfs del profilo finisce nell’immagine. Il "
+"sistema installato registra poi la propria origine, come `BUILD_ID` e "
+"`VERSION_CODENAME` in `/usr/lib/os-release`: da quale supporto è stato "
+"creato e quale stato della configurazione conteneva quel supporto."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid "Builds you can check"
+msgstr "Build verificabili"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"Every package Ditana ships is rebuilt from its upstream recipe, signed, and "
+"published only as a complete set: if one package fails to build or its "
+"sources cannot be verified, nothing is published at all. Since 0.9.3 that "
+"process has become visible. Every run is recorded and made public, including "
+"the runs that shipped nothing, and every package that was rebuilt links the "
+"log of its own build."
+msgstr ""
+"Ogni pacchetto distribuito da Ditana viene ricompilato dalla propria ricetta "
+"upstream, firmato e pubblicato solo come insieme completo: se la "
+"compilazione di un pacchetto non riesce o se i suoi sorgenti non possono "
+"essere verificati, non viene pubblicato nulla. Dalla versione 0.9.3 questo "
+"processo è diventato visibile. Ogni esecuzione viene registrata e resa "
+"pubblica, comprese quelle che non hanno distribuito nulla, e ogni pacchetto "
+"ricompilato rimanda al log della propria build."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"Two things have been incorporated since. Every alteration introduced by an "
+"upstream recipe is classified before anything is built, and anything that is "
+"not safe by construction halts the whole run for a human to inspect – the "
+"AUR has been under an active supply-chain attack, and Ditana rebuilds AUR "
+"recipes into a repository its users trust via pacman’s signature "
+"configuration. And a repository that builds and signs without issues can "
+"still be one nobody can install from, so it is installed into a virtual "
+"machine before it is released."
+msgstr ""
+"Da allora si sono aggiunte due cose. Ogni modifica introdotta da una ricetta "
+"upstream viene classificata prima di compilare qualsiasi cosa, e tutto ciò "
+"che non è sicuro per costruzione ferma l’intera esecuzione affinché una "
+"persona la esamini – l’AUR è stato oggetto di un attacco attivo alla catena "
+"di approvvigionamento, e Ditana ricompila le ricette AUR in un repository di "
+"cui i suoi utenti si fidano tramite la configurazione delle firme di pacman. "
+"Inoltre, un repository che viene compilato e firmato senza problemi può "
+"comunque essere un repository che nessuno può usare per installare, per cui "
+"viene installato in una macchina virtuale prima di essere rilasciato."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"The pipeline that all of this relies on is now public as well. It is older "
+"than Ditana: it began around 2023 as a single shell script and was never "
+"intended for anyone else’s eyes. It is published because the claims the "
+"build page makes are worth what their evidence is worth, and it is part of "
+"the evidence. It is at [github.com/acrion/ditana-build](https://github.com/"
+"acrion/ditana-build), and the runs it records are at [ditana.org/builds](/"
+"builds/)."
+msgstr ""
+"Anche la pipeline su cui si basa tutto questo è ora pubblica. È più vecchia "
+"di Ditana: è nata intorno al 2023 come un unico script di shell e non è mai "
+"stata pensata per gli occhi di altri. Viene pubblicata perché le "
+"affermazioni della pagina delle build valgono quanto valgono le loro prove, "
+"e la pipeline fa parte delle prove. Si trova su [github.com/acrion/ditana-"
+"build](https://github.com/acrion/ditana-build), e le esecuzioni che registra "
+"si trovano su [ditana.org/builds](/builds/)."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"Packages are signed with a dedicated signing subkey instead of the primary "
+"key. A subkey may be revoked and replaced independently, and it cannot "
+"certify further keys. Nothing has to be done about this: the keyring "
+"carrying it was shipped in August and has long since been picked up."
+msgstr ""
+"I pacchetti vengono firmati con una sottochiave di firma dedicata anziché "
+"con la chiave primaria. Una sottochiave può essere revocata e sostituita in "
+"modo indipendente e non può certificare altre chiavi. Non dovete fare nulla "
+"al riguardo: il portachiavi che la contiene è stato distribuito ad agosto ed "
+"è già installato da tempo."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid "Upgrading from 0.9.3"
+msgstr "Aggiornare dalla versione 0.9.3"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"Installations created using the 0.9.3 medium continue to function, with a "
+"single case that must be resolved manually. `bubblewrap-suid` no longer "
+"exists, so the next system update replaces it, and Flatpak and Bubblejail "
+"stop working on a machine where unprivileged user namespaces are disabled. "
+"Brave and other AUR applications are unaffected."
+msgstr ""
+"Le installazioni create con il supporto della versione 0.9.3 continuano a "
+"funzionare, con un unico caso che va risolto manualmente. `bubblewrap-suid` "
+"non esiste più, per cui il prossimo aggiornamento del sistema lo "
+"sostituisce, e Flatpak e Bubblejail smettono di funzionare su una macchina "
+"su cui gli user namespace non privilegiati sono disattivati. Brave e le "
+"altre applicazioni AUR non sono interessate."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid "The remedy is the guard described above:"
+msgstr "Il rimedio è il meccanismo di protezione descritto sopra:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/release-notes/0-9-4-beta.md
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+#, no-wrap
+msgid ""
+"sudo pacman -Syu ditana-userns-guard\n"
+"echo /usr/bin/bwrap | sudo tee /etc/ditana/userns-allow.conf\n"
+"sudo systemctl enable --now ditana-userns-guard.service\n"
+msgstr ""
+"sudo pacman -Syu ditana-userns-guard\n"
+"echo /usr/bin/bwrap | sudo tee /etc/ditana/userns-allow.conf\n"
+"sudo systemctl enable --now ditana-userns-guard.service\n"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"One absolute path per line; `#` starts a comment. The service refuses to "
+"raise the sysctl unless it has loaded and attached the program first, so a "
+"machine on which it cannot run stays exactly as locked as it was."
+msgstr ""
+"Un percorso assoluto per riga; `#` introduce un commento. Il servizio si "
+"rifiuta di innalzare il sysctl se prima non ha caricato e agganciato il "
+"programma, per cui una macchina su cui non può essere eseguito mantiene "
+"esattamente le stesse restrizioni di prima."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid ""
+"An older medium cannot install at all any more. The installer fetches its "
+"configuration when it runs, so a 0.9.3 USB stick reaches for packages its "
+"own repository can no longer supply and stops. Write the current image to it."
+msgstr ""
+"Un supporto più vecchio non può più installare affatto. Il programma di "
+"installazione scarica la propria configurazione al momento dell’esecuzione, "
+"per cui una chiavetta USB della versione 0.9.3 cerca pacchetti che il suo "
+"stesso repository non può più fornire e si ferma. Scrivete sulla chiavetta "
+"l’immagine attuale."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-4-beta.md
+msgid "A fresh installation from the 0.9.4 medium needs none of this."
+msgstr ""
+"Una nuova installazione dal supporto della versione 0.9.4 non richiede nulla "
+"di tutto ciò."

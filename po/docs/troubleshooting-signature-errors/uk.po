@@ -1,0 +1,181 @@
+# Ukrainian translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 07:06+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "What should be done when pacman refuses a package due to its inability to validate the signature, and how to manually verify Ditana's signing key yourself."
+msgstr "Що робити, коли pacman відхиляє пакунок, бо не може перевірити його підпис, і як самостійно вручну перевірити ключ підпису Ditana."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "\"invalid or corrupted package (PGP signature)\""
+msgstr "«invalid or corrupted package (PGP signature)»"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "Every package Ditana ships is signed, and pacman refuses to install one whose signature it cannot check. That is the mechanism working. But it also means a keyring that is out of date locks you out of the very updates that would fix it."
+msgstr "Кожен пакунок, який постачає Ditana, підписано, і pacman відмовляється встановлювати пакунок, підпис якого не може перевірити. Так і має працювати цей механізм. Але це також означає, що застаріла в’язка ключів не дає вам встановити саме ті оновлення, які б її виправили."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "You will see one of these, depending on whether the signing key is missing from your keyring or present but not trusted:"
+msgstr "Ви побачите одне з таких повідомлень — залежно від того, чи ключ підпису відсутній у вашій в’язці ключів, чи присутній, але не довірений:"
+
+#. type: Fenced code block (text)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid ""
+"error: ditana-mirrorlist: key \"3EC223A811077C09\" is unknown\n"
+":: Import PGP key 3EC223A811077C09? [Y/n]\n"
+"error: 'ditana-mirrorlist-1.12-1-any.pkg.tar.zst': invalid or corrupted package (PGP signature)\n"
+msgstr ""
+"error: ditana-mirrorlist: key \"3EC223A811077C09\" is unknown\n"
+":: Import PGP key 3EC223A811077C09? [Y/n]\n"
+"error: 'ditana-mirrorlist-1.12-1-any.pkg.tar.zst': invalid or corrupted package (PGP signature)\n"
+
+#. type: Fenced code block (text)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid ""
+"error: ditana-mirrorlist: signature from \"Stefan Zipproth <s.zipproth@ditana.org>\" is unknown trust\n"
+"error: failed to commit transaction (invalid or corrupted package (PGP signature))\n"
+msgstr ""
+"error: ditana-mirrorlist: signature from \"Stefan Zipproth <s.zipproth@ditana.org>\" is unknown trust\n"
+"error: failed to commit transaction (invalid or corrupted package (PGP signature))\n"
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "The repair"
+msgstr "Виправлення"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "For a Ditana package:"
+msgstr "Для пакунка Ditana:"
+
+#. type: Fenced code block (sh)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "sudo pacman -Sy ditana-keyring\n"
+msgstr "sudo pacman -Sy ditana-keyring\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "For an Arch package (the same problem, the same shape — this one is common on systems that have been offline for months):"
+msgstr "Для пакунка Arch (та сама проблема, той самий вигляд — це часто трапляється в системах, які місяцями не під’єднувалися до мережі):"
+
+#. type: Fenced code block (sh)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "sudo pacman -Sy archlinux-keyring\n"
+msgstr "sudo pacman -Sy archlinux-keyring\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "This is the exception to the \"never `-Sy` a single package\" rule from [Updating is not optional](/troubleshooting/updating/), and it is worth understanding *why* it is safe rather than treating it as a magic incantation. Only one package is in the transaction, so there is no partial upgrade of a dependency graph. That package is small and contains no executables. And its signature is verifiable with a key your installation already has, so nothing is being trusted that was not trusted before — installing it runs `pacman-key --populate`, which adds the current set of Ditana keys to your keyring. Afterwards, run a **full** update as usual."
+msgstr "Це виняток із правила «ніколи не виконуйте `-Sy` для окремого пакунка» зі сторінки [Оновлювати систему обов’язково](/troubleshooting/updating/), і варто зрозуміти, *чому* це безпечно, а не сприймати це як магічне заклинання. У транзакції бере участь лише один пакунок, тож часткового оновлення графа залежностей не відбувається. Цей пакунок невеликий і не містить виконуваних файлів. А його підпис можна перевірити ключем, який уже є у вашій встановленій системі, тож ви не довіряєте нічому, чому не довіряли раніше, — встановлення цього пакунка виконує `pacman-key --populate`, що додає поточний набір ключів Ditana до вашої в’язки ключів. Після цього, як зазвичай, виконайте **повне** оновлення."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "If you would rather do it by hand, this is exactly what the package's install script runs:"
+msgstr "Якщо ви віддаєте перевагу ручному способу, ось саме те, що виконує сценарій встановлення цього пакунка:"
+
+#. type: Fenced code block (sh)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "sudo pacman-key --populate ditana\n"
+msgstr "sudo pacman-key --populate ditana\n"
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "Verify the keys yourself"
+msgstr "Самостійна перевірка ключів"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "Ditana packages are signed by this key:"
+msgstr "Пакунки Ditana підписано цим ключем:"
+
+#. type: Fenced code block (text)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid ""
+"pub   rsa4096  3F80 54C3 FF75 5E55 44E6  8516 BC33 3E9A E877 D45A\n"
+"uid   Stefan Zipproth <s.zipproth@ditana.org>\n"
+"uid   Stefan Zipproth <support@ditana.org>\n"
+msgstr ""
+"pub   rsa4096  3F80 54C3 FF75 5E55 44E6  8516 BC33 3E9A E877 D45A\n"
+"uid   Stefan Zipproth <s.zipproth@ditana.org>\n"
+"uid   Stefan Zipproth <support@ditana.org>\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "It carries a dedicated signing subkey, and that subkey is what signs the repository database and every package built since August 2026:"
+msgstr "Він містить окремий підключ підпису, і саме цей підключ підписує базу даних сховища та кожен пакунок, зібраний з серпня 2026 року:"
+
+#. type: Fenced code block (text)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "sub   rsa4096  068E EA2A 490B 0C63 AEAA  3BCD 3EC2 23A8 1107 7C09\n"
+msgstr "sub   rsa4096  068E EA2A 490B 0C63 AEAA  3BCD 3EC2 23A8 1107 7C09\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "The fingerprint you verify against stays the one above: a subkey can be replaced without it changing. A keyring pre-dating `ditana-keyring 20260809` does not know the subkey at all, which is exactly the situation the repair above addresses."
+msgstr "Відбиток, за яким ви перевіряєте, залишається тим, що наведено вище: підключ можна замінити, і відбиток від цього не зміниться. В’язка ключів, старіша за `ditana-keyring 20260809`, узагалі не знає цього підключа — саме таку ситуацію й усуває наведене вище виправлення."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "Check what your own system trusts with:"
+msgstr "Перевірте, чому довіряє ваша власна система, за допомогою таких команд:"
+
+#. type: Fenced code block (sh)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid ""
+"pacman-key --list-sigs ditana\n"
+"gpg --show-keys --with-subkey-fingerprint /usr/share/pacman/keyrings/ditana.gpg\n"
+msgstr ""
+"pacman-key --list-sigs ditana\n"
+"gpg --show-keys --with-subkey-fingerprint /usr/share/pacman/keyrings/ditana.gpg\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "We deliberately do **not** offer a download-and-run repair script here. The situation you are in is \"my signature verification is failing\"; answering that with \"download this and execute it as root\" is formally the same operation the signatures exist to prevent, and the script could not be meaningfully signed either — the signature check is the broken part. One command you can read is better than a black box."
+msgstr "Ми свідомо **не** пропонуємо тут сценарій виправлення, який треба завантажити й запустити. Ваша ситуація — «у мене не працює перевірка підписів»; відповідати на це «завантажте ось це й виконайте від імені root» — формально та сама операція, для запобігання якій і існують підписи, та й підписати такий сценарій так, щоб це мало сенс, теж не вийшло б — зламана саме перевірка підпису. Одна команда, яку ви можете прочитати, краща за чорну скриньку."
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "Other causes of the same message"
+msgstr "Інші причини того самого повідомлення"
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "**The clock is wrong.** A signature is not valid before it was made. If the system clock is far in the past — a drained CMOS battery, a fresh VM, a dual boot with Windows writing local time to the RTC — every signature looks like it is from the future. Check with `timedatectl` and enable NTP with `sudo timedatectl set-ntp true`."
+msgstr "**Неправильний годинник.** Підпис недійсний до моменту свого створення. Якщо системний годинник показує час далеко в минулому — розряджена батарейка CMOS, щойно створена віртуальна машина, подвійне завантаження з Windows, яка записує місцевий час у RTC, — кожен підпис виглядає так, ніби він із майбутнього. Перевірте це за допомогою `timedatectl` і ввімкніть NTP командою `sudo timedatectl set-ntp true`."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "**A mirror served a truncated file.** The message mentions a checksum rather than a PGP signature in that case. `sudo pacman -Scc` clears the download cache, and the next update downloads the file once more."
+msgstr "**Дзеркало віддало обрізаний файл.** У такому разі повідомлення згадує контрольну суму, а не підпис PGP. `sudo pacman -Scc` очищає кеш завантажень, і під час наступного оновлення файл буде завантажено знову."

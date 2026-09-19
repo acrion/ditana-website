@@ -1,0 +1,174 @@
+# Language it-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+#, no-wrap
+msgid "Which of Ditana's repositories a problem belongs in, and what a useful report contains."
+msgstr "In quale dei repository di Ditana va segnalato un problema e che cosa contiene una segnalazione utile."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+#, no-wrap
+msgid "Reporting a bug"
+msgstr "Segnalare un bug"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"Ditana is developed in three repositories, and the right one follows from "
+"two questions: **did the problem appear while installing, or while using an "
+"installed system?** And if it is an installed system, **is it the packaging "
+"or the configuration?**"
+msgstr ""
+"Ditana è sviluppata in tre repository, e quello giusto si ricava da due "
+"domande: **il problema si è presentato durante l’installazione o durante "
+"l’uso di un sistema installato?** E se si tratta di un sistema installato, "
+"**riguarda la pacchettizzazione o la configurazione?**"
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"**[ditana-installer](https://github.com/acrion/ditana-installer/issues)** — "
+"the ISO and the installation process. The live environment does not boot; "
+"the installer stops with an error; disk partitioning or encryption fails; "
+"the installed system does not boot at all; something you selected in the "
+"installer's dialogs did not end up on the installed system."
+msgstr ""
+"**[ditana-installer](https://github.com/acrion/ditana-installer/issues)** – "
+"l’ISO e il processo di installazione. L’ambiente live non si avvia; il "
+"programma di installazione si interrompe con un errore; il partizionamento o "
+"la cifratura del disco non riesce; il sistema installato non si avvia "
+"affatto; qualcosa che avete selezionato nelle finestre di dialogo del "
+"programma di installazione non è arrivato nel sistema installato."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"**[ditana-build](https://github.com/acrion/ditana-build/issues)** – the "
+"packages themselves and the pipeline that builds them. A missing dependency, "
+"a package that will not install, a signature that does not verify, a package "
+"that is out of date."
+msgstr ""
+"**[ditana-build](https://github.com/acrion/ditana-build/issues)** – i "
+"pacchetti stessi e la pipeline che li compila. Una dipendenza mancante, un "
+"pacchetto che non si installa, una firma la cui verifica non riesce, un "
+"pacchetto non aggiornato."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"**[ditana-config](https://github.com/acrion/ditana-config/issues)** — what "
+"an installed Ditana system *is*. Package selection, desktop configuration, "
+"defaults and dotfiles, systemd units, kernel parameters and CPU mitigations, "
+"Ditana's own helper scripts. If the system boots and something in it is "
+"wrong or missing, this is the place."
+msgstr ""
+"**[ditana-config](https://github.com/acrion/ditana-config/issues)** – ciò "
+"che un sistema Ditana installato *è*. Selezione dei pacchetti, "
+"configurazione del desktop, impostazioni predefinite e dotfile, unità "
+"systemd, parametri del kernel e mitigazioni per la CPU, gli script ausiliari "
+"di Ditana. Se il sistema si avvia e qualcosa al suo interno è sbagliato o "
+"manca, questo è il posto giusto."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"If you cannot tell, open it in **ditana-config** and say so — it is easier "
+"to move an issue than to have it go unreported."
+msgstr ""
+"Se non riuscite a stabilirlo, aprite la segnalazione in **ditana-config** e "
+"fatelo presente – è più facile spostare una segnalazione che lasciare un "
+"problema non segnalato."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid "A useful report contains:"
+msgstr "Una segnalazione utile contiene:"
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"The Ditana version and the configuration it was installed with, from `grep "
+"-E '^(BUILD_ID|VERSION_CODENAME)=' /etc/os-release`, and the kernel from "
+"`uname -r`."
+msgstr ""
+"La versione di Ditana e la configurazione con cui è stata installata, "
+"ricavate da `grep -E '^(BUILD_ID|VERSION_CODENAME)=' /etc/os-release`, e il "
+"kernel, ricavato da `uname -r`."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"What you expected, what happened, and the exact command or click that "
+"produced it."
+msgstr ""
+"Che cosa vi aspettavate, che cosa è successo e il comando o il clic esatto "
+"che lo ha prodotto."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid "The relevant error, copied as text rather than photographed."
+msgstr "L’errore pertinente, copiato come testo anziché fotografato."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"For an installer problem: `/var/log/install_ditana.log`, which the installer "
+"also copies into the installed system."
+msgstr ""
+"Per un problema del programma di installazione: `/var/log/"
+"install_ditana.log`, che il programma di installazione copia anche nel "
+"sistema installato."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"For a service that fails: `systemctl status <unit>` and `journalctl -u "
+"<unit> -b`."
+msgstr ""
+"Per un servizio in errore: `systemctl status <unit>` e `journalctl -u <unit> "
+"-b`."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"For a hardware problem: `print-system-infos`, which is installed by default "
+"with the terminal tools and summarizes CPU, GPU, memory and firmware in one "
+"screen. Install it with `pacman -S ditana-print-system-infos` if you "
+"unchecked that option."
+msgstr ""
+"Per un problema hardware: `print-system-infos`, che viene installato per "
+"impostazione predefinita con gli strumenti da terminale e riassume CPU, GPU, "
+"memoria e firmware in una sola schermata. Installatelo con `pacman -S ditana-"
+"print-system-infos` se avete deselezionato questa opzione."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"Please do not report AUR packages here. Ditana rebuilds their recipes from "
+"the AUR unchanged; if the software itself is broken, the AUR page or the "
+"upstream project is where a fix can actually be made. If the *packaging* in "
+"Ditana’s repository is at fault – a missing dependency, a package that will "
+"not install – that is a ditana-build issue and we do want to hear about it."
+msgstr ""
+"Non segnalate qui i pacchetti AUR. Ditana ricompila le loro ricette dall’AUR "
+"senza modifiche; se è il software stesso a essere difettoso, è sulla pagina "
+"AUR o nel progetto upstream che si può effettivamente apportare una "
+"correzione. Se la colpa è invece della *pacchettizzazione* nel repository di "
+"Ditana – una dipendenza mancante, un pacchetto che non si installa – si "
+"tratta di una segnalazione per ditana-build, e ci interessa davvero saperlo."

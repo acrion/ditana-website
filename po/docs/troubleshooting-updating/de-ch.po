@@ -1,0 +1,220 @@
+# Language de-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: de-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "Why a rolling release must be updated entirely, how to update Ditana on the desktop or in a terminal, and what actions to take afterwards."
+msgstr "Warum ein Rolling-Release-System vollständig aktualisiert werden muss, wie Sie Ditana auf dem Desktop oder im Terminal aktualisieren und was danach zu tun ist."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "Updating is not optional"
+msgstr "Aktualisieren ist nicht optional"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"Ditana is Arch Linux underneath, and Arch is a rolling release. There is no "
+"\"version\" to stay on: there is one moving target, and every package in the "
+"repositories is built against the libraries that are current *today*. A "
+"system that has not been updated for a few months is not a stable older "
+"system — it is a system whose next update is a large, untested jump."
+msgstr ""
+"Unter der Oberfläche ist Ditana Arch Linux, und Arch ist ein Rolling-Release-"
+"System. Es gibt keine «Version», bei der Sie bleiben könnten: Es gibt ein "
+"einziges bewegliches Ziel, und jedes Paket in den Paketquellen wird gegen "
+"die Bibliotheken gebaut, die *heute* aktuell sind. Ein System, das einige "
+"Monate lang nicht aktualisiert wurde, ist kein stabiles älteres System – es "
+"ist ein System, dessen nächste Aktualisierung ein grosser, ungetesteter "
+"Sprung ist."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid "Two consequences are worth stating plainly:"
+msgstr "Zwei Folgen verdienen es, deutlich ausgesprochen zu werden:"
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Security fixes only arrive if you update.** There is no separate backport "
+"channel. The fix for a vulnerability in a library reaches you as a new "
+"version of that library, and not otherwise."
+msgstr ""
+"**Sicherheitskorrekturen kommen nur an, wenn Sie aktualisieren.** Es gibt "
+"keinen separaten Backport-Kanal. Die Korrektur einer Schwachstelle in einer "
+"Bibliothek erreicht Sie als neue Version dieser Bibliothek und auf keinem "
+"anderen Weg."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Never update a single package.** `pacman -Sy something` synchronizes the "
+"package databases and then installs one package against libraries that may "
+"already have moved on. This is a *partial upgrade*, it is the single most "
+"common way to break an Arch system, and it is unsupported. Update everything "
+"or nothing: `-Syu`, never `-Sy` followed by an install."
+msgstr ""
+"**Nie ein einzelnes Paket aktualisieren.** `pacman -Sy something` "
+"synchronisiert die Paketdatenbanken und installiert dann ein Paket gegen "
+"Bibliotheken, die sich möglicherweise bereits weiterentwickelt haben. Das "
+"ist ein *partielles Upgrade*; es ist der mit Abstand häufigste Weg, ein Arch-"
+"System funktionsunfähig zu machen, und es wird nicht unterstützt. "
+"Aktualisieren Sie alles oder nichts: `-Syu`, nie `-Sy` gefolgt von einer "
+"Installation."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "  (The one deliberate exception is the [keyring repair](/troubleshooting/signature-errors/#the-repair), and it is safe for a specific reason that is explained there.)\n"
+msgstr "  (Die einzige bewusste Ausnahme ist die [Reparatur des Schlüsselbunds](/troubleshooting/signature-errors/#the-repair), und sie ist aus einem bestimmten, dort erklärten Grund unbedenklich.)\n"
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "The graphical way"
+msgstr "Der grafische Weg"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid "Ditana installs a software centre on every desktop:"
+msgstr "Ditana installiert auf jedem Desktop ein Software-Center:"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid ""
+"| Tool | Installed with | Covers |\n"
+"| --- | --- | --- |\n"
+"| **Pachub** | XFCE, Niri, Wayfire, COSMIC | Packages from the Arch and Ditana repositories |\n"
+"| **Bazaar** | Niri, Wayfire | Flatpak applications from Flathub |\n"
+"| **COSMIC Store** | COSMIC | Flatpak applications from Flathub |\n"
+"| **Kalu** | XFCE | Notifies you when updates are waiting |\n"
+"| **arch-audit-gtk** | all desktops | Tray indicator that turns red when an installed package has a known vulnerability |\n"
+msgstr ""
+"| Werkzeug | Installiert mit | Deckt ab |\n"
+"| --- | --- | --- |\n"
+"| **Pachub** | XFCE, Niri, Wayfire, COSMIC | Pakete aus den Paketquellen von Arch und Ditana |\n"
+"| **Bazaar** | Niri, Wayfire | Flatpak-Anwendungen von Flathub |\n"
+"| **COSMIC Store** | COSMIC | Flatpak-Anwendungen von Flathub |\n"
+"| **Kalu** | XFCE | Benachrichtigt Sie, wenn Aktualisierungen anstehen |\n"
+"| **arch-audit-gtk** | alle Desktops | Anzeige im Infobereich, die rot wird, wenn ein installiertes Paket eine bekannte Schwachstelle hat |\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"Pachub and the Flatpak stores cover different halves of the system, so "
+"running one is not the same as running both. If your desktop has no Flatpak "
+"store, the terminal command below covers it."
+msgstr ""
+"Pachub und die Flatpak-Stores decken verschiedene Hälften des Systems ab; "
+"eines davon auszuführen ist also nicht dasselbe, wie beide auszuführen. Wenn "
+"Ihr Desktop keinen Flatpak-Store hat, deckt der Befehl für das Terminal "
+"weiter unten diesen Teil ab."
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "The terminal way"
+msgstr "Der Weg über das Terminal"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"This is the recommended route, because one command covers the repositories "
+"*and* the AUR packages you have installed:"
+msgstr ""
+"Das ist der empfohlene Weg, weil ein einziger Befehl die Paketquellen *und* "
+"die AUR-Pakete abdeckt, die Sie installiert haben:"
+
+#. type: Fenced code block (sh)
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid ""
+"paru -Syu          # Arch repos + Ditana repo + your AUR packages\n"
+"flatpak update     # sandboxed applications from Flathub\n"
+msgstr ""
+"paru -Syu          # Arch repos + Ditana repo + your AUR packages\n"
+"flatpak update     # sandboxed applications from Flathub\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"`paru` is Ditana's chosen AUR helper and is installed on every system, "
+"including headless ones. Plain `pacman -Syu` also works, but it leaves AUR "
+"packages behind — and an AUR package left behind while its dependencies move "
+"on is exactly the ABI mismatch that produces \"symbol lookup error\" a week "
+"later."
+msgstr ""
+"`paru` ist der von Ditana gewählte AUR-Helfer und ist auf jedem System "
+"installiert, auch auf Headless-Systemen. Ein einfaches `pacman -Syu` "
+"funktioniert ebenfalls, lässt die AUR-Pakete aber auf ihrem alten Stand – "
+"und ein AUR-Paket, das auf seinem alten Stand bleibt, während sich seine "
+"Abhängigkeiten weiterentwickeln, ist genau die ABI-Inkompatibilität, die "
+"eine Woche später «symbol lookup error» erzeugt."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "**Let it run to its end.** On a system using ZFS, every kernel update rebuilds the ZFS module. pacman then shows `Install DKMS modules` and a line beginning with `==> dkms install`, and afterwards nothing for several minutes. That is not a hang. Interrupting it leaves the new kernel missing its ZFS module, and the next boot ends in a kernel panic reading `Attempted to kill init!`. If this has occurred, revert to the snapshot created prior to the update, as [Automatic system snapshots](/best-practices/automatic-system-snapshots/) describes.\n"
+msgstr "**Bis zum Ende laufen lassen.** Auf einem System mit ZFS wird bei jeder Kernel-Aktualisierung das ZFS-Modul neu gebaut. pacman zeigt dann `Install DKMS modules` und eine Zeile, die mit `==> dkms install` beginnt, und danach mehrere Minuten lang nichts. Das ist kein Hängenbleiben. Wenn Sie den Vorgang unterbrechen, fehlt dem neuen Kernel sein ZFS-Modul, und der nächste Systemstart endet in einer Kernel-Panic mit der Meldung `Attempted to kill init!`. Wenn das geschehen ist, setzen Sie das System auf den Schnappschuss zurück, der vor der Aktualisierung erstellt wurde, wie unter [Automatische Systemschnappschüsse](/best-practices/automatic-system-snapshots/) beschrieben.\n"
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "After the update"
+msgstr "Nach der Aktualisierung"
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Configuration files.** When a package ships a new default for a file you "
+"have edited, pacman writes it beside yours as `*.pacnew` and says so. Merge "
+"them with `sudo pacdiff` (from `pacman-contrib`, installed by default).  "
+"Ignoring `.pacnew` files for a year is a slow way to accumulate breakage."
+msgstr ""
+"**Konfigurationsdateien.** Wenn ein Paket eine neue Standardfassung einer "
+"Datei ausliefert, die Sie bearbeitet haben, schreibt pacman sie als "
+"`*.pacnew` neben Ihre Datei und weist darauf hin. Führen Sie die beiden mit "
+"`sudo pacdiff` zusammen (aus dem Paket `pacman-contrib`, das standardmässig "
+"installiert ist). Dateien vom Typ `.pacnew` ein Jahr lang zu ignorieren, ist "
+"ein schleichender Weg, Defekte anzuhäufen."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Reboot after a kernel update.** Until you do, the running kernel no longer "
+"matches the modules on disk, and loading a module that was not already in "
+"memory will fail."
+msgstr ""
+"**Nach einer Kernel-Aktualisierung neu starten.** Bis Sie das tun, passt der "
+"laufende Kernel nicht mehr zu den Modulen auf dem Datenträger, und das Laden "
+"eines Moduls, das nicht bereits im Arbeitsspeicher war, schlägt fehl."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Snapshots.** If you enabled automatic snapshots during installation, the "
+"state before the update is still on disk and you can boot into it. See "
+"[Automatic system snapshots](/best-practices/automatic-system-snapshots/)."
+msgstr ""
+"**Schnappschüsse.** Wenn Sie bei der Installation automatische "
+"Schnappschüsse aktiviert haben, ist der Zustand vor der Aktualisierung noch "
+"auf dem Datenträger vorhanden, und Sie können ihn starten. Siehe "
+"[Automatische Systemschnappschüsse](/best-practices/automatic-system-"
+"snapshots/)."

@@ -1,0 +1,31 @@
+# Italian words the spelling checker permits beyond hunspell’s it_CH, whose
+# word list dates from 2007 and knows no elided forms before an apostrophe
+# (dell’installazione, nell’avvio): the elided prepositions and pronouns.
+all
+coll
+dall
+dell
+nell
+sull
+quell
+quest
+tutt
+dev
+anch
+
+# Names of places and of the recipe format
+Ursen
+Mindelheim
+PKGBUILD
+SSD
+
+# Italian words missing from the 2007 word list, and established technical loanwords
+metadati
+fondativa
+avviabile
+reindirizzamento
+allocatore
+predittori
+sottorete
+multipiattaforma
+dotfile

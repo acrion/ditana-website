@@ -106,6 +106,21 @@ describe('release dates', () => {
     });
 });
 
+describe('release dates in other languages', () => {
+    test('are written as the language writes them', () => {
+        assert.equal(formatReleaseDate(new Date('2026-09-12'), 'de-CH'), '12. September 2026');
+        assert.equal(formatReleaseDate(new Date('2026-09-12'), 'es-419'), '12 de septiembre de 2026');
+        assert.equal(formatReleaseDate(new Date('2026-09-12'), 'rm'), '12 da settember 2026');
+    });
+
+    test('write the first of a month as an ordinal in French and Italian', () => {
+        assert.equal(formatReleaseDate(new Date('2026-05-01'), 'fr-CH'), '1er mai 2026');
+        assert.equal(formatReleaseDate(new Date('2026-05-01'), 'it-CH'), '1° maggio 2026');
+        assert.equal(formatReleaseDate(new Date('2026-05-01'), 'de-CH'), '1. Mai 2026');
+        assert.equal(formatReleaseDate(new Date('2026-05-11'), 'fr-CH'), '11 mai 2026');
+    });
+});
+
 describe('the release notes sidebar', () => {
     test('lists published releases, newest first, and marks the current one', () => {
         assert.deepEqual(releaseNotesSidebar([r090, r093, r094]), [
@@ -113,6 +128,12 @@ describe('the release notes sidebar', () => {
             { label: '0.9.3 Beta', slug: 'release-notes/0-9-3-beta' },
             { label: '0.9 Beta', slug: 'release-notes/0-9-0-beta' },
         ]);
+    });
+
+    test('labels the current release as the caller says, translations included', () => {
+        const current = (name) => ({ label: `${name} (current)`, translations: { 'de-CH': `${name} (aktuell)` } });
+        assert.deepEqual(releaseNotesSidebar([r093, r094], current)[0],
+            { label: '0.9.4 Beta (current)', translations: { 'de-CH': '0.9.4 Beta (aktuell)' }, slug: 'release-notes/0-9-4-beta' });
     });
 
     // Starlight fails a build whose sidebar names a page that is not built,
@@ -155,6 +176,17 @@ describe('the header of a release-notes page', () => {
         assert.equal(
             releaseHeaderMarkdown([...all, draft095], draft095),
             '**Previous release:** [0.9.4 Beta](/release-notes/0-9-4-beta/) (12 September 2026)',
+        );
+    });
+
+    // A translated page links to the notes in its own language.
+    test('of a translation is written in its language, with its labels and links', () => {
+        const labels = { date: 'Veröffentlicht am:', previous: 'Vorherige Version:', successor: 'Nachfolger:' };
+        assert.equal(
+            releaseHeaderMarkdown(all, r093, { lang: 'de-CH', labels, prefix: 'de-ch' }),
+            '**Veröffentlicht am:** 21. Mai 2026\\\n'
+            + '**Vorherige Version:** [0.9 Beta](/de-ch/release-notes/0-9-0-beta/) (31. Dezember 2024)\\\n'
+            + '**Nachfolger:** [0.9.4 Beta](/de-ch/release-notes/0-9-4-beta/) (12. September 2026)',
         );
     });
 

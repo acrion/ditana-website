@@ -1,0 +1,434 @@
+# Language fr-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "What the Ditana repository distributes, under which licences, where the corresponding source code is, and why the ZFS packages are packaged the way they are."
+msgstr "Ce que distribue le dépôt Ditana, sous quelles licences, où se trouve le code source correspondant, et pourquoi les paquets ZFS sont empaquetés comme ils le sont."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "Licensing"
+msgstr "Licences"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"Almost everything on a Ditana system comes from Arch's own repositories "
+"under Arch's terms. This page is about the packages Ditana builds itself and "
+"serves from `ditana.org` — in particular the ZFS ones, because ZFS on Linux "
+"carries a licence question that a distribution has to answer explicitly "
+"rather than by accident."
+msgstr ""
+"Presque tout ce qui se trouve sur un système Ditana provient des propres "
+"dépôts d’Arch, aux conditions d’Arch. Cette page concerne les paquets que "
+"Ditana compile elle-même et met à disposition depuis `ditana.org` – en "
+"particulier les paquets ZFS, car ZFS sous Linux soulève une question de "
+"licence à laquelle une distribution doit répondre explicitement plutôt que "
+"par hasard."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"It describes what Ditana does and links the primary sources so you can read "
+"them instead of taking this page's word for anything. It is not legal advice."
+msgstr ""
+"Elle décrit ce que fait Ditana et renvoie aux sources primaires, afin que "
+"vous puissiez les lire au lieu de croire cette page sur parole. Ceci n’est "
+"pas un conseil juridique."
+
+#. type: Title ##
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "The ZFS packages"
+msgstr "Les paquets ZFS"
+
+#. type: Title ###
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "What Ditana distributes"
+msgstr "Ce que distribue Ditana"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid ""
+"| Package | Contents | Licence |\n"
+"| --- | --- | --- |\n"
+"| `zfs-utils` | The userspace tools and libraries — `zfs`, `zpool`, `zed`, udev rules, systemd units. | [CDDL-1.0](https://opensource.org/license/cddl-1-0) |\n"
+"| `zfs-dkms` | Source code only. It unpacks the OpenZFS module sources into `/usr/src/zfs-<version>/` together with a `dkms.conf`. It contains no compiled kernel module. | [CDDL-1.0](https://opensource.org/license/cddl-1-0) |\n"
+msgstr ""
+"| Paquet | Contenu | Licence |\n"
+"| --- | --- | --- |\n"
+"| `zfs-utils` | Les outils et les bibliothèques de l’espace utilisateur – `zfs`, `zpool`, `zed`, règles udev, unités systemd. | [CDDL-1.0](https://opensource.org/license/cddl-1-0) |\n"
+"| `zfs-dkms` | Uniquement du code source. Il décompresse les sources du module OpenZFS dans `/usr/src/zfs-<version>/`, accompagnées d’un `dkms.conf`. Il ne contient aucun module du noyau compilé. | [CDDL-1.0](https://opensource.org/license/cddl-1-0) |\n"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"`zfs.ko`, the kernel module itself, is compiled by DKMS **on your machine**, "
+"against the kernel running on your machine, when `zfs-dkms` is installed and "
+"again after every kernel update. It is never built on a Ditana build host, "
+"never signed by Ditana, and never uploaded anywhere. You can check this on "
+"an installed system:"
+msgstr ""
+"`zfs.ko`, le module du noyau lui-même, est compilé par DKMS **sur votre "
+"machine**, pour le noyau qui tourne sur votre machine, lorsque `zfs-dkms` "
+"est installé, puis à nouveau après chaque mise à jour du noyau. Il n’est "
+"jamais compilé sur une machine de compilation de Ditana, jamais signé par "
+"Ditana et jamais téléversé nulle part. Vous pouvez le vérifier sur un "
+"système installé :"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "pacman -Ql zfs-dkms | grep -c '\\.ko$'    # 0\n"
+msgstr "pacman -Ql zfs-dkms | grep -c '\\.ko$'    # 0\n"
+
+#. type: Title ###
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "The licence question"
+msgstr "La question de la licence"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"[OpenZFS](https://github.com/openzfs/zfs) is licensed under the CDDL. The "
+"Linux kernel is licensed under the GPL version 2. The [Free Software "
+"Foundation](https://www.gnu.org/licenses/license-list.html#CDDL)  lists the "
+"CDDL as a free software licence that is incompatible with the GPL, and the "
+"Software Freedom Conservancy reached the same conclusion in its [2016 "
+"analysis](https://sfconservancy.org/blog/2016/feb/25/zfs-and-linux/).  "
+"Canonical published the [opposing position](https://ubuntu.com/blog/zfs-"
+"licensing-and-linux) that same year. The disagreement has never been tested "
+"in court and remains unresolved."
+msgstr ""
+"[OpenZFS](https://github.com/openzfs/zfs) est publié sous la licence CDDL. "
+"Le noyau Linux est publié sous la licence GPL version 2. La [Free Software "
+"Foundation](https://www.gnu.org/licenses/license-list.html#CDDL) répertorie "
+"la CDDL comme une licence de logiciel libre incompatible avec la GPL, et la "
+"Software Freedom Conservancy est parvenue à la même conclusion dans son "
+"[analyse de 2016](https://sfconservancy.org/blog/2016/feb/25/zfs-and-"
+"linux/). Canonical a publié la [position opposée](https://ubuntu.com/blog/"
+"zfs-licensing-and-linux) la même année. Ce désaccord n’a jamais été porté "
+"devant un tribunal et reste non résolu."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"What the disagreement is *about* is narrow: whether a **compiled binary that "
+"combines** CDDL-covered OpenZFS code with GPL-covered kernel code may be "
+"distributed. That artefact is `zfs.ko`."
+msgstr ""
+"Ce *sur quoi* porte le désaccord est restreint : il s’agit de savoir si un "
+"**binaire compilé qui combine** du code OpenZFS couvert par la CDDL avec du "
+"code du noyau couvert par la GPL peut être distribué. Cet artefact, c’est "
+"`zfs.ko`."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"Source code is not such a combination, and neither is userspace: `zfs-utils` "
+"contains no kernel code and is not linked against any. Neither package "
+"Ditana ships is the artefact under dispute."
+msgstr ""
+"Le code source n’est pas une telle combinaison, pas plus que l’espace "
+"utilisateur : `zfs-utils` ne contient aucun code du noyau et n’est lié à "
+"aucun code de ce type. Aucun des deux paquets que fournit Ditana n’est "
+"l’artefact en litige."
+
+#. type: Title ###
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "Where that leaves Ditana"
+msgstr "Ce que cela signifie pour Ditana"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"Ditana distributes the sources and the userspace tools, and lets DKMS build "
+"the module locally. That is the same arrangement [Debian uses](https://"
+"wiki.debian.org/ZFS): a DKMS source package, no prebuilt modules in the "
+"repository."
+msgstr ""
+"Ditana distribue les sources et les outils de l’espace utilisateur, et "
+"laisse DKMS compiler le module localement. C’est le même dispositif que "
+"celui [qu’utilise Debian](https://wiki.debian.org/ZFS) : un paquet source "
+"DKMS, aucun module déjà compilé dans le dépôt."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"It is deliberately *not* the arrangement used by projects that ship a ready-"
+"built module — [archzfs](https://github.com/archzfs/archzfs), for example, "
+"offers precompiled `zfs-linux` packages alongside its DKMS variant, and "
+"Canonical ships the module with Ubuntu on the strength of the position "
+"linked above. Those projects distribute the combined binary. Ditana does "
+"not, and the choice is the reason this page exists."
+msgstr ""
+"Ce n’est délibérément *pas* le dispositif des projets qui fournissent un "
+"module déjà compilé – [archzfs](https://github.com/archzfs/archzfs), par "
+"exemple, propose des paquets `zfs-linux` déjà compilés à côté de sa variante "
+"DKMS, et Canonical livre le module avec Ubuntu en s’appuyant sur la position "
+"mentionnée plus haut. Ces projets distribuent le binaire combiné. Ditana ne "
+"le fait pas, et ce choix est la raison d’être de cette page."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"The practical cost of that choice is real and is not hidden: a kernel update "
+"on a Ditana system recompiles the module locally, which takes minutes and "
+"needs the matching kernel headers. This is why the installer offers ZFS only "
+"together with the long-term support kernel: the ZFS entry appears in the "
+"File System dialog only while that kernel is selected, and disappears when "
+"you pick another one – a non-LTS kernel can move ahead of what OpenZFS "
+"supports and leave DKMS unable to build. [How settings depend on each other]"
+"(/under-the-hood/settings-logic/) shows the two declarations that do this."
+msgstr ""
+"Le coût pratique de ce choix est réel et n’est pas dissimulé : une mise à "
+"jour du noyau sur un système Ditana recompile le module localement, ce qui "
+"prend plusieurs minutes et nécessite les en-têtes du noyau correspondants. "
+"C’est pourquoi le programme d’installation ne propose ZFS qu’avec le noyau à "
+"support à long terme : l’entrée ZFS n’apparaît dans la boîte de dialogue "
+"File System que tant que ce noyau est sélectionné, et disparaît lorsque vous "
+"en choisissez un autre – un noyau non LTS peut devancer ce que prend en "
+"charge OpenZFS et laisser DKMS dans l’impossibilité de compiler. [Comment "
+"les paramètres dépendent les uns des autres](/under-the-hood/settings-"
+"logic/) montre les deux déclarations qui produisent ce comportement."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"The installer states the licence prior to your selection: the File System "
+"dialog carries `CDDL` on the ZFS entry, the way package selections carry "
+"their SPDX identifier."
+msgstr ""
+"Le programme d’installation indique la licence avant que vous fassiez votre "
+"choix : dans la boîte de dialogue File System, l’entrée ZFS porte la mention "
+"`CDDL`, de la même manière que les sélections de paquets portent leur "
+"identifiant SPDX."
+
+#. type: Title ##
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "ZFSBootMenu"
+msgstr "ZFSBootMenu"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"[ZFSBootMenu](https://github.com/zbm-dev/zfsbootmenu) is the bootloader "
+"Ditana installs on ZFS systems. It is licensed under the MIT licence and "
+"contains no OpenZFS code — it is a set of shell and Perl scripts that call "
+"the `zfs` and `zpool` commands. The question above does not arise for it."
+msgstr ""
+"[ZFSBootMenu](https://github.com/zbm-dev/zfsbootmenu) est le chargeur "
+"d’amorçage que Ditana installe sur les systèmes ZFS. Il est publié sous la "
+"licence MIT et ne contient aucun code OpenZFS – c’est un ensemble de scripts "
+"shell et Perl qui appellent les commandes `zfs` et `zpool`. La question "
+"évoquée plus haut ne se pose pas pour lui."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"The boot image on your machine is generated locally during installation, by "
+"`generate-zbm` operating within the target system, using the components "
+"present there. On a UEFI machine it is an EFI bundle located at `/boot/efi/"
+"EFI/zbm/`, copied to `/boot/efi/EFI/BOOT/BOOTX64.EFI` as well; on a BIOS "
+"machine it is `/boot/syslinux/zfsbootmenu/initramfs-bootmenu.img`."
+msgstr ""
+"L’image de démarrage de votre machine est générée localement pendant "
+"l’installation, par `generate-zbm` exécuté dans le système cible, à partir "
+"des composants qui s’y trouvent. Sur une machine UEFI, il s’agit d’un "
+"exécutable EFI tout-en-un situé dans `/boot/efi/EFI/zbm/`, également copié "
+"vers `/boot/efi/EFI/BOOT/BOOTX64.EFI` ; sur une machine BIOS, il s’agit de `/"
+"boot/syslinux/zfsbootmenu/initramfs-bootmenu.img`."
+
+#. type: Title ##
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "Corresponding source code"
+msgstr "Code source correspondant"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"The CDDL is a file-level copyleft: whoever distributes binaries built from "
+"CDDL-covered files has to make the corresponding source available and keep "
+"the licence notices intact. Ditana distributes `zfs-utils` as a binary "
+"package, so this applies."
+msgstr ""
+"La CDDL est un copyleft au niveau des fichiers : quiconque distribue des "
+"binaires compilés à partir de fichiers couverts par la CDDL doit mettre à "
+"disposition le code source correspondant et conserver intactes les mentions "
+"de licence. Ditana distribue `zfs-utils` sous forme de paquet binaire, cette "
+"obligation s’applique donc."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"For every package in the Ditana repository the recipe is public. Packages "
+"taken from the AUR unchanged, and Ditana's forks of them, carry their "
+"upstream address in the recipe; Ditana's own packages are built from the "
+"repository of the same name under [github.com/acrion](https://github.com/"
+"acrion); and the handful taken from Arch's own packaging carry the address "
+"of the corresponding repository on gitlab.archlinux.org. The recipe names "
+"the exact upstream archive it fetches and the checksum it is verified "
+"against, which is the corresponding source in the sense the licence means."
+msgstr ""
+"Pour chaque paquet du dépôt Ditana, la recette est publique. Les paquets "
+"repris tels quels de l’AUR, ainsi que les forks qu’en a faits Ditana, "
+"indiquent leur adresse amont dans la recette ; les paquets propres à Ditana "
+"sont compilés à partir du dépôt du même nom sous [github.com/acrion](https://"
+"github.com/acrion) ; et les quelques paquets repris de l’empaquetage propre "
+"à Arch portent l’adresse du dépôt correspondant sur gitlab.archlinux.org. La "
+"recette désigne l’archive amont exacte qu’elle récupère et la somme de "
+"contrôle par rapport à laquelle celle-ci est vérifiée, ce qui constitue le "
+"code source correspondant au sens où l’entend la licence."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid "For the packages on this page:"
+msgstr "Pour les paquets de cette page :"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid ""
+"| Package | Recipe | Upstream source |\n"
+"| --- | --- | --- |\n"
+"| `zfs-utils` | [aur.archlinux.org/packages/zfs-utils](https://aur.archlinux.org/packages/zfs-utils) | [github.com/openzfs/zfs/releases](https://github.com/openzfs/zfs/releases) |\n"
+"| `zfs-dkms` | [aur.archlinux.org/packages/zfs-dkms](https://aur.archlinux.org/packages/zfs-dkms) | [github.com/openzfs/zfs/releases](https://github.com/openzfs/zfs/releases) |\n"
+"| `zfsbootmenu` | [aur.archlinux.org/packages/zfsbootmenu](https://aur.archlinux.org/packages/zfsbootmenu) | [github.com/zbm-dev/zfsbootmenu](https://github.com/zbm-dev/zfsbootmenu) |\n"
+msgstr ""
+"| Paquet | Recette | Source amont |\n"
+"| --- | --- | --- |\n"
+"| `zfs-utils` | [aur.archlinux.org/packages/zfs-utils](https://aur.archlinux.org/packages/zfs-utils) | [github.com/openzfs/zfs/releases](https://github.com/openzfs/zfs/releases) |\n"
+"| `zfs-dkms` | [aur.archlinux.org/packages/zfs-dkms](https://aur.archlinux.org/packages/zfs-dkms) | [github.com/openzfs/zfs/releases](https://github.com/openzfs/zfs/releases) |\n"
+"| `zfsbootmenu` | [aur.archlinux.org/packages/zfsbootmenu](https://aur.archlinux.org/packages/zfsbootmenu) | [github.com/zbm-dev/zfsbootmenu](https://github.com/zbm-dev/zfsbootmenu) |\n"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"Ditana's ZFS recipes carry no Ditana patches: the packages are built from "
+"the upstream AUR recipes as published. `pacman -Qi zfs-utils` names the "
+"exact version installed on your machine, and the recipe's AUR history has a "
+"commit for that version. Every run that produced these packages is recorded "
+"under [Build status](/builds/)."
+msgstr ""
+"Les recettes ZFS de Ditana ne comportent aucun correctif propre à Ditana : "
+"les paquets sont compilés à partir des recettes amont de l’AUR, telles "
+"qu’elles sont publiées. `pacman -Qi zfs-utils` indique la version exacte "
+"installée sur votre machine, et l’historique de la recette dans l’AUR "
+"contient un commit pour cette version. Chaque exécution qui a produit ces "
+"paquets est consignée sous [État des compilations](/builds/)."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"The full text of the CDDL-1.0 is at [opensource.org/license/cddl-1-0]"
+"(https://opensource.org/license/cddl-1-0) and in the `COPYRIGHT` and "
+"`LICENSE` files of the OpenZFS source tree linked above."
+msgstr ""
+"Le texte intégral de la CDDL-1.0 se trouve sur [opensource.org/license/"
+"cddl-1-0](https://opensource.org/license/cddl-1-0) ainsi que dans les "
+"fichiers `COPYRIGHT` et `LICENSE` de l’arborescence des sources d’OpenZFS "
+"mentionnée plus haut."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"If you cannot locate the corresponding source for any package Ditana "
+"distributes, write to [support@ditana.org](mailto:support@ditana.org) and "
+"you will be pointed at it or sent it."
+msgstr ""
+"Si vous ne trouvez pas le code source correspondant d’un paquet que "
+"distribue Ditana, écrivez à [support@ditana.org]"
+"(mailto:support@ditana.org) : vous serez orienté vers celui-ci, ou il vous "
+"sera envoyé."
+
+#. type: Title ##
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "Ditana's own code"
+msgstr "Le code propre à Ditana"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"The installer engine, its knowledge base, and the tooling around them are "
+"Ditana's own work:"
+msgstr ""
+"Le moteur d’installation, sa base de connaissances et les outils qui les "
+"entourent sont l’œuvre de Ditana elle-même :"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid ""
+"| Project | Licence |\n"
+"| --- | --- |\n"
+"| [ditana-installer](https://github.com/acrion/ditana-installer) | GPL-3.0-or-later |\n"
+"| [ditana-config](https://github.com/acrion/ditana-config) | AGPL-3.0-or-later |\n"
+"| [ditana-build](https://github.com/acrion/ditana-build) | AGPL-3.0-or-later |\n"
+"| [ditana-userns-guard](https://github.com/acrion/ditana-userns-guard) | AGPL-3.0-or-later, except the BPF program itself (`userns_guard.bpf.c`) and the kernel type declarations it needs (`kernel_types.h`), which are GPL-2.0-or-later because the kernel refuses GPL-only helpers to a program that is not |\n"
+"| [zfs-autosnap](https://github.com/acrion/zfs-autosnap) | AGPL-3.0-or-later |\n"
+msgstr ""
+"| Projet | Licence |\n"
+"| --- | --- |\n"
+"| [ditana-installer](https://github.com/acrion/ditana-installer) | GPL-3.0-or-later |\n"
+"| [ditana-config](https://github.com/acrion/ditana-config) | AGPL-3.0-or-later |\n"
+"| [ditana-build](https://github.com/acrion/ditana-build) | AGPL-3.0-or-later |\n"
+"| [ditana-userns-guard](https://github.com/acrion/ditana-userns-guard) | AGPL-3.0-or-later, à l’exception du programme BPF lui-même (`userns_guard.bpf.c`) et des déclarations de types du noyau dont il a besoin (`kernel_types.h`), qui sont sous GPL-2.0-or-later, car le noyau refuse les fonctions auxiliaires réservées à la GPL à un programme qui n’est pas lui-même sous GPL |\n"
+"| [zfs-autosnap](https://github.com/acrion/zfs-autosnap) | AGPL-3.0-or-later |\n"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"zfs-autosnap is Ditana's own pre-upgrade snapshot hook, not OpenZFS code; it "
+"is installed by default on every ZFS system."
+msgstr ""
+"zfs-autosnap est le crochet propre à Ditana qui prend un instantané avant la "
+"mise à jour, et non du code OpenZFS ; il est installé par défaut sur chaque "
+"système ZFS."
+
+#. type: Title ##
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "Not legal advice"
+msgstr "Pas un conseil juridique"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"This page is written by Ditana's maintainer, not by a lawyer, and it is a "
+"description of Ditana's packaging rather than an opinion on anyone else's. "
+"The CDDL/GPL question is genuinely contested by parties who have taken it "
+"seriously, and every position referenced here is linked so you can read the "
+"argument yourself. If you are redistributing these packages, or building "
+"products on top of them, get your own advice."
+msgstr ""
+"Cette page est rédigée par le mainteneur de Ditana, et non par un avocat, et "
+"elle décrit l’empaquetage de Ditana plutôt qu’elle ne donne un avis sur "
+"celui de quiconque d’autre. La question CDDL/GPL est réellement contestée "
+"par des parties qui l’ont prise au sérieux, et chaque position citée ici est "
+"accompagnée d’un lien, afin que vous puissiez lire l’argumentation vous-"
+"même. Si vous redistribuez ces paquets, ou si vous construisez des produits "
+"sur leur base, obtenez votre propre avis juridique."

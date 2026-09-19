@@ -1,0 +1,352 @@
+# Ukrainian translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "How Ditana configures atomic snapshots around system upgrades, and how to roll back from the rescue system."
+msgstr "Як Ditana налаштовує атомарні знімки перед оновленнями системи і як відкотити систему із системи відновлення."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "Automatic system snapshots"
+msgstr "Автоматичні знімки системи"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"Ditana takes an automatic snapshot of the system state prior to a system "
+"upgrade, through a pacman hook. This is configured independently of the "
+"chosen filesystem under **Advanced Settings → System Maintenance Tools → "
+"Configure Automatic System Snapshots** in the installer (enabled by default)."
+msgstr ""
+"Ditana автоматично робить знімок стану системи перед оновленням системи за "
+"допомогою хука pacman. Це налаштовується незалежно від вибраної файлової "
+"системи в інсталяторі, у розділі **Advanced Settings → System Maintenance "
+"Tools → Configure Automatic System Snapshots** (типово ввімкнено)."
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"How frequently that occurs varies. On **ZFS** each upgrade is preceded by a "
+"snapshot. On **BTRFS**, **XFS** and **EXT4**, `timeshift-autosnap` takes at "
+"most one snapshot every 18 hours (`minHoursBetweenSnapshots` in `/etc/"
+"timeshift-autosnap.conf`), so a second upgrade on the same day does not "
+"trigger a new one. Either way, three are kept (`maxSnapshots`)."
+msgstr ""
+"Частота буває різною. На **ZFS** перед кожним оновленням робиться знімок. На "
+"**BTRFS**, **XFS** та **EXT4** `timeshift-autosnap` робить щонайбільше один "
+"знімок кожні 18 годин (`minHoursBetweenSnapshots` у `/etc/timeshift-"
+"autosnap.conf`), тож друге оновлення того самого дня нового знімка не "
+"створює. В обох випадках зберігаються три знімки (`maxSnapshots`)."
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"On **ZFS** and **BTRFS**, snapshots are atomic — captured at a single "
+"instant, with negligible storage and time overhead. On **XFS** and **EXT4**, "
+"Timeshift is used in rsync mode; the initial snapshot is the slowest one, "
+"and subsequent snapshots typically complete in under five seconds."
+msgstr ""
+"На **ZFS** і **BTRFS** знімки атомарні — вони фіксуються в одну мить, з "
+"незначними витратами місця та часу. На **XFS** і **EXT4** Timeshift працює в "
+"режимі rsync; перший знімок створюється найповільніше, а наступні зазвичай "
+"завершуються менш ніж за п’ять секунд."
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"The installer itself captures the first snapshot, just prior to the first "
+"reboot, ensuring there is a clean baseline from day one – you can roll back "
+"to \"freshly installed\" without having ever done an upgrade first. On ZFS "
+"that baseline does not last: it is named like every other automatic snapshot "
+"and is the oldest, so the retention limit sweeps it up after three upgrades. "
+"Rename it, or raise `maxSnapshots`, if you want to keep it. Under Timeshift "
+"it survives, because the deletion filter does not match it."
+msgstr ""
+"Перший знімок робить сам інсталятор, безпосередньо перед першим "
+"перезавантаженням, тож від першого дня є чиста відправна точка — ви можете "
+"повернутися до стану «щойно встановлено», навіть якщо ще жодного разу не "
+"оновлювали систему. На ZFS ця відправна точка не зберігається: цей знімок "
+"названо так само, як будь-який інший автоматичний знімок, і він найстаріший, "
+"тож після трьох оновлень його прибирає ліміт зберігання. Перейменуйте його "
+"або збільште `maxSnapshots`, якщо хочете його зберегти. У Timeshift він "
+"зберігається, бо фільтр видалення його не охоплює."
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "**Snapshots are system-only.** Your home directory and other data volumes are not included. Restoring a system snapshot does not touch your personal files — roll back the system, keep your work.\n"
+msgstr "**Знімки охоплюють лише систему.** Ваш домашній каталог та інші томи з даними до них не входять. Відновлення знімка системи не зачіпає ваших особистих файлів — відкотіть систему, збережіть свою роботу.\n"
+
+#. type: Title ###
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "Edge case: rolling back to the installer's snapshot"
+msgstr "Особливий випадок: відкочування до знімка інсталятора"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"If you roll back to the very first snapshot taken at the end of "
+"installation, one minor consequence: the first-boot Flatpak deployment "
+"service (`ditana-flatpak-finalize.service`) will run again during the next "
+"boot, reinstalling the Flatpaks you initially chose. It is scheduled prior "
+"to the login screen and intentionally delays it while it downloads, so a "
+"boot that sits on a text console for a while is the expected behaviour and "
+"not a hang. This is by design – those Flatpaks are part of the configured "
+"system, so they are reinstated alongside everything else. Subsequent "
+"rollbacks (to snapshots after first-boot completion) do not exhibit this."
+msgstr ""
+"Якщо ви відкотитеся до найпершого знімка, зробленого наприкінці "
+"встановлення, буде один незначний наслідок: служба розгортання Flatpak під "
+"час першого завантаження (`ditana-flatpak-finalize.service`) знову "
+"запуститься під час наступного завантаження системи й повторно встановить "
+"пакунки Flatpak, які ви спочатку вибрали. Вона запускається перед екраном "
+"входу й навмисно затримує його, поки отримує пакунки, тож якщо завантаження "
+"деякий час стоїть на текстовій консолі, це очікувана поведінка, а не "
+"зависання. Так задумано — ці пакунки Flatpak є частиною налаштованої "
+"системи, тому їх відновлюють разом з усім іншим. Під час подальших "
+"відкочувань (до знімків, зроблених після завершення першого завантаження) "
+"такого не відбувається."
+
+#. type: Title ###
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "ZFS lock file handling"
+msgstr "Обробка файлу блокування на ZFS"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"Ditana ships its own [zfs-autosnap](https://github.com/acrion/zfs-autosnap) "
+"fork, which moves the pacman lock file (`/var/lib/pacman/db.lck`) aside at "
+"the moment the snapshot is taken and puts it back afterwards, so that the "
+"snapshot contains no lock file. This means a ZFS rollback leaves you with a "
+"usable pacman immediately — no manual `rm /var/lib/pacman/db.lck` step. The "
+"upstream Timeshift variant for non-ZFS filesystems does not handle this, "
+"which is why the Timeshift recovery procedure below includes that manual "
+"step."
+msgstr ""
+"Ditana постачає власне відгалуження [zfs-autosnap](https://github.com/acrion/"
+"zfs-autosnap), яке в момент створення знімка відсуває файл блокування pacman "
+"(`/var/lib/pacman/db.lck`) убік, а потім повертає його на місце, тож знімок "
+"не містить файлу блокування. Тому після відкочування ZFS pacman одразу "
+"придатний до роботи — без ручного кроку `rm /var/lib/pacman/db.lck`. "
+"Оригінальний варіант Timeshift для файлових систем, відмінних від ZFS, цього "
+"не робить, тому описана нижче процедура відновлення Timeshift містить цей "
+"ручний крок."
+
+#. type: Title ##
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "Recovery procedure"
+msgstr "Процедура відновлення"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"On ZFS there is a shorter route that needs no medium at all. ZFSBootMenu can "
+"boot a snapshot directly: interrupt it at startup, pick the boot "
+"environment, and choose the snapshot you want from the list it shows. The "
+"installer's own baseline is called `autosnap_after_ditana_installation`. "
+"Everything below is for the case where that is not enough, or for a "
+"filesystem other than ZFS."
+msgstr ""
+"На ZFS є коротший шлях, для якого взагалі не потрібен носій. ZFSBootMenu "
+"може завантажити знімок напряму: перервіть його під час запуску, виберіть "
+"середовище завантаження, а потім потрібний знімок зі списку, який він "
+"показує. Власна відправна точка інсталятора називається "
+"`autosnap_after_ditana_installation`. Усе, що нижче, — для випадку, коли "
+"цього недостатньо, або для файлової системи, відмінної від ZFS."
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"If your system fails to boot, boot from the Ditana ISO. It asks whether it "
+"should enter the rescue system for the installation it discovered; respond "
+"with yes, and it mounts the installed system and lists the snapshots it "
+"holds. The commands below are what you run inside that rescue system – not "
+"in the bare live environment, which has neither Timeshift nor the imported "
+"pool."
+msgstr ""
+"Якщо система не завантажується, завантажтеся з ISO-образу Ditana. Він "
+"запитає, чи потрібно ввійти в систему відновлення для знайденої ним "
+"встановленої системи; відповідайте ствердно, і він змонтує встановлену "
+"систему та покаже список знімків, які вона містить. Наведені нижче команди "
+"виконуйте всередині цієї системи відновлення — не в самому live-середовищі, "
+"де немає ні Timeshift, ні імпортованого пулу."
+
+#. type: Title ###
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "ZFS"
+msgstr "ZFS"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid "List available snapshots:"
+msgstr "Перегляньте список доступних знімків:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "zfs list -t snapshot\n"
+msgstr "zfs list -t snapshot\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid "Example output:"
+msgstr "Приклад виводу:"
+
+#. type: Fenced code block
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid ""
+"NAME                                                    USED  AVAIL  REFER  MOUNTPOINT\n"
+"ditana-root/ROOT/default@autosnap_2026-05-19_23-14-41   453K      -  3.96G  -\n"
+"ditana-root/ROOT/default@autosnap_2026-05-19_23-25-28   394K      -  3.96G  -\n"
+"ditana-root/ROOT/default@autosnap_2026-05-19_23-26-06  1.05M      -  3.96G  -\n"
+msgstr ""
+"NAME                                                    USED  AVAIL  REFER  MOUNTPOINT\n"
+"ditana-root/ROOT/default@autosnap_2026-05-19_23-14-41   453K      -  3.96G  -\n"
+"ditana-root/ROOT/default@autosnap_2026-05-19_23-25-28   394K      -  3.96G  -\n"
+"ditana-root/ROOT/default@autosnap_2026-05-19_23-26-06  1.05M      -  3.96G  -\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid "Restore a specific snapshot:"
+msgstr "Відновіть конкретний знімок:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "sudo zfs rollback ditana-root/ROOT/default@autosnap_2026-05-19_23-26-06\n"
+msgstr "sudo zfs rollback ditana-root/ROOT/default@autosnap_2026-05-19_23-26-06\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"`zfs rollback` refuses while newer snapshots exist, which is the normal case "
+"once several have accumulated. Destroy them first, or pass `-r` to have it "
+"destroy them for you – everything newer than the snapshot you are restoring "
+"is gone either way."
+msgstr ""
+"`zfs rollback` відмовляється працювати, якщо існують новіші знімки, а це "
+"звичайна ситуація, коли їх накопичилося кілька. Спершу знищте їх або "
+"передайте `-r`, щоб команда знищила їх сама, — усе, що новіше за знімок, "
+"який ви відновлюєте, так чи інакше зникне."
+
+#. type: Title ###
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "BTRFS, XFS, EXT4"
+msgstr "BTRFS, XFS, EXT4"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"Automatic snapshots are managed by `timeshift-autosnap`, which creates a "
+"snapshot before every full upgrade."
+msgstr ""
+"Автоматичними знімками керує `timeshift-autosnap`, який створює знімок перед "
+"кожним повним оновленням."
+
+#. type: Fenced code block (bash)
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "sudo timeshift --list\n"
+msgstr "sudo timeshift --list\n"
+
+#. type: Fenced code block
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid ""
+"Mounted '/dev/dm-0 (sda4)' at '/run/timeshift/195216/backup'\n"
+"Device : /dev/dm-0 (sda4)\n"
+"Mode   : RSYNC\n"
+"\n"
+"Num Name                Tags  Description\n"
+"------------------------------------------\n"
+"0 > 2026-05-19_18-04-37 0     after installation of Ditana GNU/Linux\n"
+msgstr ""
+"Mounted '/dev/dm-0 (sda4)' at '/run/timeshift/195216/backup'\n"
+"Device : /dev/dm-0 (sda4)\n"
+"Mode   : RSYNC\n"
+"\n"
+"Num Name                Tags  Description\n"
+"------------------------------------------\n"
+"0 > 2026-05-19_18-04-37 0     after installation of Ditana GNU/Linux\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid "Restore a snapshot:"
+msgstr "Відновіть знімок:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "sudo timeshift --restore --snapshot 2026-05-19_18-04-37\n"
+msgstr "sudo timeshift --restore --snapshot 2026-05-19_18-04-37\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"When prompted, **do not reinstall GRUB2** as Timeshift recommends — it "
+"assumes the presence of an `update-grub` tool that Ditana does not use. If "
+"you need to update GRUB after restoration, run:"
+msgstr ""
+"Коли з’явиться запит, **не перевстановлюйте GRUB2**, як рекомендує "
+"Timeshift, — він припускає наявність інструмента `update-grub`, якого Ditana "
+"не використовує. Якщо після відновлення потрібно оновити GRUB, виконайте:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "grub-mkconfig -o /boot/grub/grub.cfg\n"
+msgstr "grub-mkconfig -o /boot/grub/grub.cfg\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid "After a Timeshift restore, also clear the pacman database lock:"
+msgstr ""
+"Після відновлення за допомогою Timeshift також зніміть блокування бази даних "
+"pacman:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "sudo rm /var/lib/pacman/db.lck\n"
+msgstr "sudo rm /var/lib/pacman/db.lck\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"This is required because `timeshift-autosnap` (the upstream project for non-"
+"ZFS filesystems) captures the pacman lock file as part of the snapshot. "
+"Ditana's [zfs-autosnap fork](https://github.com/acrion/zfs-autosnap) removes "
+"the lock file before snapshotting, which is why the equivalent step is "
+"unnecessary on ZFS (`zfs rollback` is sufficient)."
+msgstr ""
+"Це потрібно, бо `timeshift-autosnap` (оригінальний проєкт для файлових "
+"систем, відмінних від ZFS) зберігає файл блокування pacman як частину "
+"знімка. [Відгалуження zfs-autosnap](https://github.com/acrion/zfs-autosnap) "
+"від Ditana видаляє файл блокування перед створенням знімка, тому на ZFS "
+"аналогічний крок не потрібен (достатньо `zfs rollback`)."

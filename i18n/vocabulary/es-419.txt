@@ -1,0 +1,40 @@
+# Words that the es-419 spelling check (hunspell es) does not recognize but
+# which are correct: names of places and files, acronyms, technical terms
+# established in Latin American software localization (recompilar, subclave,
+# hipervisor, microcódigo …) and usted imperatives with an enclitic pronoun.
+# One word form per line; a lower-case entry also accepts the capitalized
+# form.
+Mindelheim
+Ursen
+PKGBUILD
+SSD
+actívelo
+asignador
+destrúyalas
+enrutamiento
+hipervisor
+hipervisores
+microcódigo
+multiusuario
+precompilados
+preconfigurado
+predictores
+preinstalada
+preinstaladas
+pódcast
+rasterizadores
+recompila
+recompilación
+recompilado
+recompilados
+recompilar
+recompiló
+redirecciones
+refactorización
+reintento
+renderiza
+renderizado
+subclave
+subnodos
+subred
+virtualización

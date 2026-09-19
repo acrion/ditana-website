@@ -1,0 +1,93 @@
+# Language es-419 translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es-419\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/best-practices/index.md
+#, no-wrap
+msgid "Recommended ways to work with Ditana — system snapshots, package management, and virtual machines."
+msgstr "Formas recomendadas de trabajar con Ditana: instantáneas del sistema, gestión de paquetes y máquinas virtuales."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/best-practices/index.md
+#, no-wrap
+msgid "Best practices"
+msgstr "Buenas prácticas"
+
+#. type: Plain text
+#: src/content/docs/best-practices/index.md
+msgid ""
+"A short collection of recommended practices for getting the most out of "
+"Ditana. These are not exhaustive manuals — they cover the choices most "
+"likely to come up in day-to-day use, where Ditana's defaults make "
+"assumptions that are worth understanding."
+msgstr ""
+"Una breve colección de prácticas recomendadas para sacar el máximo provecho "
+"de Ditana. No son manuales exhaustivos: tratan las decisiones que con más "
+"probabilidad surgen en el uso diario, allí donde la configuración "
+"predeterminada de Ditana parte de supuestos que vale la pena entender."
+
+#. type: Title ##
+#: src/content/docs/best-practices/index.md
+#: src/content/docs/under-the-hood/index.md
+#, no-wrap
+msgid "Available pages"
+msgstr "Páginas disponibles"
+
+#. type: Bullet: '- '
+#: src/content/docs/best-practices/index.md
+msgid ""
+"[**Automatic system snapshots**](/best-practices/automatic-system-"
+"snapshots/) — how snapshots are configured, and how to roll back from the "
+"rescue system if your install ever fails to boot."
+msgstr ""
+"[**Instantáneas automáticas del sistema**](/best-practices/automatic-system-"
+"snapshots/): cómo se configuran las instantáneas y cómo revertir desde el "
+"sistema de rescate si alguna vez la instalación no arranca."
+
+#. type: Bullet: '- '
+#: src/content/docs/best-practices/index.md
+msgid ""
+"[**AUR vs Flatpak**](/best-practices/aur-vs-flatpak/) — when to reach for "
+"which, and why Ditana ships Brave from AUR rather than Flathub."
+msgstr ""
+"[**AUR frente a Flatpak**](/best-practices/aur-vs-flatpak/): cuándo recurrir "
+"a cada uno y por qué Ditana distribuye Brave desde el AUR y no desde Flathub."
+
+#. type: Bullet: '- '
+#: src/content/docs/best-practices/index.md
+msgid ""
+"[**Virtual machines**](/best-practices/virtual-machines/) — which "
+"hypervisors provide full 3D support for modern Wayland desktops, and which "
+"to avoid."
+msgstr ""
+"[**Máquinas virtuales**](/best-practices/virtual-machines/): qué "
+"hipervisores ofrecen compatibilidad 3D completa con los escritorios Wayland "
+"modernos y cuáles conviene evitar."
+
+#. type: Plain text
+#: src/content/docs/best-practices/index.md
+msgid ""
+"More pages will be added as common questions emerge. If something you'd "
+"expect to find here is missing, [open an issue](https://github.com/acrion/"
+"ditana-installer/issues) or email support@ditana.org — best-practice topics "
+"are driven by what users actually run into."
+msgstr ""
+"Se agregarán más páginas a medida que surjan preguntas frecuentes. Si falta "
+"algo que esperaría encontrar aquí, [abra una incidencia](https://github.com/"
+"acrion/ditana-installer/issues) o escriba a support@ditana.org: los temas de "
+"buenas prácticas los determina aquello con lo que los usuarios se encuentran "
+"en la práctica."

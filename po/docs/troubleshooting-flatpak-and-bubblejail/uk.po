@@ -1,0 +1,104 @@
+# Ukrainian translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/release-notes/0-9-4-beta.md
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+#, no-wrap
+msgid ""
+"sudo pacman -Syu ditana-userns-guard\n"
+"echo /usr/bin/bwrap | sudo tee /etc/ditana/userns-allow.conf\n"
+"sudo systemctl enable --now ditana-userns-guard.service\n"
+msgstr ""
+"sudo pacman -Syu ditana-userns-guard\n"
+"echo /usr/bin/bwrap | sudo tee /etc/ditana/userns-allow.conf\n"
+"sudo systemctl enable --now ditana-userns-guard.service\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+#, no-wrap
+msgid "How to restore Flatpak and Bubblejail on a machine installed from the 0.9.3 medium."
+msgstr "Як відновити роботу Flatpak і Bubblejail на машині, яку встановлено з носія 0.9.3."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+#, no-wrap
+msgid "Flatpak or Bubblejail stopped working after an update"
+msgstr "Flatpak або Bubblejail перестали працювати після оновлення"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"Flatpak and Bubblejail apps ceased launching following a routine update on a "
+"machine installed from the 0.9.3 medium. `bubblewrap-suid` no longer exists, "
+"so the update replaced it, and unprivileged user namespaces are disabled on "
+"such a system."
+msgstr ""
+"Застосунки Flatpak і Bubblejail перестали запускатися після звичайного "
+"оновлення на машині, яку встановлено з носія 0.9.3. `bubblewrap-suid` більше "
+"не існує, тому оновлення його замінило, а непривілейовані простори назв "
+"користувача (user namespaces) у такій системі вимкнено."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"Check first that this is your situation: `sysctl "
+"kernel.unprivileged_userns_clone` has to say `0`. If it says `1`, every "
+"program already gets a user namespace and Flatpak has stopped for some other "
+"reason. The guard would then take the namespaces away from every program "
+"that is not on the list, and not every program survives that – see [A "
+"Chromium-based program aborts](/troubleshooting/chromium-sandbox-helper/)."
+msgstr ""
+"Спершу перевірте, що це саме ваш випадок: `sysctl "
+"kernel.unprivileged_userns_clone` має показати `0`. Якщо показує `1`, кожна "
+"програма вже отримує простір назв користувача, і Flatpak перестав працювати "
+"з якоїсь іншої причини. Тоді захисний механізм забрав би простори назв у "
+"кожної програми, якої немає в списку, а це витримує не кожна програма — див. "
+"[Програма на основі Chromium аварійно завершується](/troubleshooting/"
+"chromium-sandbox-helper/)."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"Install the guard, specify which executable is permitted to use one, and "
+"switch it on:"
+msgstr ""
+"Встановіть захисний механізм, укажіть, якому виконуваному файлу дозволено "
+"використовувати простір назв, і ввімкніть його:"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"The first command updates the whole system, which on a machine that has not "
+"been updated for a while can take long. Let it run to its end, as described "
+"under [The terminal way](/troubleshooting/updating/#the-terminal-way)."
+msgstr ""
+"Перша команда оновлює всю систему, а на машині, яку деякий час не "
+"оновлювали, це може тривати довго. Дайте команді виконатися до кінця, як "
+"описано в розділі [Через термінал](/troubleshooting/updating/#the-terminal-"
+"way)."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"The [0.9.4 release notes](/release-notes/0-9-4-beta/) explain why the "
+"arrangement changed."
+msgstr ""
+"У [нотатках щодо випуску 0.9.4](/release-notes/0-9-4-beta/) пояснено, чому "
+"змінилася ця схема."

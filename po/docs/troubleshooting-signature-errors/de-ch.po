@@ -1,0 +1,179 @@
+# Language de-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 07:06+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: de-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "What should be done when pacman refuses a package due to its inability to validate the signature, and how to manually verify Ditana's signing key yourself."
+msgstr "Was Sie tun sollten, wenn pacman ein Paket verweigert, weil pacman die Signatur nicht prüfen kann, und wie Sie den Signaturschlüssel von Ditana selbst von Hand überprüfen."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "\"invalid or corrupted package (PGP signature)\""
+msgstr "«invalid or corrupted package (PGP signature)»"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "Every package Ditana ships is signed, and pacman refuses to install one whose signature it cannot check. That is the mechanism working. But it also means a keyring that is out of date locks you out of the very updates that would fix it."
+msgstr "Jedes Paket, das Ditana ausliefert, ist signiert, und pacman verweigert die Installation eines Pakets, dessen Signatur es nicht prüfen kann. Damit tut der Mechanismus seine Arbeit. Es bedeutet aber auch, dass ein veralteter Schlüsselbund Sie von genau den Aktualisierungen aussperrt, die ihn reparieren würden."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "You will see one of these, depending on whether the signing key is missing from your keyring or present but not trusted:"
+msgstr "Sie sehen eine dieser Meldungen, je nachdem, ob der Signaturschlüssel in Ihrem Schlüsselbund fehlt oder zwar vorhanden ist, aber nicht als vertrauenswürdig gilt:"
+
+#. type: Fenced code block (text)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid ""
+"error: ditana-mirrorlist: key \"3EC223A811077C09\" is unknown\n"
+":: Import PGP key 3EC223A811077C09? [Y/n]\n"
+"error: 'ditana-mirrorlist-1.12-1-any.pkg.tar.zst': invalid or corrupted package (PGP signature)\n"
+msgstr ""
+"error: ditana-mirrorlist: key \"3EC223A811077C09\" is unknown\n"
+":: Import PGP key 3EC223A811077C09? [Y/n]\n"
+"error: 'ditana-mirrorlist-1.12-1-any.pkg.tar.zst': invalid or corrupted package (PGP signature)\n"
+
+#. type: Fenced code block (text)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid ""
+"error: ditana-mirrorlist: signature from \"Stefan Zipproth <s.zipproth@ditana.org>\" is unknown trust\n"
+"error: failed to commit transaction (invalid or corrupted package (PGP signature))\n"
+msgstr ""
+"error: ditana-mirrorlist: signature from \"Stefan Zipproth <s.zipproth@ditana.org>\" is unknown trust\n"
+"error: failed to commit transaction (invalid or corrupted package (PGP signature))\n"
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "The repair"
+msgstr "Die Reparatur"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "For a Ditana package:"
+msgstr "Bei einem Ditana-Paket:"
+
+#. type: Fenced code block (sh)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "sudo pacman -Sy ditana-keyring\n"
+msgstr "sudo pacman -Sy ditana-keyring\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "For an Arch package (the same problem, the same shape — this one is common on systems that have been offline for months):"
+msgstr "Bei einem Arch-Paket (dasselbe Problem, dieselbe Form – dieser Fall ist häufig auf Systemen, die monatelang offline waren):"
+
+#. type: Fenced code block (sh)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "sudo pacman -Sy archlinux-keyring\n"
+msgstr "sudo pacman -Sy archlinux-keyring\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "This is the exception to the \"never `-Sy` a single package\" rule from [Updating is not optional](/troubleshooting/updating/), and it is worth understanding *why* it is safe rather than treating it as a magic incantation. Only one package is in the transaction, so there is no partial upgrade of a dependency graph. That package is small and contains no executables. And its signature is verifiable with a key your installation already has, so nothing is being trusted that was not trusted before — installing it runs `pacman-key --populate`, which adds the current set of Ditana keys to your keyring. Afterwards, run a **full** update as usual."
+msgstr "Das ist die Ausnahme von der Regel «nie ein einzelnes Paket mit `-Sy`» aus [Aktualisieren ist nicht optional](/troubleshooting/updating/), und es lohnt sich zu verstehen, *warum* sie sicher ist, statt sie wie eine Zauberformel zu behandeln. Nur ein einziges Paket ist an der Transaktion beteiligt, daher gibt es kein partielles Upgrade eines Abhängigkeitsgraphen. Dieses Paket ist klein und enthält keine ausführbaren Dateien. Und seine Signatur lässt sich mit einem Schlüssel überprüfen, den Ihre Installation bereits hat, sodass nichts als vertrauenswürdig gilt, was es nicht schon vorher war – bei seiner Installation wird `pacman-key --populate` ausgeführt, das den aktuellen Satz der Ditana-Schlüssel zu Ihrem Schlüsselbund hinzufügt. Führen Sie danach wie gewohnt eine **vollständige** Aktualisierung durch."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "If you would rather do it by hand, this is exactly what the package's install script runs:"
+msgstr "Wenn Sie es lieber von Hand tun möchten, finden Sie hier genau den Befehl, den das Installationsskript des Pakets ausführt:"
+
+#. type: Fenced code block (sh)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "sudo pacman-key --populate ditana\n"
+msgstr "sudo pacman-key --populate ditana\n"
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "Verify the keys yourself"
+msgstr "Schlüssel selbst überprüfen"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "Ditana packages are signed by this key:"
+msgstr "Ditana-Pakete sind mit diesem Schlüssel signiert:"
+
+#. type: Fenced code block (text)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid ""
+"pub   rsa4096  3F80 54C3 FF75 5E55 44E6  8516 BC33 3E9A E877 D45A\n"
+"uid   Stefan Zipproth <s.zipproth@ditana.org>\n"
+"uid   Stefan Zipproth <support@ditana.org>\n"
+msgstr ""
+"pub   rsa4096  3F80 54C3 FF75 5E55 44E6  8516 BC33 3E9A E877 D45A\n"
+"uid   Stefan Zipproth <s.zipproth@ditana.org>\n"
+"uid   Stefan Zipproth <support@ditana.org>\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "It carries a dedicated signing subkey, and that subkey is what signs the repository database and every package built since August 2026:"
+msgstr "Er hat einen eigenen Signatur-Unterschlüssel, und dieser Unterschlüssel signiert die Datenbank der Paketquelle und jedes Paket, das seit August 2026 gebaut wurde:"
+
+#. type: Fenced code block (text)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "sub   rsa4096  068E EA2A 490B 0C63 AEAA  3BCD 3EC2 23A8 1107 7C09\n"
+msgstr "sub   rsa4096  068E EA2A 490B 0C63 AEAA  3BCD 3EC2 23A8 1107 7C09\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "The fingerprint you verify against stays the one above: a subkey can be replaced without it changing. A keyring pre-dating `ditana-keyring 20260809` does not know the subkey at all, which is exactly the situation the repair above addresses."
+msgstr "Der Fingerabdruck, anhand dessen Sie überprüfen, bleibt der obige: Ein Unterschlüssel kann ersetzt werden, ohne dass sich der Fingerabdruck ändert. Ein Schlüsselbund, der älter ist als `ditana-keyring 20260809`, kennt den Unterschlüssel überhaupt nicht – genau diese Situation behebt die oben beschriebene Reparatur."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "Check what your own system trusts with:"
+msgstr "Was Ihr eigenes System als vertrauenswürdig ansieht, prüfen Sie mit:"
+
+#. type: Fenced code block (sh)
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid ""
+"pacman-key --list-sigs ditana\n"
+"gpg --show-keys --with-subkey-fingerprint /usr/share/pacman/keyrings/ditana.gpg\n"
+msgstr ""
+"pacman-key --list-sigs ditana\n"
+"gpg --show-keys --with-subkey-fingerprint /usr/share/pacman/keyrings/ditana.gpg\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "We deliberately do **not** offer a download-and-run repair script here. The situation you are in is \"my signature verification is failing\"; answering that with \"download this and execute it as root\" is formally the same operation the signatures exist to prevent, and the script could not be meaningfully signed either — the signature check is the broken part. One command you can read is better than a black box."
+msgstr "Wir bieten hier bewusst **kein** Reparaturskript zum Herunterladen und Ausführen an. Ihre Situation lautet «meine Signaturüberprüfung schlägt fehl»; darauf mit «laden Sie das herunter und führen Sie es als root aus» zu antworten, ist formal genau der Vorgang, den die Signaturen verhindern sollen, und das Skript liesse sich auch nicht sinnvoll signieren – die Signaturprüfung ist der defekte Teil. Ein einziger Befehl, den Sie lesen können, ist besser als eine Blackbox."
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/signature-errors.md
+#, no-wrap
+msgid "Other causes of the same message"
+msgstr "Andere Ursachen derselben Meldung"
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "**The clock is wrong.** A signature is not valid before it was made. If the system clock is far in the past — a drained CMOS battery, a fresh VM, a dual boot with Windows writing local time to the RTC — every signature looks like it is from the future. Check with `timedatectl` and enable NTP with `sudo timedatectl set-ntp true`."
+msgstr "**Die Uhr geht falsch.** Eine Signatur ist nicht gültig, bevor sie erstellt wurde. Wenn die Systemuhr weit in der Vergangenheit steht – eine leere CMOS-Batterie, eine frisch angelegte VM, ein Dual-Boot mit Windows, das die lokale Zeit in die RTC schreibt –, sieht jede Signatur so aus, als käme sie aus der Zukunft. Prüfen Sie das mit `timedatectl`, und aktivieren Sie NTP mit `sudo timedatectl set-ntp true`."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/signature-errors.md
+msgid "**A mirror served a truncated file.** The message mentions a checksum rather than a PGP signature in that case. `sudo pacman -Scc` clears the download cache, and the next update downloads the file once more."
+msgstr "**Ein Spiegelserver hat eine abgeschnittene Datei geliefert.** In diesem Fall erwähnt die Meldung eine Prüfsumme statt einer PGP-Signatur. `sudo pacman -Scc` leert den Download-Cache, und bei der nächsten Aktualisierung wird die Datei erneut heruntergeladen."

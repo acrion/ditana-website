@@ -1,0 +1,40 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 01:22+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/index.mdx
+#, no-wrap
+msgid "Vanilla Arch underneath. A configuration knowledge base on top — every setting, every interaction between settings, transparently encoded."
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/index.mdx
+#, no-wrap
+msgid "An installer that knows what it's doing."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/index.mdx
+msgid "import Landing from '~/components/Landing.astro';"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/index.mdx
+#, no-wrap
+msgid "<Landing />\n"
+msgstr ""

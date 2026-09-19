@@ -1,0 +1,378 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "The public record of every Ditana package build — either every package is mutually consistent and the repository ships, or nothing ships."
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Build status"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "import BuildDashboard from '~/components/BuildDashboard.astro';"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Ditana maintains its own pacman repository on top of Arch – 59 packages, "
+"listed in full in every run that finished. A run that stopped lists what it "
+"had reached. Every night a build host pulls each package's recipe, decides "
+"what needs rebuilding, and builds it in a clean container. The rule that "
+"governs what happens next is the only one that matters here:"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "**If a single package cannot be built, or its sources cannot be verified, nothing is published.**\n"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Not \"the rest ships and that one is retried tomorrow\". Nothing. The "
+"repository you install from is either the complete, mutually consistent set "
+"that came out of one run, or it is yesterday's complete, mutually consistent "
+"set. A smaller repository can promise that; a large one, updating package by "
+"package, cannot — which is why Ditana keeps its own small enough to vouch "
+"for as one set."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"A claim like that is worth exactly as much as its evidence, so the record "
+"below is written by the pipeline itself, including the runs where nothing "
+"shipped. That pipeline is [`ditana-build`](https://github.com/acrion/ditana-"
+"build), and it is public: the review gate is [`bin/pkgbuild-review-gate`]"
+"(https://github.com/acrion/ditana-build/blob/main/bin/pkgbuild-review-gate), "
+"and the installation test is [`bin/test-install-in-qemu`](https://github.com/"
+"acrion/ditana-build/blob/main/bin/test-install-in-qemu)."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "<BuildDashboard />\n"
+msgstr ""
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "How far a run got"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Every run passes through the same stages, and its `outcome` says which one "
+"it reached. These are the four states, and the colours above:"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid ""
+"| `outcome` | What it means for you |\n"
+"| --- | --- |\n"
+"| `released` | **This is what you install.** Every package built, every signature verified, and the whole set replaced the repository your system updates from. |\n"
+"| `in-testing` | Built and signed, sitting in a separate testing repository while it is checked. Your system still installs the previous release. |\n"
+"| `built` | The build host finished, but it holds no signing key — signing happens afterwards on another machine. Nothing has moved yet. |\n"
+"| `held-back` | Something did not pass, so nothing shipped at all. The repository you install from is untouched and still consistent. |\n"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Only `released` means the packages reached you. The other three are stages "
+"on the way there, or a stop."
+msgstr ""
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "What happened to each package"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "Within a run, every package gets one `status`:"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid ""
+"| `status` | Meaning |\n"
+"| --- | --- |\n"
+"| `current` | The recipe has not changed since the existing package was built, and for a `-git` package the upstream commit has not moved either. Nothing to do. |\n"
+"| `rebuilt` | Sources were fetched and verified on the host, then the package was built in a fresh container. |\n"
+"| `review-stopped` | The recipe changed in a way a human has to look at. The run ends here. |\n"
+"| `build-failed` | The package did not compile, or produced no artefact. The run ends here. |\n"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "The last two are why a run ends as `held-back`: one package is enough."
+msgstr ""
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Why a run stops"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Most of what Ditana rebuilds are third-party AUR recipes, packaged into a "
+"repository its users trust through pacman's signature configuration. The AUR "
+"is a supply chain, and it has been attacked as one: orphaned packages have "
+"been adopted and given malicious commits, which is why the AUR disabled "
+"adoption and pushes in August 2026."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"So every `git pull` in the pipeline is classified before anything is built.  "
+"Version bumps, comments, whitespace and checksums that accompany a version "
+"change are waved through. A change to `source=`, to a `url=`, to a VCS "
+"revision, to anything inside a function, to `install=`, to `provides=`, "
+"`conflicts=`, `replaces=` or `validpgpkeys=`, a checksum that changes "
+"without a version changing, a new dependency pacman does not know, a changed "
+"or emptied `# Maintainer:` line — each of those stops the run. The recipe is "
+"never sourced to do this: executing the file under suspicion is precisely "
+"what has to be avoided, so the analysis is static, and it fails closed when "
+"it is unsure."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Measured against the last twelve months of real package history, this stops "
+"a run roughly **once every three and a half days**. That is not a defect to "
+"be tuned away; it is the price of the all-or-nothing rule, paid in advance."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Some of the recipes Ditana rebuilds have no upstream maintainer at all – "
+"their `# Maintainer:` line is empty. That is why an emptied maintainer line "
+"stops a run instead of being waved through: an orphaned recipe is the one "
+"somebody can adopt."
+msgstr ""
+
+#. type: Title ###
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "What this does not check"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"The review covers packaging metadata, not upstream source code. When a "
+"recipe builds from a git revision, that revision's contents are not reviewed "
+"by anything in this pipeline. Ditana's advantage over an unreviewed rebuild "
+"service is real but bounded, and stating the bound is part of the claim."
+msgstr ""
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "The installation test"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Building and signing a repository is not the same as being able to install "
+"from it. Between the testing repository and the release there is one more "
+"step: the build host installs that very repository into a virtual machine of "
+"its own, unattended, driven by an answer file on a small config drive – the "
+"same mechanism a hosting provider would use over PXE, which is why no "
+"keystrokes are simulated."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Two things have to be true, and the record says which of them was reached."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid ""
+"| stage | What had happened |\n"
+"| --- | --- |\n"
+"| `installing` | The medium is running. Nothing has been installed yet. |\n"
+"| `installed` | The installer reached its final reboot. |\n"
+"| `booted` | The installed system came up on its own and answered on port 22. This is a pass. |\n"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"The distinction matters, because the two failures are different bugs. A run "
+"that stops at `installing` produced a repository nobody can install from. "
+"One that stops at `installed` produced a system that was written correctly "
+"and does not come up, and that is the kind of defect no amount of building "
+"catches."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Arriving at `booted` signifies far more than the phrase implies. The "
+"bootloader ran, the initramfs found and imported the ZFS pool, systemd got "
+"to multi-user mode, the network became active, and a service started. "
+"Nothing is injected into the guest to arrange any of these actions: `install-"
+"openssh` is enabled by default, so a banner on port 22 is the installed "
+"system’s own doing."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"When the test fails, the record carries a picture of the guest’s screen at "
+"the moment the harness gave up. The installation medium writes nothing to a "
+"serial console once its bootloader has handed over, so everything the "
+"installer draws is on that screen and nowhere else – an installer waiting at "
+"a question is visible there and in no log at all."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"A failed test releases nothing. The packages stay in the testing repository, "
+"and the repository you install from is untouched."
+msgstr ""
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Where the signing key is"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "The machine that builds holds a signing subkey, not the primary key."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"It builds, signs with that subkey, uploads to the testing repository, "
+"installs that repository into a virtual machine, and releases to production "
+"only if the installation worked. Keeping the key off the build host is "
+"something the pipeline still supports, and it was how Ditana worked until "
+"August 2026; it was given up because a release gated on a test installation "
+"has to happen on the machine that has just built, and the split put a second "
+"machine and a manual step in between. What the subkey buys instead: it can "
+"be revoked and replaced on its own, it cannot certify further keys, and the "
+"fingerprint users verify against never changes."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"What this protects is the key, not the packages: the signing machine signs "
+"what the build host produced, without reviewing it. What it prevents is the "
+"machine that runs foreign build scripts being able to have arbitrary data "
+"signed at any time."
+msgstr ""
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Verifying this yourself"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "The record is plain JSON and is not generated by this website:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"[`/build-history/index.json`](/build-history/index.json) — the rolling index "
+"of the most recent runs."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"`/build-history/<timestamp>.json` – one file per run: `outcome`, `message`, "
+"`counts`, a `test-install` object where a run was tested, and a `packages` "
+"array whose entries carry `name`, `status`, `seconds`, any `detail`, and the "
+"paths of that package's logs."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"The `test-install` object carries `result`, the `stage` the guest reached, "
+"the `iso` and `answer-file` it was driven with, and, where the installation "
+"failed, a `screenshot` path under `/build-history/logs/<timestamp>/test-"
+"install/` holding the guest's screen at the moment the harness gave up."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"`/build-history/logs/<timestamp>/<package>/` — what `makepkg` logged while "
+"building that package, split by stage (`prepare`, `build`, `check`, "
+"`package`). Every rebuilt package in a run is linked from its row above, and "
+"a package whose build failed is logged too — that is the one worth reading."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Server names, addresses, paths and the build account's login name are "
+"removed from the records and from the logs before they are written. Nothing "
+"else is filtered; the failure text you see is the failure text the pipeline "
+"saw."
+msgstr ""
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Under which licences"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Every package here is built from a publicly available recipe that names its "
+"upstream source. [Licensing](/licensing/) says where to find both, and "
+"covers the one case where the licence itself is contested: the ZFS packages, "
+"of which Ditana distributes the sources and the userspace tools but never a "
+"compiled kernel module."
+msgstr ""

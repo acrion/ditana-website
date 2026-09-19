@@ -1,0 +1,103 @@
+# Romansh translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: rm\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/release-notes/0-9-4-beta.md
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+#, no-wrap
+msgid ""
+"sudo pacman -Syu ditana-userns-guard\n"
+"echo /usr/bin/bwrap | sudo tee /etc/ditana/userns-allow.conf\n"
+"sudo systemctl enable --now ditana-userns-guard.service\n"
+msgstr ""
+"sudo pacman -Syu ditana-userns-guard\n"
+"echo /usr/bin/bwrap | sudo tee /etc/ditana/userns-allow.conf\n"
+"sudo systemctl enable --now ditana-userns-guard.service\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+#, no-wrap
+msgid "How to restore Flatpak and Bubblejail on a machine installed from the 0.9.3 medium."
+msgstr "Co restaurar Flatpak e Bubblejail sin ina maschina installada cun il medium da la versiun 0.9.3."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+#, no-wrap
+msgid "Flatpak or Bubblejail stopped working after an update"
+msgstr "Flatpak u Bubblejail na funcziunan betg pli suenter in’actualisaziun"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"Flatpak and Bubblejail apps ceased launching following a routine update on a "
+"machine installed from the 0.9.3 medium. `bubblewrap-suid` no longer exists, "
+"so the update replaced it, and unprivileged user namespaces are disabled on "
+"such a system."
+msgstr ""
+"Suenter in’actualisaziun da rutina sin ina maschina installada cun il medium "
+"da la versiun 0.9.3 han las applicaziuns da Flatpak e Bubblejail chalà da "
+"s’aviar. `bubblewrap-suid` n’exista betg pli, perquai ha l’actualisaziun "
+"remplazzà quest pachet, ed ils spazis da num da l’utilisader senza "
+"privilegis èn deactivads sin in tal sistem."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"Check first that this is your situation: `sysctl "
+"kernel.unprivileged_userns_clone` has to say `0`. If it says `1`, every "
+"program already gets a user namespace and Flatpak has stopped for some other "
+"reason. The guard would then take the namespaces away from every program "
+"that is not on the list, and not every program survives that – see [A "
+"Chromium-based program aborts](/troubleshooting/chromium-sandbox-helper/)."
+msgstr ""
+"Controllai l’emprim sche quai è Vossa situaziun: `sysctl "
+"kernel.unprivileged_userns_clone` sto mussar `0`. Sch’el mussa `1`, survegn "
+"mintga program gia in spazi da num da l’utilisader, e Flatpak è sa fermà per "
+"in’autra raschun. Il guardian prendess lura davent ils spazis da num a "
+"mintga program che n’è betg sin la glista, e betg mintga program surviva "
+"quai – consultai [in program sin basa da Chromium interrumpa](/"
+"troubleshooting/chromium-sandbox-helper/)."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"Install the guard, specify which executable is permitted to use one, and "
+"switch it on:"
+msgstr ""
+"Installai il guardian, inditgai tge program exequibel che dastga utilisar in "
+"spazi da num ed activai il guardian:"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"The first command updates the whole system, which on a machine that has not "
+"been updated for a while can take long. Let it run to its end, as described "
+"under [The terminal way](/troubleshooting/updating/#the-terminal-way)."
+msgstr ""
+"L’emprim cumond actualisescha l’entir sistem, quai che po durar ditg sin ina "
+"maschina che n’è betg vegnida actualisada dapi in tschert temp. Laschai "
+"terminar il process, sco descrit sut [La via dal terminal](/troubleshooting/"
+"updating/#the-terminal-way)."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"The [0.9.4 release notes](/release-notes/0-9-4-beta/) explain why the "
+"arrangement changed."
+msgstr ""
+"Las [remartgas davart la versiun 0.9.4](/release-notes/0-9-4-beta/) "
+"explitgeschan pertge che quest arranschament è sa midà."

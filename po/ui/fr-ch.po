@@ -1,0 +1,779 @@
+#. extracted from src/content/i18n/en-GB.json
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-19 01:22+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr_CH\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.19.10\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .skipLink.label
+msgid "Skip to content"
+msgstr "Aller au contenu"
+
+#: .search.label
+msgid "Search"
+msgstr "Rechercher"
+
+#: .search.ctrlKey
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#: .search.cancelLabel
+msgid "Cancel"
+msgstr "Annuler"
+
+#: .search.devWarning
+msgid ""
+"Search is only available in production builds. \n"
+"Try building and previewing the site to test it out locally."
+msgstr ""
+"La recherche n’est disponible que dans la version de production. \n"
+"Essayez de compiler le site puis d’en afficher un aperçu pour la tester localement."
+
+#: .themeSelect.accessibleLabel
+msgid "Select theme"
+msgstr "Sélectionner le thème"
+
+#: .themeSelect.dark
+msgid "Dark"
+msgstr "Sombre"
+
+#: .themeSelect.light
+msgid "Light"
+msgstr "Clair"
+
+#: .themeSelect.auto
+msgid "Auto"
+msgstr "Auto"
+
+#: .languageSelect.accessibleLabel
+msgid "Select language"
+msgstr "Sélectionner la langue"
+
+#: .menuButton.accessibleLabel
+msgid "Menu"
+msgstr "Menu"
+
+#: .sidebarNav.accessibleLabel
+msgid "Main"
+msgstr "Principale"
+
+#: .tableOfContents.onThisPage
+msgid "On this page"
+msgstr "Sur cette page"
+
+#: .tableOfContents.overview
+msgctxt ".tableOfContents.overview"
+msgid "Overview"
+msgstr "Vue d’ensemble"
+
+#: .i18n.untranslatedContent
+msgid "This content is not available in your language yet."
+msgstr "Ce contenu n’est pas encore disponible dans votre langue."
+
+#: .page.editLink
+msgid "Edit page"
+msgstr "Modifier la page"
+
+#: .page.lastUpdated
+msgid "Last updated:"
+msgstr "Dernière mise à jour :"
+
+#: .page.previousLink
+msgid "Previous"
+msgstr "Précédent"
+
+#: .page.nextLink
+msgid "Next"
+msgstr "Suivant"
+
+#: .page.draft
+msgid "This content is a draft and will not be included in production builds."
+msgstr "Ce contenu est une ébauche et ne sera pas inclus dans la version de production."
+
+#: .404.text
+msgid "Page not found. Check the URL or try using the search bar."
+msgstr "Page introuvable. Vérifiez l’URL ou essayez d’utiliser la barre de recherche."
+
+#: .aside.note
+msgid "Note"
+msgstr "Remarque"
+
+#: .aside.tip
+msgid "Tip"
+msgstr "Conseil"
+
+#: .aside.caution
+msgid "Caution"
+msgstr "Attention"
+
+#: .aside.danger
+msgid "Danger"
+msgstr "Danger"
+
+#: .fileTree.directory
+msgid "Directory"
+msgstr "Répertoire"
+
+#: .builtWithStarlight.label
+msgid "Built with Starlight"
+msgstr "Réalisé avec Starlight"
+
+#: .heading.anchorLabel
+msgid "Section titled “{{title}}”"
+msgstr "Section intitulée « {{title}} »"
+
+#: .pagefind.clear_search
+msgid "Clear"
+msgstr "Effacer"
+
+#: .pagefind.load_more
+msgid "Load more results"
+msgstr "Charger plus de résultats"
+
+#: .pagefind.search_label
+msgid "Search this site"
+msgstr "Rechercher sur ce site"
+
+#: .pagefind.filters_label
+msgid "Filters"
+msgstr "Filtres"
+
+#: .pagefind.zero_results
+msgid "No results for [SEARCH_TERM]"
+msgstr "Aucun résultat pour [SEARCH_TERM]"
+
+#: .pagefind.many_results
+msgid "[COUNT] results for [SEARCH_TERM]"
+msgstr "[COUNT] résultats pour [SEARCH_TERM]"
+
+#: .pagefind.one_result
+msgid "[COUNT] result for [SEARCH_TERM]"
+msgstr "[COUNT] résultat pour [SEARCH_TERM]"
+
+#: .pagefind.alt_search
+msgid "No results for [SEARCH_TERM]. Showing results for [DIFFERENT_TERM] instead"
+msgstr "Aucun résultat pour [SEARCH_TERM]. Résultats pour [DIFFERENT_TERM] affichés à la place"
+
+#: .pagefind.search_suggestion
+msgid "No results for [SEARCH_TERM]. Try one of the following searches:"
+msgstr "Aucun résultat pour [SEARCH_TERM]. Essayez l’une des recherches suivantes :"
+
+#: .pagefind.searching
+msgid "Searching for [SEARCH_TERM]..."
+msgstr "Recherche de [SEARCH_TERM]…"
+
+#: .expressiveCode.copyButtonCopied
+msgid "Copied!"
+msgstr "Copié !"
+
+#: .expressiveCode.copyButtonTooltip
+msgid "Copy to clipboard"
+msgstr "Copier dans le presse-papiers"
+
+#: .expressiveCode.terminalWindowFallbackTitle
+msgid "Terminal window"
+msgstr "Fenêtre de terminal"
+
+#: .social.discord
+msgid "Discord — community chat"
+msgstr "Discord – discussion de la communauté"
+
+#: .sidebar.download
+msgid "Download"
+msgstr "Téléchargement"
+
+#: .sidebar.builds
+msgid "Build status"
+msgstr "État des compilations"
+
+#: .sidebar.troubleshooting
+msgid "Troubleshooting"
+msgstr "Dépannage"
+
+#: .sidebar.troubleshooting.overview
+msgctxt ".sidebar.troubleshooting.overview"
+msgid "Overview"
+msgstr "Vue d’ensemble"
+
+#: .sidebar.troubleshooting.updating
+msgid "Updating"
+msgstr "Mise à jour"
+
+#: .sidebar.troubleshooting.signature-errors
+msgid "Signature errors"
+msgstr "Erreurs de signature"
+
+#: .sidebar.troubleshooting.an-update-broke-something
+msgid "An update broke something"
+msgstr "Une mise à jour a cassé quelque chose"
+
+#: .sidebar.troubleshooting.flatpak-and-bubblejail
+msgid "Flatpak and Bubblejail"
+msgstr "Flatpak et Bubblejail"
+
+#: .sidebar.troubleshooting.chromium-sandbox-helper
+msgid "Chromium sandbox helper"
+msgstr "Auxiliaire du bac à sable Chromium"
+
+#: .sidebar.troubleshooting.reporting-a-bug
+msgid "Reporting a bug"
+msgstr "Signaler un bogue"
+
+#: .sidebar.release-notes
+msgid "Release notes"
+msgstr "Notes de version"
+
+#: .sidebar.release-notes.current
+msgid "{{release}} (current)"
+msgstr "{{release}} (actuelle)"
+
+#: .sidebar.best-practices
+msgid "Best practices"
+msgstr "Bonnes pratiques"
+
+#: .sidebar.best-practices.overview
+msgctxt ".sidebar.best-practices.overview"
+msgid "Overview"
+msgstr "Vue d’ensemble"
+
+#: .sidebar.best-practices.automatic-system-snapshots
+msgid "Automatic system snapshots"
+msgstr "Instantanés automatiques du système"
+
+#: .sidebar.best-practices.aur-vs-flatpak
+msgid "AUR vs Flatpak"
+msgstr "AUR ou Flatpak"
+
+#: .sidebar.best-practices.virtual-machines
+msgid "Virtual machines"
+msgstr "Machines virtuelles"
+
+#: .sidebar.under-the-hood
+msgid "Under the hood"
+msgstr "Sous le capot"
+
+#: .sidebar.under-the-hood.overview
+msgctxt ".sidebar.under-the-hood.overview"
+msgid "Overview"
+msgstr "Vue d’ensemble"
+
+#: .sidebar.under-the-hood.configuration-as-data
+msgctxt ".sidebar.under-the-hood.configuration-as-data"
+msgid "Configuration as data"
+msgstr "Configuration sous forme de données"
+
+#: .sidebar.under-the-hood.hardware-detection
+msgid "Hardware detection"
+msgstr "Détection du matériel"
+
+#: .sidebar.under-the-hood.settings-logic
+msgid "Settings logic"
+msgstr "Logique des paramètres"
+
+#: .sidebar.under-the-hood.mitigations
+msgid "CPU mitigations"
+msgstr "Atténuations du processeur"
+
+#: .sidebar.donate
+msgid "Donate"
+msgstr "Faire un don"
+
+#: .sidebar.who-we-are
+msgid "Who we are"
+msgstr "Qui sommes-nous ?"
+
+#: .sidebar.licensing
+msgid "Licensing"
+msgstr "Licences"
+
+#: .release.date
+msgid "Release date:"
+msgstr "Date de publication :"
+
+#: .release.previous
+msgid "Previous release:"
+msgstr "Version précédente :"
+
+#: .release.successor
+msgid "Successor:"
+msgstr "Version suivante :"
+
+#: .footer.machineTranslation
+msgid "This translation was made by machine. Readers improve it on {{weblate}}."
+msgstr "Cette traduction a été réalisée par une machine. Les lecteurs l’améliorent sur {{weblate}}."
+
+#: .dashboard.recentRuns
+msgid "Recent runs"
+msgstr "Exécutions récentes"
+
+#: .dashboard.hint
+msgid "One square per run, newest on the right. Select one to see what happened to every package."
+msgstr "Un carré par exécution, la plus récente à droite. Sélectionnez-en une pour voir ce qu’il est advenu de chaque paquet."
+
+#: .dashboard.legend.released
+msgid "released — what users install"
+msgstr "publiée – ce que les utilisateurs installent"
+
+#: .dashboard.legend.testing
+msgctxt ".dashboard.legend.testing"
+msgid "in testing"
+msgstr "en test"
+
+#: .dashboard.legend.built
+msgid "built, not yet signed"
+msgstr "compilée, pas encore signée"
+
+#: .dashboard.legend.heldBack
+msgid "held back — nothing shipped"
+msgstr "retenue – rien n’a été publié"
+
+#: .dashboard.legend.testFailed
+msgid "the installation test failed"
+msgstr "le test d’installation a échoué"
+
+#: .dashboard.loading
+msgid "Loading the build record…"
+msgstr "Chargement du registre des compilations…"
+
+#: .dashboard.loadingRun
+msgid "Loading…"
+msgstr "Chargement…"
+
+#: .dashboard.loadError
+msgid "The build record could not be loaded ({{error}}). It is served from {{url}}."
+msgstr "Le registre des compilations n’a pas pu être chargé ({{error}}). Il est servi depuis {{url}}."
+
+#: .dashboard.runLoadError
+msgid "This run’s detail could not be loaded ({{error}})."
+msgstr "Le détail de cette exécution n’a pas pu être chargé ({{error}})."
+
+#: .dashboard.noRuns
+msgid "No runs have been recorded yet."
+msgstr "Aucune exécution n’a encore été consignée."
+
+#: .dashboard.when
+msgid "{{date}}, {{hour}}:{{minute}}"
+msgstr "{{date}}, {{hour}} h {{minute}}"
+
+#: .dashboard.verdict.released
+msgid "Released — this is what you install."
+msgstr "Publiée – c’est ce que vous installez."
+
+#: .dashboard.verdict.released.detail
+msgid "Every package built, every signature verified, and the whole set replaced the repository your system updates from."
+msgstr "Chaque paquet a été compilé, chaque signature vérifiée, et l’ensemble complet a remplacé le dépôt à partir duquel votre système se met à jour."
+
+#: .dashboard.verdict.testFailed
+msgid "Held in testing — the installation test failed."
+msgstr "Retenue en test – le test d’installation a échoué."
+
+#: .dashboard.verdict.testFailed.detail
+msgid "Every package built and was signed, but an unattended installation of the set did not succeed, so it was not released. Your system still installs the previous release."
+msgstr "Chaque paquet a été compilé et signé, mais une installation sans surveillance de l’ensemble n’a pas abouti, si bien qu’il n’a pas été publié. Votre système installe toujours la version précédente."
+
+#: .dashboard.verdict.inTesting
+msgid "In testing, not yet released."
+msgstr "En test, pas encore publiée."
+
+#: .dashboard.verdict.inTesting.detail
+msgid "Every package built and was signed, and the set is in the testing repository awaiting a check. Your system still installs the previous release."
+msgstr "Chaque paquet a été compilé et signé, et l’ensemble se trouve dans le dépôt de test, en attente d’une vérification. Votre système installe toujours la version précédente."
+
+#: .dashboard.verdict.built
+msgid "Built, not yet signed."
+msgstr "Compilée, pas encore signée."
+
+#: .dashboard.verdict.built.detail
+msgid "The build host holds no signing key. Signing and publishing happen afterwards on a separate machine."
+msgstr "La machine de compilation ne détient aucune clé de signature. La signature et la publication ont lieu ensuite sur une machine distincte."
+
+#: .dashboard.verdict.heldBack
+msgid "Held back — nothing shipped."
+msgstr "Retenue – rien n’a été publié."
+
+#: .dashboard.verdict.heldBack.detail
+msgid "One package did not pass, so the whole set stayed where it was. A partial update is never shipped."
+msgstr "Un paquet a échoué, si bien que l’ensemble complet est resté là où il était. Une mise à jour partielle n’est jamais publiée."
+
+#: .dashboard.verdict.incomplete
+msgid "Run incomplete."
+msgstr "Exécution incomplète."
+
+#: .dashboard.verdict.incomplete.detail
+msgid "The record was written before the run reached a verdict."
+msgstr "Le registre a été écrit avant que l’exécution ne parvienne à un verdict."
+
+#: .dashboard.outcome.released
+msgid "released"
+msgstr "publiée"
+
+#: .dashboard.outcome.in-testing
+msgctxt ".dashboard.outcome.in-testing"
+msgid "in testing"
+msgstr "en test"
+
+#: .dashboard.outcome.built
+msgid "built"
+msgstr "compilée"
+
+#: .dashboard.outcome.held-back
+msgid "held back"
+msgstr "retenue"
+
+#: .dashboard.stat.rebuilt
+msgid "rebuilt"
+msgstr "recompilés"
+
+#: .dashboard.stat.current
+msgid "current"
+msgstr "à jour"
+
+#: .dashboard.stat.review-stopped
+msgid "review stopped"
+msgstr "arrêtés par la revue"
+
+#: .dashboard.stat.build-failed
+msgid "build failed"
+msgstr "échec de compilation"
+
+#: .dashboard.cell.testFailed
+msgid ", installation test failed"
+msgstr ", échec du test d’installation"
+
+#: .dashboard.cell.counts
+msgid "{{rebuilt}} rebuilt, {{current}} current"
+msgstr "{{rebuilt}} recompilés, {{current}} à jour"
+
+#: .dashboard.packagesReached
+msgid "packages reached: {{count}}"
+msgstr "paquets atteints : {{count}}"
+
+#: .dashboard.test.passed
+msgid "This repository was installed unattended into a virtual machine, and the installed system booted and answered for itself."
+msgstr "Ce dépôt a été installé sans surveillance dans une machine virtuelle, et le système installé a démarré et a répondu de lui-même."
+
+#: .dashboard.test.installed
+msgid "This repository installed, but the installed system never came up, so it was not released."
+msgstr "Ce dépôt s’est installé, mais le système installé n’a jamais démarré, si bien qu’il n’a pas été publié."
+
+#: .dashboard.test.installing
+msgid "An unattended installation of this repository never finished, so it was not released."
+msgstr "Une installation sans surveillance de ce dépôt ne s’est jamais terminée, si bien qu’il n’a pas été publié."
+
+#: .dashboard.test.failed
+msgid "An unattended installation of this repository did not succeed, which is why it was not released."
+msgstr "Une installation sans surveillance de ce dépôt n’a pas abouti, c’est pourquoi il n’a pas été publié."
+
+#: .dashboard.test.toInstall
+msgid "{{duration}} to install"
+msgstr "{{duration}} pour l’installation"
+
+#: .dashboard.test.toBoot
+msgid "{{duration}} to boot"
+msgstr "{{duration}} pour le démarrage"
+
+#: .dashboard.test.see
+msgid "See {{screen}}."
+msgstr "Consultez {{screen}}."
+
+#: .dashboard.test.screen
+msgid "the screen at that moment"
+msgstr "l’écran à ce moment-là"
+
+#: .dashboard.unit.seconds
+msgid "{{n}} s"
+msgstr "{{n}} s"
+
+#: .dashboard.unit.minutes
+msgid "{{n}} min"
+msgstr "{{n}} min"
+
+#: .dashboard.unit.hours
+msgid "{{n}} h"
+msgstr "{{n}} h"
+
+#: .landing.hero.eyebrow
+msgid "Arch Linux · Configuration as data · {{release}}"
+msgstr "Arch Linux · Configuration sous forme de données · {{release}}"
+
+#: .landing.hero.title
+msgid "An installer that <em>knows what it’s doing.</em>"
+msgstr "Un programme d’installation qui <em>sait ce qu’il fait.</em>"
+
+#: .landing.hero.lede
+msgid "Vanilla Arch underneath. A configuration knowledge base on top — every setting, every interaction between settings, transparently encoded."
+msgstr "En dessous, Arch sans modification. Par-dessus, une base de connaissances de configuration – chaque paramètre et chaque interaction entre paramètres y sont encodés de manière transparente."
+
+#: .landing.cta.download
+msgid "Download ISO"
+msgstr "Télécharger l’ISO"
+
+#: .landing.cta.source
+msgid "Source on GitHub"
+msgstr "Code source sur GitHub"
+
+#: .landing.principles.eyebrow
+msgid "What makes it different"
+msgstr "Ce qui la distingue"
+
+#: .landing.principles.title
+msgid "Three principles, applied throughout."
+msgstr "Trois principes, appliqués partout."
+
+#: .landing.principles.transparent.num
+msgid "01 — TRANSPARENT"
+msgstr "01 – TRANSPARENT"
+
+#: .landing.principles.transparent.title
+msgid "Every choice is data"
+msgstr "Chaque choix est une donnée"
+
+#: .landing.principles.transparent.body
+msgid "Settings, dependencies, and lifecycle scripts live in a KDL knowledge base — auditable, forkable, fetched at install time so improvements ship without re-spinning an ISO."
+msgstr "Paramètres, dépendances et scripts de cycle de vie résident dans une base de connaissances KDL – vérifiable, facile à dériver, récupérée au moment de l’installation, si bien que les améliorations sont livrées sans qu’il faille produire une nouvelle image ISO."
+
+#: .landing.principles.hardened.num
+msgid "02 — HARDENED"
+msgstr "02 – DURCI"
+
+#: .landing.principles.hardened.title
+msgid "Security by default"
+msgstr "Sécurité par défaut"
+
+#: .landing.principles.hardened.body
+msgid "Per-CPU vulnerability mitigation, system hardening sysctls, restricted user namespaces, optional hardened_malloc. Opt-out, not opt-in — and every trade-off is explained where you make it."
+msgstr "Atténuation des vulnérabilités propre à chaque processeur, sysctl de durcissement du système, espaces de noms utilisateur restreints, hardened_malloc en option. Activé par défaut et désactivable, et non l’inverse – et chaque compromis est expliqué là où vous le faites."
+
+#: .landing.principles.desktops.num
+msgid "03 — FOUR DESKTOPS"
+msgstr "03 – QUATRE BUREAUX"
+
+#: .landing.principles.desktops.title
+msgid "XFCE · Wayfire · Niri · COSMIC"
+msgstr "XFCE · Wayfire · Niri · COSMIC"
+
+#: .landing.principles.desktops.body
+msgid "Pick one, or install all four side by side and switch from the greeter. Wayfire and Niri come with waybar, nwg-launchers and nwgbar already configured; XFCE and COSMIC bring their own panels. None of them is a stripped-down minimum."
+msgstr "Choisissez-en un, ou installez les quatre côte à côte et passez de l’un à l’autre depuis l’écran de connexion. Wayfire et Niri sont fournis avec waybar, nwg-launchers et nwgbar déjà configurés ; XFCE et COSMIC apportent leurs propres panneaux. Aucun d’eux n’est réduit au strict minimum."
+
+#: .landing.desktops.eyebrow
+msgid "Choose, mix, switch"
+msgstr "Choisir, combiner, changer"
+
+#: .landing.desktops.title
+msgid "Four equal desktops, not one default and three afterthoughts."
+msgstr "Quatre bureaux à égalité, et non un bureau par défaut et trois ajoutés après coup."
+
+#: .landing.desktops.lede
+msgid "Wayfire and Niri are commonly considered incomplete environments. Ditana ships everything they need — a polished waybar, nwg-launcher, nwgbar, and a consistent panel layout — and treats all four desktops as first-class citizens."
+msgstr "Wayfire et Niri sont communément considérés comme des environnements incomplets. Ditana fournit tout ce dont ils ont besoin – une waybar soignée, nwg-launcher, nwgbar et une disposition cohérente des panneaux – et traite chacun des quatre bureaux comme un environnement à part entière."
+
+#: .landing.desktops.xfce.alt
+msgid "XFCE on Ditana with Blue Flat theme, Firefox, Thunar"
+msgstr "XFCE sur Ditana avec le thème Blue Flat, Firefox, Thunar"
+
+#: .landing.desktops.xfce.caption
+msgid "<strong>XFCE</strong> — Xorg, mature, fast"
+msgstr "<strong>XFCE</strong> – Xorg, mature, rapide"
+
+#: .landing.desktops.wayfire.alt
+msgid "Wayfire on Ditana with Blue Vibrant theme, Brave, Thunar"
+msgstr "Wayfire sur Ditana avec le thème Blue Vibrant, Brave, Thunar"
+
+#: .landing.desktops.wayfire.caption
+msgid "<strong>Wayfire</strong> — Wayland, Compiz-inspired"
+msgstr "<strong>Wayfire</strong> – Wayland, inspiré de Compiz"
+
+#: .landing.desktops.niri.alt
+msgid "Niri on Ditana with Blue Vibrant theme, Brave, COSMIC Files"
+msgstr "Niri sur Ditana avec le thème Blue Vibrant, Brave, COSMIC Files"
+
+#: .landing.desktops.niri.caption
+msgid "<strong>Niri</strong> — Wayland, scrollable tiling"
+msgstr "<strong>Niri</strong> – Wayland, mosaïque défilante"
+
+#: .landing.desktops.cosmic.alt
+msgid "COSMIC on Ditana with Amber Rounded theme, LibreWolf, Thunar"
+msgstr "COSMIC sur Ditana avec le thème Amber Rounded, LibreWolf, Thunar"
+
+#: .landing.desktops.cosmic.caption
+msgid "<strong>COSMIC</strong> — Wayland, System76’s Rust desktop"
+msgstr "<strong>COSMIC</strong> – Wayland, le bureau en Rust de System76"
+
+#: .landing.snapshots.eyebrow
+msgid "Rolling release, without the risk"
+msgstr "Publication continue, sans les risques"
+
+#: .landing.snapshots.title
+msgid "Every upgrade is reversible."
+msgstr "Chaque mise à jour est réversible."
+
+#: .landing.snapshots.lede
+msgid "Arch’s rolling-release model is a feature, not a bug — but it can land breakage on a Tuesday morning. Ditana takes the sting out by snapshotting the system before every upgrade, automatically."
+msgstr "Le modèle de publication continue d’Arch est une fonctionnalité, pas un bogue – mais il peut provoquer des dysfonctionnements un mardi matin. Ditana désamorce ce risque en prenant automatiquement un instantané du système avant chaque mise à jour."
+
+#: .landing.snapshots.subtitle
+msgid "Atomic snapshots, taken by a pacman hook."
+msgstr "Instantanés atomiques, pris par un crochet pacman."
+
+#: .landing.snapshots.alt
+msgid "System maintenance dialog showing automatic system snapshots option enabled by default"
+msgstr "Boîte de dialogue de maintenance du système montrant l’option d’instantanés automatiques du système activée par défaut"
+
+#: .landing.snapshots.p1
+msgid "On ZFS and BTRFS, snapshots are atomic and free — a few milliseconds before any package upgrade. On XFS and EXT4, Timeshift handles the same job via rsync, completing typical incremental snapshots in seconds."
+msgstr "Avec ZFS et BTRFS, les instantanés sont atomiques et gratuits – quelques millisecondes avant chaque mise à jour de paquets. Avec XFS et EXT4, Timeshift accomplit la même tâche au moyen de rsync et termine les instantanés incrémentiels habituels en quelques secondes."
+
+#: .landing.snapshots.p2
+msgid "The first snapshot is created by the installer itself, just before the first reboot. That means you can roll back to a freshly-installed system from day one — no setup, no first-upgrade chicken-and-egg."
+msgstr "Le premier instantané est créé par le programme d’installation lui-même, juste avant le premier redémarrage. Vous pouvez donc revenir à un système fraîchement installé dès le premier jour – sans configuration, sans problème de la poule et de l’œuf à la première mise à jour."
+
+#: .landing.snapshots.p3
+msgid "System snapshots, not data snapshots: <code>/home</code> and other data volumes are never touched. Roll back the system; keep your work."
+msgstr "Des instantanés du système, pas des données : <code>/home</code> et les autres volumes de données ne sont jamais touchés. Restaurez le système, gardez votre travail."
+
+#: .landing.snapshots.p4
+msgid "For ZFS, Ditana ships its own <a href=\"https://github.com/acrion/zfs-autosnap\">zfs-autosnap</a> fork that — unlike the upstream — removes the pacman lock file from the snapshot, so a rollback leaves you with a working pacman immediately."
+msgstr "Pour ZFS, Ditana fournit son propre fork de <a href=\"https://github.com/acrion/zfs-autosnap\">zfs-autosnap</a> qui – contrairement au projet amont – retire le fichier de verrouillage de pacman de l’instantané, si bien qu’une restauration vous laisse immédiatement un pacman fonctionnel."
+
+#: .landing.headless.title
+msgid "Headless too."
+msgstr "Également sans interface graphique."
+
+#: .landing.headless.body
+msgid "System hardening plus automatic snapshots make Ditana a viable Arch-based server choice — uncommon for a rolling release. The installer’s <em>Server</em> profile skips the desktop install entirely and leans into the security defaults."
+msgstr "Le durcissement du système et les instantanés automatiques font de Ditana un choix viable de serveur basé sur Arch – ce qui est rare pour une distribution en publication continue. Le profil <em>Server</em> du programme d’installation fait entièrement l’impasse sur l’installation du bureau et s’appuie pleinement sur les paramètres de sécurité par défaut."
+
+#: .landing.hardware.eyebrow
+msgid "Hardware-aware"
+msgstr "Attentif au matériel"
+
+#: .landing.hardware.title
+msgid "It checks the upstream sources at install time."
+msgstr "Elle consulte les sources amont au moment de l’installation."
+
+#: .landing.hardware.nvidia.alt
+msgid "NVIDIA driver decision dialog with detected PCI ID and recommendation rationale"
+msgstr "Boîte de dialogue de choix du pilote NVIDIA avec l’identifiant PCI détecté et la justification de la recommandation"
+
+#: .landing.hardware.nvidia.title
+msgid "NVIDIA detection, four-way decision."
+msgstr "Détection NVIDIA, choix entre quatre options."
+
+#: .landing.hardware.nvidia.p1
+msgid "Ditana queries the live PCI ID lists from <code>github.com/NVIDIA/open-gpu-kernel-modules</code> and the official legacy GPU page at install time. Based on the result, it recommends one of four driver options – nvidia-open-dkms, the legacy proprietary <code>nvidia-580xx-dkms</code>, the older <code>nvidia-470xx-dkms</code>, or nouveau – and checks that the package it is about to recommend is present in the repository, reverting to nouveau when it is not."
+msgstr "Au moment de l’installation, Ditana interroge les listes actuelles d’identifiants PCI de <code>github.com/NVIDIA/open-gpu-kernel-modules</code> et la page officielle des anciens GPU. En fonction du résultat, elle recommande l’une des quatre options de pilote – nvidia-open-dkms, l’ancien pilote propriétaire <code>nvidia-580xx-dkms</code>, le plus ancien <code>nvidia-470xx-dkms</code> ou nouveau – et vérifie que le paquet qu’elle s’apprête à recommander est présent dans le dépôt, en se rabattant sur nouveau lorsque ce n’est pas le cas."
+
+#: .landing.hardware.nvidia.p2
+msgid "It then explains what it picked, and why."
+msgstr "Elle explique ensuite ce qu’elle a choisi, et pourquoi."
+
+#: .landing.cpu.title
+msgid "CPU vulnerabilities, detected and mitigated."
+msgstr "Vulnérabilités du processeur, détectées et atténuées."
+
+#: .landing.cpu.p1
+msgid "Spectre v2, Meltdown, MDS, TAA, MMIO Stale Data, RETBleed, SRSO, GDS, RFDS — Ditana reads <code>/sys/devices/system/cpu/vulnerabilities/</code> at install time, <a href=\"/under-the-hood/mitigations/\">enables only the mitigations your CPU actually needs</a>, and lets you review each one with documentation."
+msgstr "Spectre v2, Meltdown, MDS, TAA, MMIO Stale Data, RETBleed, SRSO, GDS, RFDS – Ditana lit <code>/sys/devices/system/cpu/vulnerabilities/</code> au moment de l’installation, <a href=\"/under-the-hood/mitigations/\">n’active que les mesures d’atténuation dont votre processeur a réellement besoin</a> et vous permet d’examiner chacune d’elles, documentation à l’appui."
+
+#: .landing.cpu.p2
+msgid "Every mitigation comes with its <em>cost</em> spelled out, so you can make an informed call instead of choosing between “secure default” and “fast default” blindly."
+msgstr "Chaque mesure d’atténuation est accompagnée de son <em>coût</em>, exposé en clair, afin que vous puissiez décider en connaissance de cause au lieu de choisir à l’aveugle entre « valeur par défaut sûre » et « valeur par défaut rapide »."
+
+#: .landing.cpu.alt
+msgid "CPU vulnerability mitigation dialog showing detected vulnerabilities and selectable mitigations"
+msgstr "Boîte de dialogue d’atténuation des vulnérabilités du processeur montrant les vulnérabilités détectées et les mesures d’atténuation sélectionnables"
+
+#: .landing.hardening.alt
+msgid "System hardening options dialog"
+msgstr "Boîte de dialogue des options de durcissement du système"
+
+#: .landing.hardening.title
+msgid "System hardening, opt-out by default."
+msgstr "Durcissement du système, activé par défaut et désactivable."
+
+#: .landing.hardening.body
+msgid "Unprivileged user namespaces restricted to the programs that need them. Restricted ptrace. Hidden kernel pointers. Hardened FIFO and regular-file protection in sticky directories. SYN cookies, no ICMP redirects, no source routing, reverse-path filtering. Each option ships enabled, each one is explained – and developers get a profile that loosens the right things for debugging."
+msgstr "Espaces de noms utilisateur non privilégiés réservés aux programmes qui en ont besoin. Usage de ptrace restreint. Pointeurs du noyau masqués. Protection renforcée des FIFO et des fichiers ordinaires dans les répertoires dotés du sticky bit. Cookies SYN, pas de redirections ICMP, pas de routage par la source, filtrage par chemin inverse. Chaque option est livrée activée, chacune est expliquée – et les développeurs disposent d’un profil qui assouplit ce qu’il faut pour le débogage."
+
+#: .landing.installer.eyebrow
+msgid "The installer itself"
+msgstr "Le programme d’installation lui-même"
+
+#: .landing.installer.title
+msgid "Ten categories. Sensible defaults. No mystery."
+msgstr "Dix catégories. Des valeurs par défaut judicieuses. Aucun mystère."
+
+#: .landing.installer.lede
+msgid "Tell the installer who you are – originating from a different distribution, migrating from KDE Plasma, Cinnamon, Xfce or MATE, working as a developer, running as a server, or falling into none of these – and it accordingly pre-flips checkboxes. You may examine and revise every single one prior to the start of installation."
+msgstr "Indiquez au programme d’installation qui vous êtes – vous venez d’une autre distribution, vous quittez KDE Plasma, Cinnamon, Xfce ou MATE, vous êtes développeur, vous installez un serveur, ou aucun de ces cas – et il positionne d’avance les cases à cocher en conséquence. Vous pouvez examiner et modifier chacune d’entre elles avant le début de l’installation."
+
+#: .landing.installer.categories.alt
+msgid "Configuration categories overview dialog"
+msgstr "Boîte de dialogue de vue d’ensemble des catégories de configuration"
+
+#: .landing.installer.categories.title
+msgid "One screen, the whole system."
+msgstr "Un seul écran, tout le système."
+
+#: .landing.installer.categories.body
+msgid "Configuration categories let you drill into desktops, browsers, file managers, office suites, AI tools, terminals, kernels, filesystems, hardening, mitigations, and the system allocator — all from one menu, all reversible, all explained."
+msgstr "Les catégories de configuration vous permettent d’explorer en détail les bureaux, les navigateurs, les gestionnaires de fichiers, les suites bureautiques, les outils d’IA, les terminaux, les noyaux, les systèmes de fichiers, le durcissement, les mesures d’atténuation et l’allocateur de mémoire du système – le tout depuis un seul menu, entièrement réversible et entièrement expliqué."
+
+#: .landing.installer.impact.title
+msgid "Every change comes with its impact."
+msgstr "Chaque modification s’accompagne de ses effets."
+
+#: .landing.installer.impact.body
+msgid "Toggle an option, see the consequence: which packages get added, which scripts will run, what other settings flip in response. The settings graph is data — Ditana shows you the path through it."
+msgstr "Activez ou désactivez une option, et voyez la conséquence : quels paquets sont ajoutés, quels scripts seront exécutés, quels autres paramètres basculent en réponse. Le graphe des paramètres est constitué de données – Ditana vous y montre le chemin."
+
+#: .landing.installer.impact.alt
+msgid "Settings impact overview showing dependent changes"
+msgstr "Vue d’ensemble des effets des paramètres montrant les modifications dépendantes"
+
+#: .landing.config.eyebrow
+msgctxt ".landing.config.eyebrow"
+msgid "Configuration as data"
+msgstr "Configuration sous forme de données"
+
+#: .landing.config.title
+msgid "The installer is small. The knowledge base is big."
+msgstr "Le programme d’installation est petit. La base de connaissances est grande."
+
+#: .landing.config.lede
+msgid "A Linux installer should do more than partition, install packages, and hand off. PKGBUILDs only know about their own package — they can’t know what else is on the system. Ditana keeps the cross-cutting decisions in a separate, auditable knowledge base."
+msgstr "Un programme d’installation Linux devrait faire plus que partitionner, installer des paquets et passer la main. Les PKGBUILD ne connaissent que leur propre paquet – ils ne peuvent pas savoir ce qui se trouve d’autre sur le système. Ditana conserve les décisions transversales dans une base de connaissances distincte et vérifiable."
+
+#: .landing.config.kdl.title
+msgid "Settings declare their dependencies in plain KDL."
+msgstr "Les paramètres déclarent leurs dépendances en simple KDL."
+
+#: .landing.config.kdl.body
+msgid "This excerpt says: install kitty <em>only</em> if the chosen terminal operates on Wayland alone <em>and</em> XFCE is also installed. Nobody would consider requesting that, and nobody needs to: the rule stands beside the package list, where a reviewer can see both the condition and the reason for it, rather than being hidden within installer code."
+msgstr "Cet extrait dit : installer kitty <em>uniquement</em> si le terminal choisi ne fonctionne que sous Wayland <em>et</em> que XFCE est aussi installé. Personne ne songerait à le demander, et personne n’en a besoin : la règle se trouve à côté de la liste des paquets, et non enfouie dans le code du programme d’installation, si bien qu’un relecteur peut y voir à la fois la condition et sa raison d’être."
+
+#: .landing.config.browse
+msgid "Browse ditana-config →"
+msgstr "Parcourir ditana-config →"
+
+#: .landing.final.title
+msgid "Ready to try it?"
+msgstr "Envie de l’essayer ?"
+
+#: .landing.final.body
+msgid "Ditana {{release}} is a {{size}} ISO with a detached GPG signature. It fetches its packages and its configuration while it installs, so a working network connection is part of the requirements. The full install takes 15–45 minutes depending on what you pick."
+msgstr "Ditana {{release}} est une image ISO de {{size}} accompagnée d’une signature GPG détachée. Elle récupère ses paquets et sa configuration pendant l’installation, si bien qu’une connexion réseau fonctionnelle fait partie de la configuration requise. L’installation complète prend de 15 à 45 minutes selon ce que vous choisissez."
+
+#: .landing.final.whatsNew
+msgid "What’s new in {{release}}"
+msgstr "Nouveautés de la version {{release}}"

@@ -1,0 +1,179 @@
+---
+// The landing page. Its layout is HTML, which po4a cannot cut into units, so
+// the layout lives here and every text is an interface string (landing.* in
+// src/content/i18n/en-GB.json), translated like the sidebar. A string may hold
+// inline HTML; the literal guard keeps its tags as the English has them.
+import { Image } from 'astro:assets';
+import { current } from 'virtual:ditana/release';
+import KdlExcerpt from './KdlExcerpt.astro';
+
+import desktopXfce from '../assets/screenshots/desktops/desktop-xfce-blue_flat-firefox-thunar.png';
+import desktopWayfire from '../assets/screenshots/desktops/desktop-wayfire-blue_vibrant-brave-thunar.png';
+import desktopNiri from '../assets/screenshots/desktops/desktop-niri-blue_vibrant-brave-cosmic-files.png';
+import desktopCosmic from '../assets/screenshots/desktops/desktop-cosmic-amber_rounded-librewolf-thunar.png';
+
+import installerCategories from '../assets/screenshots/installer/installer-configuration-categories.png';
+import installerNvidia from '../assets/screenshots/installer/installer-settings-hardware-detection-nvidia-example.png';
+import installerHardening from '../assets/screenshots/installer/installer-system-hardening.png';
+import installerMitigations from '../assets/screenshots/installer/installer-cpu-vulnerability-detection-and-mitigation.png';
+import installerImpact from '../assets/screenshots/installer/installer-settings-impact-overview-example.png';
+import installerSnapshots from '../assets/screenshots/installer/installer-system-maintenance.png';
+
+const { locale } = Astro.locals.starlightRoute;
+// Every link on this page that starts with / is a page of the site, and a
+// translation links to the page in its own language.
+const page = (href: string) => (locale && href.startsWith('/') ? `/${locale}${href}` : href);
+const t = (key: string, values?: Record<string, string>) => Astro.locals.t(key, values);
+const html = (key: string, values?: Record<string, string>) => t(key, values).replace(/href="(\/[^"/][^"]*)"/g, (_, href) => `href="${page(href)}"`);
+const release = { release: current.name, size: current.isoSize };
+---
+
+<div class="ditana-landing">
+
+<div class="ditana-hero">
+  <div class="ditana-hero__eyebrow">{t('landing.hero.eyebrow', release)}</div>
+  <h1 class="ditana-hero__title" set:html={html('landing.hero.title')} />
+  <p class="ditana-hero__lede" set:html={html('landing.hero.lede')} />
+
+  <div class="ditana-hero__cta">
+    <a class="ditana-btn ditana-btn--primary" href={page('/download/')}>{t('landing.cta.download')}</a>
+    <a class="ditana-btn ditana-btn--secondary" href="https://github.com/acrion/ditana-config">{t('landing.cta.source')}</a>
+  </div>
+
+  <pre class="ditana-terminal"><code><span class="c-cmt"># installer pipeline — NVIDIA detection</span>
+$ <span class="c-tag">detect</span>          Quadro K3100M (PCI 11b6)
+$ <span class="c-tag">cross-reference</span> github.com/NVIDIA/open-gpu-kernel-modules
+$ <span class="c-tag">cross-reference</span> nvidia.com/…/legacy-gpu
+$ <span class="c-tag">decide</span>          recommend <span class="c-acc">proprietary legacy driver 470</span>
+$ <span class="c-tag">verify</span>          nvidia-470xx-dkms present in the repository
+<span class="c-ok">✓ four conflicting options resolved into one consistent default</span></code></pre>
+</div>
+
+<section class="ditana-section">
+  <div class="ditana-section__eyebrow">{t('landing.principles.eyebrow')}</div>
+  <h2 class="ditana-section__title">{t('landing.principles.title')}</h2>
+
+  <div class="ditana-pillars">
+    {['transparent', 'hardened', 'desktops'].map((name) => (
+      <div class="ditana-pillar">
+        <div class="ditana-pillar__num">{t(`landing.principles.${name}.num`)}</div>
+        <h3 class="ditana-pillar__title">{t(`landing.principles.${name}.title`)}</h3>
+        <p class="ditana-pillar__body" set:html={html(`landing.principles.${name}.body`)} />
+      </div>
+    ))}
+  </div>
+</section>
+
+<section class="ditana-section">
+  <div class="ditana-section__eyebrow">{t('landing.desktops.eyebrow')}</div>
+  <h2 class="ditana-section__title">{t('landing.desktops.title')}</h2>
+  <p class="ditana-section__lede" set:html={html('landing.desktops.lede')} />
+
+  <div class="ditana-desktops">
+    {[['xfce', desktopXfce], ['wayfire', desktopWayfire], ['niri', desktopNiri], ['cosmic', desktopCosmic]].map(([name, image]) => (
+      <figure>
+        <Image src={image} alt={t(`landing.desktops.${name}.alt`)} />
+        <figcaption set:html={html(`landing.desktops.${name}.caption`)} />
+      </figure>
+    ))}
+  </div>
+</section>
+
+<section class="ditana-section">
+  <div class="ditana-section__eyebrow">{t('landing.snapshots.eyebrow')}</div>
+  <h2 class="ditana-section__title">{t('landing.snapshots.title')}</h2>
+  <p class="ditana-section__lede" set:html={html('landing.snapshots.lede')} />
+
+  <h3 class="ditana-stacked__title">{t('landing.snapshots.subtitle')}</h3>
+  <Image src={installerSnapshots} alt={t('landing.snapshots.alt')} class="ditana-stacked__image" />
+  <div class="ditana-stacked__body">
+    {['p1', 'p2', 'p3', 'p4'].map((p) => <p set:html={html(`landing.snapshots.${p}`)} />)}
+  </div>
+
+  <p style="color: var(--sl-color-gray-3); font-size: 0.9375rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--sl-color-hairline-light);">
+    <strong style="color: var(--sl-color-white); font-weight: 500;">{t('landing.headless.title')}</strong> <Fragment set:html={html('landing.headless.body')} />
+  </p>
+</section>
+
+<section class="ditana-section">
+  <div class="ditana-section__eyebrow">{t('landing.hardware.eyebrow')}</div>
+  <h2 class="ditana-section__title">{t('landing.hardware.title')}</h2>
+
+  <div class="ditana-showcase">
+    <Image src={installerNvidia} alt={t('landing.hardware.nvidia.alt')} />
+    <div class="ditana-showcase__body">
+      <h3>{t('landing.hardware.nvidia.title')}</h3>
+      <p set:html={html('landing.hardware.nvidia.p1')} />
+      <p set:html={html('landing.hardware.nvidia.p2')} />
+    </div>
+  </div>
+</section>
+
+<section class="ditana-section">
+  <div class="ditana-showcase">
+    <div class="ditana-showcase__body">
+      <h3>{t('landing.cpu.title')}</h3>
+      <p set:html={html('landing.cpu.p1')} />
+      <p set:html={html('landing.cpu.p2')} />
+    </div>
+    <Image src={installerMitigations} alt={t('landing.cpu.alt')} />
+  </div>
+</section>
+
+<section class="ditana-section">
+  <div class="ditana-showcase">
+    <Image src={installerHardening} alt={t('landing.hardening.alt')} />
+    <div class="ditana-showcase__body">
+      <h3>{t('landing.hardening.title')}</h3>
+      <p set:html={html('landing.hardening.body')} />
+    </div>
+  </div>
+</section>
+
+<section class="ditana-section">
+  <div class="ditana-section__eyebrow">{t('landing.installer.eyebrow')}</div>
+  <h2 class="ditana-section__title">{t('landing.installer.title')}</h2>
+  <p class="ditana-section__lede" set:html={html('landing.installer.lede')} />
+
+  <div class="ditana-showcase">
+    <Image src={installerCategories} alt={t('landing.installer.categories.alt')} />
+    <div class="ditana-showcase__body">
+      <h3>{t('landing.installer.categories.title')}</h3>
+      <p set:html={html('landing.installer.categories.body')} />
+    </div>
+  </div>
+
+  <div class="ditana-showcase" style="margin-top: 2rem;">
+    <div class="ditana-showcase__body">
+      <h3>{t('landing.installer.impact.title')}</h3>
+      <p set:html={html('landing.installer.impact.body')} />
+    </div>
+    <Image src={installerImpact} alt={t('landing.installer.impact.alt')} />
+  </div>
+</section>
+
+<section class="ditana-section">
+  <div class="ditana-section__eyebrow">{t('landing.config.eyebrow')}</div>
+  <h2 class="ditana-section__title">{t('landing.config.title')}</h2>
+  <p class="ditana-section__lede" set:html={html('landing.config.lede')} />
+
+  <div class="ditana-showcase">
+    <div class="ditana-showcase__body">
+      <h3>{t('landing.config.kdl.title')}</h3>
+      <p set:html={html('landing.config.kdl.body')} />
+      <p><a class="ditana-btn ditana-btn--secondary" href="https://github.com/acrion/ditana-config">{t('landing.config.browse')}</a></p>
+    </div>
+    <KdlExcerpt />
+  </div>
+</section>
+
+<div class="ditana-final">
+  <h2>{t('landing.final.title')}</h2>
+  <p set:html={html('landing.final.body', release)} />
+  <div class="ditana-hero__cta">
+    <a class="ditana-btn ditana-btn--primary" href={page('/download/')}>{t('landing.cta.download')}</a>
+    <a class="ditana-btn ditana-btn--secondary" href={page(current.notesHref)}>{t('landing.final.whatsNew', release)}</a>
+  </div>
+</div>
+
+</div>

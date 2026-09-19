@@ -1,0 +1,103 @@
+# Language de-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: de-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/release-notes/0-9-4-beta.md
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+#, no-wrap
+msgid ""
+"sudo pacman -Syu ditana-userns-guard\n"
+"echo /usr/bin/bwrap | sudo tee /etc/ditana/userns-allow.conf\n"
+"sudo systemctl enable --now ditana-userns-guard.service\n"
+msgstr ""
+"sudo pacman -Syu ditana-userns-guard\n"
+"echo /usr/bin/bwrap | sudo tee /etc/ditana/userns-allow.conf\n"
+"sudo systemctl enable --now ditana-userns-guard.service\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+#, no-wrap
+msgid "How to restore Flatpak and Bubblejail on a machine installed from the 0.9.3 medium."
+msgstr "Wie Sie Flatpak und Bubblejail auf einem Rechner, der vom Medium der Version 0.9.3 installiert wurde, wieder funktionsfähig machen."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+#, no-wrap
+msgid "Flatpak or Bubblejail stopped working after an update"
+msgstr "Flatpak oder Bubblejail funktioniert nach einer Aktualisierung nicht mehr"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"Flatpak and Bubblejail apps ceased launching following a routine update on a "
+"machine installed from the 0.9.3 medium. `bubblewrap-suid` no longer exists, "
+"so the update replaced it, and unprivileged user namespaces are disabled on "
+"such a system."
+msgstr ""
+"Auf einem Rechner, der vom Medium der Version 0.9.3 installiert wurde, "
+"starteten Flatpak- und Bubblejail-Anwendungen nach einer routinemässigen "
+"Aktualisierung nicht mehr. `bubblewrap-suid` existiert nicht mehr, deshalb "
+"hat die Aktualisierung es ersetzt, und auf einem solchen System sind "
+"unprivilegierte Benutzer-Namensräume (*user namespaces*) deaktiviert."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"Check first that this is your situation: `sysctl "
+"kernel.unprivileged_userns_clone` has to say `0`. If it says `1`, every "
+"program already gets a user namespace and Flatpak has stopped for some other "
+"reason. The guard would then take the namespaces away from every program "
+"that is not on the list, and not every program survives that – see [A "
+"Chromium-based program aborts](/troubleshooting/chromium-sandbox-helper/)."
+msgstr ""
+"Prüfen Sie zuerst, ob das Ihre Situation ist: `sysctl "
+"kernel.unprivileged_userns_clone` muss `0` ausgeben. Gibt es `1` aus, erhält "
+"bereits jedes Programm einen Benutzer-Namensraum, und Flatpak funktioniert "
+"aus einem anderen Grund nicht mehr. Der Wächter würde dann jedem Programm, "
+"das nicht auf der Liste steht, die Namensräume wegnehmen, und nicht jedes "
+"Programm übersteht das – siehe [Ein Programm auf Chromium-Basis bricht ab](/"
+"troubleshooting/chromium-sandbox-helper/)."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"Install the guard, specify which executable is permitted to use one, and "
+"switch it on:"
+msgstr ""
+"Installieren Sie den Wächter, geben Sie an, welche ausführbare Datei einen "
+"Namensraum verwenden darf, und schalten Sie ihn ein:"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"The first command updates the whole system, which on a machine that has not "
+"been updated for a while can take long. Let it run to its end, as described "
+"under [The terminal way](/troubleshooting/updating/#the-terminal-way)."
+msgstr ""
+"Der erste Befehl aktualisiert das ganze System, was auf einem Rechner, der "
+"eine Weile nicht aktualisiert wurde, lange dauern kann. Lassen Sie den "
+"Vorgang bis zum Ende laufen, wie unter [Der Weg über das Terminal](/"
+"troubleshooting/updating/#the-terminal-way) beschrieben."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/flatpak-and-bubblejail.md
+msgid ""
+"The [0.9.4 release notes](/release-notes/0-9-4-beta/) explain why the "
+"arrangement changed."
+msgstr ""
+"Die [Versionshinweise zu 0.9.4](/release-notes/0-9-4-beta/) erklären, warum "
+"sich die Regelung geändert hat."

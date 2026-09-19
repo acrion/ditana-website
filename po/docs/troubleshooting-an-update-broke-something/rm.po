@@ -1,0 +1,76 @@
+# Romansh translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: rm\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+#, no-wrap
+msgid "Four steps to discover what an update changed and to get a functioning system back."
+msgstr "Quatter pass per chattar ora tge ch’in’actualisaziun ha midà e per avair puspè in sistem che funcziuna."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+#, no-wrap
+msgid "An update broke something"
+msgstr "In’actualisaziun ha donnegià insatge"
+
+#. type: Bullet: '1. '
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+msgid ""
+"**Check whether it is us.** The [build status page](/builds/) shows every "
+"package build, including the ones that were held back. If the last run was "
+"held back, the repository has not changed since the one before it, and the "
+"cause is elsewhere."
+msgstr ""
+"**Controllar sch’il problem vegn da nus.** La [pagina dal status dals builds]"
+"(/builds/) mussa mintga build da pachets, inclus quels ch’èn vegnids "
+"retegnids. Sche l’ultima execuziun è vegnida retegnida, n’è il repositori "
+"betg sa midà dapi l’execuziun precedenta, e la chaschun sa chatta en in "
+"auter lieu."
+
+#. type: Bullet: '2. '
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+msgid ""
+"**Boot the snapshot.** With automatic snapshots enabled, the pre-update "
+"state is a boot menu entry away. This is the fastest way to get a working "
+"system back, and it costs nothing to try."
+msgstr ""
+"**Aviar il snapshot.** Cun ils snapshots automatics activads sa chatta il "
+"stadi avant l’actualisaziun directamain en il menu d’aviar. Quai è la via la "
+"pli svelta per avair puspè in sistem che funcziuna, ed i na custa nagut da "
+"l’empruvar."
+
+#. type: Bullet: '3. '
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+msgid ""
+"**Check what actually changed.** `/var/log/pacman.log` lists every upgraded "
+"package with a timestamp, so you can narrow the search to what moved."
+msgstr ""
+"**Controllar tge ch’è sa midà effectivamain.** `/var/log/pacman.log` "
+"enumerescha mintga pachet actualisà cun data ed ura, uschia che Vus pudais "
+"restrenscher la tschertga a quai ch’è sa midà."
+
+#. type: Bullet: '4. '
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+msgid ""
+"**Read the news.** Arch announces every change that needs manual "
+"intervention at [archlinux.org/news](https://archlinux.org/news/). If an "
+"update needed a step you did not take, it is usually there."
+msgstr ""
+"**Leger las novitads.** Arch annunzia mintga midada che dovra "
+"in’intervenziun manuala sin [archlinux.org/news](https://archlinux.org/"
+"news/). Sch’in’actualisaziun ha duvrà in pass che Vus n’avais betg fatg, sa "
+"chatta quel per regla là."

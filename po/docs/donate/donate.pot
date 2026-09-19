@@ -1,0 +1,104 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/donate.md
+#, no-wrap
+msgid "Support Ditana development through Liberapay, Buy Me a Coffee, GitHub Sponsors, or Patreon."
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/donate.md
+#, no-wrap
+msgid "Donate"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/donate.md
+msgid ""
+"Ditana is the result of years of work, built on the conviction that a Linux "
+"distribution should explain its choices rather than hide them. It is "
+"completely free and open source, and its continued development relies on "
+"community support."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/donate.md
+msgid ""
+"By donating, you enable me to keep enhancing Ditana — exploring new "
+"features, responding to user feedback, and maintaining the level of detail "
+"this project aims for. Every contribution makes a difference."
+msgstr ""
+
+#. type: Title ##
+#: src/content/docs/donate.md
+#, no-wrap
+msgid "Where donations go"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/donate.md
+msgid ""
+"Donations are processed through **acrion innovations GmbH**, a Swiss company "
+"I founded to manage the financial side of my projects. While the company "
+"provides the legal and financial framework, **acrion** represents my work as "
+"a solo developer. Your support directly funds Ditana's ongoing development, "
+"server infrastructure, and the time required to keep up with Arch's rolling "
+"release."
+msgstr ""
+
+#. type: Title ##
+#: src/content/docs/donate.md
+#, no-wrap
+msgid "How to support Ditana"
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/donate.md
+msgid ""
+"[**Liberapay**](https://liberapay.com/acrion/donate) — recurring donations, "
+"no platform fee."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/donate.md
+msgid ""
+"[**Buy Me a Coffee**](https://buymeacoffee.com/acrion) — one-off support."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/donate.md
+msgid ""
+"[**GitHub Sponsors**](https://github.com/sponsors/acrion) — if you already "
+"donate to other open-source work via GitHub."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/donate.md
+msgid "[**Patreon**](https://patreon.com/acriondev) — tiered support."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/donate.md
+msgid "Thank you for helping keep Ditana alive, growing, and uncompromising."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/donate.md
+msgid "— Stefan"
+msgstr ""

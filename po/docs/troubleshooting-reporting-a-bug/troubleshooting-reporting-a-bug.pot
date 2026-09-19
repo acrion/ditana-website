@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+#, no-wrap
+msgid "Which of Ditana's repositories a problem belongs in, and what a useful report contains."
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+#, no-wrap
+msgid "Reporting a bug"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"Ditana is developed in three repositories, and the right one follows from "
+"two questions: **did the problem appear while installing, or while using an "
+"installed system?** And if it is an installed system, **is it the packaging "
+"or the configuration?**"
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"**[ditana-installer](https://github.com/acrion/ditana-installer/issues)** — "
+"the ISO and the installation process. The live environment does not boot; "
+"the installer stops with an error; disk partitioning or encryption fails; "
+"the installed system does not boot at all; something you selected in the "
+"installer's dialogs did not end up on the installed system."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"**[ditana-build](https://github.com/acrion/ditana-build/issues)** – the "
+"packages themselves and the pipeline that builds them. A missing dependency, "
+"a package that will not install, a signature that does not verify, a package "
+"that is out of date."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"**[ditana-config](https://github.com/acrion/ditana-config/issues)** — what "
+"an installed Ditana system *is*. Package selection, desktop configuration, "
+"defaults and dotfiles, systemd units, kernel parameters and CPU mitigations, "
+"Ditana's own helper scripts. If the system boots and something in it is "
+"wrong or missing, this is the place."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"If you cannot tell, open it in **ditana-config** and say so — it is easier "
+"to move an issue than to have it go unreported."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid "A useful report contains:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"The Ditana version and the configuration it was installed with, from `grep "
+"-E '^(BUILD_ID|VERSION_CODENAME)=' /etc/os-release`, and the kernel from "
+"`uname -r`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"What you expected, what happened, and the exact command or click that "
+"produced it."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid "The relevant error, copied as text rather than photographed."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"For an installer problem: `/var/log/install_ditana.log`, which the installer "
+"also copies into the installed system."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"For a service that fails: `systemctl status <unit>` and `journalctl -u "
+"<unit> -b`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"For a hardware problem: `print-system-infos`, which is installed by default "
+"with the terminal tools and summarizes CPU, GPU, memory and firmware in one "
+"screen. Install it with `pacman -S ditana-print-system-infos` if you "
+"unchecked that option."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/reporting-a-bug.md
+msgid ""
+"Please do not report AUR packages here. Ditana rebuilds their recipes from "
+"the AUR unchanged; if the software itself is broken, the AUR page or the "
+"upstream project is where a fix can actually be made. If the *packaging* in "
+"Ditana’s repository is at fault – a missing dependency, a package that will "
+"not install – that is a ditana-build issue and we do want to hear about it."
+msgstr ""

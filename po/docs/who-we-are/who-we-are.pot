@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/who-we-are.mdx
+#, no-wrap
+msgid "The people behind Ditana GNU/Linux."
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/who-we-are.mdx
+#, no-wrap
+msgid "Who we are"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"import { Image } from 'astro:assets'; import stefan from '~/assets/people/"
+"stefan.png'; import thomas from '~/assets/people/thomas.png';"
+msgstr ""
+
+#. type: Title ##
+#: src/content/docs/who-we-are.mdx
+#, no-wrap
+msgid "Stefan Zipproth"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+#, no-wrap
+msgid "<Image src={stefan} alt=\"Stefan Zipproth\" width={150} />\n"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"Stefan Zipproth is the lead developer and creator of Ditana. A software "
+"developer from St. Ursen, Switzerland, with a background in embedded systems "
+"and cross-platform development. He has worked in industries ranging from RF "
+"measurement and classical image processing to AI-powered medical imaging. "
+"Since 2023, he has focused on developing and refining products for the Linux "
+"ecosystem. A broader overview of his work — spanning systems architecture, "
+"high-performance C++, and knowledge representation — is available on his "
+"[personal portfolio](https://zipproth.ch)."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"Through **acrion innovations GmbH**, Stefan manages the financial side of "
+"Ditana while focusing solely on its development as a solo developer. This "
+"structure ensures transparent stewardship of resources for the community-"
+"driven project."
+msgstr ""
+
+#. type: Title ##
+#: src/content/docs/who-we-are.mdx
+#, no-wrap
+msgid "Thomas Zipproth"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+#, no-wrap
+msgid "<Image src={thomas} alt=\"Thomas Zipproth\" width={150} />\n"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"Thomas Zipproth is an experienced software developer from Mindelheim, "
+"Germany, with deep expertise in image processing — particularly in document "
+"scanning and recognition technologies. He has spent his career working on "
+"high-precision systems for automated data extraction and provides valuable "
+"testing support and feedback for Ditana, helping refine its usability and "
+"reliability."
+msgstr ""
+
+#. type: Title ##
+#: src/content/docs/who-we-are.mdx
+#, no-wrap
+msgid "Acknowledgements"
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"Ditana would not be what it is without the contributions of others. Special "
+"thanks to:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"**Alexey Melezhik** for the [Sparrow6](https://github.com/melezhik/Sparrow6) "
+"work that replaced Ansible in 0.9.3 and for ongoing collaboration on test "
+"infrastructure."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"**Ralf Hersel** of [gnulinux.ch](https://gnulinux.ch) for the early coverage "
+"and the [podcast interview](https://gnulinux.ch/ciw119-podcast) that "
+"introduced Ditana to a wider Swiss/German-speaking audience."
+msgstr ""
+
+#. type: Bullet: '- '
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"Everyone who has filed an issue, sent feedback, or simply tried Ditana and "
+"shared what worked or didn't."
+msgstr ""
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"If you want to reach us: [support@ditana.org](mailto:support@ditana.org) for "
+"anything at all, the [Discord channel](https://discord.gg/RgcdumdE9J) for a "
+"conversation, and the issue trackers for [the installer](https://github.com/"
+"acrion/ditana-installer/issues), [the configuration](https://github.com/"
+"acrion/ditana-config/issues) and [the package pipeline](https://github.com/"
+"acrion/ditana-build/issues) when you have something specific."
+msgstr ""

@@ -1,0 +1,527 @@
+# Language fr-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "The public record of every Ditana package build — either every package is mutually consistent and the repository ships, or nothing ships."
+msgstr "Le registre public de toutes les compilations de paquets Ditana – soit tous les paquets sont cohérents entre eux et le dépôt est publié, soit rien n’est publié."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Build status"
+msgstr "État des compilations"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "import BuildDashboard from '~/components/BuildDashboard.astro';"
+msgstr "import BuildDashboard from '~/components/BuildDashboard.astro';"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Ditana maintains its own pacman repository on top of Arch – 59 packages, "
+"listed in full in every run that finished. A run that stopped lists what it "
+"had reached. Every night a build host pulls each package's recipe, decides "
+"what needs rebuilding, and builds it in a clean container. The rule that "
+"governs what happens next is the only one that matters here:"
+msgstr ""
+"Ditana entretient son propre dépôt pacman en complément d’Arch – 59 paquets, "
+"listés intégralement dans chaque exécution arrivée à son terme. Une "
+"exécution qui s’est arrêtée liste ceux qu’elle avait atteints. Chaque nuit, "
+"une machine de compilation récupère la recette de chaque paquet, détermine "
+"ce qui doit être recompilé et le compile dans un conteneur vierge. La règle "
+"qui régit la suite est la seule qui compte ici :"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "**If a single package cannot be built, or its sources cannot be verified, nothing is published.**\n"
+msgstr "**Si un seul paquet ne peut pas être compilé, ou si ses sources ne peuvent pas être vérifiées, rien n’est publié.**\n"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Not \"the rest ships and that one is retried tomorrow\". Nothing. The "
+"repository you install from is either the complete, mutually consistent set "
+"that came out of one run, or it is yesterday's complete, mutually consistent "
+"set. A smaller repository can promise that; a large one, updating package by "
+"package, cannot — which is why Ditana keeps its own small enough to vouch "
+"for as one set."
+msgstr ""
+"Pas « le reste est publié et celui-là sera réessayé demain ». Rien. Le dépôt "
+"à partir duquel vous installez est soit l’ensemble complet et cohérent issu "
+"d’une seule exécution, soit l’ensemble complet et cohérent de la veille. Un "
+"dépôt plus petit peut le promettre ; un grand dépôt, mis à jour paquet par "
+"paquet, ne le peut pas – c’est pourquoi Ditana garde le sien assez petit "
+"pour pouvoir s’en porter garant comme un seul ensemble."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"A claim like that is worth exactly as much as its evidence, so the record "
+"below is written by the pipeline itself, including the runs where nothing "
+"shipped. That pipeline is [`ditana-build`](https://github.com/acrion/ditana-"
+"build), and it is public: the review gate is [`bin/pkgbuild-review-gate`]"
+"(https://github.com/acrion/ditana-build/blob/main/bin/pkgbuild-review-gate), "
+"and the installation test is [`bin/test-install-in-qemu`](https://github.com/"
+"acrion/ditana-build/blob/main/bin/test-install-in-qemu)."
+msgstr ""
+"Une telle affirmation vaut exactement ce que valent ses preuves, c’est "
+"pourquoi le registre ci-dessous est rédigé par la chaîne de compilation elle-"
+"même, y compris les exécutions où rien n’a été publié. Cette chaîne est "
+"[`ditana-build`](https://github.com/acrion/ditana-build), et elle est "
+"publique : la barrière de revue est [`bin/pkgbuild-review-gate`](https://"
+"github.com/acrion/ditana-build/blob/main/bin/pkgbuild-review-gate), et le "
+"test d’installation est [`bin/test-install-in-qemu`](https://github.com/"
+"acrion/ditana-build/blob/main/bin/test-install-in-qemu)."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "<BuildDashboard />\n"
+msgstr "<BuildDashboard />\n"
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "How far a run got"
+msgstr "Jusqu’où une exécution est allée"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Every run passes through the same stages, and its `outcome` says which one "
+"it reached. These are the four states, and the colours above:"
+msgstr ""
+"Chaque exécution passe par les mêmes étapes, et son `outcome` indique "
+"laquelle elle a atteinte. Voici les quatre états, ainsi que les couleurs "
+"employées ci-dessus :"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid ""
+"| `outcome` | What it means for you |\n"
+"| --- | --- |\n"
+"| `released` | **This is what you install.** Every package built, every signature verified, and the whole set replaced the repository your system updates from. |\n"
+"| `in-testing` | Built and signed, sitting in a separate testing repository while it is checked. Your system still installs the previous release. |\n"
+"| `built` | The build host finished, but it holds no signing key — signing happens afterwards on another machine. Nothing has moved yet. |\n"
+"| `held-back` | Something did not pass, so nothing shipped at all. The repository you install from is untouched and still consistent. |\n"
+msgstr ""
+"| `outcome` | Ce que cela signifie pour vous |\n"
+"| --- | --- |\n"
+"| `released` | **C’est ce que vous installez.** Chaque paquet a été compilé, chaque signature vérifiée, et l’ensemble complet a remplacé le dépôt à partir duquel votre système se met à jour. |\n"
+"| `in-testing` | Compilé et signé, l’ensemble se trouve dans un dépôt de test séparé le temps d’être vérifié. Votre système installe toujours la version précédente. |\n"
+"| `built` | La machine de compilation a terminé, mais elle ne détient aucune clé de signature – la signature a lieu ensuite sur une autre machine. Rien n’a encore bougé. |\n"
+"| `held-back` | Quelque chose a échoué, si bien que rien du tout n’a été publié. Le dépôt à partir duquel vous installez est intact et toujours cohérent. |\n"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Only `released` means the packages reached you. The other three are stages "
+"on the way there, or a stop."
+msgstr ""
+"Seul `released` signifie que les paquets vous sont parvenus. Les trois "
+"autres sont des étapes en chemin, ou un arrêt."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "What happened to each package"
+msgstr "Ce qu’il est advenu de chaque paquet"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "Within a run, every package gets one `status`:"
+msgstr "Au sein d’une exécution, chaque paquet reçoit un seul `status` :"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid ""
+"| `status` | Meaning |\n"
+"| --- | --- |\n"
+"| `current` | The recipe has not changed since the existing package was built, and for a `-git` package the upstream commit has not moved either. Nothing to do. |\n"
+"| `rebuilt` | Sources were fetched and verified on the host, then the package was built in a fresh container. |\n"
+"| `review-stopped` | The recipe changed in a way a human has to look at. The run ends here. |\n"
+"| `build-failed` | The package did not compile, or produced no artefact. The run ends here. |\n"
+msgstr ""
+"| `status` | Signification |\n"
+"| --- | --- |\n"
+"| `current` | La recette n’a pas changé depuis la compilation du paquet existant et, pour un paquet `-git`, le commit amont n’a pas bougé non plus. Rien à faire. |\n"
+"| `rebuilt` | Les sources ont été récupérées et vérifiées sur la machine de compilation, puis le paquet a été compilé dans un conteneur neuf. |\n"
+"| `review-stopped` | La recette a changé d’une manière qu’une personne doit examiner. L’exécution s’arrête là. |\n"
+"| `build-failed` | Le paquet n’a pas pu être compilé, ou n’a produit aucun artefact. L’exécution s’arrête là. |\n"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "The last two are why a run ends as `held-back`: one package is enough."
+msgstr ""
+"Ce sont les deux derniers qui font qu’une exécution se termine en `held-"
+"back` : un seul paquet suffit."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Why a run stops"
+msgstr "Pourquoi une exécution s’arrête"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Most of what Ditana rebuilds are third-party AUR recipes, packaged into a "
+"repository its users trust through pacman's signature configuration. The AUR "
+"is a supply chain, and it has been attacked as one: orphaned packages have "
+"been adopted and given malicious commits, which is why the AUR disabled "
+"adoption and pushes in August 2026."
+msgstr ""
+"L’essentiel de ce que Ditana recompile, ce sont des recettes tierces de "
+"l’AUR, empaquetées dans un dépôt auquel ses utilisateurs font confiance par "
+"le biais de la configuration des signatures de pacman. L’AUR est une chaîne "
+"d’approvisionnement, et il a été attaqué comme telle : des paquets orphelins "
+"ont été adoptés puis ont reçu des commits malveillants, c’est pourquoi l’AUR "
+"a désactivé l’adoption et les envois en août 2026."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"So every `git pull` in the pipeline is classified before anything is built.  "
+"Version bumps, comments, whitespace and checksums that accompany a version "
+"change are waved through. A change to `source=`, to a `url=`, to a VCS "
+"revision, to anything inside a function, to `install=`, to `provides=`, "
+"`conflicts=`, `replaces=` or `validpgpkeys=`, a checksum that changes "
+"without a version changing, a new dependency pacman does not know, a changed "
+"or emptied `# Maintainer:` line — each of those stops the run. The recipe is "
+"never sourced to do this: executing the file under suspicion is precisely "
+"what has to be avoided, so the analysis is static, and it fails closed when "
+"it is unsure."
+msgstr ""
+"C’est pourquoi chaque `git pull` de la chaîne de compilation est classé "
+"avant que quoi que ce soit ne soit compilé. Les changements de numéro de "
+"version, les commentaires, les caractères d’espacement et les sommes de "
+"contrôle qui accompagnent un changement de version sont acceptés d’office. "
+"Une modification de `source=`, d’une `url=`, d’une révision VCS, de quoi que "
+"ce soit à l’intérieur d’une fonction, de `install=`, de `provides=`, "
+"`conflicts=`, `replaces=` ou `validpgpkeys=`, une somme de contrôle qui "
+"change sans que la version change, une nouvelle dépendance que pacman ne "
+"connaît pas, une ligne `# Maintainer:` modifiée ou vidée – chacun de ces cas "
+"arrête l’exécution. Pour cela, la recette n’est jamais chargée dans un "
+"shell : exécuter le fichier suspect est précisément ce qu’il faut éviter ; "
+"l’analyse est donc statique et, lorsqu’elle a un doute, elle bloque."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Measured against the last twelve months of real package history, this stops "
+"a run roughly **once every three and a half days**. That is not a defect to "
+"be tuned away; it is the price of the all-or-nothing rule, paid in advance."
+msgstr ""
+"Sur les douze derniers mois de l’historique réel des paquets, cela arrête "
+"une exécution environ **une fois tous les trois jours et demi**. Ce n’est "
+"pas un défaut qu’il faudrait éliminer par des ajustements ; c’est le prix de "
+"la règle du tout ou rien, payé d’avance."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Some of the recipes Ditana rebuilds have no upstream maintainer at all – "
+"their `# Maintainer:` line is empty. That is why an emptied maintainer line "
+"stops a run instead of being waved through: an orphaned recipe is the one "
+"somebody can adopt."
+msgstr ""
+"Certaines des recettes que Ditana recompile n’ont aucun mainteneur amont – "
+"leur ligne `# Maintainer:` est vide. C’est pourquoi une ligne de mainteneur "
+"vidée arrête une exécution au lieu d’être acceptée d’office : une recette "
+"orpheline est précisément celle que quelqu’un peut adopter."
+
+#. type: Title ###
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "What this does not check"
+msgstr "Ce que cela ne vérifie pas"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"The review covers packaging metadata, not upstream source code. When a "
+"recipe builds from a git revision, that revision's contents are not reviewed "
+"by anything in this pipeline. Ditana's advantage over an unreviewed rebuild "
+"service is real but bounded, and stating the bound is part of the claim."
+msgstr ""
+"La revue porte sur les métadonnées d’empaquetage, pas sur le code source "
+"amont. Lorsqu’une recette compile à partir d’une révision git, le contenu de "
+"cette révision n’est examiné par aucun élément de cette chaîne. L’avantage "
+"de Ditana sur un service de recompilation sans revue est réel mais limité, "
+"et énoncer cette limite fait partie de l’affirmation."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "The installation test"
+msgstr "Le test d’installation"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Building and signing a repository is not the same as being able to install "
+"from it. Between the testing repository and the release there is one more "
+"step: the build host installs that very repository into a virtual machine of "
+"its own, unattended, driven by an answer file on a small config drive – the "
+"same mechanism a hosting provider would use over PXE, which is why no "
+"keystrokes are simulated."
+msgstr ""
+"Compiler et signer un dépôt n’est pas la même chose que pouvoir installer à "
+"partir de celui-ci. Entre le dépôt de test et la publication, il y a une "
+"étape de plus : la machine de compilation installe ce même dépôt dans sa "
+"propre machine virtuelle, sans surveillance, à l’aide d’un fichier de "
+"réponses situé sur un petit lecteur de configuration – le même mécanisme "
+"qu’un hébergeur utiliserait via PXE, ce qui explique qu’aucune frappe au "
+"clavier ne soit simulée."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Two things have to be true, and the record says which of them was reached."
+msgstr ""
+"Deux conditions doivent être remplies, et le registre indique laquelle "
+"d’entre elles a été atteinte."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid ""
+"| stage | What had happened |\n"
+"| --- | --- |\n"
+"| `installing` | The medium is running. Nothing has been installed yet. |\n"
+"| `installed` | The installer reached its final reboot. |\n"
+"| `booted` | The installed system came up on its own and answered on port 22. This is a pass. |\n"
+msgstr ""
+"| Étape | Ce qui s’était passé |\n"
+"| --- | --- |\n"
+"| `installing` | Le support d’installation est en cours d’exécution. Rien n’a encore été installé. |\n"
+"| `installed` | Le programme d’installation a atteint son redémarrage final. |\n"
+"| `booted` | Le système installé a démarré de lui-même et a répondu sur le port 22. Le test est réussi. |\n"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"The distinction matters, because the two failures are different bugs. A run "
+"that stops at `installing` produced a repository nobody can install from. "
+"One that stops at `installed` produced a system that was written correctly "
+"and does not come up, and that is the kind of defect no amount of building "
+"catches."
+msgstr ""
+"La distinction est importante, car les deux échecs correspondent à des "
+"bogues différents. Une exécution qui s’arrête à `installing` a produit un "
+"dépôt à partir duquel personne ne peut installer. Une exécution qui s’arrête "
+"à `installed` a produit un système qui a été écrit correctement et qui ne "
+"démarre pas, et c’est le genre de défaut qu’aucune compilation, aussi "
+"poussée soit-elle, ne permet de détecter."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Arriving at `booted` signifies far more than the phrase implies. The "
+"bootloader ran, the initramfs found and imported the ZFS pool, systemd got "
+"to multi-user mode, the network became active, and a service started. "
+"Nothing is injected into the guest to arrange any of these actions: `install-"
+"openssh` is enabled by default, so a banner on port 22 is the installed "
+"system’s own doing."
+msgstr ""
+"Atteindre `booted` signifie bien davantage que ce que l’expression laisse "
+"entendre. Le chargeur d’amorçage s’est exécuté, l’initramfs a trouvé et "
+"importé le pool ZFS, systemd a atteint le mode multi-utilisateur, le réseau "
+"est devenu actif et un service a démarré. Rien n’est injecté dans le système "
+"invité pour provoquer l’une ou l’autre de ces actions : `install-openssh` "
+"est activé par défaut, de sorte qu’une bannière sur le port 22 est l’œuvre "
+"du système installé lui-même."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"When the test fails, the record carries a picture of the guest’s screen at "
+"the moment the harness gave up. The installation medium writes nothing to a "
+"serial console once its bootloader has handed over, so everything the "
+"installer draws is on that screen and nowhere else – an installer waiting at "
+"a question is visible there and in no log at all."
+msgstr ""
+"Lorsque le test échoue, le registre contient une image de l’écran du système "
+"invité au moment où le banc de test a abandonné. Le support d’installation "
+"n’écrit rien sur une console série une fois que son chargeur d’amorçage a "
+"passé la main ; tout ce que le programme d’installation affiche se trouve "
+"donc sur cet écran et nulle part ailleurs – un programme d’installation qui "
+"attend devant une question y est visible, et n’apparaît dans aucun journal."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"A failed test releases nothing. The packages stay in the testing repository, "
+"and the repository you install from is untouched."
+msgstr ""
+"Un test échoué ne publie rien. Les paquets restent dans le dépôt de test, et "
+"le dépôt à partir duquel vous installez reste intact."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Where the signing key is"
+msgstr "Où se trouve la clé de signature"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "The machine that builds holds a signing subkey, not the primary key."
+msgstr ""
+"La machine qui compile détient une sous-clé de signature, pas la clé "
+"principale."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"It builds, signs with that subkey, uploads to the testing repository, "
+"installs that repository into a virtual machine, and releases to production "
+"only if the installation worked. Keeping the key off the build host is "
+"something the pipeline still supports, and it was how Ditana worked until "
+"August 2026; it was given up because a release gated on a test installation "
+"has to happen on the machine that has just built, and the split put a second "
+"machine and a manual step in between. What the subkey buys instead: it can "
+"be revoked and replaced on its own, it cannot certify further keys, and the "
+"fingerprint users verify against never changes."
+msgstr ""
+"Elle compile, signe avec cette sous-clé, envoie les paquets vers le dépôt de "
+"test, installe ce dépôt dans une machine virtuelle et ne publie en "
+"production que si l’installation a fonctionné. Tenir la clé à l’écart de la "
+"machine de compilation est une configuration que la chaîne prend toujours en "
+"charge, et c’est ainsi que Ditana fonctionnait jusqu’en août 2026 ; cette "
+"pratique a été abandonnée parce qu’une publication conditionnée par une "
+"installation de test doit avoir lieu sur la machine qui vient de compiler, "
+"et la séparation intercalait une deuxième machine et une étape manuelle. Ce "
+"que la sous-clé apporte en contrepartie : elle peut être révoquée et "
+"remplacée isolément, elle ne peut pas certifier d’autres clés, et "
+"l’empreinte avec laquelle les utilisateurs effectuent leur vérification ne "
+"change jamais."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"What this protects is the key, not the packages: the signing machine signs "
+"what the build host produced, without reviewing it. What it prevents is the "
+"machine that runs foreign build scripts being able to have arbitrary data "
+"signed at any time."
+msgstr ""
+"Ce que cela protège, c’est la clé, pas les paquets : la machine de signature "
+"signe ce que la machine de compilation a produit, sans l’examiner. Ce que "
+"cela empêche, c’est que la machine qui exécute des scripts de compilation "
+"étrangers puisse faire signer des données arbitraires à tout moment."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Verifying this yourself"
+msgstr "Vérifier par vous-même"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "The record is plain JSON and is not generated by this website:"
+msgstr "Le registre est du simple JSON et n’est pas généré par ce site web :"
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"[`/build-history/index.json`](/build-history/index.json) — the rolling index "
+"of the most recent runs."
+msgstr ""
+"[`/build-history/index.json`](/build-history/index.json) – l’index glissant "
+"des exécutions les plus récentes."
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"`/build-history/<timestamp>.json` – one file per run: `outcome`, `message`, "
+"`counts`, a `test-install` object where a run was tested, and a `packages` "
+"array whose entries carry `name`, `status`, `seconds`, any `detail`, and the "
+"paths of that package's logs."
+msgstr ""
+"`/build-history/<timestamp>.json` – un fichier par exécution : `outcome`, "
+"`message`, `counts`, un objet `test-install` lorsqu’une exécution a été "
+"testée, et un tableau `packages` dont les entrées contiennent `name`, "
+"`status`, `seconds`, un éventuel `detail` et les chemins des journaux de ce "
+"paquet."
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"The `test-install` object carries `result`, the `stage` the guest reached, "
+"the `iso` and `answer-file` it was driven with, and, where the installation "
+"failed, a `screenshot` path under `/build-history/logs/<timestamp>/test-"
+"install/` holding the guest's screen at the moment the harness gave up."
+msgstr ""
+"L’objet `test-install` contient `result`, le `stage` atteint par le système "
+"invité, l’`iso` et l’`answer-file` avec lesquels il a été piloté et, si "
+"l’installation a échoué, un chemin `screenshot` sous `/build-history/logs/"
+"<timestamp>/test-install/` contenant l’écran du système invité au moment où "
+"le banc de test a abandonné."
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"`/build-history/logs/<timestamp>/<package>/` — what `makepkg` logged while "
+"building that package, split by stage (`prepare`, `build`, `check`, "
+"`package`). Every rebuilt package in a run is linked from its row above, and "
+"a package whose build failed is logged too — that is the one worth reading."
+msgstr ""
+"`/build-history/logs/<timestamp>/<package>/` – ce que `makepkg` a consigné "
+"dans le journal pendant la compilation de ce paquet, réparti par étape "
+"(`prepare`, `build`, `check`, `package`). Chaque paquet recompilé lors d’une "
+"exécution est accessible par un lien depuis sa ligne ci-dessus, et un paquet "
+"dont la compilation a échoué a lui aussi son journal – c’est celui qui "
+"mérite d’être lu."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Server names, addresses, paths and the build account's login name are "
+"removed from the records and from the logs before they are written. Nothing "
+"else is filtered; the failure text you see is the failure text the pipeline "
+"saw."
+msgstr ""
+"Les noms de serveurs, les adresses, les chemins et le nom de connexion du "
+"compte de compilation sont retirés des registres et des journaux avant leur "
+"écriture. Rien d’autre n’est filtré ; le texte d’erreur que vous voyez est "
+"celui que la chaîne de compilation a vu."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Under which licences"
+msgstr "Sous quelles licences"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Every package here is built from a publicly available recipe that names its "
+"upstream source. [Licensing](/licensing/) says where to find both, and "
+"covers the one case where the licence itself is contested: the ZFS packages, "
+"of which Ditana distributes the sources and the userspace tools but never a "
+"compiled kernel module."
+msgstr ""
+"Chaque paquet présenté ici est compilé à partir d’une recette accessible au "
+"public qui indique sa source amont. La page [Licences](/licensing/) indique "
+"où trouver l’une et l’autre, et traite le seul cas où la licence elle-même "
+"est contestée : les paquets ZFS, dont Ditana distribue les sources et les "
+"outils de l’espace utilisateur, mais jamais un module du noyau compilé."

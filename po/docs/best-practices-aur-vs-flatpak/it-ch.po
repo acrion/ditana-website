@@ -1,0 +1,330 @@
+# Language it-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+#, no-wrap
+msgid "Native packages first, then Flatpak, then AUR — and why Ditana ships Brave from AUR rather than Flathub."
+msgstr "Prima i pacchetti nativi, poi Flatpak, poi AUR – e perché Ditana distribuisce Brave da AUR anziché da Flathub."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+#, no-wrap
+msgid "AUR vs Flatpak"
+msgstr "AUR o Flatpak"
+
+#. type: Plain text
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"Ditana supports native Arch packages, AUR packages built locally with "
+"`paru`, and Flatpak applications sandboxed from Flathub. The priority "
+"sequence is **native first, followed by Flatpak, then AUR** – and the "
+"justification for moving beyond a native package is never that Flatpak "
+"offers better experience, but that no native package is available."
+msgstr ""
+"Ditana supporta i pacchetti nativi di Arch, i pacchetti AUR compilati "
+"localmente con `paru` e le applicazioni Flatpak di Flathub eseguite in una "
+"sandbox. L’ordine di priorità è **prima i pacchetti nativi, poi Flatpak, "
+"infine AUR** – e il motivo per andare oltre un pacchetto nativo non è mai "
+"che Flatpak offra un’esperienza migliore, ma che non sia disponibile alcun "
+"pacchetto nativo."
+
+#. type: Title ##
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+#, no-wrap
+msgid "When Flatpak is the better choice"
+msgstr "Quando Flatpak è la scelta migliore"
+
+#. type: Plain text
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"When Arch itself does not carry a package, favour Flatpak over the AUR for a "
+"desktop application that has a maintained Flathub build."
+msgstr ""
+"Se Arch stesso non offre un pacchetto, per un’applicazione desktop che "
+"dispone di una build mantenuta su Flathub preferite Flatpak all’AUR."
+
+#. type: Bullet: '- '
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"**Sandboxing.** Flatpak applications run in a `bubblewrap` sandbox with "
+"restricted filesystem and IPC access. For browsers, media players, and other "
+"internet-facing software, this is a real defence-in-depth layer."
+msgstr ""
+"**Isolamento in sandbox.** Le applicazioni Flatpak vengono eseguite in una "
+"sandbox `bubblewrap` con accesso limitato al file system e all’IPC. Per i "
+"browser, i lettori multimediali e gli altri software esposti a Internet, "
+"questo costituisce un vero livello di difesa in profondità."
+
+#. type: Bullet: '- '
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"**No build time.** AUR packages built from source can take minutes (or "
+"hours, for large applications like LibreOffice). Flatpak deployments "
+"download pre-built binaries from Flathub."
+msgstr ""
+"**Nessun tempo di compilazione.** La compilazione dei pacchetti AUR dai "
+"sorgenti può richiedere minuti (o ore, per grandi applicazioni come "
+"LibreOffice). Le installazioni Flatpak scaricano da Flathub file binari già "
+"compilati."
+
+#. type: Bullet: '- '
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"**No ABI risk.** Binary AUR packages occasionally break when system "
+"libraries are updated and the upstream binary expects a different ABI. "
+"Flatpaks bundle their runtime and are insulated from that risk."
+msgstr ""
+"**Nessun rischio legato all’ABI.** I pacchetti AUR binari a volte smettono "
+"di funzionare quando le librerie di sistema vengono aggiornate e il binario "
+"upstream si aspetta un’ABI diversa. I Flatpak includono il proprio runtime e "
+"sono al riparo da questo rischio."
+
+#. type: Bullet: '- '
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"**Predictable updates.** Flathub releases are versioned and easy to roll "
+"back. AUR is rolling and uncoordinated."
+msgstr ""
+"**Aggiornamenti prevedibili.** Le versioni pubblicate su Flathub sono "
+"numerate ed è facile tornare a quella precedente. AUR evolve di continuo, "
+"senza coordinamento."
+
+#. type: Title ##
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+#, no-wrap
+msgid "When AUR is the better choice"
+msgstr "Quando AUR è la scelta migliore"
+
+#. type: Plain text
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"There are three cases where Ditana prefers — or requires — AUR over Flatpak."
+msgstr ""
+"Ci sono tre casi in cui Ditana preferisce – o richiede – AUR anziché Flatpak."
+
+#. type: Plain text
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"Ditana already rebuilds and signs 45 of the AUR recipes it needs, so `paru "
+"-S` will often resolve them from the Ditana repository rather than from the "
+"AUR. Every one of those was classified before it was built: a change to a "
+"source URL, to a build function, or to a checksum without a version stops "
+"the whole run for a person to look at. Recipes Ditana does not carry are "
+"installed by `paru` straight from the AUR, unreviewed, which is the "
+"difference the rest of this page is about."
+msgstr ""
+"Ditana ricompila e firma già 45 delle ricette AUR di cui ha bisogno, per cui "
+"`paru -S` spesso le risolve dal repository di Ditana anziché dall’AUR. "
+"Ognuna di esse è stata classificata prima di essere compilata: una modifica "
+"a un URL sorgente, a una funzione di build o a una somma di controllo senza "
+"cambio di versione ferma l’intera esecuzione, affinché una persona la "
+"esamini. Le ricette che Ditana non include vengono installate da `paru` "
+"direttamente dall’AUR, senza revisione: è questa la differenza di cui tratta "
+"il resto della pagina."
+
+#. type: Title ###
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+#, no-wrap
+msgid "Chromium-based browsers under Ditana's default hardening"
+msgstr "Browser basati su Chromium con l’hardening predefinito di Ditana"
+
+#. type: Plain text
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"Ditana does not hand unprivileged user namespaces to each program. They have "
+"formed the basis of several published local privilege escalations, and of "
+"the sixteen Linux kernel entries in CISA’s [Known Exploited Vulnerabilities "
+"catalogue](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) "
+"over three years, six are exploitable via them – counted against catalogue "
+"version 2026.09.04, and the reading of which six is ours, so it is worth "
+"checking rather than believing. Ditana therefore allows them on a per-"
+"program basis: a minimal BPF program attached to the kernel’s own "
+"`userns_create` hook refuses a namespace to any executable that a setting "
+"has not requested. `bwrap` has requested it, so every Flatpak builds its "
+"outer sandbox as usual."
+msgstr ""
+"Ditana non concede gli user namespace (spazi dei nomi utente) non "
+"privilegiati a ogni programma. Sono stati alla base di diverse escalation "
+"locali dei privilegi rese pubbliche, e delle sedici voci relative al kernel "
+"Linux registrate in tre anni nel [catalogo Known Exploited Vulnerabilities]"
+"(https://www.cisa.gov/known-exploited-vulnerabilities-catalog) della CISA, "
+"sei sono sfruttabili tramite essi – conteggio effettuato sulla versione "
+"2026.09.04 del catalogo; l’individuazione di quali siano le sei è nostra, "
+"per cui conviene verificarla anziché crederci sulla parola. Ditana li "
+"consente quindi programma per programma: un programma BPF minimo, agganciato "
+"all’hook `userns_create` del kernel stesso, rifiuta un namespace a qualsiasi "
+"eseguibile per il quale nessuna impostazione lo abbia richiesto. `bwrap` "
+"l’ha richiesto, per cui ogni Flatpak crea come di consueto la propria "
+"sandbox esterna."
+
+#. type: Plain text
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"Brave nevertheless comes from the AUR as `brave-bin`, for two reasons that "
+"have nothing to do with the outer sandbox. Its Flatpak carries `zypak`, "
+"which establishes additional namespaces from a binary of its own deep inside "
+"the sandbox, and whether a per-executable allowlist extends to those at all "
+"is untested. And an executable within a Flatpak is replaced by `flatpak "
+"update`, which the hook responsible for maintaining the allowlist in sync "
+"does not see, so the permission would silently expire on the next update."
+msgstr ""
+"Brave proviene comunque dall’AUR come `brave-bin`, per due motivi che non "
+"hanno nulla a che fare con la sandbox esterna. Il suo Flatpak include "
+"`zypak`, che crea ulteriori namespace a partire da un proprio binario, in "
+"profondità all’interno della sandbox, e non è stato verificato se un elenco "
+"di eseguibili consentiti si estenda anche a questi. Inoltre, un eseguibile "
+"all’interno di un Flatpak viene sostituito da `flatpak update`, operazione "
+"che l’hook incaricato di mantenere sincronizzato l’elenco non vede, per cui "
+"l’autorizzazione scadrebbe silenziosamente al successivo aggiornamento."
+
+#. type: Plain text
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"The AUR package `brave-bin` needs none of this. It brings its own setuid "
+"`chrome-sandbox` helper and builds its sandbox without a user namespace at "
+"all – which is why this one remains in place even though the rule puts "
+"Flatpak ahead of the AUR."
+msgstr ""
+"Il pacchetto AUR `brave-bin` non ha bisogno di nulla di tutto ciò. Include "
+"un proprio programma ausiliario setuid `chrome-sandbox` e crea la propria "
+"sandbox senza alcuno user namespace – motivo per cui questo pacchetto resta "
+"al suo posto, anche se la regola antepone Flatpak all’AUR."
+
+#. type: Title ####
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+#, no-wrap
+msgid "If a sandbox you installed yourself is refused"
+msgstr "Se viene rifiutata una sandbox installata da voi"
+
+#. type: Plain text
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"If a sandbox you installed yourself is refused a user namespace, the guard "
+"is what refused it. Add the executable to `/etc/ditana/userns-allow.conf`, "
+"one absolute path per line, and reload:"
+msgstr ""
+"Se a una sandbox installata da voi viene rifiutato uno user namespace, a "
+"rifiutarlo è stato il meccanismo di protezione. Aggiungete l’eseguibile a `/"
+"etc/ditana/userns-allow.conf`, un percorso assoluto per riga, e ricaricate "
+"la configurazione:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+#, no-wrap
+msgid "sudo ditana-userns-guard --reload\n"
+msgstr "sudo ditana-userns-guard --reload\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"`sudo ditana-userns-guard --status` shows how many namespaces have been "
+"permitted and refused since the guard was loaded, and lists the programs it "
+"refused, the most recent first, each with the user who ran it and how often. "
+"`sudo ditana-userns-guard --observe` stops refusing and keeps the list, so "
+"it shows what a program would ask for while the program keeps running; `sudo "
+"ditana-userns-guard` switches refusing back on."
+msgstr ""
+"`sudo ditana-userns-guard --status` mostra quanti namespace sono stati "
+"consentiti e rifiutati da quando il meccanismo di protezione è stato "
+"caricato, ed elenca i programmi respinti, dal più recente, ciascuno con "
+"l’utente che lo ha eseguito e il numero di volte. `sudo ditana-userns-guard "
+"--observe` smette di rifiutare e continua a tenere l’elenco, per cui mostra "
+"che cosa chiederebbe un programma mentre questo continua a funzionare; `sudo "
+"ditana-userns-guard` riattiva il rifiuto."
+
+#. type: Title ###
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+#, no-wrap
+msgid "Software not available on Flathub"
+msgstr "Software non disponibile su Flathub"
+
+#. type: Plain text
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"A non-trivial fraction of useful Linux software lives only on AUR — niche "
+"developer tools, vendor-specific drivers, hardware utilities, fonts. For "
+"these, AUR is the only option, and `paru` makes installing them "
+"straightforward."
+msgstr ""
+"Una parte non trascurabile del software utile per Linux si trova solo su AUR "
+"– strumenti di sviluppo di nicchia, driver specifici di un produttore, "
+"utilità per l’hardware, caratteri. Per questi, AUR è l’unica opzione, e "
+"`paru` ne rende semplice l’installazione."
+
+#. type: Title ###
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+#, no-wrap
+msgid "When you want to participate in the AUR ecosystem"
+msgstr "Se desiderate partecipare all’ecosistema AUR"
+
+#. type: Plain text
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"If you're an Arch user who wants to follow AUR commit feeds, contribute "
+"votes, or maintain your own AUR packages, sticking with AUR for daily "
+"applications keeps you in that loop."
+msgstr ""
+"Se siete utenti Arch che desiderano seguire i feed dei commit AUR, votare i "
+"pacchetti o mantenere propri pacchetti AUR, restare su AUR per le "
+"applicazioni di tutti i giorni vi mantiene all’interno di questo circuito."
+
+#. type: Title ##
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+#, no-wrap
+msgid "How Ditana decides at install time"
+msgstr "Come decide Ditana al momento dell’installazione"
+
+#. type: Plain text
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"The KDL configuration lets each setting declare `arch-packages`, `flatpak-"
+"packages` and `aur-packages` side by side, and `userns-allow` for an "
+"executable whose sandbox needs a user namespace. When more than one source "
+"is available, the choice is made deliberately, package by package, with an "
+"explanation recorded in the relevant `.kdl` file. Browse [ditana-config]"
+"(https://github.com/acrion/ditana-config) to see the reasoning in context."
+msgstr ""
+"La configurazione KDL consente a ogni impostazione di dichiarare fianco a "
+"fianco `arch-packages`, `flatpak-packages` e `aur-packages`, nonché `userns-"
+"allow` per un eseguibile la cui sandbox necessita di uno user namespace. "
+"Quando è disponibile più di una fonte, la scelta viene fatta "
+"deliberatamente, pacchetto per pacchetto, con una spiegazione registrata nel "
+"relativo file `.kdl`. Consultate [ditana-config](https://github.com/acrion/"
+"ditana-config) per vedere le motivazioni nel loro contesto."
+
+#. type: Title ##
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+#, no-wrap
+msgid "Practical tip: review installed Flatpaks regularly"
+msgstr "Consiglio pratico: controllare regolarmente i Flatpak installati"
+
+#. type: Plain text
+#: src/content/docs/best-practices/aur-vs-flatpak.md
+msgid ""
+"Flatpak runtimes accumulate. Run `sudo flatpak uninstall --unused` "
+"occasionally to reclaim disk space – and `sudo flatpak update` to keep "
+"applications current. Both are safe operations. Ditana installs Flatpaks "
+"into the system installation rather than a per-user one, which is why both "
+"need root."
+msgstr ""
+"I runtime Flatpak si accumulano. Eseguite di tanto in tanto `sudo flatpak "
+"uninstall --unused` per recuperare spazio su disco – e `sudo flatpak update` "
+"per mantenere aggiornate le applicazioni. Entrambe le operazioni sono "
+"sicure. Ditana installa i Flatpak nell’installazione di sistema anziché in "
+"una per singolo utente, motivo per cui entrambi i comandi richiedono i "
+"privilegi di root."

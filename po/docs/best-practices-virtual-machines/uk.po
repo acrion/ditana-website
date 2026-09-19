@@ -1,0 +1,203 @@
+# Ukrainian translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/best-practices/virtual-machines.md
+#, no-wrap
+msgid "Recommended hypervisors for testing Ditana, and how they interact with modern Wayland compositors."
+msgstr "Рекомендовані гіпервізори для тестування Ditana і те, як вони взаємодіють із сучасними композиторами Wayland."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/best-practices/virtual-machines.md
+#, no-wrap
+msgid "Virtual machines"
+msgstr "Віртуальні машини"
+
+#. type: Plain text
+#: src/content/docs/best-practices/virtual-machines.md
+msgid ""
+"If you want to install and test Ditana inside a virtual machine, your choice "
+"of virtualization software will heavily influence your experience."
+msgstr ""
+"Якщо ви хочете встановити й випробувати Ditana у віртуальній машині, ваші "
+"враження значною мірою залежатимуть від вибраного програмного забезпечення "
+"для віртуалізації."
+
+#. type: Plain text
+#: src/content/docs/best-practices/virtual-machines.md
+msgid ""
+"Ditana ships with four modern desktop environments (XFCE, Wayfire, Niri, and "
+"COSMIC). Wayland compositors like Wayfire, Niri, and COSMIC are built around "
+"modern 3D hardware acceleration. Consequently, they require a virtual "
+"machine capable of passing 3D graphics instructions through to your host "
+"system."
+msgstr ""
+"Ditana постачається з чотирма сучасними стільничними середовищами (XFCE, "
+"Wayfire, Niri та COSMIC). Композитори Wayland, як-от Wayfire, Niri та "
+"COSMIC, побудовані з розрахунку на сучасне апаратне 3D-прискорення. Тому їм "
+"потрібна віртуальна машина, здатна передавати інструкції 3D-графіки до вашої "
+"хост-системи."
+
+#. type: Title ##
+#: src/content/docs/best-practices/virtual-machines.md
+#, no-wrap
+msgid "Recommended: QEMU / KVM / UTM"
+msgstr "Рекомендовано: QEMU / KVM / UTM"
+
+#. type: Plain text
+#: src/content/docs/best-practices/virtual-machines.md
+msgid ""
+"Hypervisors based on **KVM** (Linux) or Apple's Hypervisor framework (macOS) "
+"expose a modern, highly capable virtual graphics card known as `virtio-gpu`."
+msgstr ""
+"Гіпервізори на основі **KVM** (Linux) або фреймворку Hypervisor від Apple "
+"(macOS) надають сучасну віртуальну відеокарту з широкими можливостями — "
+"`virtio-gpu`."
+
+#. type: Bullet: '* '
+#: src/content/docs/best-practices/virtual-machines.md
+msgid ""
+"**Examples:** GNOME Boxes, virt-manager (Linux), UTM on an Intel Mac. On "
+"Apple Silicon, UTM can accelerate only an ARM64 guest, and Ditana publishes "
+"an x86_64 image; it runs there under emulation, without a path to the host "
+"GPU."
+msgstr ""
+"**Приклади:** GNOME Boxes, virt-manager (Linux), UTM на Mac із процесором "
+"Intel. На Apple Silicon UTM може прискорювати лише гостьову систему ARM64, а "
+"Ditana публікує образ x86_64; там він працює в емуляції, без доступу до GPU "
+"хост-системи."
+
+#. type: Bullet: '* '
+#: src/content/docs/best-practices/virtual-machines.md
+msgid "**Support:** **Full.**"
+msgstr "**Підтримка:** **повна.**"
+
+#. type: Bullet: '* '
+#: src/content/docs/best-practices/virtual-machines.md
+msgid ""
+"**What works:** XFCE, Wayfire and Niri are available and operate seamlessly, "
+"provided you enable 3D acceleration (`virgl` or `Venus`) in your VM's "
+"display settings. COSMIC also functions, but via software rendering: it is "
+"pinned to `llvmpipe` in every virtual machine, deliberately, to avoid "
+"glitches in its GPU backend. Undo that by removing the exports from its "
+"login commands if your setup can drive it."
+msgstr ""
+"**Що працює:** XFCE, Wayfire і Niri доступні й працюють бездоганно, якщо в "
+"параметрах дисплея віртуальної машини ввімкнути 3D-прискорення (`virgl` або "
+"`Venus`). COSMIC також працює, але з програмним рендерингом: у кожній "
+"віртуальній машині його навмисно закріплено за `llvmpipe`, щоб уникнути "
+"збоїв у його GPU-бекенді. Скасуйте це, вилучивши експортування змінних із "
+"його команд входу, якщо ваша конфігурація здатна забезпечити роботу цього "
+"бекенду."
+
+#. type: Title ##
+#: src/content/docs/best-practices/virtual-machines.md
+#, no-wrap
+msgid "Not recommended: VirtualBox & VMware"
+msgstr "Не рекомендовано: VirtualBox і VMware"
+
+#. type: Plain text
+#: src/content/docs/best-practices/virtual-machines.md
+msgid ""
+"VirtualBox and VMware rely on older, legacy-style virtual graphics drivers "
+"(`vmwgfx`). While they offer a \"3D Acceleration\" checkbox in their "
+"settings, their architecture lacks the modern Linux graphics stack features "
+"(like full GBM support) required by demanding Wayland compositors."
+msgstr ""
+"VirtualBox і VMware покладаються на старіші драйвери віртуальної графіки "
+"застарілого типу (`vmwgfx`). Хоча в їхніх налаштуваннях є прапорець «3D "
+"Acceleration», їхній архітектурі бракує можливостей сучасного графічного "
+"стека Linux (як-от повної підтримки GBM), яких потребують вимогливі "
+"композитори Wayland."
+
+#. type: Bullet: '* '
+#: src/content/docs/best-practices/virtual-machines.md
+msgid "**Support:** **Fallback mode.**"
+msgstr "**Підтримка:** **резервний режим.**"
+
+#. type: Bullet: '* '
+#: src/content/docs/best-practices/virtual-machines.md
+msgid ""
+"**What happens:** Ditana checks which DRM driver the kernel has actually "
+"bound to the render node. `vmwgfx` and the other drivers these hypervisors "
+"present are not Wayland-capable, so Wayfire receives a CPU-rendering "
+"fallback – a check that keys on the driver rather than on the hypervisor, "
+"and therefore also applies on bare metal with an unlisted driver. COSMIC is "
+"pinned to software rendering in every virtual machine, regardless of the "
+"driver."
+msgstr ""
+"**Що відбувається:** Ditana перевіряє, який драйвер DRM ядро насправді "
+"прив’язало до вузла рендерингу. `vmwgfx` та інші драйвери, які надають ці "
+"гіпервізори, не підтримують Wayland, тому Wayfire отримує резервний варіант "
+"із рендерингом на процесорі — перевірка орієнтується на драйвер, а не на "
+"гіпервізор, і тому спрацьовує також на фізичному обладнанні з драйвером, "
+"якого немає в списку. COSMIC у кожній віртуальній машині закріплено за "
+"програмним рендерингом, незалежно від драйвера."
+
+#. type: Bullet: '* '
+#: src/content/docs/best-practices/virtual-machines.md
+msgid ""
+"**Limitations:** Animations may be less smooth, as your CPU is doing the "
+"work of a graphics card. Furthermore, the **Niri desktop environment will be "
+"hidden** from the installer, as it strictly refuses to launch without proper "
+"native 3D hardware."
+msgstr ""
+"**Обмеження:** анімації можуть бути менш плавними, оскільки роботу "
+"відеокарти виконує ваш процесор. Крім того, **стільничне середовище Niri "
+"буде приховано** в інсталяторі, бо воно категорично відмовляється "
+"запускатися без належного нативного 3D-обладнання."
+
+#. type: Plain text
+#: src/content/docs/best-practices/virtual-machines.md
+msgid ""
+"If you must use VirtualBox or VMware, the traditional **XFCE (X11)** desktop "
+"environment remains a very fast and reliable choice."
+msgstr ""
+"Якщо вам доводиться використовувати VirtualBox або VMware, традиційне "
+"стільничне середовище **XFCE (X11)** залишається дуже швидким і надійним "
+"вибором."
+
+#. type: Plain text
+#: src/content/docs/best-practices/virtual-machines.md
+#, no-wrap
+msgid "*(For technical details on how the installer identifies your hardware and decides what to install, see [Hardware detection](/under-the-hood/hardware-detection/)).*\n"
+msgstr "*(Технічні подробиці про те, як інсталятор розпізнає ваше обладнання й вирішує, що встановлювати, наведено на сторінці [Виявлення обладнання](/under-the-hood/hardware-detection/)).*\n"
+
+#. type: Title ##
+#: src/content/docs/best-practices/virtual-machines.md
+#, no-wrap
+msgid "What else changes in a virtual machine"
+msgstr "Що ще змінюється у віртуальній машині"
+
+#. type: Plain text
+#: src/content/docs/best-practices/virtual-machines.md
+msgid ""
+"Ditana has one more point to say in a virtual machine, and it is not only "
+"about Niri. The same check that hides Niri also removes Ghostty from the "
+"terminal emulator list, because Ghostty needs OpenGL 4.3; kitty stays, "
+"needing only 3.3. In a VirtualBox guest the Guest Additions are offered "
+"under Hardware Support Options, which is what brings the shared clipboard "
+"and the automatic window resizing."
+msgstr ""
+"У віртуальній машині Ditana має ще одну особливість, і стосується вона не "
+"лише Niri. Та сама перевірка, що приховує Niri, також вилучає Ghostty зі "
+"списку емуляторів термінала, бо Ghostty потребує OpenGL 4.3; kitty "
+"залишається, бо йому достатньо 3.3. У гостьовій системі VirtualBox у розділі "
+"Hardware Support Options пропонуються Guest Additions — саме вони "
+"забезпечують спільний буфер обміну та автоматичну зміну розміру вікна."

@@ -1,0 +1,374 @@
+# Romansh translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: rm\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/download.md
+#, no-wrap
+msgid "Download the Ditana GNU/Linux ISO with checksum and GPG signature verification."
+msgstr "Telechargiar l’ISO da Ditana GNU/Linux cun verificaziun da la summa da controlla e da la signatura GPG."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/download.md
+#, no-wrap
+msgid "Download"
+msgstr "Telechargiar"
+
+#. type: Title ##
+#: src/content/docs/download.md
+#, no-wrap
+msgid "Ditana GNU/Linux {{release}}"
+msgstr "Ditana GNU/Linux {{release}}"
+
+#. type: Plain text
+#: src/content/docs/download.md
+#, no-wrap
+msgid ""
+"| File                                                            | Purpose                                                                                  |\n"
+"| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |\n"
+"| [`{{iso}}`](https://ditana.org/downloads/{{iso}})               | The installation image (~{{iso-size}}).                                                  |\n"
+"| [`{{iso}}.sha256`](https://ditana.org/downloads/{{iso}}.sha256) | SHA-256 checksum. Verifies that your download is intact.                                 |\n"
+"| [`{{iso}}.sig`](https://ditana.org/downloads/{{iso}}.sig)       | Detached GPG signature. Verifies that the image is genuinely from the Ditana maintainer. |\n"
+msgstr ""
+"| Datoteca | Intent |\n"
+"| --- | --- |\n"
+"| [`{{iso}}`](https://ditana.org/downloads/{{iso}}) | Il maletg d’installaziun (~{{iso-size}}). |\n"
+"| [`{{iso}}.sha256`](https://ditana.org/downloads/{{iso}}.sha256) | Summa da controlla SHA-256. Verifitgescha che Vossa telechargiada è intacta. |\n"
+"| [`{{iso}}.sig`](https://ditana.org/downloads/{{iso}}.sig) | Signatura GPG separada. Verifitgescha ch’il maletg deriva effectivamain dal responsabel da Ditana. |\n"
+
+#. type: Plain text
+#: src/content/docs/download.md
+msgid ""
+"What changed in this release is described in the [{{release}} release notes]"
+"({{notes}})."
+msgstr ""
+"Las midadas da questa versiun èn descrittas en las [remartgas davart la "
+"versiun {{release}}]({{notes}})."
+
+#. type: Plain text
+#: src/content/docs/download.md
+msgid ""
+"Media predating 0.9.4 can no longer install. The installer fetches its "
+"configuration upon execution, and that configuration now names packages an "
+"older medium’s package repository cannot deliver. Use the image above."
+msgstr ""
+"In medium d’installaziun pli vegl che 0.9.4 na po betg pli installar. "
+"L’installatur telechargia sia configuraziun durant l’execuziun, e questa "
+"configuraziun numna ussa pachets ch’il repositori da pachets d’in medium pli "
+"vegl na po betg furnir. Utilisai il maletg qua survart."
+
+#. type: Title ##
+#: src/content/docs/download.md
+#, no-wrap
+msgid "Verifying your download"
+msgstr "Verifitgar la telechargiada"
+
+#. type: Title ###
+#: src/content/docs/download.md
+#, no-wrap
+msgid "Step 1 — Check the SHA-256 sum"
+msgstr "Pass 1 – Controllar la summa SHA-256"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/download.md
+#, no-wrap
+msgid ""
+"cd /path/to/your/downloads\n"
+"sha256sum -c {{iso}}.sha256\n"
+msgstr ""
+"cd /path/to/your/downloads\n"
+"sha256sum -c {{iso}}.sha256\n"
+
+#. type: Plain text
+#: src/content/docs/download.md
+msgid ""
+"You should see `./{{iso}}: OK`. If this fails, the file is corrupted in "
+"transit – re-download."
+msgstr ""
+"Vus stuessas vesair `./{{iso}}: OK`. Sche quai na reussescha betg, è la "
+"datoteca vegnida donnegiada durant la transmissiun – telechargiai la "
+"datoteca danovamain."
+
+#. type: Title ###
+#: src/content/docs/download.md
+#, no-wrap
+msgid "Step 2 — Verify the GPG signature"
+msgstr "Pass 2 – Verifitgar la signatura GPG"
+
+#. type: Plain text
+#: src/content/docs/download.md
+msgid "The ISO is signed with the following key:"
+msgstr "L’ISO è signà cun la suandanta clav:"
+
+#. type: Fenced code block
+#: src/content/docs/download.md
+#, no-wrap
+msgid ""
+"Stefan Zipproth <s.zipproth@ditana.org>\n"
+"Fingerprint: 3F80 54C3 FF75 5E55 44E6  8516 BC33 3E9A E877 D45A\n"
+msgstr ""
+"Stefan Zipproth <s.zipproth@ditana.org>\n"
+"Fingerprint: 3F80 54C3 FF75 5E55 44E6  8516 BC33 3E9A E877 D45A\n"
+
+#. type: Plain text
+#: src/content/docs/download.md
+msgid "Fetch the public key from one of the public keyservers:"
+msgstr "Telechargiai la clav publica d’in dals servers da clavs publics:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/download.md
+#, no-wrap
+msgid "gpg --keyserver hkps://keys.openpgp.org --recv-keys 3F8054C3FF755E5544E68516BC333E9AE877D45A\n"
+msgstr "gpg --keyserver hkps://keys.openpgp.org --recv-keys 3F8054C3FF755E5544E68516BC333E9AE877D45A\n"
+
+#. type: Plain text
+#: src/content/docs/download.md
+msgid "Then verify:"
+msgstr "Verifitgai lura:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/download.md
+#, no-wrap
+msgid "gpg --verify {{iso}}.sig {{iso}}\n"
+msgstr "gpg --verify {{iso}}.sig {{iso}}\n"
+
+#. type: Plain text
+#: src/content/docs/download.md
+msgid ""
+"The signature is generated using a signing subkey of that key, so gpg "
+"reports the subkey `068E EA2A 490B 0C63 AEAA 3BCD 3EC2 23A8 1107 7C09` on "
+"the line preceding the result. That is expected: a subkey may be replaced "
+"independently, without the fingerprint you verify against ever changing."
+msgstr ""
+"La signatura vegn generada cun ina clav secundara da signatura da questa "
+"clav; perquai mussa gpg la clav secundara `068E EA2A 490B 0C63 AEAA 3BCD "
+"3EC2 23A8 1107 7C09` en la lingia avant il resultat. Quai è previs: ina clav "
+"secundara po vegnir remplazzada independentamain, senza che l’impronta, cun "
+"la quala Vus faschais la verificaziun, sa midia insacura."
+
+#. type: Plain text
+#: src/content/docs/download.md
+#, no-wrap
+msgid "You should see `Good signature from \"Stefan Zipproth <s.zipproth@ditana.org>\"`. A warning that the key is not certified by a trusted signature is expected — it just means you haven't personally signed the key, which is normal.\n"
+msgstr "Vus stuessas vesair `Good signature from \"Stefan Zipproth <s.zipproth@ditana.org>\"`. In avertiment che la clav n’è betg certifitgada cun ina signatura fidada è previs – quai munta mo che Vus n’avais betg signà persunalmain la clav, e quai è normal.\n"
+
+#. type: Plain text
+#: src/content/docs/download.md
+msgid ""
+"The same key is also distributed via the [`ditana-keyring`](https://"
+"github.com/acrion/ditana-keyring) repository and pre-installed on every "
+"Ditana system, where pacman uses it to verify packages from the Ditana "
+"repository."
+msgstr ""
+"La medema clav vegn er distribuida tras il repositori [`ditana-keyring`]"
+"(https://github.com/acrion/ditana-keyring) ed è installada ordavant sin "
+"mintga sistem Ditana, nua che pacman l’utilisescha per verifitgar ils "
+"pachets dal repositori da Ditana."
+
+#. type: Title ##
+#: src/content/docs/download.md
+#, no-wrap
+msgid "Requirements"
+msgstr "Premissas"
+
+#. type: Title ###
+#: src/content/docs/download.md
+#, no-wrap
+msgid "Stable internet connection"
+msgstr "Connexiun stabila a l’internet"
+
+#. type: Plain text
+#: src/content/docs/download.md
+msgid ""
+"Depending on what you select, the installer will download substantial "
+"amounts of data. Some steps have retry logic, others do not — a stable LAN "
+"connection (or a Wi-Fi device you configure during installation) is required."
+msgstr ""
+"Tenor quai che Vus tschernis, telechargia l’installatur grondas quantitads "
+"da datas. Intgins pass han ina logica da repetiziun, auters betg – ina "
+"connexiun LAN stabila (u in apparat Wi-Fi che Vus configurais durant "
+"l’installaziun) è necessaria."
+
+#. type: Title ###
+#: src/content/docs/download.md
+#, no-wrap
+msgid "Storage requirements"
+msgstr "Spazi necessari sin il disc"
+
+#. type: Plain text
+#: src/content/docs/download.md
+#, no-wrap
+msgid ""
+"| Configuration | During installation | Installed system |\n"
+"| ------------- | ------------------- | ---------------- |\n"
+"| Headless      | 18 GiB              | 5 GiB            |\n"
+"| Desktop       | 45 GiB              | 13 GiB           |\n"
+msgstr ""
+"| Configuraziun | Durant l’installaziun | Sistem installà |\n"
+"| --- | --- | --- |\n"
+"| Senza interfatscha grafica | 18 GiB | 5 GiB |\n"
+"| Desktop | 45 GiB | 13 GiB |\n"
+
+#. type: Title ##
+#: src/content/docs/download.md
+#, no-wrap
+msgid "Installation procedure"
+msgstr "Procedura d’installaziun"
+
+#. type: Bullet: '1. '
+#: src/content/docs/download.md
+msgid ""
+"**Create a bootable USB stick.** Use [Etcher](https://etcher.balena.io), "
+"[Ventoy](https://www.ventoy.net), or `dd` to write the ISO to a USB stick "
+"(≥4 GB)."
+msgstr ""
+"**Crear in stick USB d’installaziun.** Utilisai [Etcher](https://"
+"etcher.balena.io), [Ventoy](https://www.ventoy.net) u `dd` per scriver l’ISO "
+"sin in stick USB (≥4 GB)."
+
+#. type: Bullet: '2. '
+#: src/content/docs/download.md
+msgid ""
+"**Reboot and enter UEFI/BIOS.** The key varies — `Del`, `F2`, `F12`, or "
+"`Esc`, depending on your motherboard."
+msgstr ""
+"**Reaviar ed acceder a l’UEFI/BIOS.** La tasta variescha – `Del`, `F2`, "
+"`F12` u `Esc`, tenor Vossa plattina principala."
+
+#. type: Bullet: '3. '
+#: src/content/docs/download.md
+msgid ""
+"**Disable Secure Boot and Fast Boot.** Both can interfere with the "
+"installation. You can re-enable Secure Boot afterwards if you configure your "
+"own keys."
+msgstr ""
+"**Deactivar Secure Boot e Fast Boot.** Quellas duas funcziuns pon disturbar "
+"l’installaziun. Vus pudais activar puspè Secure Boot pli tard, sche Vus "
+"configurais Vossas atgnas clavs."
+
+#. type: Bullet: '4. '
+#: src/content/docs/download.md
+msgid ""
+"**Boot from the USB stick.** Select \"Ditana GNU/Linux install medium\" and "
+"press `Enter`."
+msgstr ""
+"**Aviar dal stick USB.** Tscherni «Ditana GNU/Linux install medium» e "
+"squitschai `Enter`."
+
+#. type: Bullet: '5. '
+#: src/content/docs/download.md
+msgid ""
+"**Troubleshooting (optional).** On some virtualization platforms (e.g. "
+"Synology VMM), the boot can hang before the installer dialogs appear. This "
+"is a [known kernel mode-setting issue](https://wiki.archlinux.org/title/"
+"Kernel_mode_setting#Disabling_modesetting), unrelated to Ditana. Press `e` "
+"at the boot menu, add `nomodeset` at the start of the kernel line, then "
+"`Enter`."
+msgstr ""
+"**Schliar problems (facultativ).** Sin intginas plattafurmas da maschinas "
+"virtualas (p.ex. Synology VMM) po l’aviar sa bloccar avant ch’ils dialogs da "
+"l’installatur cumparian. Quai è in [problem enconuschent cun il kernel mode-"
+"setting](https://wiki.archlinux.org/title/"
+"Kernel_mode_setting#Disabling_modesetting) che n’ha nagut da far cun Ditana. "
+"Squitschai `e` en il menu d’aviar, agiuntai `nomodeset` al cumenzament da la "
+"lingia dal kernel e squitschai lura `Enter`."
+
+#. type: Bullet: '6. '
+#: src/content/docs/download.md
+msgid ""
+"**Follow the installer.** The dialogs guide you through partitioning, "
+"bootloader setup, hardware configuration, and the four desktop environments. "
+"Every dialog has a `Help` button with detailed documentation."
+msgstr ""
+"**Suandar l’installatur.** Ils dialogs As guidan tras il partiziunament, la "
+"configuraziun dal bootloader, la configuraziun da la hardware ed ils quatter "
+"sistems da desktop. Mintga dialog ha in buttun `Help` cun ina documentaziun "
+"detagliada."
+
+#. type: Title ##
+#: src/content/docs/download.md src/content/docs/release-notes/0-9-4-beta.md
+#, no-wrap
+msgid "Unattended installation"
+msgstr "Installaziun senza surveglianza"
+
+#. type: Plain text
+#: src/content/docs/download.md
+msgid ""
+"No individual needs to be present at the keyboard. An answer file supplies "
+"what the installer would normally request, and it is delivered to the medium "
+"either on a small drive marked `DITANA_AUTO` holding `autoinstall.kdl`, or "
+"via `ditana.autoinstall=` in the kernel command line, which also takes a "
+"URL. The account password is given as a hash, never in plain text. See the "
+"[documentation](https://github.com/acrion/ditana-installer/blob/main/docs/"
+"unattended-installation.md) and the [server example](https://github.com/"
+"acrion/ditana-installer/blob/main/examples/autoinstall-server.kdl)."
+msgstr ""
+"Nagina persuna na sto esser preschenta davant la tastatura. Ina datoteca da "
+"respostas furnescha quai che l’installatur dumandass normalmain, ed ella "
+"vegn furnida al medium: u sin in pitschen disc cun l’etichetta `DITANA_AUTO` "
+"che cuntegna `autoinstall.kdl`, u cun `ditana.autoinstall=` en la lingia da "
+"cumond dal kernel, che accepta er in URL. Il pled-clav da l’account vegn "
+"inditgà sco hash, mai sco text betg criptà. Guardai la [documentaziun]"
+"(https://github.com/acrion/ditana-installer/blob/main/docs/unattended-"
+"installation.md) e [l’exempel per in server](https://github.com/acrion/"
+"ditana-installer/blob/main/examples/autoinstall-server.kdl)."
+
+#. type: Title ##
+#: src/content/docs/download.md
+#, no-wrap
+msgid "What to do if the installation fails"
+msgstr "Tge far sche l’installaziun na reussescha betg"
+
+#. type: Plain text
+#: src/content/docs/download.md
+msgid ""
+"The installer writes a complete log to `install_ditana.log` (directory "
+"varies depending on installation phase). If something goes wrong:"
+msgstr ""
+"L’installatur scriva in protocol cumplet en `install_ditana.log` "
+"(l’ordinatur variescha tenor la fasa da l’installaziun). Sch’insatge na "
+"funcziuna betg:"
+
+#. type: Bullet: '1. '
+#: src/content/docs/download.md
+msgid ""
+"Run `/root/folders/usr/lib/ditana/create-debug-user` from the live system "
+"and follow the instructions to make the log retrievable."
+msgstr ""
+"Exequi `/root/folders/usr/lib/ditana/create-debug-user` en il sistem live e "
+"suandai las instrucziuns per render accessibel il protocol."
+
+#. type: Bullet: '2. '
+#: src/content/docs/download.md
+msgid ""
+"Open an issue on [github.com/acrion/ditana-installer/issues](https://"
+"github.com/acrion/ditana-installer/issues) and attach the log, or email it "
+"to support@ditana.org."
+msgstr ""
+"Avri in issue sin [github.com/acrion/ditana-installer/issues](https://"
+"github.com/acrion/ditana-installer/issues) ed agiuntai il protocol, u "
+"tramettai il protocol per e-mail a support@ditana.org."
+
+#. type: Plain text
+#: src/content/docs/download.md
+msgid ""
+"The installer is conservative — it tries to fail fast and loud rather than "
+"continuing in an inconsistent state. Most failures are reproducible and "
+"fixable."
+msgstr ""
+"L’installatur è conservativ – el emprova da fallar svelt ed evidentamain, "
+"empè da cuntinuar en in stadi incoerent. La gronda part da las errurs sa "
+"lascha reproducir e reparar."

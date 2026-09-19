@@ -1,0 +1,122 @@
+# Romansh translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: rm\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/index.md
+#, no-wrap
+msgid "Keeping a Ditana system healthy — updating properly, repairing signature errors, recovering from a bad update, and where to report a bug."
+msgstr "Mantegnair in sistem da Ditana en bun stadi – actualisar correctamain, reparar errurs da signatura, restaurar il sistem suenter in’actualisaziun problematica e nua annunziar in’errur."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/index.md
+#, no-wrap
+msgid "Troubleshooting"
+msgstr "Schliar problems"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/index.md
+msgid ""
+"Most problems on a rolling-release system come from one of three things: a "
+"system that has not been updated in a while, a signature check that cannot "
+"succeed because a keyring is out of date, or an update that changed "
+"something you were relying on. These pages cover all three, and the last of "
+"them explains where to report what is left."
+msgstr ""
+"La gronda part dals problems sin in sistem da rolling release deriva d’ina "
+"da trais chaussas: in sistem che n’è betg vegnì actualisà dapi in tschert "
+"temp, ina controlla da signatura che na po betg reussir perquai ch’in "
+"portaclavs è antiquà, u in’actualisaziun che ha midà ina chaussa, sin la "
+"quala Vus As basavas. Questas paginas tractan tut las trais chaussas, e "
+"l’ultima pagina explitgescha nua ch’ins po annunziar quai che resta."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/index.md
+msgid ""
+"If you are stuck, the [Discord channel](https://discord.gg/RgcdumdE9J) is "
+"the fastest place to ask."
+msgstr ""
+"Sche Vus na savais betg pli vinavant, è il [chanal da Discord](https://"
+"discord.gg/RgcdumdE9J) il lieu il pli svelt per dumandar."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/index.md
+msgid ""
+"[Updating is not optional](/troubleshooting/updating/) – Why a rolling "
+"release must be updated entirely, how to update Ditana on the desktop or in "
+"a terminal, and what actions to take afterwards."
+msgstr ""
+"[L’actualisaziun n’è betg facultativa](/troubleshooting/updating/) – Pertge "
+"ch’in rolling release sto vegnir actualisà cumplettamain, co actualisar "
+"Ditana sin il desktop u en in terminal e tge mesiras prender suenter."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/index.md
+msgid ""
+"[\"invalid or corrupted package (PGP signature)\"](/troubleshooting/"
+"signature-errors/) – What should be done when pacman refuses a package due "
+"to its inability to validate the signature, and how to manually verify "
+"Ditana's signing key yourself."
+msgstr ""
+"[«invalid or corrupted package (PGP signature)»](/troubleshooting/signature-"
+"errors/) – Tge far, cura che pacman refusa in pachet perquai ch’el na po "
+"betg verifitgar la signatura, e co verifitgar persunalmain e manualmain la "
+"clav da signatura da Ditana."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/index.md
+msgid ""
+"[An update broke something](/troubleshooting/an-update-broke-something/) – "
+"Four steps to discover what an update changed and to get a functioning "
+"system back."
+msgstr ""
+"[In’actualisaziun ha donnegià insatge](/troubleshooting/an-update-broke-"
+"something/) – Quatter pass per chattar tge ch’in’actualisaziun ha midà e per "
+"avair puspè in sistem che funcziuna."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/index.md
+msgid ""
+"[Flatpak or Bubblejail stopped working after an update](/troubleshooting/"
+"flatpak-and-bubblejail/) – How to restore Flatpak and Bubblejail on a "
+"machine installed from the 0.9.3 medium."
+msgstr ""
+"[Flatpak u Bubblejail na funcziunan betg pli suenter in’actualisaziun](/"
+"troubleshooting/flatpak-and-bubblejail/) – Co restaurar Flatpak e Bubblejail "
+"sin ina maschina installada cun il medium da la versiun 0.9.3."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/index.md
+msgid ""
+"[A Chromium-based program aborts: \"The SUID sandbox helper binary was "
+"found, but is not configured correctly\"](/troubleshooting/chromium-sandbox-"
+"helper/) – Why Discord and other programs built on Chromium or Electron may "
+"abort at start under Ditana's hardening, and how to fix it."
+msgstr ""
+"[In program sin basa da Chromium interrumpa: «The SUID sandbox helper binary "
+"was found, but is not configured correctly»](/troubleshooting/chromium-"
+"sandbox-helper/) – Pertge che Discord ed auters programs sin basa da "
+"Chromium u Electron pon interrumper a l’aviar sut il rinforzament da Ditana, "
+"e co schliar il problem."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/index.md
+msgid ""
+"[Reporting a bug](/troubleshooting/reporting-a-bug/) – Which of Ditana's "
+"repositories a problem belongs in, and what a useful report contains."
+msgstr ""
+"[Annunziar in’errur](/troubleshooting/reporting-a-bug/) – En tge repositori "
+"da Ditana ch’in problem tutga e tge ch’in rapport nizzaivel cuntegna."

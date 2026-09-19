@@ -1,3 +1,5 @@
+import { formatDay } from '../i18n/format.mjs';
+
 // The release records and the rules that turn them into what the site shows.
 //
 // A record is what the `release` block in the frontmatter of a release-notes
@@ -71,23 +73,24 @@ export const isoFileName = (release) =>
 /** "/release-notes/0-9-4-beta/" */
 export const notesHref = (release) => `/${release.slug}/`;
 
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
-    'August', 'September', 'October', 'November', 'December'];
-
-/** "12 September 2026" */
-export function formatReleaseDate(date) {
+/** "12 September 2026", or as `lang` puts it: "12. September 2026" */
+export function formatReleaseDate(date, lang = 'en-GB') {
     if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
         throw new Error(`A release date must be a day such as 2026-09-12, got ${JSON.stringify(date)}`);
     }
     // YAML reads 2026-09-12 as midnight UTC; a local-time getter would move it
     // to the previous day anywhere west of Greenwich.
-    return `${date.getUTCDate()} ${MONTHS[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+    return formatDay(date, lang, 'UTC');
 }
 
-/** Items of the "Release notes" sidebar group, the current release first. */
-export function releaseNotesSidebar(releases) {
+/**
+ * Items of the "Release notes" sidebar group, the current release first.
+ * `current` labels the current release; it returns the `label`, and may add
+ * the `translations` of it.
+ */
+export function releaseNotesSidebar(releases, current = (name) => ({ label: `${name} (current)` })) {
     return publishedReleases(releases).map((release, index) => ({
-        label: index === 0 ? `${releaseName(release)} (current)` : releaseName(release),
+        ...(index === 0 ? current(releaseName(release)) : { label: releaseName(release) }),
         slug: release.slug,
     }));
 }
@@ -102,14 +105,18 @@ export function placeholderValues(release) {
     };
 }
 
+const ENGLISH_HEADER = { date: 'Release date:', previous: 'Previous release:', successor: 'Successor:' };
+
 /**
  * The top lines of a release-notes page: its own date and its published
  * neighbours. Each line is a separate Markdown line with a hard break, so
- * that they do not run together into one line of text.
+ * that they do not run together into one line of text. A translated page
+ * passes its language, the labels in that language and the prefix of its
+ * pages.
  */
-export function releaseHeaderMarkdown(releases, self) {
+export function releaseHeaderMarkdown(releases, self, { lang = 'en-GB', labels = ENGLISH_HEADER, prefix = '' } = {}) {
     const published = publishedReleases(releases);
-    const link = (release) => `[${releaseName(release)}](${notesHref(release)})`;
+    const link = (release) => `[${releaseName(release)}](${prefix ? `/${prefix}` : ''}${notesHref(release)})`;
 
     // The neighbours are found by version, so that a draft names the release
     // it follows.
@@ -119,9 +126,9 @@ export function releaseHeaderMarkdown(releases, self) {
         : undefined;
 
     const lines = [];
-    if (isPublished(self)) lines.push(`**Release date:** ${formatReleaseDate(self.date)}`);
-    if (older) lines.push(`**Previous release:** ${link(older)} (${formatReleaseDate(older.date)})`);
-    if (newer) lines.push(`**Successor:** ${link(newer)} (${formatReleaseDate(newer.date)})`);
+    if (isPublished(self)) lines.push(`**${labels.date}** ${formatReleaseDate(self.date, lang)}`);
+    if (older) lines.push(`**${labels.previous}** ${link(older)} (${formatReleaseDate(older.date, lang)})`);
+    if (newer) lines.push(`**${labels.successor}** ${link(newer)} (${formatReleaseDate(newer.date, lang)})`);
     return lines.join('\\\n');
 }
 

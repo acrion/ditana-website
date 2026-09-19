@@ -10,11 +10,17 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "node --test 'test/**/*.test.mjs'"
+    "test": "node --test 'test/**/*.test.mjs'",
+    "i18n:update": "node scripts/i18n-update.mjs",
+    "i18n:lint": "node scripts/i18n-lint.mjs",
+    "i18n:units": "node scripts/i18n-units.mjs",
+    "i18n:check": "node scripts/i18n-check.mjs"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "@astrojs/starlight": "^0.42.0",
     "astro": "^7.3.2",
+    "github-slugger": "^2.0.0",
     "js-yaml": "^4.3.2",
     "sharp": "^0.34.5"
   },

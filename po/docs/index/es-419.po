@@ -1,0 +1,39 @@
+# Language es-419 translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 01:22+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es-419\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/index.mdx
+#, no-wrap
+msgid "Vanilla Arch underneath. A configuration knowledge base on top — every setting, every interaction between settings, transparently encoded."
+msgstr "Arch sin modificar por debajo. Encima, una base de conocimiento de configuración: cada opción, cada interacción entre opciones, codificadas de forma transparente."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/index.mdx
+#, no-wrap
+msgid "An installer that knows what it's doing."
+msgstr "Un instalador que sabe lo que hace."
+
+#. type: Plain text
+#: src/content/docs/index.mdx
+msgid "import Landing from '~/components/Landing.astro';"
+msgstr "import Landing from '~/components/Landing.astro';"
+
+#. type: Plain text
+#: src/content/docs/index.mdx
+#, no-wrap
+msgid "<Landing />\n"
+msgstr "<Landing />\n"

@@ -1,0 +1,176 @@
+# Ukrainian translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/who-we-are.mdx
+#, no-wrap
+msgid "The people behind Ditana GNU/Linux."
+msgstr "Люди, які стоять за Ditana GNU/Linux."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/who-we-are.mdx
+#, no-wrap
+msgid "Who we are"
+msgstr "Хто ми"
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"import { Image } from 'astro:assets'; import stefan from '~/assets/people/"
+"stefan.png'; import thomas from '~/assets/people/thomas.png';"
+msgstr ""
+"import { Image } from 'astro:assets'; import stefan from '~/assets/people/"
+"stefan.png'; import thomas from '~/assets/people/thomas.png';"
+
+#. type: Title ##
+#: src/content/docs/who-we-are.mdx
+#, no-wrap
+msgid "Stefan Zipproth"
+msgstr "Stefan Zipproth"
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+#, no-wrap
+msgid "<Image src={stefan} alt=\"Stefan Zipproth\" width={150} />\n"
+msgstr "<Image src={stefan} alt=\"Stefan Zipproth\" width={150} />\n"
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"Stefan Zipproth is the lead developer and creator of Ditana. A software "
+"developer from St. Ursen, Switzerland, with a background in embedded systems "
+"and cross-platform development. He has worked in industries ranging from RF "
+"measurement and classical image processing to AI-powered medical imaging. "
+"Since 2023, he has focused on developing and refining products for the Linux "
+"ecosystem. A broader overview of his work — spanning systems architecture, "
+"high-performance C++, and knowledge representation — is available on his "
+"[personal portfolio](https://zipproth.ch)."
+msgstr ""
+"Stefan Zipproth — провідний розробник і творець Ditana. Розробник "
+"програмного забезпечення із Санкт-Урзена (Швейцарія), який має досвід роботи "
+"з вбудованими системами та кросплатформною розробкою. Він працював у галузях "
+"від радіочастотних вимірювань і класичної обробки зображень до медичної "
+"візуалізації на основі ШІ. З 2023 року він зосереджується на розробці та "
+"вдосконаленні продуктів для екосистеми Linux. Ширший огляд його роботи — від "
+"архітектури систем і високопродуктивного C++ до подання знань — доступний у "
+"його [особистому портфоліо](https://zipproth.ch)."
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"Through **acrion innovations GmbH**, Stefan manages the financial side of "
+"Ditana while focusing solely on its development as a solo developer. This "
+"structure ensures transparent stewardship of resources for the community-"
+"driven project."
+msgstr ""
+"Через **acrion innovations GmbH** Stefan веде фінансові справи Ditana, а сам "
+"як розробник-одинак зосереджується виключно на її розробці. Така структура "
+"забезпечує прозоре розпорядження ресурсами цього проєкту, який розвивається "
+"завдяки спільноті."
+
+#. type: Title ##
+#: src/content/docs/who-we-are.mdx
+#, no-wrap
+msgid "Thomas Zipproth"
+msgstr "Thomas Zipproth"
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+#, no-wrap
+msgid "<Image src={thomas} alt=\"Thomas Zipproth\" width={150} />\n"
+msgstr "<Image src={thomas} alt=\"Thomas Zipproth\" width={150} />\n"
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"Thomas Zipproth is an experienced software developer from Mindelheim, "
+"Germany, with deep expertise in image processing — particularly in document "
+"scanning and recognition technologies. He has spent his career working on "
+"high-precision systems for automated data extraction and provides valuable "
+"testing support and feedback for Ditana, helping refine its usability and "
+"reliability."
+msgstr ""
+"Thomas Zipproth — досвідчений розробник програмного забезпечення з "
+"Міндельгайма (Німеччина), який має глибокі знання в обробці зображень — "
+"особливо в технологіях сканування й розпізнавання документів. Упродовж своєї "
+"кар’єри він працював над високоточними системами автоматизованого вилучення "
+"даних, а для Ditana надає цінну підтримку в тестуванні та відгуки, що "
+"допомагають вдосконалювати її зручність використання й надійність."
+
+#. type: Title ##
+#: src/content/docs/who-we-are.mdx
+#, no-wrap
+msgid "Acknowledgements"
+msgstr "Подяки"
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"Ditana would not be what it is without the contributions of others. Special "
+"thanks to:"
+msgstr "Ditana не була б такою, як є, без внеску інших людей. Особлива подяка:"
+
+#. type: Bullet: '- '
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"**Alexey Melezhik** for the [Sparrow6](https://github.com/melezhik/Sparrow6) "
+"work that replaced Ansible in 0.9.3 and for ongoing collaboration on test "
+"infrastructure."
+msgstr ""
+"**Alexey Melezhik** — за роботу над [Sparrow6](https://github.com/melezhik/"
+"Sparrow6), що в 0.9.3 замінив Ansible, і за постійну співпрацю над тестовою "
+"інфраструктурою."
+
+#. type: Bullet: '- '
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"**Ralf Hersel** of [gnulinux.ch](https://gnulinux.ch) for the early coverage "
+"and the [podcast interview](https://gnulinux.ch/ciw119-podcast) that "
+"introduced Ditana to a wider Swiss/German-speaking audience."
+msgstr ""
+"**Ralf Hersel** з [gnulinux.ch](https://gnulinux.ch) — за ранні публікації "
+"та [інтерв’ю в подкасті](https://gnulinux.ch/ciw119-podcast), яке "
+"познайомило з Ditana ширшу швейцарську й німецькомовну аудиторію."
+
+#. type: Bullet: '- '
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"Everyone who has filed an issue, sent feedback, or simply tried Ditana and "
+"shared what worked or didn't."
+msgstr ""
+"Усім, хто створив звернення, надіслав відгук або просто спробував Ditana й "
+"розповів, що працювало, а що ні."
+
+#. type: Plain text
+#: src/content/docs/who-we-are.mdx
+msgid ""
+"If you want to reach us: [support@ditana.org](mailto:support@ditana.org) for "
+"anything at all, the [Discord channel](https://discord.gg/RgcdumdE9J) for a "
+"conversation, and the issue trackers for [the installer](https://github.com/"
+"acrion/ditana-installer/issues), [the configuration](https://github.com/"
+"acrion/ditana-config/issues) and [the package pipeline](https://github.com/"
+"acrion/ditana-build/issues) when you have something specific."
+msgstr ""
+"Якщо ви хочете зв’язатися з нами: [support@ditana.org]"
+"(mailto:support@ditana.org) — з будь-якого питання, [канал Discord](https://"
+"discord.gg/RgcdumdE9J) — для розмови, а системи відстеження проблем "
+"[інсталятора](https://github.com/acrion/ditana-installer/issues), "
+"[конфігурації](https://github.com/acrion/ditana-config/issues) й [конвеєра "
+"пакунків](https://github.com/acrion/ditana-build/issues) — коли у вас є щось "
+"конкретне."

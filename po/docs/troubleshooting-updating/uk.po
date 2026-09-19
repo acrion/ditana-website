@@ -1,0 +1,218 @@
+# Ukrainian translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "Why a rolling release must be updated entirely, how to update Ditana on the desktop or in a terminal, and what actions to take afterwards."
+msgstr "Чому дистрибутив із безперервним випуском (rolling release) потрібно оновлювати повністю, як оновити Ditana в графічному середовищі або в терміналі та що робити після цього."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "Updating is not optional"
+msgstr "Оновлювати систему обов’язково"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"Ditana is Arch Linux underneath, and Arch is a rolling release. There is no "
+"\"version\" to stay on: there is one moving target, and every package in the "
+"repositories is built against the libraries that are current *today*. A "
+"system that has not been updated for a few months is not a stable older "
+"system — it is a system whose next update is a large, untested jump."
+msgstr ""
+"В основі Ditana лежить Arch Linux, а Arch — дистрибутив із безперервним "
+"випуском (rolling release). Немає «версії», на якій можна залишитися: є одна "
+"ціль, що постійно рухається, і кожен пакунок у сховищах зібрано з розрахунку "
+"на бібліотеки, актуальні *сьогодні*. Система, яку не оновлювали кілька "
+"місяців, — це не стабільна старіша система, а система, наступне оновлення "
+"якої буде великим неперевіреним стрибком."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid "Two consequences are worth stating plainly:"
+msgstr "Два наслідки варто назвати прямо:"
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Security fixes only arrive if you update.** There is no separate backport "
+"channel. The fix for a vulnerability in a library reaches you as a new "
+"version of that library, and not otherwise."
+msgstr ""
+"**Виправлення безпеки надходять, лише якщо ви оновлюєте систему.** Окремого "
+"каналу зворотного перенесення виправлень (backport) немає. Виправлення "
+"вразливості в бібліотеці доходить до вас як нова версія цієї бібліотеки, і "
+"ніяк інакше."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Never update a single package.** `pacman -Sy something` synchronizes the "
+"package databases and then installs one package against libraries that may "
+"already have moved on. This is a *partial upgrade*, it is the single most "
+"common way to break an Arch system, and it is unsupported. Update everything "
+"or nothing: `-Syu`, never `-Sy` followed by an install."
+msgstr ""
+"**Ніколи не оновлюйте окремий пакунок.** `pacman -Sy something` синхронізує "
+"бази даних пакунків, а потім встановлює один пакунок з розрахунку на "
+"бібліотеки, які тим часом, можливо, вже змінилися. Це *часткове оновлення*, "
+"найпоширеніший спосіб зламати систему Arch, і воно не підтримується. "
+"Оновлюйте все або нічого: `-Syu`, і ніколи `-Sy` з подальшим встановленням."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "  (The one deliberate exception is the [keyring repair](/troubleshooting/signature-errors/#the-repair), and it is safe for a specific reason that is explained there.)\n"
+msgstr "  (Єдиний свідомий виняток — [виправлення в’язки ключів](/troubleshooting/signature-errors/#the-repair), і воно безпечне з певної причини, яку пояснено там.)\n"
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "The graphical way"
+msgstr "Через графічний інтерфейс"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid "Ditana installs a software centre on every desktop:"
+msgstr ""
+"Ditana встановлює центр програмного забезпечення для кожного стільничного "
+"середовища:"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid ""
+"| Tool | Installed with | Covers |\n"
+"| --- | --- | --- |\n"
+"| **Pachub** | XFCE, Niri, Wayfire, COSMIC | Packages from the Arch and Ditana repositories |\n"
+"| **Bazaar** | Niri, Wayfire | Flatpak applications from Flathub |\n"
+"| **COSMIC Store** | COSMIC | Flatpak applications from Flathub |\n"
+"| **Kalu** | XFCE | Notifies you when updates are waiting |\n"
+"| **arch-audit-gtk** | all desktops | Tray indicator that turns red when an installed package has a known vulnerability |\n"
+msgstr ""
+"| Інструмент | Встановлюється з | Охоплює |\n"
+"| --- | --- | --- |\n"
+"| **Pachub** | XFCE, Niri, Wayfire, COSMIC | Пакунки зі сховищ Arch і Ditana |\n"
+"| **Bazaar** | Niri, Wayfire | Застосунки Flatpak із Flathub |\n"
+"| **COSMIC Store** | COSMIC | Застосунки Flatpak із Flathub |\n"
+"| **Kalu** | XFCE | Сповіщає вас, коли на встановлення чекають оновлення |\n"
+"| **arch-audit-gtk** | усі стільничні середовища | Індикатор у системному лотку, який стає червоним, коли встановлений пакунок має відому вразливість |\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"Pachub and the Flatpak stores cover different halves of the system, so "
+"running one is not the same as running both. If your desktop has no Flatpak "
+"store, the terminal command below covers it."
+msgstr ""
+"Pachub і крамниці Flatpak охоплюють різні половини системи, тож запуск "
+"одного з них — не те саме, що запуск обох. Якщо у вашому стільничному "
+"середовищі немає крамниці Flatpak, цю половину охоплює наведена нижче "
+"команда для термінала."
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "The terminal way"
+msgstr "Через термінал"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"This is the recommended route, because one command covers the repositories "
+"*and* the AUR packages you have installed:"
+msgstr ""
+"Це рекомендований шлях, бо одна команда охоплює сховища *і* встановлені вами "
+"пакунки AUR:"
+
+#. type: Fenced code block (sh)
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid ""
+"paru -Syu          # Arch repos + Ditana repo + your AUR packages\n"
+"flatpak update     # sandboxed applications from Flathub\n"
+msgstr ""
+"paru -Syu          # Arch repos + Ditana repo + your AUR packages\n"
+"flatpak update     # sandboxed applications from Flathub\n"
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"`paru` is Ditana's chosen AUR helper and is installed on every system, "
+"including headless ones. Plain `pacman -Syu` also works, but it leaves AUR "
+"packages behind — and an AUR package left behind while its dependencies move "
+"on is exactly the ABI mismatch that produces \"symbol lookup error\" a week "
+"later."
+msgstr ""
+"`paru` — помічник AUR, який вибрала Ditana; він встановлений у кожній "
+"системі, зокрема в системах без графічного інтерфейсу (headless). Звичайна "
+"команда `pacman -Syu` теж працює, але пакунки AUR вона залишає без оновлення "
+"— а пакунок AUR, який відстав, поки його залежності оновлювалися, — це саме "
+"та невідповідність ABI, що через тиждень спричиняє «symbol lookup error»."
+
+#. type: Plain text
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "**Let it run to its end.** On a system using ZFS, every kernel update rebuilds the ZFS module. pacman then shows `Install DKMS modules` and a line beginning with `==> dkms install`, and afterwards nothing for several minutes. That is not a hang. Interrupting it leaves the new kernel missing its ZFS module, and the next boot ends in a kernel panic reading `Attempted to kill init!`. If this has occurred, revert to the snapshot created prior to the update, as [Automatic system snapshots](/best-practices/automatic-system-snapshots/) describes.\n"
+msgstr "**Дайте команді виконатися до кінця.** У системі з ZFS кожне оновлення ядра перезбирає модуль ZFS. Після цього pacman показує `Install DKMS modules` і рядок, що починається з `==> dkms install`, а потім кілька хвилин нічого не показує. Це не зависання. Якщо перервати процес, нове ядро залишиться без свого модуля ZFS, і наступне завантаження завершиться панікою ядра з повідомленням `Attempted to kill init!`. Якщо це сталося, поверніться до знімка, створеного перед оновленням, як описано на сторінці [Автоматичні знімки системи](/best-practices/automatic-system-snapshots/).\n"
+
+#. type: Title ##
+#: src/content/docs/troubleshooting/updating.md
+#, no-wrap
+msgid "After the update"
+msgstr "Після оновлення"
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Configuration files.** When a package ships a new default for a file you "
+"have edited, pacman writes it beside yours as `*.pacnew` and says so. Merge "
+"them with `sudo pacdiff` (from `pacman-contrib`, installed by default).  "
+"Ignoring `.pacnew` files for a year is a slow way to accumulate breakage."
+msgstr ""
+"**Файли конфігурації.** Коли пакунок постачає нову типову версію файлу, який "
+"ви редагували, pacman записує її поруч із вашою як `*.pacnew` і повідомляє "
+"про це. Об’єднайте їх за допомогою `sudo pacdiff` (з пакунка `pacman-"
+"contrib`, який встановлено типово). Ігнорувати файли `.pacnew` упродовж року "
+"— повільний спосіб накопичити несправності."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Reboot after a kernel update.** Until you do, the running kernel no longer "
+"matches the modules on disk, and loading a module that was not already in "
+"memory will fail."
+msgstr ""
+"**Перезавантажте систему після оновлення ядра.** Доки ви цього не зробите, "
+"запущене ядро вже не відповідає модулям на диску, і завантажити модуль, "
+"якого ще не було в пам’яті, не вдасться."
+
+#. type: Bullet: '- '
+#: src/content/docs/troubleshooting/updating.md
+msgid ""
+"**Snapshots.** If you enabled automatic snapshots during installation, the "
+"state before the update is still on disk and you can boot into it. See "
+"[Automatic system snapshots](/best-practices/automatic-system-snapshots/)."
+msgstr ""
+"**Знімки.** Якщо ви ввімкнули автоматичні знімки під час встановлення, стан "
+"до оновлення все ще зберігається на диску, і ви можете завантажитися в "
+"нього. Див. [Автоматичні знімки системи](/best-practices/automatic-system-"
+"snapshots/)."

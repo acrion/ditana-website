@@ -1,0 +1,359 @@
+# Language fr-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "How Ditana configures atomic snapshots around system upgrades, and how to roll back from the rescue system."
+msgstr "Comment Ditana configure des instantanés atomiques autour des mises à jour du système, et comment revenir en arrière depuis le système de secours."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "Automatic system snapshots"
+msgstr "Instantanés automatiques du système"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"Ditana takes an automatic snapshot of the system state prior to a system "
+"upgrade, through a pacman hook. This is configured independently of the "
+"chosen filesystem under **Advanced Settings → System Maintenance Tools → "
+"Configure Automatic System Snapshots** in the installer (enabled by default)."
+msgstr ""
+"Ditana prend automatiquement un instantané de l’état du système avant une "
+"mise à jour du système, au moyen d’un crochet pacman. Ce comportement se "
+"configure indépendamment du système de fichiers choisi, sous **Advanced "
+"Settings → System Maintenance Tools → Configure Automatic System Snapshots** "
+"dans le programme d’installation (activé par défaut)."
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"How frequently that occurs varies. On **ZFS** each upgrade is preceded by a "
+"snapshot. On **BTRFS**, **XFS** and **EXT4**, `timeshift-autosnap` takes at "
+"most one snapshot every 18 hours (`minHoursBetweenSnapshots` in `/etc/"
+"timeshift-autosnap.conf`), so a second upgrade on the same day does not "
+"trigger a new one. Either way, three are kept (`maxSnapshots`)."
+msgstr ""
+"La fréquence varie. Avec **ZFS**, chaque mise à jour est précédée d’un "
+"instantané. Avec **BTRFS**, **XFS** et **EXT4**, `timeshift-autosnap` prend "
+"au plus un instantané toutes les 18 heures (`minHoursBetweenSnapshots` dans "
+"`/etc/timeshift-autosnap.conf`), de sorte qu’une deuxième mise à jour le "
+"même jour n’en déclenche pas de nouveau. Dans tous les cas, trois "
+"instantanés sont conservés (`maxSnapshots`)."
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"On **ZFS** and **BTRFS**, snapshots are atomic — captured at a single "
+"instant, with negligible storage and time overhead. On **XFS** and **EXT4**, "
+"Timeshift is used in rsync mode; the initial snapshot is the slowest one, "
+"and subsequent snapshots typically complete in under five seconds."
+msgstr ""
+"Avec **ZFS** et **BTRFS**, les instantanés sont atomiques – pris en un seul "
+"instant, avec un surcoût négligeable en espace de stockage et en temps. Avec "
+"**XFS** et **EXT4**, Timeshift est utilisé en mode rsync ; le premier "
+"instantané est le plus lent, et les suivants se terminent généralement en "
+"moins de cinq secondes."
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"The installer itself captures the first snapshot, just prior to the first "
+"reboot, ensuring there is a clean baseline from day one – you can roll back "
+"to \"freshly installed\" without having ever done an upgrade first. On ZFS "
+"that baseline does not last: it is named like every other automatic snapshot "
+"and is the oldest, so the retention limit sweeps it up after three upgrades. "
+"Rename it, or raise `maxSnapshots`, if you want to keep it. Under Timeshift "
+"it survives, because the deletion filter does not match it."
+msgstr ""
+"Le programme d’installation prend lui-même le premier instantané, juste "
+"avant le premier redémarrage, ce qui garantit un état de référence propre "
+"dès le premier jour – vous pouvez revenir à l’état « fraîchement installé » "
+"sans avoir jamais effectué de mise à jour auparavant. Avec ZFS, cet état de "
+"référence ne dure pas : il est nommé comme tous les autres instantanés "
+"automatiques et c’est le plus ancien, si bien que la limite de conservation "
+"l’élimine au bout de trois mises à jour. Renommez-le, ou augmentez "
+"`maxSnapshots`, si vous souhaitez le conserver. Sous Timeshift, il subsiste, "
+"car le filtre de suppression ne le sélectionne pas."
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "**Snapshots are system-only.** Your home directory and other data volumes are not included. Restoring a system snapshot does not touch your personal files — roll back the system, keep your work.\n"
+msgstr "**Les instantanés ne concernent que le système.** Votre répertoire personnel et les autres volumes de données ne sont pas inclus. La restauration d’un instantané du système ne touche pas à vos fichiers personnels – restaurez le système, conservez votre travail.\n"
+
+#. type: Title ###
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "Edge case: rolling back to the installer's snapshot"
+msgstr "Cas particulier : revenir à l’instantané du programme d’installation"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"If you roll back to the very first snapshot taken at the end of "
+"installation, one minor consequence: the first-boot Flatpak deployment "
+"service (`ditana-flatpak-finalize.service`) will run again during the next "
+"boot, reinstalling the Flatpaks you initially chose. It is scheduled prior "
+"to the login screen and intentionally delays it while it downloads, so a "
+"boot that sits on a text console for a while is the expected behaviour and "
+"not a hang. This is by design – those Flatpaks are part of the configured "
+"system, so they are reinstated alongside everything else. Subsequent "
+"rollbacks (to snapshots after first-boot completion) do not exhibit this."
+msgstr ""
+"Si vous revenez au tout premier instantané, pris à la fin de l’installation, "
+"il y a une conséquence mineure : le service de déploiement des Flatpak au "
+"premier démarrage (`ditana-flatpak-finalize.service`) s’exécutera à nouveau "
+"lors du démarrage suivant et réinstallera les Flatpak que vous aviez choisis "
+"au départ. Il est planifié avant l’écran de connexion et retarde "
+"volontairement celui-ci pendant ses téléchargements ; un démarrage qui reste "
+"un moment sur une console texte est donc le comportement attendu et non un "
+"blocage. C’est voulu – ces Flatpak font partie du système configuré, ils "
+"sont donc rétablis avec tout le reste. Les restaurations ultérieures (vers "
+"des instantanés pris après la fin du premier démarrage) ne présentent pas ce "
+"comportement."
+
+#. type: Title ###
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "ZFS lock file handling"
+msgstr "Gestion du fichier de verrouillage sous ZFS"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"Ditana ships its own [zfs-autosnap](https://github.com/acrion/zfs-autosnap) "
+"fork, which moves the pacman lock file (`/var/lib/pacman/db.lck`) aside at "
+"the moment the snapshot is taken and puts it back afterwards, so that the "
+"snapshot contains no lock file. This means a ZFS rollback leaves you with a "
+"usable pacman immediately — no manual `rm /var/lib/pacman/db.lck` step. The "
+"upstream Timeshift variant for non-ZFS filesystems does not handle this, "
+"which is why the Timeshift recovery procedure below includes that manual "
+"step."
+msgstr ""
+"Ditana fournit son propre fork de [zfs-autosnap](https://github.com/acrion/"
+"zfs-autosnap), qui met de côté le fichier de verrouillage de pacman (`/var/"
+"lib/pacman/db.lck`) au moment où l’instantané est pris et le remet en place "
+"ensuite, de sorte que l’instantané ne contient aucun fichier de "
+"verrouillage. Ainsi, après une restauration ZFS, pacman est immédiatement "
+"utilisable – sans étape manuelle `rm /var/lib/pacman/db.lck`. La variante "
+"amont de Timeshift pour les systèmes de fichiers autres que ZFS ne gère pas "
+"ce cas, c’est pourquoi la procédure de récupération Timeshift ci-dessous "
+"comprend cette étape manuelle."
+
+#. type: Title ##
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "Recovery procedure"
+msgstr "Procédure de récupération"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"On ZFS there is a shorter route that needs no medium at all. ZFSBootMenu can "
+"boot a snapshot directly: interrupt it at startup, pick the boot "
+"environment, and choose the snapshot you want from the list it shows. The "
+"installer's own baseline is called `autosnap_after_ditana_installation`. "
+"Everything below is for the case where that is not enough, or for a "
+"filesystem other than ZFS."
+msgstr ""
+"Avec ZFS, il existe une voie plus courte qui ne nécessite aucun support. "
+"ZFSBootMenu peut démarrer directement sur un instantané : interrompez-le au "
+"démarrage, sélectionnez l’environnement de démarrage, puis choisissez "
+"l’instantané voulu dans la liste qu’il affiche. L’état de référence créé par "
+"le programme d’installation s’appelle `autosnap_after_ditana_installation`. "
+"Tout ce qui suit concerne le cas où cela ne suffit pas, ou un système de "
+"fichiers autre que ZFS."
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"If your system fails to boot, boot from the Ditana ISO. It asks whether it "
+"should enter the rescue system for the installation it discovered; respond "
+"with yes, and it mounts the installed system and lists the snapshots it "
+"holds. The commands below are what you run inside that rescue system – not "
+"in the bare live environment, which has neither Timeshift nor the imported "
+"pool."
+msgstr ""
+"Si votre système ne démarre pas, démarrez sur l’image ISO de Ditana. Elle "
+"demande si elle doit passer au système de secours pour l’installation "
+"qu’elle a détectée ; répondez oui, et elle monte le système installé et "
+"affiche la liste des instantanés qu’il contient. Les commandes ci-dessous "
+"sont à exécuter dans ce système de secours – et non dans l’environnement "
+"live nu, qui ne dispose ni de Timeshift ni du pool importé."
+
+#. type: Title ###
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "ZFS"
+msgstr "ZFS"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid "List available snapshots:"
+msgstr "Affichez la liste des instantanés disponibles :"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "zfs list -t snapshot\n"
+msgstr "zfs list -t snapshot\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid "Example output:"
+msgstr "Exemple de sortie :"
+
+#. type: Fenced code block
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid ""
+"NAME                                                    USED  AVAIL  REFER  MOUNTPOINT\n"
+"ditana-root/ROOT/default@autosnap_2026-05-19_23-14-41   453K      -  3.96G  -\n"
+"ditana-root/ROOT/default@autosnap_2026-05-19_23-25-28   394K      -  3.96G  -\n"
+"ditana-root/ROOT/default@autosnap_2026-05-19_23-26-06  1.05M      -  3.96G  -\n"
+msgstr ""
+"NAME                                                    USED  AVAIL  REFER  MOUNTPOINT\n"
+"ditana-root/ROOT/default@autosnap_2026-05-19_23-14-41   453K      -  3.96G  -\n"
+"ditana-root/ROOT/default@autosnap_2026-05-19_23-25-28   394K      -  3.96G  -\n"
+"ditana-root/ROOT/default@autosnap_2026-05-19_23-26-06  1.05M      -  3.96G  -\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid "Restore a specific snapshot:"
+msgstr "Restaurez un instantané précis :"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "sudo zfs rollback ditana-root/ROOT/default@autosnap_2026-05-19_23-26-06\n"
+msgstr "sudo zfs rollback ditana-root/ROOT/default@autosnap_2026-05-19_23-26-06\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"`zfs rollback` refuses while newer snapshots exist, which is the normal case "
+"once several have accumulated. Destroy them first, or pass `-r` to have it "
+"destroy them for you – everything newer than the snapshot you are restoring "
+"is gone either way."
+msgstr ""
+"`zfs rollback` refuse de s’exécuter tant qu’il existe des instantanés plus "
+"récents, ce qui est le cas normal dès que plusieurs se sont accumulés. "
+"Détruisez-les d’abord, ou passez `-r` pour qu’il les détruise à votre place "
+"– dans les deux cas, tout ce qui est plus récent que l’instantané que vous "
+"restaurez disparaît."
+
+#. type: Title ###
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "BTRFS, XFS, EXT4"
+msgstr "BTRFS, XFS, EXT4"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"Automatic snapshots are managed by `timeshift-autosnap`, which creates a "
+"snapshot before every full upgrade."
+msgstr ""
+"Les instantanés automatiques sont gérés par `timeshift-autosnap`, qui crée "
+"un instantané avant chaque mise à jour complète."
+
+#. type: Fenced code block (bash)
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "sudo timeshift --list\n"
+msgstr "sudo timeshift --list\n"
+
+#. type: Fenced code block
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid ""
+"Mounted '/dev/dm-0 (sda4)' at '/run/timeshift/195216/backup'\n"
+"Device : /dev/dm-0 (sda4)\n"
+"Mode   : RSYNC\n"
+"\n"
+"Num Name                Tags  Description\n"
+"------------------------------------------\n"
+"0 > 2026-05-19_18-04-37 0     after installation of Ditana GNU/Linux\n"
+msgstr ""
+"Mounted '/dev/dm-0 (sda4)' at '/run/timeshift/195216/backup'\n"
+"Device : /dev/dm-0 (sda4)\n"
+"Mode   : RSYNC\n"
+"\n"
+"Num Name                Tags  Description\n"
+"------------------------------------------\n"
+"0 > 2026-05-19_18-04-37 0     after installation of Ditana GNU/Linux\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid "Restore a snapshot:"
+msgstr "Restaurez un instantané :"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "sudo timeshift --restore --snapshot 2026-05-19_18-04-37\n"
+msgstr "sudo timeshift --restore --snapshot 2026-05-19_18-04-37\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"When prompted, **do not reinstall GRUB2** as Timeshift recommends — it "
+"assumes the presence of an `update-grub` tool that Ditana does not use. If "
+"you need to update GRUB after restoration, run:"
+msgstr ""
+"Lorsque la question vous est posée, **ne réinstallez pas GRUB2** comme le "
+"recommande Timeshift – il suppose la présence d’un outil `update-grub` que "
+"Ditana n’utilise pas. Si vous devez mettre à jour GRUB après la "
+"restauration, exécutez :"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "grub-mkconfig -o /boot/grub/grub.cfg\n"
+msgstr "grub-mkconfig -o /boot/grub/grub.cfg\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid "After a Timeshift restore, also clear the pacman database lock:"
+msgstr ""
+"Après une restauration Timeshift, supprimez également le verrou de la base "
+"de données de pacman :"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+#, no-wrap
+msgid "sudo rm /var/lib/pacman/db.lck\n"
+msgstr "sudo rm /var/lib/pacman/db.lck\n"
+
+#. type: Plain text
+#: src/content/docs/best-practices/automatic-system-snapshots.md
+msgid ""
+"This is required because `timeshift-autosnap` (the upstream project for non-"
+"ZFS filesystems) captures the pacman lock file as part of the snapshot. "
+"Ditana's [zfs-autosnap fork](https://github.com/acrion/zfs-autosnap) removes "
+"the lock file before snapshotting, which is why the equivalent step is "
+"unnecessary on ZFS (`zfs rollback` is sufficient)."
+msgstr ""
+"C’est nécessaire parce que `timeshift-autosnap` (le projet amont pour les "
+"systèmes de fichiers autres que ZFS) inclut le fichier de verrouillage de "
+"pacman dans l’instantané. Le [fork de zfs-autosnap](https://github.com/"
+"acrion/zfs-autosnap) de Ditana retire le fichier de verrouillage avant de "
+"prendre l’instantané, c’est pourquoi l’étape équivalente est inutile avec "
+"ZFS (`zfs rollback` suffit)."

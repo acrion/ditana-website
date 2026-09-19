@@ -1,0 +1,422 @@
+# Ukrainian translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "What the Ditana repository distributes, under which licences, where the corresponding source code is, and why the ZFS packages are packaged the way they are."
+msgstr "Що розповсюджує сховище Ditana, за якими ліцензіями, де відповідний вихідний код і чому пакунки ZFS запаковано саме так."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "Licensing"
+msgstr "Ліцензування"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"Almost everything on a Ditana system comes from Arch's own repositories "
+"under Arch's terms. This page is about the packages Ditana builds itself and "
+"serves from `ditana.org` — in particular the ZFS ones, because ZFS on Linux "
+"carries a licence question that a distribution has to answer explicitly "
+"rather than by accident."
+msgstr ""
+"Майже все в системі Ditana надходить із власних сховищ Arch на умовах Arch. "
+"Ця сторінка стосується пакунків, які Ditana збирає сама й роздає з "
+"`ditana.org`, — насамперед пакунків ZFS, оскільки з ZFS у Linux пов’язане "
+"ліцензійне питання, на яке дистрибутив має відповісти явно, а не випадково."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"It describes what Ditana does and links the primary sources so you can read "
+"them instead of taking this page's word for anything. It is not legal advice."
+msgstr ""
+"Вона описує, що робить Ditana, і дає посилання на першоджерела, щоб ви могли "
+"прочитати їх, а не вірити цій сторінці на слово. Це не юридична консультація."
+
+#. type: Title ##
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "The ZFS packages"
+msgstr "Пакунки ZFS"
+
+#. type: Title ###
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "What Ditana distributes"
+msgstr "Що розповсюджує Ditana"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid ""
+"| Package | Contents | Licence |\n"
+"| --- | --- | --- |\n"
+"| `zfs-utils` | The userspace tools and libraries — `zfs`, `zpool`, `zed`, udev rules, systemd units. | [CDDL-1.0](https://opensource.org/license/cddl-1-0) |\n"
+"| `zfs-dkms` | Source code only. It unpacks the OpenZFS module sources into `/usr/src/zfs-<version>/` together with a `dkms.conf`. It contains no compiled kernel module. | [CDDL-1.0](https://opensource.org/license/cddl-1-0) |\n"
+msgstr ""
+"| Пакунок | Вміст | Ліцензія |\n"
+"| --- | --- | --- |\n"
+"| `zfs-utils` | Інструменти й бібліотеки простору користувача — `zfs`, `zpool`, `zed`, правила udev, модулі systemd. | [CDDL-1.0](https://opensource.org/license/cddl-1-0) |\n"
+"| `zfs-dkms` | Лише вихідний код. Пакунок розпаковує вихідні файли модуля OpenZFS у `/usr/src/zfs-<version>/` разом із `dkms.conf`. Скомпільованого модуля ядра він не містить. | [CDDL-1.0](https://opensource.org/license/cddl-1-0) |\n"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"`zfs.ko`, the kernel module itself, is compiled by DKMS **on your machine**, "
+"against the kernel running on your machine, when `zfs-dkms` is installed and "
+"again after every kernel update. It is never built on a Ditana build host, "
+"never signed by Ditana, and never uploaded anywhere. You can check this on "
+"an installed system:"
+msgstr ""
+"`zfs.ko`, сам модуль ядра, компілює DKMS **на вашій машині**, для ядра, що "
+"працює на вашій машині, під час встановлення `zfs-dkms` і знову після "
+"кожного оновлення ядра. Його ніколи не збирають на сервері збирання Ditana, "
+"ніколи не підписує Ditana і ніколи нікуди не вивантажують. Ви можете "
+"перевірити це у встановленій системі:"
+
+#. type: Fenced code block (bash)
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "pacman -Ql zfs-dkms | grep -c '\\.ko$'    # 0\n"
+msgstr "pacman -Ql zfs-dkms | grep -c '\\.ko$'    # 0\n"
+
+#. type: Title ###
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "The licence question"
+msgstr "Ліцензійне питання"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"[OpenZFS](https://github.com/openzfs/zfs) is licensed under the CDDL. The "
+"Linux kernel is licensed under the GPL version 2. The [Free Software "
+"Foundation](https://www.gnu.org/licenses/license-list.html#CDDL)  lists the "
+"CDDL as a free software licence that is incompatible with the GPL, and the "
+"Software Freedom Conservancy reached the same conclusion in its [2016 "
+"analysis](https://sfconservancy.org/blog/2016/feb/25/zfs-and-linux/).  "
+"Canonical published the [opposing position](https://ubuntu.com/blog/zfs-"
+"licensing-and-linux) that same year. The disagreement has never been tested "
+"in court and remains unresolved."
+msgstr ""
+"[OpenZFS](https://github.com/openzfs/zfs) поширюється за ліцензією CDDL. "
+"Ядро Linux поширюється за ліцензією GPL версії 2. [Free Software Foundation]"
+"(https://www.gnu.org/licenses/license-list.html#CDDL) відносить CDDL до "
+"ліцензій вільного програмного забезпечення, несумісних із GPL, і Software "
+"Freedom Conservancy дійшла такого самого висновку у своєму [аналізі 2016 "
+"року](https://sfconservancy.org/blog/2016/feb/25/zfs-and-linux/). Того "
+"самого року Canonical опублікувала [протилежну позицію](https://ubuntu.com/"
+"blog/zfs-licensing-and-linux). Цю суперечку ніколи не розглядали в суді, і "
+"вона досі не розв’язана."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"What the disagreement is *about* is narrow: whether a **compiled binary that "
+"combines** CDDL-covered OpenZFS code with GPL-covered kernel code may be "
+"distributed. That artefact is `zfs.ko`."
+msgstr ""
+"Сама суперечка *стосується* вузького питання: чи можна розповсюджувати "
+"**скомпільований двійковий файл, що поєднує** код OpenZFS під CDDL з кодом "
+"ядра під GPL. Цей артефакт — `zfs.ko`."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"Source code is not such a combination, and neither is userspace: `zfs-utils` "
+"contains no kernel code and is not linked against any. Neither package "
+"Ditana ships is the artefact under dispute."
+msgstr ""
+"Вихідний код не є таким поєднанням, як і простір користувача: `zfs-utils` не "
+"містить коду ядра й не скомпонований із ним. Жоден із пакунків, які постачає "
+"Ditana, не є тим артефактом, про який ідеться в суперечці."
+
+#. type: Title ###
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "Where that leaves Ditana"
+msgstr "Що це означає для Ditana"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"Ditana distributes the sources and the userspace tools, and lets DKMS build "
+"the module locally. That is the same arrangement [Debian uses](https://"
+"wiki.debian.org/ZFS): a DKMS source package, no prebuilt modules in the "
+"repository."
+msgstr ""
+"Ditana розповсюджує вихідний код та інструменти простору користувача, а "
+"модуль дає зібрати локально DKMS. Це та сама схема, яку [використовує Debian]"
+"(https://wiki.debian.org/ZFS): пакунок вихідного коду для DKMS, жодних "
+"попередньо зібраних модулів у сховищі."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"It is deliberately *not* the arrangement used by projects that ship a ready-"
+"built module — [archzfs](https://github.com/archzfs/archzfs), for example, "
+"offers precompiled `zfs-linux` packages alongside its DKMS variant, and "
+"Canonical ships the module with Ubuntu on the strength of the position "
+"linked above. Those projects distribute the combined binary. Ditana does "
+"not, and the choice is the reason this page exists."
+msgstr ""
+"Це свідомо *не* та схема, яку використовують проєкти, що постачають готовий "
+"зібраний модуль, — [archzfs](https://github.com/archzfs/archzfs), наприклад, "
+"пропонує попередньо скомпільовані пакунки `zfs-linux` поряд зі своїм "
+"варіантом для DKMS, а Canonical постачає модуль разом з Ubuntu, спираючись "
+"на позицію, посилання на яку наведено вище. Ці проєкти розповсюджують "
+"поєднаний двійковий файл. Ditana — ні, і саме цей вибір є причиною існування "
+"цієї сторінки."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"The practical cost of that choice is real and is not hidden: a kernel update "
+"on a Ditana system recompiles the module locally, which takes minutes and "
+"needs the matching kernel headers. This is why the installer offers ZFS only "
+"together with the long-term support kernel: the ZFS entry appears in the "
+"File System dialog only while that kernel is selected, and disappears when "
+"you pick another one – a non-LTS kernel can move ahead of what OpenZFS "
+"supports and leave DKMS unable to build. [How settings depend on each other]"
+"(/under-the-hood/settings-logic/) shows the two declarations that do this."
+msgstr ""
+"Практична ціна цього вибору реальна, і її не приховують: оновлення ядра в "
+"системі Ditana перекомпілює модуль локально, що займає хвилини й потребує "
+"відповідних заголовків ядра. Саме тому інсталятор пропонує ZFS лише разом з "
+"ядром із довгостроковою підтримкою: пункт ZFS з’являється в діалоговому "
+"вікні File System лише тоді, коли вибрано це ядро, і зникає, коли ви "
+"вибираєте інше, — ядро без LTS може випередити те, що підтримує OpenZFS, і "
+"тоді DKMS не зможе зібрати модуль. На сторінці [Залежності між "
+"налаштуваннями](/under-the-hood/settings-logic/) показано два оголошення, "
+"які це забезпечують."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"The installer states the licence prior to your selection: the File System "
+"dialog carries `CDDL` on the ZFS entry, the way package selections carry "
+"their SPDX identifier."
+msgstr ""
+"Інсталятор повідомляє ліцензію ще до того, як ви зробите вибір: у "
+"діалоговому вікні File System пункт ZFS позначено `CDDL` — так само, як "
+"вибір пакунків позначено їхнім ідентифікатором SPDX."
+
+#. type: Title ##
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "ZFSBootMenu"
+msgstr "ZFSBootMenu"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"[ZFSBootMenu](https://github.com/zbm-dev/zfsbootmenu) is the bootloader "
+"Ditana installs on ZFS systems. It is licensed under the MIT licence and "
+"contains no OpenZFS code — it is a set of shell and Perl scripts that call "
+"the `zfs` and `zpool` commands. The question above does not arise for it."
+msgstr ""
+"[ZFSBootMenu](https://github.com/zbm-dev/zfsbootmenu) — це завантажувач, "
+"який Ditana встановлює в системах на ZFS. Він поширюється за ліцензією MIT і "
+"не містить коду OpenZFS — це набір сценаріїв оболонки та Perl, які "
+"викликають команди `zfs` і `zpool`. Наведене вище питання для нього не "
+"постає."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"The boot image on your machine is generated locally during installation, by "
+"`generate-zbm` operating within the target system, using the components "
+"present there. On a UEFI machine it is an EFI bundle located at `/boot/efi/"
+"EFI/zbm/`, copied to `/boot/efi/EFI/BOOT/BOOTX64.EFI` as well; on a BIOS "
+"machine it is `/boot/syslinux/zfsbootmenu/initramfs-bootmenu.img`."
+msgstr ""
+"Завантажувальний образ на вашій машині генерується локально під час "
+"встановлення за допомогою `generate-zbm`, який працює в цільовій системі й "
+"використовує наявні в ній компоненти. На машині з UEFI це EFI-образ у `/boot/"
+"efi/EFI/zbm/`, скопійований також до `/boot/efi/EFI/BOOT/BOOTX64.EFI`; на "
+"машині з BIOS це `/boot/syslinux/zfsbootmenu/initramfs-bootmenu.img`."
+
+#. type: Title ##
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "Corresponding source code"
+msgstr "Відповідний вихідний код"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"The CDDL is a file-level copyleft: whoever distributes binaries built from "
+"CDDL-covered files has to make the corresponding source available and keep "
+"the licence notices intact. Ditana distributes `zfs-utils` as a binary "
+"package, so this applies."
+msgstr ""
+"CDDL — це копілефт на рівні файлів: той, хто розповсюджує двійкові файли, "
+"зібрані з файлів під CDDL, має надати відповідний вихідний код і зберегти "
+"ліцензійні повідомлення недоторканими. Ditana розповсюджує `zfs-utils` як "
+"двійковий пакунок, тож це її стосується."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"For every package in the Ditana repository the recipe is public. Packages "
+"taken from the AUR unchanged, and Ditana's forks of them, carry their "
+"upstream address in the recipe; Ditana's own packages are built from the "
+"repository of the same name under [github.com/acrion](https://github.com/"
+"acrion); and the handful taken from Arch's own packaging carry the address "
+"of the corresponding repository on gitlab.archlinux.org. The recipe names "
+"the exact upstream archive it fetches and the checksum it is verified "
+"against, which is the corresponding source in the sense the licence means."
+msgstr ""
+"Для кожного пакунка у сховищі Ditana рецепт публічний. Пакунки, взяті з AUR "
+"без змін, і відгалуження, які Ditana зробила від них, містять у рецепті "
+"адресу оригінального джерела; власні пакунки Ditana збираються з "
+"однойменного сховища на [github.com/acrion](https://github.com/acrion); а "
+"кілька пакунків, узятих із власного пакування Arch, містять адресу "
+"відповідного сховища на gitlab.archlinux.org. Рецепт називає точний архів "
+"оригінального джерела, який він отримує, і контрольну суму, за якою його "
+"перевіряють, — а це і є відповідний вихідний код у тому сенсі, який має на "
+"увазі ліцензія."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid "For the packages on this page:"
+msgstr "Для пакунків на цій сторінці:"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid ""
+"| Package | Recipe | Upstream source |\n"
+"| --- | --- | --- |\n"
+"| `zfs-utils` | [aur.archlinux.org/packages/zfs-utils](https://aur.archlinux.org/packages/zfs-utils) | [github.com/openzfs/zfs/releases](https://github.com/openzfs/zfs/releases) |\n"
+"| `zfs-dkms` | [aur.archlinux.org/packages/zfs-dkms](https://aur.archlinux.org/packages/zfs-dkms) | [github.com/openzfs/zfs/releases](https://github.com/openzfs/zfs/releases) |\n"
+"| `zfsbootmenu` | [aur.archlinux.org/packages/zfsbootmenu](https://aur.archlinux.org/packages/zfsbootmenu) | [github.com/zbm-dev/zfsbootmenu](https://github.com/zbm-dev/zfsbootmenu) |\n"
+msgstr ""
+"| Пакунок | Рецепт | Оригінальне джерело |\n"
+"| --- | --- | --- |\n"
+"| `zfs-utils` | [aur.archlinux.org/packages/zfs-utils](https://aur.archlinux.org/packages/zfs-utils) | [github.com/openzfs/zfs/releases](https://github.com/openzfs/zfs/releases) |\n"
+"| `zfs-dkms` | [aur.archlinux.org/packages/zfs-dkms](https://aur.archlinux.org/packages/zfs-dkms) | [github.com/openzfs/zfs/releases](https://github.com/openzfs/zfs/releases) |\n"
+"| `zfsbootmenu` | [aur.archlinux.org/packages/zfsbootmenu](https://aur.archlinux.org/packages/zfsbootmenu) | [github.com/zbm-dev/zfsbootmenu](https://github.com/zbm-dev/zfsbootmenu) |\n"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"Ditana's ZFS recipes carry no Ditana patches: the packages are built from "
+"the upstream AUR recipes as published. `pacman -Qi zfs-utils` names the "
+"exact version installed on your machine, and the recipe's AUR history has a "
+"commit for that version. Every run that produced these packages is recorded "
+"under [Build status](/builds/)."
+msgstr ""
+"Рецепти ZFS у Ditana не містять жодних латок Ditana: пакунки збирають з "
+"оригінальних рецептів AUR у тому вигляді, в якому їх опубліковано. `pacman "
+"-Qi zfs-utils` показує точну версію, встановлену на вашій машині, а в "
+"історії рецепта в AUR є коміт для цієї версії. Кожен прогін, який створив ці "
+"пакунки, записано на сторінці [Стан збирання](/builds/)."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"The full text of the CDDL-1.0 is at [opensource.org/license/cddl-1-0]"
+"(https://opensource.org/license/cddl-1-0) and in the `COPYRIGHT` and "
+"`LICENSE` files of the OpenZFS source tree linked above."
+msgstr ""
+"Повний текст CDDL-1.0 є на [opensource.org/license/cddl-1-0](https://"
+"opensource.org/license/cddl-1-0), а також у файлах `COPYRIGHT` і `LICENSE` "
+"дерева вихідного коду OpenZFS, посилання на яке наведено вище."
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"If you cannot locate the corresponding source for any package Ditana "
+"distributes, write to [support@ditana.org](mailto:support@ditana.org) and "
+"you will be pointed at it or sent it."
+msgstr ""
+"Якщо ви не можете знайти відповідний вихідний код для будь-якого пакунка, "
+"який розповсюджує Ditana, напишіть на [support@ditana.org]"
+"(mailto:support@ditana.org), і вам вкажуть, де він, або надішлють його."
+
+#. type: Title ##
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "Ditana's own code"
+msgstr "Власний код Ditana"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"The installer engine, its knowledge base, and the tooling around them are "
+"Ditana's own work:"
+msgstr ""
+"Рушій інсталятора, його база знань та інструменти навколо них — власна "
+"робота Ditana:"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid ""
+"| Project | Licence |\n"
+"| --- | --- |\n"
+"| [ditana-installer](https://github.com/acrion/ditana-installer) | GPL-3.0-or-later |\n"
+"| [ditana-config](https://github.com/acrion/ditana-config) | AGPL-3.0-or-later |\n"
+"| [ditana-build](https://github.com/acrion/ditana-build) | AGPL-3.0-or-later |\n"
+"| [ditana-userns-guard](https://github.com/acrion/ditana-userns-guard) | AGPL-3.0-or-later, except the BPF program itself (`userns_guard.bpf.c`) and the kernel type declarations it needs (`kernel_types.h`), which are GPL-2.0-or-later because the kernel refuses GPL-only helpers to a program that is not |\n"
+"| [zfs-autosnap](https://github.com/acrion/zfs-autosnap) | AGPL-3.0-or-later |\n"
+msgstr ""
+"| Проєкт | Ліцензія |\n"
+"| --- | --- |\n"
+"| [ditana-installer](https://github.com/acrion/ditana-installer) | GPL-3.0-or-later |\n"
+"| [ditana-config](https://github.com/acrion/ditana-config) | AGPL-3.0-or-later |\n"
+"| [ditana-build](https://github.com/acrion/ditana-build) | AGPL-3.0-or-later |\n"
+"| [ditana-userns-guard](https://github.com/acrion/ditana-userns-guard) | AGPL-3.0-or-later, крім самої програми BPF (`userns_guard.bpf.c`) і потрібних їй оголошень типів ядра (`kernel_types.h`), які мають ліцензію GPL-2.0-or-later, бо ядро не надає допоміжних функцій, доступних лише для GPL, програмі, яка сама не під GPL |\n"
+"| [zfs-autosnap](https://github.com/acrion/zfs-autosnap) | AGPL-3.0-or-later |\n"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"zfs-autosnap is Ditana's own pre-upgrade snapshot hook, not OpenZFS code; it "
+"is installed by default on every ZFS system."
+msgstr ""
+"zfs-autosnap — це власний хук Ditana для створення знімків перед оновленням, "
+"а не код OpenZFS; його типово встановлено в кожній системі на ZFS."
+
+#. type: Title ##
+#: src/content/docs/licensing.md
+#, no-wrap
+msgid "Not legal advice"
+msgstr "Не юридична консультація"
+
+#. type: Plain text
+#: src/content/docs/licensing.md
+msgid ""
+"This page is written by Ditana's maintainer, not by a lawyer, and it is a "
+"description of Ditana's packaging rather than an opinion on anyone else's. "
+"The CDDL/GPL question is genuinely contested by parties who have taken it "
+"seriously, and every position referenced here is linked so you can read the "
+"argument yourself. If you are redistributing these packages, or building "
+"products on top of them, get your own advice."
+msgstr ""
+"Цю сторінку написав супровідник Ditana, а не юрист, і вона описує пакування "
+"Ditana, а не висловлює думку про пакування інших. Питання CDDL/GPL справді є "
+"спірним між сторонами, які поставилися до нього серйозно, і на кожну згадану "
+"тут позицію дано посилання, щоб ви могли самі прочитати аргументи. Якщо ви "
+"повторно розповсюджуєте ці пакунки або створюєте на їхній основі продукти, "
+"отримайте власну консультацію."

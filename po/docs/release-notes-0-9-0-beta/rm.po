@@ -1,0 +1,187 @@
+# Romansh translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: rm\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "First public release of Ditana GNU/Linux — the foundational beta from December 2024."
+msgstr "Emprima versiun publica da Ditana GNU/Linux – la versiun Beta fundamentala dal december 2024."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "0.9 Beta release notes"
+msgstr "Remartgas davart la versiun 0.9 Beta"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"The first public beta of Ditana GNU/Linux. This release established the "
+"foundation: an Arch-based system targeting educated enthusiasts who want "
+"both transparency and convenience, with security as a first-class concern "
+"rather than an afterthought."
+msgstr ""
+"L’emprima versiun Beta publica da Ditana GNU/Linux. Questa versiun ha creà "
+"la basa: in sistem sin basa dad Arch per persunas entusiasmadas cun buna "
+"furmaziun che vulan tant transparenza sco er commoditad, cun la segirezza "
+"sco tema da plaina valur e betg sco chaussa secundara."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "Highlights"
+msgstr "Puncts culminants"
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Hardware-aware installer.** Dialog-driven installation that considered "
+"hardware specifics and inter-package dependencies — particularly NVIDIA "
+"detection across legacy and modern GPUs."
+msgstr ""
+"**Installatur che resguarda la hardware.** Installaziun guidada da dialogs "
+"che resguardava las particularitads da la hardware e las dependenzas tranter "
+"ils pachets – cunzunt l’identificaziun da NVIDIA tar GPUs veglias e modernas."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**XFCE desktop environment** as the single shipped option, with pre-"
+"installed enhancements including the Docklike Taskbar."
+msgstr ""
+"**Sistem da desktop XFCE** sco suletta opziun furnida, cun meglieraziuns "
+"installadas ordavant, tranter auter la Docklike Taskbar."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Modular package structure.** Distribution-specific behaviour split into "
+"individual Arch packages, laying the groundwork for the later configuration-"
+"as-data refactor."
+msgstr ""
+"**Structura modulara dals pachets.** Il cumportament specific da la "
+"distribuziun è vegnì repartì en singuls pachets dad Arch, quai che ha creà "
+"la basa per la restructuraziun posteriura tenor il princip da la "
+"configuraziun sco datas."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**CPU vulnerability detection and mitigation.** Per-CPU detection of "
+"speculative execution vulnerabilities (Spectre v2, Meltdown, MDS, TAA, MMIO "
+"Stale Data, RETBleed, SRSO, GDS, RFDS) with documented per-mitigation trade-"
+"offs in the installer dialog — already a Ditana hallmark in this first "
+"release."
+msgstr ""
+"**Identificaziun e mitigiaziun da mancanzas da segirezza da la CPU.** "
+"Identificaziun per mintga CPU da las mancanzas da segirezza da l’execuziun "
+"speculativa (Spectre v2, Meltdown, MDS, TAA, MMIO Stale Data, RETBleed, "
+"SRSO, GDS, RFDS) cun ils cumpromiss da mintga mitigiaziun documentads en il "
+"dialog da l’installatur – gia en questa emprima versiun ina caracteristica "
+"da Ditana."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Security defaults out of the box.** Firewall pre-configured, optional "
+"system partition encryption, restrictive sysctl baseline."
+msgstr ""
+"**Parameters da segirezza da standard directamain suenter l’installaziun.** "
+"Firewall configurà ordavant, criptadi opziunal da la partiziun dal sistem, "
+"basa restrictiva per sysctl."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Performance defaults.** Weekly TRIM scheduling on supported SSDs, ZRAM, "
+"rate-mirrors for fastest mirror selection."
+msgstr ""
+"**Parameters da prestaziun da standard.** TRIM planisà ina giada per emna "
+"sin SSDs sustegnids, ZRAM, rate-mirrors per tscherner ils mirrors ils pli "
+"svelts."
+
+#. type: Bullet: '- '
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"**Headless support.** A single ISO that could deploy either a desktop system "
+"or a headless one, decided in the installer."
+msgstr ""
+"**Sustegn per sistems senza interfatscha grafica.** In sulet ISO che pudeva "
+"installar u in sistem da desktop u in sistem senza interfatscha grafica, "
+"tenor la decisiun en l’installatur."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "Coverage"
+msgstr "Rapports en las medias"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"Released on 31 December 2024 and covered shortly after on [gnulinux.ch]"
+"(https://gnulinux.ch/ciw119-podcast) in an hour-long interview with Ralf "
+"Hersel. A DistroWatch banner ran from 12 January to 3 February 2025, drawing "
+"approximately 120,000 impressions."
+msgstr ""
+"Publitgada ils 31 da december 2024 e tractada curt suenter sin [gnulinux.ch]"
+"(https://gnulinux.ch/ciw119-podcast) en in’intervista d’ina ura cun Ralf "
+"Hersel. Ina banderola da reclama sin DistroWatch è vegnida mussada dals 12 "
+"da schaner fin ils 3 da favrer 2025 ed ha generà var 120 000 impressiuns."
+
+#. type: Title ##
+#: src/content/docs/release-notes/0-9-0-beta.md
+#, no-wrap
+msgid "What changed since"
+msgstr "Tge ch’è sa midà dapi lura"
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"The 0.9.3 release rebuilt almost everything around the principle of "
+"[configuration as data](/under-the-hood/configuration-as-data/), expanded "
+"the desktop environment selection from one to four (XFCE, Wayfire, Niri, "
+"COSMIC), added a dedicated [system hardening dialog](/under-the-hood/"
+"mitigations/), introduced [Flatpak integration](/best-practices/aur-vs-"
+"flatpak/), and migrated the configuration management layer from Ansible to "
+"Sparrow6. See the [0.9.3 release notes](/release-notes/0-9-3-beta/) for the "
+"full list."
+msgstr ""
+"La versiun 0.9.3 ha reconstruì quasi tut enturn il princip da la "
+"[configuraziun sco datas](/under-the-hood/configuration-as-data/), ha "
+"extendì la tscherna da sistems da desktop dad in a quatter (XFCE, Wayfire, "
+"Niri, COSMIC), ha agiuntà in agen [dialog dal rinforzament dal sistem](/"
+"under-the-hood/mitigations/), ha introducì l’[integraziun da Flatpak](/best-"
+"practices/aur-vs-flatpak/) ed ha migrà la stresa da la gestiun da la "
+"configuraziun dad Ansible a Sparrow6. La glista cumpletta chattais Vus en "
+"las [remartgas davart la versiun 0.9.3](/release-notes/0-9-3-beta/)."
+
+#. type: Plain text
+#: src/content/docs/release-notes/0-9-0-beta.md
+msgid ""
+"Since then, 0.9.4 has restricted unprivileged user namespaces to the "
+"executables that require them rather than disabling them entirely, "
+"introduced unattended installation via an answer file, and made every "
+"package build public. See the [0.9.4 release notes](/release-notes/0-9-4-"
+"beta/) for the current release."
+msgstr ""
+"Dapi lura ha la versiun 0.9.4 restrenschì ils spazis da num da l’utilisader "
+"senza privilegis als programs exequibels che dovran els, empè da deactivar "
+"els dal tuttafatg, ha introducì l’installaziun senza surveglianza cun ina "
+"datoteca da respostas ed ha rendì public mintga build da pachets. Per la "
+"versiun actuala consultai las [remartgas davart la versiun 0.9.4](/release-"
+"notes/0-9-4-beta/)."

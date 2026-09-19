@@ -1,0 +1,32 @@
+---
+// Starlight's social links, with the label in the page's language where the
+// interface strings have one: `social.<icon>`. The config cannot translate it.
+import config from 'virtual:starlight/user-config';
+import { Icon } from '@astrojs/starlight/components';
+
+const t = Astro.locals.t;
+const links = (config.social || []).map((link) => ({
+	...link,
+	label: t.exists(`social.${link.icon}`) ? t(`social.${link.icon}`) : link.label,
+}));
+---
+
+{
+	links.map(({ label, href, icon }) => (
+		<a {href} rel="me" class="sl-flex">
+			<span class="sr-only">{label}</span>
+			<Icon name={icon} />
+		</a>
+	))
+}
+
+<style>
+	a {
+		color: var(--sl-color-text-accent);
+		padding: 0.5em;
+		margin: -0.5em;
+	}
+	a:hover {
+		color: var(--sl-color-white);
+	}
+</style>

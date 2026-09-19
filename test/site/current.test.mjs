@@ -54,8 +54,12 @@ describe('the site as it is', () => {
         assert.match(html, new RegExp(`href="${literal(current.notesHref)}">What’s new in ${literal(current.name)}<`));
     });
 
+    // The build dashboard receives its strings as templates, {{name}} and
+    // all, since its script fills them with what it loads.
     test('leaves no placeholder unfilled', () => {
-        for (const file of site.pages()) assert.doesNotMatch(site.read(file), /\{\{/, file);
+        for (const file of site.pages()) {
+            assert.doesNotMatch(site.read(file).replace(/ data-strings="[^"]*"/g, ''), /\{\{/, file);
+        }
     });
 
     // An error while a Markdown page is rendered results in its

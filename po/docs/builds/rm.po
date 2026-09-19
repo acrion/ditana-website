@@ -1,0 +1,524 @@
+# Romansh translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: rm\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "The public record of every Ditana package build — either every package is mutually consistent and the repository ships, or nothing ships."
+msgstr "Il register public da mintga build da pachets da Ditana – u èn tut ils pachets coerents tranter els ed il repositori vegn furnì, u nagut na vegn furnì."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Build status"
+msgstr "Status dals builds"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "import BuildDashboard from '~/components/BuildDashboard.astro';"
+msgstr "import BuildDashboard from '~/components/BuildDashboard.astro';"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Ditana maintains its own pacman repository on top of Arch – 59 packages, "
+"listed in full in every run that finished. A run that stopped lists what it "
+"had reached. Every night a build host pulls each package's recipe, decides "
+"what needs rebuilding, and builds it in a clean container. The rule that "
+"governs what happens next is the only one that matters here:"
+msgstr ""
+"Ditana mantegna in agen repositori da pacman sin basa dad Arch – 59 pachets, "
+"enumerads cumplettamain en mintga execuziun terminada. In’execuziun ch’è sa "
+"fermada enumerescha quai ch’ella aveva cuntanschì. Mintga notg telechargia "
+"in host da build il recept da mintga pachet, decida tge che sto vegnir "
+"reconstruì e construescha il pachet en in container net. La regla che "
+"determinescha tge che capita lura è l’unica che quinta qua:"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "**If a single package cannot be built, or its sources cannot be verified, nothing is published.**\n"
+msgstr "**Sch’in sulet pachet na po betg vegnir construì u sche sias funtaunas na pon betg vegnir verifitgadas, na vegn nagut publitgà.**\n"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Not \"the rest ships and that one is retried tomorrow\". Nothing. The "
+"repository you install from is either the complete, mutually consistent set "
+"that came out of one run, or it is yesterday's complete, mutually consistent "
+"set. A smaller repository can promise that; a large one, updating package by "
+"package, cannot — which is why Ditana keeps its own small enough to vouch "
+"for as one set."
+msgstr ""
+"Betg «il rest vegn furnì e quel pachet vegn empruvà danovamain damaun». "
+"Nagut. Il repositori, ord il qual Vus installais, è u la collecziun "
+"cumpletta e coerenta ch’è resultada d’ina execuziun, u la collecziun "
+"cumpletta e coerenta dad ier. In repositori pli pitschen po empermetter "
+"quai; in grond, che vegn actualisà pachet per pachet, na po betg – perquai "
+"tegna Ditana ses agen repositori uschè pitschen, ch’el po vegnir garantì sco "
+"ina suletta collecziun."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"A claim like that is worth exactly as much as its evidence, so the record "
+"below is written by the pipeline itself, including the runs where nothing "
+"shipped. That pipeline is [`ditana-build`](https://github.com/acrion/ditana-"
+"build), and it is public: the review gate is [`bin/pkgbuild-review-gate`]"
+"(https://github.com/acrion/ditana-build/blob/main/bin/pkgbuild-review-gate), "
+"and the installation test is [`bin/test-install-in-qemu`](https://github.com/"
+"acrion/ditana-build/blob/main/bin/test-install-in-qemu)."
+msgstr ""
+"Ina tala pretensiun vala exactamain uschè bler sco sias cumprovas, perquai "
+"vegn il register qua sutvart scrit da la pipeline sezza, inclusiv las "
+"execuziuns, en las qualas nagut n’è vegnì furnì. Questa pipeline è [`ditana-"
+"build`](https://github.com/acrion/ditana-build), ed ella è publica: la "
+"controlla da revisiun è [`bin/pkgbuild-review-gate`](https://github.com/"
+"acrion/ditana-build/blob/main/bin/pkgbuild-review-gate), ed il test "
+"d’installaziun è [`bin/test-install-in-qemu`](https://github.com/acrion/"
+"ditana-build/blob/main/bin/test-install-in-qemu)."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "<BuildDashboard />\n"
+msgstr "<BuildDashboard />\n"
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "How far a run got"
+msgstr "Fin nua ch’ina execuziun è arrivada"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Every run passes through the same stages, and its `outcome` says which one "
+"it reached. These are the four states, and the colours above:"
+msgstr ""
+"Mintga execuziun passa tras las medemas fasas, e ses `outcome` di tge fasa "
+"ch’ella ha cuntanschì. Quai èn ils quatter stadis e las colurs survart:"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid ""
+"| `outcome` | What it means for you |\n"
+"| --- | --- |\n"
+"| `released` | **This is what you install.** Every package built, every signature verified, and the whole set replaced the repository your system updates from. |\n"
+"| `in-testing` | Built and signed, sitting in a separate testing repository while it is checked. Your system still installs the previous release. |\n"
+"| `built` | The build host finished, but it holds no signing key — signing happens afterwards on another machine. Nothing has moved yet. |\n"
+"| `held-back` | Something did not pass, so nothing shipped at all. The repository you install from is untouched and still consistent. |\n"
+msgstr ""
+"| `outcome` | Tge che quai munta per Vus |\n"
+"| --- | --- |\n"
+"| `released` | **Quai è quai che Vus installais.** Mintga pachet è construì, mintga signatura verifitgada, e l’entira collecziun ha remplazzà il repositori, ord il qual Voss sistem vegn actualisà. |\n"
+"| `in-testing` | Construì e signà; la collecziun sa chatta en in repositori da test separà, durant ch’ella vegn controllada. Voss sistem installescha anc adina la versiun precedenta. |\n"
+"| `built` | Il host da build ha terminà sia lavur, ma el n’ha nagina clav da signatura – la signatura ha lieu pli tard sin in’autra maschina. Anc nagut n’è vegnì spustà. |\n"
+"| `held-back` | Insatge n’è betg reussì, perquai n’è insumma nagut vegnì furnì. Il repositori, ord il qual Vus installais, è intact ed anc adina coerent. |\n"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Only `released` means the packages reached you. The other three are stages "
+"on the way there, or a stop."
+msgstr ""
+"Mo `released` munta ch’ils pachets èn arrivads tar Vus. Ils auters trais èn "
+"fasas sin la via fin là, u ina fermada."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "What happened to each package"
+msgstr "Tge ch’è capità cun mintga pachet"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "Within a run, every package gets one `status`:"
+msgstr "Entaifer in’execuziun survegn mintga pachet in `status`:"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid ""
+"| `status` | Meaning |\n"
+"| --- | --- |\n"
+"| `current` | The recipe has not changed since the existing package was built, and for a `-git` package the upstream commit has not moved either. Nothing to do. |\n"
+"| `rebuilt` | Sources were fetched and verified on the host, then the package was built in a fresh container. |\n"
+"| `review-stopped` | The recipe changed in a way a human has to look at. The run ends here. |\n"
+"| `build-failed` | The package did not compile, or produced no artefact. The run ends here. |\n"
+msgstr ""
+"| `status` | Muntada |\n"
+"| --- | --- |\n"
+"| `current` | Il recept n’è betg sa midà dapi ch’il pachet existent è vegnì construì, e per in pachet `-git` n’è er il commit d’origin betg sa midà. Nagut da far. |\n"
+"| `rebuilt` | Las funtaunas èn vegnidas telechargiadas e verifitgadas sin il host, lura è il pachet vegnì construì en in container nov. |\n"
+"| `review-stopped` | Il recept è sa midà en ina moda che ina persuna sto examinar. L’execuziun finescha qua. |\n"
+"| `build-failed` | La cumpilaziun dal pachet n’è betg reussida, u il pachet n’ha producì nagin artefact. L’execuziun finescha qua. |\n"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "The last two are why a run ends as `held-back`: one package is enough."
+msgstr ""
+"Ils davos dus èn la raschun, pertge ch’ina execuziun finescha sco `held-"
+"back`: in pachet basta."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Why a run stops"
+msgstr "Pertge ch’ina execuziun sa ferma"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Most of what Ditana rebuilds are third-party AUR recipes, packaged into a "
+"repository its users trust through pacman's signature configuration. The AUR "
+"is a supply chain, and it has been attacked as one: orphaned packages have "
+"been adopted and given malicious commits, which is why the AUR disabled "
+"adoption and pushes in August 2026."
+msgstr ""
+"La gronda part da quai che Ditana reconstruescha èn recepts da l’AUR da "
+"terzas persunas, mess en in repositori, dal qual las persunas che "
+"l’utiliseschan sa fidan tras la configuraziun da signaturas da pacman. L’AUR "
+"è ina chadaina da furniziun, ed el è vegnì attatgà sco tala: pachets senza "
+"persuna responsabla èn vegnids surpigliads ed han survegnì commits "
+"nuschaivels, perquai ha l’AUR deactivà la surpigliada da pachets e la "
+"transmissiun da commits l’avust 2026."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"So every `git pull` in the pipeline is classified before anything is built.  "
+"Version bumps, comments, whitespace and checksums that accompany a version "
+"change are waved through. A change to `source=`, to a `url=`, to a VCS "
+"revision, to anything inside a function, to `install=`, to `provides=`, "
+"`conflicts=`, `replaces=` or `validpgpkeys=`, a checksum that changes "
+"without a version changing, a new dependency pacman does not know, a changed "
+"or emptied `# Maintainer:` line — each of those stops the run. The recipe is "
+"never sourced to do this: executing the file under suspicion is precisely "
+"what has to be avoided, so the analysis is static, and it fails closed when "
+"it is unsure."
+msgstr ""
+"Perquai vegn mintga `git pull` en la pipeline classifitgà, avant che insatge "
+"vegn construì. Augments dal numer da versiun, commentaris, spazis e summas "
+"da controlla che accumpognan ina midada da versiun vegnan laschads passar. "
+"Ina midada da `source=`, d’in `url=`, d’ina revisiun VCS, da tut quai ch’è "
+"entaifer ina funcziun, da `install=`, da `provides=`, `conflicts=`, "
+"`replaces=` u `validpgpkeys=`, ina summa da controlla che sa mida senza che "
+"la versiun sa midia, ina nova dependenza che pacman na conuscha betg, ina "
+"lingia `# Maintainer:` midada u svidada – mintga singul cas ferma "
+"l’execuziun. Il recept na vegn mai exequì per far quai: exequir la datoteca "
+"suspectusa è precis quai che sto vegnir evità, perquai è l’analisa statica, "
+"e cur ch’ella n’è betg segira, ferma ella l’execuziun."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Measured against the last twelve months of real package history, this stops "
+"a run roughly **once every three and a half days**. That is not a defect to "
+"be tuned away; it is the price of the all-or-nothing rule, paid in advance."
+msgstr ""
+"Sin basa da l’istorgia reala dals pachets dals ultims dudesch mais ferma "
+"quai in’execuziun var **ina giada mintga trais dis e mez**. Quai n’è betg in "
+"defect che stuess vegnir eliminà cun optimaziuns; quai è il pretsch da la "
+"regla «tut u nagut», pajà ordavant."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Some of the recipes Ditana rebuilds have no upstream maintainer at all – "
+"their `# Maintainer:` line is empty. That is why an emptied maintainer line "
+"stops a run instead of being waved through: an orphaned recipe is the one "
+"somebody can adopt."
+msgstr ""
+"Intgins dals recepts che Ditana reconstruescha n’han insumma nagina persuna "
+"responsabla d’origin – lur lingia `# Maintainer:` è vida. Perquai vegn "
+"in’execuziun fermada, sch’ina lingia da la persuna responsabla vegn svidada, "
+"empè che quai vegnia laschà passar: in recept senza persuna responsabla è "
+"quel che insatgi po surpigliar."
+
+#. type: Title ###
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "What this does not check"
+msgstr "Tge che quai na controllescha betg"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"The review covers packaging metadata, not upstream source code. When a "
+"recipe builds from a git revision, that revision's contents are not reviewed "
+"by anything in this pipeline. Ditana's advantage over an unreviewed rebuild "
+"service is real but bounded, and stating the bound is part of the claim."
+msgstr ""
+"La revisiun cumpiglia las metadatas dals pachets, betg il code da funtauna "
+"d’origin. Cur ch’in recept construescha a partir d’ina revisiun git, na vegn "
+"il cuntegn da questa revisiun examinà da nagut en questa pipeline. "
+"L’avantatg da Ditana envers in servetsch da reconstrucziun senza revisiun è "
+"real, ma limità, e numnar questa limita fa part da la pretensiun."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "The installation test"
+msgstr "Il test d’installaziun"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Building and signing a repository is not the same as being able to install "
+"from it. Between the testing repository and the release there is one more "
+"step: the build host installs that very repository into a virtual machine of "
+"its own, unattended, driven by an answer file on a small config drive – the "
+"same mechanism a hosting provider would use over PXE, which is why no "
+"keystrokes are simulated."
+msgstr ""
+"Construir e signar in repositori n’è betg il medem sco pudair installar ord "
+"el. Tranter il repositori da test e la publicaziun exista anc in pass: il "
+"host da build installescha exact quest repositori en ina maschina virtuala "
+"atgna, senza surveglianza, guidà d’ina datoteca da respostas sin in pitschen "
+"disc da configuraziun – il medem mecanissem ch’in purschider da hosting "
+"duvrass via PXE, perquai na vegnan naginas tastas simuladas."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Two things have to be true, and the record says which of them was reached."
+msgstr ""
+"Duas chaussas ston esser vairas, ed il register di tgenina da quellas è "
+"vegnida cuntanschida."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid ""
+"| stage | What had happened |\n"
+"| --- | --- |\n"
+"| `installing` | The medium is running. Nothing has been installed yet. |\n"
+"| `installed` | The installer reached its final reboot. |\n"
+"| `booted` | The installed system came up on its own and answered on port 22. This is a pass. |\n"
+msgstr ""
+"| Fasa | Tge ch’era capità |\n"
+"| --- | --- |\n"
+"| `installing` | Il medium è en funcziun. Anc nagut n’è vegnì installà. |\n"
+"| `installed` | L’installatur ha cuntanschì ses ultim reaviar. |\n"
+"| `booted` | Il sistem installà è s’avià sez ed ha respundì sin il port 22. Il test è reussì. |\n"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"The distinction matters, because the two failures are different bugs. A run "
+"that stops at `installing` produced a repository nobody can install from. "
+"One that stops at `installed` produced a system that was written correctly "
+"and does not come up, and that is the kind of defect no amount of building "
+"catches."
+msgstr ""
+"La differenza è impurtanta, perquai ch’ils dus cas èn errurs differentas. "
+"In’execuziun che sa ferma tar `installing` ha producì in repositori, ord il "
+"qual nagina persuna na po installar. Ina che sa ferma tar `installed` ha "
+"producì in sistem ch’è vegnì scrit correctamain, ma che na s’aviescha betg, "
+"e quai è il tip da defect che nagina quantitad da builds na scuvra."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Arriving at `booted` signifies far more than the phrase implies. The "
+"bootloader ran, the initramfs found and imported the ZFS pool, systemd got "
+"to multi-user mode, the network became active, and a service started. "
+"Nothing is injected into the guest to arrange any of these actions: `install-"
+"openssh` is enabled by default, so a banner on port 22 is the installed "
+"system’s own doing."
+msgstr ""
+"Cuntanscher `booted` munta bler dapli che la noziun lascha supponer. Il "
+"bootloader è vegnì exequì, l’initramfs ha chattà ed importà il pool ZFS, "
+"systemd è arrivà al modus multi-user, la rait è daventada activa ed in "
+"servetsch è vegnì avià. Nagut na vegn injectà en il sistem giast per "
+"arranschar ina da questas acziuns: `install-openssh` è activà sco standard, "
+"uschia ch’ina bandiera sin il port 22 è l’ovra dal sistem installà sez."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"When the test fails, the record carries a picture of the guest’s screen at "
+"the moment the harness gave up. The installation medium writes nothing to a "
+"serial console once its bootloader has handed over, so everything the "
+"installer draws is on that screen and nowhere else – an installer waiting at "
+"a question is visible there and in no log at all."
+msgstr ""
+"Cur ch’il test na reussescha betg, cuntegna il register in maletg dal visur "
+"dal sistem giast en il mument che l’ambient da test ha dà si. Il medium "
+"d’installaziun na scriva nagut sin ina consola seriala, uschespert che ses "
+"bootloader ha surdà la controlla, perquai è tut quai che l’installatur mussa "
+"sin quest visur e nagliur auter – in installatur che spetga sin ina dumonda "
+"è visibel là ed en nagin protocol."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"A failed test releases nothing. The packages stay in the testing repository, "
+"and the repository you install from is untouched."
+msgstr ""
+"In test betg reussì na publitgescha nagut. Ils pachets restan en il "
+"repositori da test, ed il repositori, ord il qual Vus installais, resta "
+"intact."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Where the signing key is"
+msgstr "Nua che la clav da signatura sa chatta"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "The machine that builds holds a signing subkey, not the primary key."
+msgstr ""
+"La maschina che construescha ha ina clav secundara da signatura, betg la "
+"clav principala."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"It builds, signs with that subkey, uploads to the testing repository, "
+"installs that repository into a virtual machine, and releases to production "
+"only if the installation worked. Keeping the key off the build host is "
+"something the pipeline still supports, and it was how Ditana worked until "
+"August 2026; it was given up because a release gated on a test installation "
+"has to happen on the machine that has just built, and the split put a second "
+"machine and a manual step in between. What the subkey buys instead: it can "
+"be revoked and replaced on its own, it cannot certify further keys, and the "
+"fingerprint users verify against never changes."
+msgstr ""
+"Ella construescha, signa cun questa clav secundara, chargia si en il "
+"repositori da test, installescha quest repositori en ina maschina virtuala e "
+"publitgescha en la producziun mo sche l’installaziun ha funcziunà. Tegnair "
+"la clav davent dal host da build è insatge che la pipeline sustegna anc "
+"adina, ed uschia ha Ditana lavurà fin l’avust 2026; ins ha renunzià a quai, "
+"perquai ch’ina publicaziun che dependa d’ina installaziun da test sto avair "
+"lieu sin la maschina ch’ha gist construì, e la separaziun metteva ina "
+"segunda maschina ed in pass manual tranteren. Quai che la clav secundara "
+"porta empè: ella po vegnir revocada e remplazzada separadamain, ella na po "
+"betg certifitgar ulteriuras clavs, e l’impronta, cun la quala i vegn "
+"verifitgà, na sa mida mai."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"What this protects is the key, not the packages: the signing machine signs "
+"what the build host produced, without reviewing it. What it prevents is the "
+"machine that runs foreign build scripts being able to have arbitrary data "
+"signed at any time."
+msgstr ""
+"Quai che vegn protegì è la clav, betg ils pachets: la maschina che signa, "
+"signa quai ch’il host da build ha producì, senza examinar quai. Quai che "
+"vegn impedì è che la maschina che exequescha scripts da build esters possia "
+"laschar signar datas arbitraras en mintga mument."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Verifying this yourself"
+msgstr "Verifitgar quai persunalmain"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid "The record is plain JSON and is not generated by this website:"
+msgstr "Il register è JSON simpel e na vegn betg generà da questa website:"
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"[`/build-history/index.json`](/build-history/index.json) — the rolling index "
+"of the most recent runs."
+msgstr ""
+"[`/build-history/index.json`](/build-history/index.json) – l’index actualisà "
+"cuntinuadamain da las execuziuns las pli recentas."
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"`/build-history/<timestamp>.json` – one file per run: `outcome`, `message`, "
+"`counts`, a `test-install` object where a run was tested, and a `packages` "
+"array whose entries carry `name`, `status`, `seconds`, any `detail`, and the "
+"paths of that package's logs."
+msgstr ""
+"`/build-history/<timestamp>.json` – ina datoteca per execuziun: `outcome`, "
+"`message`, `counts`, in object `test-install`, sche l’execuziun è vegnida "
+"testada, ed ina matriza `packages` cun endataziuns che cuntegnan `name`, "
+"`status`, `seconds`, eventualmain `detail`, ed ils percurs dals protocols da "
+"quest pachet."
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"The `test-install` object carries `result`, the `stage` the guest reached, "
+"the `iso` and `answer-file` it was driven with, and, where the installation "
+"failed, a `screenshot` path under `/build-history/logs/<timestamp>/test-"
+"install/` holding the guest's screen at the moment the harness gave up."
+msgstr ""
+"L’object `test-install` cuntegna `result`, il `stage` ch’il sistem giast ha "
+"cuntanschì, l’`iso` e l’`answer-file` cun ils quals el è vegnì guidà, e, "
+"sche l’installaziun n’è betg reussida, in percurs `screenshot` sut `/build-"
+"history/logs/<timestamp>/test-install/` cun il maletg dal visur dal sistem "
+"giast en il mument che l’ambient da test ha dà si."
+
+#. type: Bullet: '- '
+#: src/content/docs/builds.mdx
+msgid ""
+"`/build-history/logs/<timestamp>/<package>/` — what `makepkg` logged while "
+"building that package, split by stage (`prepare`, `build`, `check`, "
+"`package`). Every rebuilt package in a run is linked from its row above, and "
+"a package whose build failed is logged too — that is the one worth reading."
+msgstr ""
+"`/build-history/logs/<timestamp>/<package>/` – quai che `makepkg` ha "
+"protocollà durant la construcziun da quest pachet, repartì tenor fasa "
+"(`prepare`, `build`, `check`, `package`). Mintga pachet reconstruì d’ina "
+"execuziun è collià da sia lingia survart, ed er in pachet, dal qual il build "
+"n’è betg reussì, vegn protocollà – quel vala la paina da leger."
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Server names, addresses, paths and the build account's login name are "
+"removed from the records and from the logs before they are written. Nothing "
+"else is filtered; the failure text you see is the failure text the pipeline "
+"saw."
+msgstr ""
+"Nums da servers, adressas, percurs ed il num d’utilisader da l’account da "
+"build vegnan allontanads dals registers e dals protocols, avant ch’els "
+"vegnan scrits. Nagut auter na vegn filtrà; il text d’errur che Vus vesais è "
+"il text d’errur che la pipeline ha vis."
+
+#. type: Title ##
+#: src/content/docs/builds.mdx
+#, no-wrap
+msgid "Under which licences"
+msgstr "Sut tge licenzas"
+
+#. type: Plain text
+#: src/content/docs/builds.mdx
+msgid ""
+"Every package here is built from a publicly available recipe that names its "
+"upstream source. [Licensing](/licensing/) says where to find both, and "
+"covers the one case where the licence itself is contested: the ZFS packages, "
+"of which Ditana distributes the sources and the userspace tools but never a "
+"compiled kernel module."
+msgstr ""
+"Mintga pachet qua vegn construì a partir d’in recept publicamain disponibel "
+"che numna sia funtauna d’origin. [Licenzas](/licensing/) di nua che Vus "
+"chattais omadus e tracta l’unic cas, en il qual la licenza sezza è "
+"contestada: ils pachets ZFS, dals quals Ditana distribuescha las funtaunas "
+"ed ils utensils userspace, ma mai in modul dal kernel cumpilà."

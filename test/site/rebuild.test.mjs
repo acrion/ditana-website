@@ -22,7 +22,21 @@ describe('a build on the cache of an earlier one', () => {
     });
 
     test('shows a changed header in the notes whose files did not change', async () => {
-        editFile(dir, 'src/release/releases.mjs', (text) => text.replace('**Previous release:**', '**Predecessor:**'));
+        editFile(dir, 'src/release/releases.mjs', (text) => text.replace('(${formatReleaseDate(older.date, lang)})', '[${formatReleaseDate(older.date, lang)}]'));
+        const site = await buildSite(dir);
+        assert.match(site.page('release-notes/0-9-4-beta'), /0\.9\.3 Beta<\/a> \[22 May 2026\]/);
+    });
+
+    // The header takes its dates from src/i18n/format.mjs.
+    test('shows a changed date format in the notes whose files did not change', async () => {
+        editFile(dir, 'src/i18n/format.mjs', (text) => text.replace("month: 'long'", "month: 'short'"));
+        const site = await buildSite(dir);
+        assert.match(site.page('release-notes/0-9-4-beta'), /<strong>Release date:<\/strong> 12 Sept 2026/);
+    });
+
+    // The header's labels are interface strings, in every language.
+    test('shows a changed label in the notes whose files did not change', async () => {
+        editFile(dir, 'src/content/i18n/en-GB.json', (text) => text.replace('"release.previous": "Previous release:"', '"release.previous": "Predecessor:"'));
         const site = await buildSite(dir);
         assert.match(site.page('release-notes/0-9-4-beta'), /<strong>Predecessor:<\/strong>/);
     });

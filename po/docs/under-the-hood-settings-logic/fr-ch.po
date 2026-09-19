@@ -1,0 +1,311 @@
+# Language fr-ch translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr-ch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/under-the-hood/settings-logic.md
+#, no-wrap
+msgid "The two expression fields in Ditana's knowledge base — one keeps an option out of reach, the other moves its value, and most relationships need both."
+msgstr "Les deux champs d’expression de la base de connaissances de Ditana : l’un met une option hors de portée, l’autre modifie sa valeur, et la plupart des relations ont besoin des deux."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/under-the-hood/settings-logic.md
+#, no-wrap
+msgid "How settings depend on each other"
+msgstr "Comment les paramètres dépendent les uns des autres"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"Two fields in the knowledge base contain logic instead of data, and they "
+"respond to two different questions. Confusing them is the mistake this page "
+"exists to prevent."
+msgstr ""
+"Deux champs de la base de connaissances contiennent de la logique au lieu de "
+"données, et ils répondent à deux questions différentes. Les confondre est "
+"l’erreur que cette page a pour but d’éviter."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"`available` decides whether a setting is a row the user can reach at all. "
+"`default-value` decides what it is set to – not once, but every time "
+"something its expression names changes."
+msgstr ""
+"`available` détermine si un paramètre est ou non une ligne que l’utilisateur "
+"peut atteindre. `default-value` détermine la valeur qui lui est attribuée – "
+"non pas une seule fois, mais chaque fois que change quelque chose que nomme "
+"son expression."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/settings-logic.md
+#, no-wrap
+msgid "An option that cannot be chosen"
+msgstr "Une option qui ne peut pas être choisie"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"A setting whose `available` expression is false is not rendered. The dialog "
+"is built from the settings that are available, so the row is simply not "
+"there, and the instruction above the list gains a note saying how many "
+"settings are missing and where to read about them."
+msgstr ""
+"Un paramètre dont l’expression `available` est fausse n’est pas affiché. La "
+"boîte de dialogue est construite à partir des paramètres disponibles, si "
+"bien que la ligne n’y figure tout simplement pas, et la consigne au-dessus "
+"de la liste reçoit une remarque indiquant combien de paramètres manquent et "
+"où se renseigner à leur sujet."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"It does not vanish without a trace. The help text of the dialog lists every "
+"unavailable setting of that dialog under a heading of its own, with its full "
+"description and one line more, in which the expression is that setting’s own "
+"`available` condition with the backticks taken off:"
+msgstr ""
+"Il ne disparaît pas sans laisser de trace. Le texte d’aide de la boîte de "
+"dialogue liste chaque paramètre indisponible de cette boîte de dialogue sous "
+"un titre qui lui est propre, avec sa description complète et une ligne "
+"supplémentaire, dans laquelle l’expression est la propre condition "
+"`available` de ce paramètre, sans les accents graves :"
+
+#. type: Fenced code block (text)
+#: src/content/docs/under-the-hood/settings-logic.md
+#, no-wrap
+msgid "=== Condition of availability: === <the expression>\n"
+msgstr "=== Condition of availability: === <the expression>\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"Losing availability does not in itself mean losing the value. The engine "
+"switches an unavailable setting off in exactly one place: when the user "
+"confirms a dialog, across the rows of that dialog, for a setting whose "
+"availability the user has just removed via their own change in that dialog. "
+"A setting that becomes unavailable due to something the user did in a "
+"different dialog keeps whatever value it previously held, and it is no "
+"longer present as a row anywhere, so nothing there will interact with it "
+"again."
+msgstr ""
+"Perdre sa disponibilité ne signifie pas en soi perdre sa valeur. Le moteur "
+"ne désactive un paramètre indisponible qu’à un seul endroit précis : lorsque "
+"l’utilisateur valide une boîte de dialogue, parmi les lignes de cette boîte "
+"de dialogue, pour un paramètre dont l’utilisateur vient de supprimer la "
+"disponibilité par sa propre modification dans cette boîte de dialogue. Un "
+"paramètre qui devient indisponible à cause d’une action de l’utilisateur "
+"dans une autre boîte de dialogue conserve la valeur qu’il avait auparavant, "
+"et il ne figure plus nulle part sous forme de ligne, si bien que plus rien, "
+"à cet endroit, n’interagira avec lui."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"That is what the second field is for, and it is why the two are so often "
+"used together."
+msgstr ""
+"C’est à cela que sert le second champ, et c’est pourquoi les deux sont si "
+"souvent utilisés ensemble."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/settings-logic.md
+#, no-wrap
+msgid "An option that follows another"
+msgstr "Une option qui en suit une autre"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"A `default-value` might be an expression, and such an expression is not a "
+"fallback. Whenever a setting it names changes, the engine re-evaluates it "
+"and applies the result – over a value the user chose by hand, if that is "
+"what the expression now says. The engine keeps no record of who set a value, "
+"so there is nothing for it to defer to. Only a literal `default-value` "
+"behaves as a starting value and is then left alone."
+msgstr ""
+"Un `default-value` peut être une expression, et une telle expression n’est "
+"pas une valeur de repli. Chaque fois qu’un paramètre qu’elle nomme change, "
+"le moteur la réévalue et applique le résultat – en remplaçant une valeur que "
+"l’utilisateur a choisie à la main, si c’est ce que dit désormais "
+"l’expression. Le moteur ne garde aucune trace de qui a défini une valeur, si "
+"bien qu’il n’a rien devant quoi s’effacer. Seul un `default-value` littéral "
+"se comporte comme une valeur de départ et n’est ensuite plus touché."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"The result travels: applying it may change a setting a third expression "
+"names, which is evaluated in turn. Nothing in the engine knows about any "
+"particular setting; the whole chain is in the data."
+msgstr ""
+"Le résultat se propage : son application peut modifier un paramètre que "
+"nomme une troisième expression, laquelle est évaluée à son tour. Aucune "
+"partie du moteur ne connaît un paramètre en particulier ; toute la chaîne se "
+"trouve dans les données."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/settings-logic.md
+#, no-wrap
+msgid "The file system dialog, in full"
+msgstr "La boîte de dialogue des systèmes de fichiers, dans son intégralité"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"ZFS needs DKMS, and DKMS on a kernel that has progressed beyond what OpenZFS "
+"supports cannot build. Ditana therefore pairs ZFS with the long-term support "
+"kernel, and it takes both fields to do it:"
+msgstr ""
+"ZFS a besoin de DKMS, et DKMS ne peut pas compiler sur un noyau qui a "
+"dépassé ce que prend en charge OpenZFS. Ditana associe donc ZFS au noyau à "
+"support à long terme, et il faut les deux champs pour y parvenir :"
+
+#. type: Fenced code block (kdl)
+#: src/content/docs/under-the-hood/settings-logic.md
+#, no-wrap
+msgid ""
+"- name=\"zfs-filesystem\" \\\n"
+"  available=\"`install-standard-lts-kernel`\" \\\n"
+"  default-value=\"`install-standard-lts-kernel AND NOT profile-quick`\" {\n"
+"    // ...\n"
+"  }\n"
+msgstr ""
+"- name=\"zfs-filesystem\" \\\n"
+"  available=\"`install-standard-lts-kernel`\" \\\n"
+"  default-value=\"`install-standard-lts-kernel AND NOT profile-quick`\" {\n"
+"    // ...\n"
+"  }\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"The `available` line is the gate. Choosing a different kernel does not move "
+"ZFS onto the LTS kernel and does not leave ZFS running on a kernel it cannot "
+"build against: the ZFS row is gone from the file system dialog, and the "
+"pairing holds because the unpaired state is not one the user can select."
+msgstr ""
+"La ligne `available` est la barrière. Choisir un autre noyau ne fait pas "
+"passer ZFS sur le noyau LTS et ne laisse pas non plus ZFS fonctionner sur un "
+"noyau pour lequel il ne peut pas être compilé : la ligne ZFS disparaît de la "
+"boîte de dialogue des systèmes de fichiers, et l’association tient parce que "
+"l’état non associé n’est pas un état que l’utilisateur peut sélectionner."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"For that setting the help says, in the file system dialog of an installation "
+"that is not on the long-term support kernel:"
+msgstr ""
+"Pour ce paramètre, l’aide indique, dans la boîte de dialogue des systèmes de "
+"fichiers d’une installation qui n’utilise pas le noyau à support à long "
+"terme :"
+
+#. type: Fenced code block (text)
+#: src/content/docs/under-the-hood/settings-logic.md
+#, no-wrap
+msgid "=== Condition of availability: === install-standard-lts-kernel\n"
+msgstr "=== Condition of availability: === install-standard-lts-kernel\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"The `default-value` line is what makes the gate bite from another dialog. "
+"The kernel is chosen in the Kernel Selection dialog, where ZFS is not a row, "
+"so the rule that switches an unavailable setting off never reaches it. "
+"Naming the same condition in `default-value` is what turns ZFS off – and it "
+"is why forty-five settings in the knowledge base carry an expression in both "
+"fields. The two are not alternatives."
+msgstr ""
+"C’est la ligne `default-value` qui rend la barrière effective depuis une "
+"autre boîte de dialogue. Le noyau se choisit dans la boîte de dialogue "
+"Kernel Selection, où ZFS n’est pas une ligne, si bien que la règle qui "
+"désactive un paramètre indisponible ne l’atteint jamais. C’est le fait de "
+"nommer la même condition dans `default-value` qui désactive ZFS – et c’est "
+"pourquoi quarante-cinq paramètres de la base de connaissances comportent une "
+"expression dans les deux champs. L’un ne remplace pas l’autre."
+
+#. type: Fenced code block (kdl)
+#: src/content/docs/under-the-hood/settings-logic.md
+#, no-wrap
+msgid ""
+"- name=\"btrfs-filesystem\" \\\n"
+"  default-value=\"`profile-quick OR NOT install-standard-lts-kernel`\" {\n"
+"    arch-packages \"btrfs-progs\" \"compsize\"\n"
+"  }\n"
+msgstr ""
+"- name=\"btrfs-filesystem\" \\\n"
+"  default-value=\"`profile-quick OR NOT install-standard-lts-kernel`\" {\n"
+"    arch-packages \"btrfs-progs\" \"compsize\"\n"
+"  }\n"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"Btrfs is the default of the file system dialog whenever the Quick "
+"Installation profile is chosen or the LTS kernel is not selected. The two "
+"expressions are complementary halves of the same condition, so exactly one "
+"file system is chosen at any moment. A user who switches the kernel away "
+"from LTS therefore finds, on returning to the file system dialog, that the "
+"ZFS row is gone, that Btrfs is chosen, and that the note above the list "
+"points at the help, where the condition that removed ZFS is printed out."
+msgstr ""
+"Btrfs est la valeur par défaut de la boîte de dialogue des systèmes de "
+"fichiers dès que le profil Quick Installation est choisi ou que le noyau LTS "
+"n’est pas sélectionné. Les deux expressions sont les moitiés complémentaires "
+"d’une même condition, si bien qu’à tout moment, exactement un système de "
+"fichiers est choisi. Un utilisateur qui abandonne le noyau LTS pour un autre "
+"constate donc, en revenant à la boîte de dialogue des systèmes de fichiers, "
+"que la ligne ZFS a disparu, que Btrfs est choisi et que la remarque au-"
+"dessus de la liste renvoie à l’aide, où la condition qui a retiré ZFS est "
+"affichée en toutes lettres."
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"The LTS kernel starts as the default, so in a standard setup nothing here "
+"appears: ZFS is offered, and choosing it changes no kernel since the kernel "
+"is already right."
+msgstr ""
+"Le noyau LTS est la valeur par défaut au départ, si bien que dans une "
+"configuration standard, rien de tout cela n’apparaît : ZFS est proposé, et "
+"le choisir n’entraîne aucun changement de noyau, puisque le noyau est déjà "
+"le bon."
+
+#. type: Title ##
+#: src/content/docs/under-the-hood/settings-logic.md
+#, no-wrap
+msgid "What this means for a contribution"
+msgstr "Ce que cela signifie pour une contribution"
+
+#. type: Plain text
+#: src/content/docs/under-the-hood/settings-logic.md
+msgid ""
+"The two fields answer two questions, and a relationship typically needs both "
+"answered. Does the option make sense at all under this condition – that is "
+"`available`, and it removes the row. Should the option follow this condition "
+"– that is `default-value`, and it moves the value, from any dialog. A gate "
+"whose condition is decided in the same dialog can do with `available` alone; "
+"a gate whose condition lives elsewhere cannot, and that is the common case."
+msgstr ""
+"Les deux champs répondent à deux questions, et une relation a généralement "
+"besoin d’une réponse aux deux. L’option a-t-elle seulement un sens sous "
+"cette condition ? C’est `available`, et il retire la ligne. L’option doit-"
+"elle suivre cette condition ? C’est `default-value`, et il modifie la "
+"valeur, depuis n’importe quelle boîte de dialogue. Une barrière dont la "
+"condition se décide dans la même boîte de dialogue peut se contenter de "
+"`available` seul ; une barrière dont la condition se trouve ailleurs ne le "
+"peut pas, et c’est le cas le plus courant."

@@ -1,0 +1,75 @@
+# Language es-419 translations for Ditana website package
+# Copyright (C) 2026 acrion innovations GmbH
+# This file is distributed under the same license as the Ditana website package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ditana website VERSION\n"
+"POT-Creation-Date: 2026-09-19 00:34+0200\n"
+"PO-Revision-Date: 2026-09-19 00:34+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es-419\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: description
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+#, no-wrap
+msgid "Four steps to discover what an update changed and to get a functioning system back."
+msgstr "Cuatro pasos para averiguar qué cambió una actualización y recuperar un sistema que funcione."
+
+#. type: Yaml Front Matter Hash Value: title
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+#, no-wrap
+msgid "An update broke something"
+msgstr "Una actualización rompió algo"
+
+#. type: Bullet: '1. '
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+msgid ""
+"**Check whether it is us.** The [build status page](/builds/) shows every "
+"package build, including the ones that were held back. If the last run was "
+"held back, the repository has not changed since the one before it, and the "
+"cause is elsewhere."
+msgstr ""
+"**Compruebe si el problema es nuestro.** La [página de estado de la "
+"compilación](/builds/) muestra cada compilación de paquetes, incluidas las "
+"que se retuvieron. Si la última ejecución se retuvo, el repositorio no ha "
+"cambiado desde la ejecución anterior, y la causa está en otra parte."
+
+#. type: Bullet: '2. '
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+msgid ""
+"**Boot the snapshot.** With automatic snapshots enabled, the pre-update "
+"state is a boot menu entry away. This is the fastest way to get a working "
+"system back, and it costs nothing to try."
+msgstr ""
+"**Arranque desde la instantánea.** Con las instantáneas automáticas "
+"activadas, el estado anterior a la actualización está a una entrada del menú "
+"de arranque. Es la forma más rápida de recuperar un sistema que funcione, y "
+"probarlo no cuesta nada."
+
+#. type: Bullet: '3. '
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+msgid ""
+"**Check what actually changed.** `/var/log/pacman.log` lists every upgraded "
+"package with a timestamp, so you can narrow the search to what moved."
+msgstr ""
+"**Compruebe qué cambió realmente.** `/var/log/pacman.log` enumera cada "
+"paquete actualizado con su marca de tiempo, de modo que puede acotar la "
+"búsqueda a lo que cambió."
+
+#. type: Bullet: '4. '
+#: src/content/docs/troubleshooting/an-update-broke-something.md
+msgid ""
+"**Read the news.** Arch announces every change that needs manual "
+"intervention at [archlinux.org/news](https://archlinux.org/news/). If an "
+"update needed a step you did not take, it is usually there."
+msgstr ""
+"**Lea las noticias.** Arch anuncia en [archlinux.org/news](https://"
+"archlinux.org/news/) cada cambio que requiere una intervención manual. Si "
+"una actualización necesitaba un paso que usted no dio, normalmente lo "
+"encontrará allí."

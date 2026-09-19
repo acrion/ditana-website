@@ -1,0 +1,26 @@
+# Ukrainian words the spelling check (LanguageTool, MORFOLOGIK_RULE_UK_UA)
+# does not know but that are correct: established technical terms of the
+# Ukrainian free-software localization and unit symbols. One word form per
+# line.
+
+# GnuPG's Ukrainian catalog: subkey = підключ
+підключ
+підключем
+підключа
+
+# Unit symbols (Ukrainian orthography § 62; binary prefixes as tools print them)
+ГБ
+ГіБ
+
+# git's Ukrainian catalog: commit = коміт
+коміт
+коміти
+комітів
+коміту
+комітом
+
+# Place names as Ukrainian Wikipedia spells them (Mindelheim, St. Ursen)
+Міндельгайм
+Міндельгайма
+Санкт-Урзен
+Санкт-Урзена

@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
 import { releaseNotesDir, splitFrontmatter } from './read-release-notes.mjs';
 import { currentRelease, placeholderValues, releaseHeaderMarkdown } from './releases.mjs';
+import { localeOfPage, sourcePageOf, SOURCE } from '../i18n/locales.mjs';
+import { translator } from '../i18n/ui.mjs';
 
 // Markdown cannot interpolate, so a page that names the current release
 // writes {{release}}, {{iso}} and so on, and this Satteri mdast plugin
@@ -22,6 +24,10 @@ const PLACEHOLDER_RE = /\{\{\s*([a-z][a-z0-9-]*)\s*\}\}/g;
 
 // Other double braces, such as `{{.Names}}` in a docker command, are text.
 const hasPlaceholder = (text) => text.search(PLACEHOLDER_RE) !== -1;
+
+/** The placeholders `values` knows, filled in; any other is left as written. */
+export const fillKnownPlaceholders = (text, values) =>
+    text.replace(PLACEHOLDER_RE, (whole, name) => (Object.hasOwn(values, name) ? values[name] : whole));
 
 export function substitutePlaceholders(text, values, where) {
     return text.replace(PLACEHOLDER_RE, (_, name) => {
@@ -46,7 +52,8 @@ export function checkMarkdownPages(docsDir, releases) {
     for (const page of fs.globSync('**/*.md', { cwd: root }).toSorted()) {
         const file = path.join(root, page);
         const { frontmatter, body } = splitFrontmatter(fs.readFileSync(file, 'utf8'));
-        const isNotes = path.dirname(file) === notesDir;
+        // A translation of release notes is release notes too.
+        const isNotes = path.dirname(path.join(root, sourcePageOf(page))) === notesDir;
         if (hasPlaceholder(frontmatter)) {
             problems.push(`${page}: placeholders are filled in below the frontmatter only`);
         }
@@ -70,17 +77,30 @@ export function checkMarkdownPages(docsDir, releases) {
 }
 
 const moduleDir = new URL('./', import.meta.url);
-const codeDigest = fs.readdirSync(moduleDir)
-    .filter((file) => /\.m?[jt]s$/.test(file))
-    .toSorted()
-    .reduce((hash, file) => hash.update(file).update(fs.readFileSync(new URL(file, moduleDir))), createHash('sha256'))
+// The header also takes the dates from
+// `src/i18n/format.mjs`.
+const codeDigest = [
+    ...fs.readdirSync(moduleDir).filter((file) => /\.m?[jt]s$/.test(file)).toSorted(),
+    '../i18n/format.mjs',
+].reduce((hash, file) => hash.update(file).update(fs.readFileSync(new URL(file, moduleDir))), createHash('sha256'))
     .digest('hex');
 
 const where = (ctx) => ctx.fileURL?.pathname ?? '(unnamed document)';
 const releaseOf = (ctx) => ctx.data.astro?.frontmatter?.release;
 
-export function releaseMarkdownPlugin(releases) {
+export function releaseMarkdownPlugin(releases, { docsDir, strings = {} } = {}) {
     const values = placeholderValues(currentRelease(releases));
+    const docsRoot = docsDir && path.resolve(docsDir instanceof URL ? fileURLToPath(docsDir) : docsDir);
+    const localeOf = (file) => (docsRoot && file?.startsWith(docsRoot + path.sep) ? localeOfPage(path.relative(docsRoot, file)) : SOURCE);
+    // The labels come from the interface strings, including English;
+    // without them, as in a standalone test of this plugin,
+    // releaseHeaderMarkdown's inherent English ones serve.
+    const headerOptions = (locale) => {
+        const options = locale === SOURCE ? {} : { lang: locale.lang, prefix: locale.prefix };
+        if (!strings[SOURCE.lang]) return options;
+        const t = translator(strings, locale.lang);
+        return { ...options, labels: { date: t('release.date'), previous: t('release.previous'), successor: t('release.successor') } };
+    };
 
     function substitute(node, key, ctx) {
         const text = node[key];
@@ -106,7 +126,7 @@ export function releaseMarkdownPlugin(releases) {
         // whose own file did not change. The code that turns the records into
         // Markdown is carried as a digest of this directory, for the same
         // reason.
-        cacheKey: JSON.stringify({ code: codeDigest, releases }),
+        cacheKey: JSON.stringify({ code: codeDigest, releases, strings }),
 
         before(root, ctx) {
             const own = releaseOf(ctx);
@@ -116,8 +136,10 @@ export function releaseMarkdownPlugin(releases) {
             // written while the dev server runs have no record yet, and their
             // own frontmatter serves until the server is restarted.
             const file = ctx.fileURL && fileURLToPath(ctx.fileURL);
-            const self = releases.find((release) => release.file === file) ?? own;
-            const header = releaseHeaderMarkdown(releases, self);
+            const locale = localeOf(file);
+            const source = locale === SOURCE ? file : path.join(docsRoot, sourcePageOf(path.relative(docsRoot, file)));
+            const self = releases.find((release) => release.file === source) ?? own;
+            const header = releaseHeaderMarkdown(releases, self, headerOptions(locale));
             if (header) ctx.prependChild(root, { raw: header });
         },
 
