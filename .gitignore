@@ -20,3 +20,15 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 .aider*
+
+# translations, written from po/ prior to each
+# build
+/src/content/docs/de-ch/
+/src/content/docs/fr-ch/
+/src/content/docs/it-ch/
+/src/content/docs/rm/
+/src/content/docs/es-419/
+/src/content/docs/uk/
+/src/content/i18n/*.json
+!/src/content/i18n/en-GB.json
+/src/content/.i18n-digest
